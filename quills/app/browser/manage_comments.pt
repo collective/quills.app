@@ -1,0 +1,124 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+    lang="en"
+    i18n:domain="plone"
+    metal:use-macro="here/main_template/macros/master">
+      
+    <body>
+        <div metal:fill-slot="main">
+            <metal:contentsmacro 
+                define-macro="contents"
+                tal:define="errors options/state/getErrors | python: {};"
+            >
+
+                <div metal:use-macro="here/document_actions/macros/document_actions">
+                  Document actions (print, sendto etc)
+                </div>
+                <h1 i18n:translate="manage_comments">
+                  Manage Comments
+                </h1>
+        
+                <p class="discreet"
+                    i18n:translate="no_comments"
+                    tal:condition="not: view/has_comments">
+                  There are no comments for Weblog entries.
+                </p>
+
+                <metal:listing>
+                    <div class="visualClear" />
+                    <form name="commentsForm"
+                        method="post"
+                        tal:attributes="action request/ACTUAL_URL">
+                        <span i18n:translate="">Author</span>: <input type='text' name='form.field.author' size='10' tal:attributes='value view/author'/>
+                        <span i18n:translate="">Subject</span>: <input type='text' name='form.field.subject' size='20' tal:attributes='value view/subject'/>
+
+                        <input class="context"
+                            tabindex=""
+                            type="submit"
+                            name="form.button.Update"
+                            value="Update"
+                            i18n:attributes="value" />
+
+                        <input class="context"
+                            tal:condition="view/filtered"
+                            tabindex=""
+                            type="submit"
+                            name="form.button.ResetFilter"
+                            value="Reset"
+                            i18n:attributes="value" />
+                            
+                        <input class="context"
+                            tabindex=""
+                            type="submit"
+                            name="form.button.Delete"
+                            value="Delete"
+                            i18n:attributes="value" />
+                            
+                        <input type="hidden" name="form.submitted" value="1" /> 
+                        
+                        <table
+                            class="listing"
+                            summary="Comments listing"
+                            tal:condition="view/has_comments">
+                            <thead>
+                                <tr>
+                                    <th class="nosort">
+                                        <input class="noborder"
+                                            type="checkbox"
+                                            src="select_all_icon.gif"
+                                            name="selectButton"
+                                            title="Select all items"
+                                            onClick="toggleSelect(this,'selected_comments:list');"
+                                            tal:attributes="src string:$portal_url/select_all_icon.gif"
+                                            alt="Select all items"
+                                            i18n:attributes="title label_select_all_items; alt label_select_all_items;"
+                                            />
+                                    </th>
+                                    <th class="nosort">&nbsp;Date&nbsp;</th>
+                                    <th class="nosort">&nbsp;Author&nbsp;</th>
+                                    <th class="nosort">&nbsp;Subject&nbsp;</th>
+                                </tr>
+                            </thead>
+
+                            <tbody>
+                                <tal:items tal:repeat="comment view/comment_brains">
+                                    <tr tal:define="
+                                        comment_id           comment/id;
+                                        comment_path         comment/getPath;
+                                        comment_url          comment/getURL;
+                                        comment_author       comment/Creator;
+                                        comment_subject      comment/Title;
+                                        comment_modified     comment/modified;
+                                        oddrow               repeat/comment/odd;"
+                                        tal:attributes="class python:view.test(oddrow, 'even', 'odd')" >
+
+                                        <td>
+                                            <input type="checkbox"
+                                                class="noborder"
+                                                name="selected_comments:list" id="#"
+                                                value="#"
+                                                tal:attributes="
+                                                    value   comment_path;
+                                                    id      string:cb_$comment_id;
+                                                    checked python:view.test(request.get('ids_checked', False), 'checked', None);
+                                                    alt     string:Select $comment_subject;
+                                                    title   string:Select $comment_subject;" />
+
+                                        </td>
+
+                                        <td tal:content="python:here.toLocalizedTime(comment_modified, long_format=1)">
+                                            08/19/2001 03:01 AM
+                                        </td>
+                                        <td> <a tal:attributes="href comment_url" tal:content="comment_author" /></td>
+                                        <td> <a tal:attributes="href comment_url" tal:content="comment_subject" /></td>
+
+                                    </tr>
+                                </tal:items>
+                            </tbody>
+                        </table>
+                    </form>
+                </metal:listing>
+            </metal:contentsmacro>
+        </div>
+    </body>
+</html>
+

@@ -1,0 +1,40 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en-US"
+      lang="en-US"
+      metal:use-macro="here/main_template/macros/master"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="quills">
+
+  <metal:block fill-slot="css_slot">
+    <style type="text/css" media="all" tal:content="string:@import url(${portal_url}/Quills.css);">
+    </style>
+  </metal:block>
+
+  <body>
+    <div metal:fill-slot="main">
+
+      <h1 tal:content="context/Title">_title_</h1>
+
+      <p tal:content="context/getNumberOfEntries">_len_</p>
+
+      <h3>Sub-archives</h3>
+      <ul>
+        <li tal:repeat="archive context/getSubArchives">
+          <a href=""
+             tal:attributes="href archive/absolute_url"
+             tal:content="archive/getId">_archive_url_</a>
+        </li>
+      </ul>
+
+      <h3>Posts</h3>
+      <ul>
+        <li tal:repeat="entry context/getLazyEntries">
+          <a href=""
+             tal:attributes="href entry/getURL"
+             tal:content="entry/Title">_title_</a></li>
+      </ul>
+
+    </div>
+  </body>
+</html>

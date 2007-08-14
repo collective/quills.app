@@ -1,0 +1,44 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="quills">
+
+  <metal:macro use-macro="context/quills_header_macros/macros/feed-links" />
+
+  <body>
+    <div metal:fill-slot="main">
+
+      <div metal:use-macro="context/document_actions/macros/document_actions">
+        Document actions (print, sendto etc)
+      </div>
+
+      <h1 class="documentFirstHeading" 
+          tal:content="context/title_or_id">
+        Weblog title
+      </h1>
+
+      <p class="documentDescription"
+         tal:content="context/Description"
+         tal:condition="context/Description">
+        Weblog Description
+      </p>
+
+      <p id="blog-uid" 
+         class="discreet"
+         tal:define="show_border python:context.showEditableBorder(template_id=template_id, actions=actions );"
+         tal:condition="show_border">
+        <span i18n:translate="weblog_edit_app_note">
+          Note: for some weblog editors you will need to provide the
+          following string as id to edit this blog:
+        </span>
+        <i tal:content="context/UID"/>
+      </p>
+
+      <div id="content-weblog">
+        <metal:macro use-macro="context/weblog_macros/macros/list-entries"/>
+      </div>
+    </div>
+
+  </body>
+</html>

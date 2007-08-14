@@ -1,0 +1,64 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+  lang="en-US"
+  metal:use-macro="here/main_template/macros/master"
+  i18n:domain="quills">
+
+  <metal:block fill-slot="css_slot">
+    <style type="text/css" media="all"
+      tal:content="string:@import url(${portal_url}/Quills.css);">
+    </style>
+  </metal:block>
+
+  <metal:block fill-slot="head_slot">
+    <metal:macro use-macro="here/quills_header_macros/macros/feed-links" />
+  </metal:block>
+
+  <body>
+
+    <div metal:fill-slot="main" id="weblogtopics">
+
+      <h1 class="documentFirstHeading" i18n:translate="heading_topics">Topics</h1>
+
+      <div class="documentDescription"></div>
+
+      <tal:loop repeat="topic context/getTopics">
+        <div class="row"
+          tal:attributes="class python:repeat['topic'].even() and 'row even' or 'row odd'">
+          <div class="icon" style="width: 64px; height: 64px;"
+               tal:define="topicimage python:topic.getImage()"
+               tal:condition="topicimage">
+            <a href="#"
+               tal:attributes="href string:${request/URL0}/${topic/getId}">
+              <img src="" 
+                   tal:attributes="src topicimage/absolute_url;
+                                   alt topic/getTitle" />
+            </a>
+          </div>
+          <div
+            tal:define="entries topic/getEntries">
+            <strong>
+              <a href="#"
+                 tal:content="topic/getTitle"
+                 tal:attributes="href string:${request/URL0}/${topic/getId}">_topic_link_</a>
+              (<span tal:content="python:len(topic)"></span>)
+            </strong>
+            <div class="discreet">
+              <tal:if condition="not:python:len(topic)" i18n:translate="label_no_posts">
+                No Posts
+              </tal:if>
+              <tal:if condition="python:len(topic)">
+                <span i18n:translate="label_last_post">Last Post:</span> 
+                <a href=""
+                  tal:attributes="href python:view.getArchiveURLFor(entries[0])"
+                  tal:content="python:here.toLocalizedTime(view.getLastModified(), long_format=1)">
+                  August 16, 2001 at 23:35:59
+                </a>
+              </tal:if>
+            </div>
+          </div>
+        </div>
+      </tal:loop>
+
+    </div>
+  </body>
+</html>

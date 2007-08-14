@@ -1,0 +1,34 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en-US"
+      lang="en-US"
+      metal:use-macro="here/main_template/macros/master"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="quills">
+
+  <metal:block fill-slot="css_slot">
+    <style type="text/css" media="all" tal:content="string:@import url(${portal_url}/Quills.css);">
+    </style>
+  </metal:block>
+
+  <body>
+    <div metal:fill-slot="main" id="weblog-topics">
+
+        <div tal:define="weblog python:here.quills_tool.getParentWeblog(here)">
+
+        <h1 class="documentFirstHeading"
+          i18n:translate="heading_weblog_topics">Weblog Authors</h1>
+
+        <ul>
+            <li tal:repeat="author here/getAuthors">
+              <a href=""
+                 tal:content="author"
+                 tal:attributes="href string:${request/URL0}/$author">topic</a>
+            </li>
+        </ul>
+
+      </div>
+    </div>
+  </body>
+
+</html>

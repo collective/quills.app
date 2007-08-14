@@ -1,0 +1,40 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en-US"
+      lang="en-US"
+      metal:use-macro="here/main_template/macros/master"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="quills">
+
+  <metal:block fill-slot="css_slot">
+    <style type="text/css" media="all" tal:content="string:@import url(${portal_url}/Quills.css);">
+    </style>
+  </metal:block>
+
+  <body>
+    <div metal:fill-slot="main" 
+         tal:define="weblog view/getParentWeblog">
+
+      <h1 tal:content="here/title_or_id"></h1>
+
+      <div id="topic-summary">
+        <img id="topic-image"
+             src="" 
+             tal:condition="context/getImage"
+             tal:attributes="src python:context.getImage().absolute_url()" />
+        <span class="documentDescription"
+              tal:content="here/getDescription">
+        </span>
+      </div>
+
+      <div id="content-weblog">
+        <tal:dummy define="entries context/getEntries;
+                           batch_base_url request/ACTUAL_URL">
+        <metal:macro
+            use-macro="context/weblog_macros/macros/list-entries"/>
+        </tal:dummy>
+      </div>
+
+    </div>
+  </body>
+</html>
