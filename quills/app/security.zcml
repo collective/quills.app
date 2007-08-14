@@ -1,0 +1,47 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:browser="http://namespaces.zope.org/browser"
+           xmlns:five="http://namespaces.zope.org/five">
+
+    <class class=".archive.ArchiveContainer">
+        <require
+            permission="zope2.View"
+            interface="quills.core.interfaces.IWeblogArchive"
+            />
+    </class>
+
+    <class class=".archive.YearArchive">
+        <require
+            permission="zope2.View"
+            interface="quills.core.interfaces.IWeblogArchive"
+            />
+    </class>
+
+    <class class=".archive.MonthArchive">
+        <require
+            permission="zope2.View"
+            interface="quills.core.interfaces.IWeblogArchive"
+            />
+    </class>
+
+    <class class=".archive.DayArchive">
+        <require
+            permission="zope2.View"
+            interface="quills.core.interfaces.IWeblogArchive"
+            />
+    </class>
+
+    <class class=".topic.Topic">
+        <require
+            permission="zope2.View"
+            interface="quills.core.interfaces.IAuthorTopic"
+            />
+    </class>
+
+    <class class=".topic.AuthorTopic">
+        <require
+            permission="zope2.View"
+            interface="quills.core.interfaces.IAuthorTopic"
+            />
+    </class>
+
+</configure>

@@ -1,6 +1,25 @@
-<configure
-    xmlns="http://namespaces.zope.org/zope"
-    xmlns:five="http://namespaces.zope.org/five">
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:browser="http://namespaces.zope.org/browser"
+           xmlns:five="http://namespaces.zope.org/five">
 
+  <include file="security.zcml" />
+
+  <adapter
+      for="quills.core.interfaces.IWeblog
+           zope.publisher.interfaces.http.IHTTPRequest"
+      provides="zope.publisher.interfaces.IPublishTraverse"
+      factory=".traversal.WeblogTraverser" />
+
+  <adapter
+      for="quills.core.interfaces.IWeblogArchive
+           zope.publisher.interfaces.http.IHTTPRequest"
+      provides="zope.publisher.interfaces.IPublishTraverse"
+      factory=".traversal.WeblogArchiveTraverser" />
+
+  <adapter
+      for="quills.core.interfaces.IWeblog"
+      provides="quills.core.interfaces.IWeblogViewConfiguration"
+      factory="quills.core.browser.weblogviewconfig.WeblogViewConfigurationAnnotations"
+      />
 
 </configure>
