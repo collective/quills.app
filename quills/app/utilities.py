@@ -88,4 +88,4 @@ def recurseToInterface(item, ifaces):
         elif ISiteRoot.providedBy(parent):
             # Stop when we get to the portal root.
             return None
-    return recurseToInterface(parent, iface)
+    return recurseToInterface(parent, ifaces)
