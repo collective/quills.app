@@ -10,9 +10,9 @@
 
   <body>
     <div metal:fill-slot="main"
-         tal:define="weblog view/getParentWeblog;
-                     wvconfig view/getConfig;
-                     entry nocall:context;">
+         tal:define="entry_content python:view.getWeblogEntryContent();
+                     entry         python:view.getWeblogEntry();
+                     wvconfig      view/getConfig;">
 
       <div metal:use-macro="context/document_actions/macros/document_actions">
         Document actions (print, sendto etc)
@@ -24,7 +24,7 @@
         show related items if they exist
       </div>
       
-      <tal:trackback condition="python:wvconfig.trackbackEnabled and entry.EffectiveDate() != 'None'">
+      <tal:trackback condition="python:wvconfig.trackbackEnabled and entry.isPublished()">
         <div class="weblog-about"> 
           <div class="entry-trackback">
             <tal:if condition="wvconfig/trackbackEnabled">

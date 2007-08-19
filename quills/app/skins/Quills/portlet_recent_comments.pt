@@ -1,0 +1,56 @@
+<html xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="quills">
+  <body>
+    <div metal:define-macro="portlet"
+         tal:condition="here/isWeblogContent"
+         >
+      <tal:recentlist 
+         tal:define="weblogview context/@@weblogview;
+                     weblog weblogview/getParentWeblog;
+                     results weblogview/getWeblogComments;">
+        <dl class="portlet" id="portlet-recent-comments">
+          <dt class="portletHeader" 
+              i18n:translate="box_recent_comments">
+            Recent Comments
+          </dt>
+          <tal:items tal:repeat="comment results">
+            <dd class="portletItem"
+                tal:define="oddrow repeat/comment/odd;
+                            lastrow repeat/comment/end;
+                            item_wf_state comment/review_state;
+                            item_wf_state_class python:'state-' + here.plone_utils.normalizeString(item_wf_state);
+                            item_type_class python: 'contenttype-' + here.plone_utils.normalizeString(comment.portal_type);
+                            evenClass python:test(oddrow, 
+                            'portletItem even', 
+                            'portletItem odd');
+                            lastClass python:test(lastrow, ' lastItem', '');"
+                tal:attributes="class string:${evenClass}${lastClass}"
+                >
+              <div tal:attributes="class item_type_class">                
+                <a href=""
+                   tal:attributes="
+                                   href string:${comment/getURL};
+                                   title comment/Title;
+                                   class string:$item_wf_state_class visualIconPadding"
+                   >
+                  <tal:title content="comment/pretty_title_or_id">
+                    Plone 2.1 released!
+                  </tal:title>
+                  <span class="portletItemDetails"
+                        tal:content="python:here.toLocalizedTime(comment.Date)">May 5</span>
+                </a>
+              </div>
+            </dd>
+          </tal:items>
+          <dd class="portletItem lastItem" 
+              tal:condition="not: results"
+              i18n:translate="box_recent_no_comments">
+            No comments posted yet.
+          </dd>
+        </dl>
+      </tal:recentlist>
+    </div>
+  </body>
+</html>

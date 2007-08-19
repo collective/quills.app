@@ -1,0 +1,63 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en-US" lang="en-US"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="quills">
+
+  <head>
+    <title></title>
+  </head>
+  <body>
+
+    <metal:listEntries 
+        metal:define-macro="list-entries"
+        tal:define="wvconfig view/getConfig;
+                    results entries | weblog/getEntries;
+                    Batch python:modules['Products.CMFPlone'].Batch;
+                    b_size wvconfig/entriesPerPage;
+                    b_start python:0;
+                    b_start request/b_start | b_start;
+                    batch python:Batch(results, b_size, int(b_start), orphan=1);
+                    results python:view.sortWeblogEntriesToDates(batch);
+                    showContent not:wvconfig/onlyExcerptInWeblogView | nothing;
+                    groupByDates wvconfig/groupByDates | nothing;">
+
+      <tal:if condition="b_start">
+        <div metal:use-macro="context/batch_macros/macros/navigation" />
+      </tal:if>
+
+      <metal:block
+          tal:repeat="day python:view.getWeblogEntriesDates(results)">
+
+        <tal:byDates tal:condition="groupByDates">
+          <h2 tal:content="python:context.toLocalizedTime(day, context=context)" />
+
+          <tal:entries repeat="entry python:results[day]">
+            <metal:macro use-macro="context/entry_macros/macros/display-entry"/>
+            <metal:macro use-macro="context/entry_macros/macros/discussion-summary"/>
+          </tal:entries>
+        </tal:byDates>
+
+        <tal:notByDates tal:condition="not: groupByDates">
+          <tal:entries repeat="entry python:results[day]">
+            <tal:block define="secondLevel python:True;">
+              <metal:macro use-macro="context/entry_macros/macros/display-entry"/>
+              <metal:macro use-macro="context/entry_macros/macros/discussion-summary"/>
+            </tal:block>
+          </tal:entries>
+        </tal:notByDates>
+
+      </metal:block>
+
+      <div metal:use-macro="context/batch_macros/macros/navigation" />
+
+      <div tal:condition="not: results">
+        <p i18n:translate="no_weblog_entries">
+          No weblog entries have been posted.
+        </p>
+      </div>
+    </metal:listEntries>
+    
+  </body>
+</html>

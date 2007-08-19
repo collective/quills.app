@@ -16,7 +16,7 @@
 
       <h1 tal:content="context/Title">_title_</h1>
 
-      <p tal:content="context/getNumberOfEntries">_len_</p>
+      <p tal:content="python:len(context)">_len_</p>
 
       <h3>Sub-archives</h3>
       <ul>
@@ -29,9 +29,9 @@
 
       <h3>Posts</h3>
       <ul>
-        <li tal:repeat="entry context/getLazyEntries">
+        <li tal:repeat="entry context/getEntries">
           <a href=""
-             tal:attributes="href entry/getURL"
+             tal:attributes="href python:view.getArchiveURLFor(entry)"
              tal:content="entry/Title">_title_</a></li>
       </ul>
 

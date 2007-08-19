@@ -20,10 +20,10 @@ class WeblogMixin:
         keys.sort()
         return keys
 
-    def _filter(self, results, max=None, offset=0):
+    def _filter(self, results, maximum=None, offset=0):
         if len(results) > offset:
-            if max is None:
+            if maximum is None:
                 return results[offset:]
             else:
-                return results[offset:offset+max]
+                return results[offset:offset+maximum]
         return results

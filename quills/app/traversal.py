@@ -7,15 +7,12 @@ from zope.publisher.interfaces.http import IHTTPRequest
 from ZPublisher.BaseRequest import DefaultPublishTraverse
 
 # Quills imports
-from quills.core.interfaces import IWeblog, IWeblogArchive
+from quills.core.interfaces import IWeblog, IWeblogArchive, IWeblogConfiguration
+from quills.core.interfaces import IPossibleWeblogEntry
 
 # Local imports
 from topic import Topic, AuthorTopic
 from archive import ArchiveContainer, YearArchive, MonthArchive, DayArchive
-
-
-# Archive names
-ARCHIVE_NAMES = ['archive',]
 
 
 class WeblogTraverser(DefaultPublishTraverse):
@@ -40,8 +37,10 @@ class WeblogTraverser(DefaultPublishTraverse):
                 return self.getViewOrTraverse(request, name)
             klass = AuthorTopic
             return self.traverseSubpath(request, name, klass)
-        elif isArchiveFolder(name):
+        elif self.isArchiveFolder(name):
             return ArchiveContainer(name).__of__(self.context)
+        elif self.isYear(name):
+            return YearArchive(name).__of__(self.context)
         else:
             return self.getViewOrTraverse(request, name)
 
@@ -96,6 +95,30 @@ class WeblogTraverser(DefaultPublishTraverse):
             furtherPath.pop()
         return subpath
 
+    def isArchiveFolder(self, name):
+        """Test if 'name' is an archive folder.  This is True when:
+            - name is the value indicated by weblog_config;
+            - name is a year.
+        """
+        weblog_config = IWeblogConfiguration(self.context)
+        if name == weblog_config.archiveFormat:
+            return True
+        return False
+
+    def isYear(self, name):
+        try:
+            year = int(name)
+        except ValueError:
+            return False
+        else:
+            from DateTime import DateTime
+            try:
+                tryDate = DateTime(year,1,1)
+            except:
+                # Bad year
+                return False
+            else:
+                return True
 
 class WeblogArchiveTraverser(DefaultPublishTraverse):
     """
@@ -113,12 +136,29 @@ class WeblogArchiveTraverser(DefaultPublishTraverse):
         except ValueError:
             pass
         if not isdate:
-            return super(WeblogArchiveTraverser, self).publishTraverse(request, name)
+            # We're at the end of the archive hierarchy, and now need to
+            # traverse for the actual IWeblogEntry item.  The trick here is to
+            # lookup the weblogentry-ish view on an object that is an
+            # IPossibleWeblogEntry so that it gets rendered in the weblog-ish
+            # way.
+            # So, we do standard traversal to get the actual object.
+            obj = super(WeblogArchiveTraverser,
+                        self).publishTraverse(request, name)
+            # Then we return a particular view on it if it provides what we're
+            # after.
+            if IPossibleWeblogEntry.providedBy(obj):
+                view = queryMultiAdapter((obj, request),
+                                         name='weblogentry_view')
+                if view is not None:
+                    return view.__of__(obj)
+            # Otherwise, we just return obj, as would have happened normally.
+            return obj
         year = getattr(self.context, 'year', None)
         month = getattr(self.context, 'month', None)
         day = getattr(self.context, 'day', None)
         if day is not None:
-            return super(WeblogArchiveTraverser, self).publishTraverse(request, name)
+            return super(WeblogArchiveTraverser,
+                         self).publishTraverse(request, name)
         if month is not None:
             archive = DayArchive(year, month, name)
         elif year is not None:
@@ -127,27 +167,3 @@ class WeblogArchiveTraverser(DefaultPublishTraverse):
             archive = YearArchive(name)
         ob = archive.__of__(self.context)
         return ob
-
-
-def isArchiveFolder(name):
-    """Test is 'name' is an archive folder.
-
-    This is True when:
-    - name == 'archive'
-    - name is a year
-    """
-    if name == 'archive':
-        return True
-    try:
-        year = int(name)
-    except ValueError:
-        return False
-    else:
-        from DateTime import DateTime
-        try:
-            tryDate = DateTime(year,1,1)
-        except:
-            # Bad year
-            return False
-        else:
-            return True

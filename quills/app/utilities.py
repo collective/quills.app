@@ -1,3 +1,6 @@
+# Standard library imports
+from types import ListType, TupleType, StringTypes
+
 # Zope imports
 from Acquisition import aq_base, aq_parent, Explicit
 from Products.ZCatalog.CatalogBrains import AbstractCatalogBrain
@@ -6,7 +9,8 @@ from Products.ZCatalog.CatalogBrains import AbstractCatalogBrain
 from Products.CMFCore.interfaces import ISiteRoot
 
 # Quills imports
-from quills.core.interfaces import IWeblog, IWeblogViewConfiguration
+from quills.core.interfaces import IWeblog, IWeblogEnhanced
+from quills.core.interfaces import IWeblogConfiguration
 
 
 class EvilAATUSHack(Explicit):
@@ -25,38 +29,21 @@ class EvilAATUSHack(Explicit):
         return 1
 
 
-class WeblogFinder:
-    
-    def getParentWeblog(self, item=None):
-        """Recurse up the aq_chain until an IWeblog is found, and return that.
-        """
-        if item is None:
-            # Make it so that this method can be used from a view/adapter, as
-            # well as directly on a content object that subclasses WeblogFinder.
-            if hasattr(aq_base(self), 'context'):
-                item = self.context
-            else:
-                item = self
-        if isinstance(item, AbstractCatalogBrain):
-            # We need to get hold of the actual WeblogEntry and then acquire its
-            # parent weblog.  This implies a bit of a performance hit, and it's
-            # unclear that Topics and Authors really *need* to be returned in
-            # the context of the IWeblog.  That's just how it's done elsewhere
-            # in the codebase at the moment.
-            item = item.getObject()
-        parent = item.aq_parent
-        if IWeblog.providedBy(item):
-            return item
-        elif IWeblog.providedBy(parent):
-            return parent
-        elif ISiteRoot.providedBy(parent):
-            # Stop when we get to the portal root.
-            return None
-        else:
-            return self.getParentWeblog(parent)
+class QuillsMixin:
+    """
+    """
+
+    def getParentWeblogContentObject(self):
+        return recurseToInterface(self, (IWeblog, IWeblogEnhanced))
+
+    def getParentWeblog(self):
+        obj = self.getParentWeblogContentObject()
+        if IWeblog.providedBy(obj):
+            return obj
+        return IWeblog(obj)
 
 
-def getArchivePathFor(obj, weblog=None):
+def getArchivePathFor(obj, weblog_content):
     """See IWeblogView.
     """
     # Handle published and getId either being an attribute on a catalog brain or
@@ -68,12 +55,11 @@ def getArchivePathFor(obj, weblog=None):
     if callable(published):
         published = published()
     path = []
-    if weblog is None:
-        # XXX This is a bit hacky! Should probably lookup a view here.
-        weblog = WeblogFinder().getParentWeblog(obj)
-    weblog_config = IWeblogViewConfiguration(weblog)
+    weblog_config = IWeblogConfiguration(weblog_content)
     archive_format = weblog_config.archiveFormat
-    if archive_format is not '':
+    if isinstance(archive_format, StringTypes):
+        archive_format = archive_format.strip()
+    if archive_format is not None and archive_format is not '':
         path.append(archive_format)
     path.append(published.strftime('%Y'))
     path.append(published.strftime('%m'))
@@ -81,9 +67,25 @@ def getArchivePathFor(obj, weblog=None):
     path.append(id)
     return path
 
-def getArchiveURLFor(weblog, obj):
+def getArchiveURLFor(obj, weblog_content):
     """See IWeblogView.
     """
-    archive_path = getArchivePathFor(obj, weblog)
-    return '%s/%s' % (weblog.absolute_url(), '/'.join(archive_path))
+    archive_path = getArchivePathFor(obj, weblog_content)
+    return '%s/%s' % (weblog_content.absolute_url(), '/'.join(archive_path))
 
+def recurseToInterface(item, ifaces):
+    """Recurse up the aq_chain until an object providing `iface' is found,
+    and return that.
+    """
+    if not isinstance(ifaces, (ListType, TupleType)):
+        ifaces = [ifaces]
+    parent = item.aq_parent
+    for iface in ifaces:
+        if iface.providedBy(item):
+            return item
+        elif iface.providedBy(parent):
+            return parent
+        elif ISiteRoot.providedBy(parent):
+            # Stop when we get to the portal root.
+            return None
+    return recurseToInterface(parent, iface)

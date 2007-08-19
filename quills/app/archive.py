@@ -25,8 +25,9 @@
 # Standard library imports
 from types import StringTypes
 
-# Core Zope imports
+# Zope imports
 from zope.interface import implements
+from zope.component.interface import interfaceToName
 from Acquisition import Implicit, aq_base
 from DateTime.DateTime import DateTime, DateError
 from OFS.Traversable import Traversable
@@ -34,14 +35,16 @@ from OFS.Traversable import Traversable
 # CMF imports
 from Products.CMFCore.utils import getToolByName
 
-# Local imports
+# Quills imports
+from quills.core.interfaces import IWeblog, IWeblogEnhanced
+from quills.core.interfaces import IWeblogEntry, IPossibleWeblogEntry
 from quills.core.interfaces import IWeblogArchive, IWeblogArchiveContainer
 from acquiringactions import AcquiringActionProvider
 from weblogentrybrain import WeblogEntryCatalogBrain
-from utilities import WeblogFinder, EvilAATUSHack
+from utilities import EvilAATUSHack, QuillsMixin
 
 
-class BaseArchive(WeblogFinder, AcquiringActionProvider, Traversable, Implicit):
+class BaseArchive(QuillsMixin, AcquiringActionProvider, Traversable, Implicit):
     """Implementation of IWeblogArchive.
     """
 
@@ -138,15 +141,19 @@ class BaseDateArchive(BaseArchive):
             min_datetime, max_datetime = self._getDateRange()
             catalog = getToolByName(self, 'portal_catalog')
             catalog._catalog.useBrains(WeblogEntryCatalogBrain)
-            # XXX Need a path component here based on weblog.
+            weblog = self.getParentWeblogContentObject()
+            path = '/'.join(weblog.getPhysicalPath())
+            ifaces = [interfaceToName(catalog.aq_parent, IWeblogEntry),
+                      interfaceToName(catalog.aq_parent, IPossibleWeblogEntry)]
             results = catalog(
-                portal_type='WeblogEntry',
+                object_provides={'query' : ifaces, 'operator' : 'or'},
+                path={'query':path, 'level': 0},
                 review_state='published',
                 effective={
                      'query' : [min_datetime, max_datetime],
                      'range': 'minmax'}
                 )
-            self.results = [BrainTraversalFaker(self, brain) for brain in results]
+            self.results = results
         return self.results
 
 

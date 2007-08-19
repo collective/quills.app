@@ -8,11 +8,11 @@ from Products.CMFCore.interfaces import ISiteRoot
 # Quills imports
 from quills.core.interfaces import IWeblogArchive, ITopic, IWeblog, IWeblogEntry
 from quills.core.browser.interfaces import IBaseView
-from quills.app.utilities import WeblogFinder
+#from quills.app.utilities import WeblogFinder
 from quills.app.utilities import getArchivePathFor, getArchiveURLFor
 
 
-class BaseView(WeblogFinder, BrowserView):
+class BaseView(BrowserView):
     """A class with helper methods for use in views/templates.
     """
 
@@ -41,5 +41,5 @@ class BaseView(WeblogFinder, BrowserView):
     def getArchiveURLFor(self, obj):
         """See IWeblogView.
         """
-        weblog = self.getParentWeblog(obj)
-        return getArchiveURLFor(weblog, obj)
+        weblog_content = obj.getParentWeblogContentObject()
+        return getArchiveURLFor(obj, weblog_content)

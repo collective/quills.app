@@ -1,0 +1,88 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en"
+      lang="en"
+      metal:use-macro="here/prefs_main_template/macros/master"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="plone">
+
+  <metal:block fill-slot="top_slot"
+               tal:define="dummy python:request.set('disable_border',1)" />
+  <head><title></title></head>
+  <body>
+
+    <div metal:fill-slot="prefs_configlet_main"
+         tal:define="errors options/state/getErrors;">
+
+      <h1 i18n:translate="heading_quills_settings">Quills Settings</h1>
+
+      <a href=""
+         class="link-parent"
+         tal:attributes="href string: $portal_url/plone_control_panel"
+         i18n:translate="label_up_to_plone_setup">
+        Up to Plone Setup
+      </a>
+
+      <p i18n:translate="description_quills_settings">
+        Portal-wide Quills settings.
+      </p>
+
+      <form action=""
+            name="settings"
+            method="post"
+            tal:attributes="action string:${here/absolute_url}/${template/getId}"
+            tal:define="quills_properties here/portal_properties/quills_properties">
+
+        <fieldset>
+          <legend i18n:translate="legend_spam_protection">
+            Spam Protection
+          </legend>
+
+          <div class="field"
+               tal:define="blacklist request/blacklist | quills_properties/blacklist;
+                           error errors/blacklist | nothing;">
+            <label i18n:translate="label_trackback_blacklist">
+              Trackback Blacklist
+            </label>
+
+            <div class="formHelp" 
+                 i18n:translate="help_trackback_blacklist">
+              Addresses that match the following regular expressions will be
+              blocked from posting trackback comments to weblog entries.
+            </div>
+
+            <textarea cols="30"
+                      rows="6"
+                      name="blacklist"
+                      tabindex=""
+                      tal:attributes="tabindex tabindex/next"
+                      tal:content="python:'\n'.join(blacklist)">
+              blacklist
+            </textarea>
+          </div>
+
+          <div class="formControls">
+            <input class="context"
+                   tabindex=""
+                   type="submit"
+                   name="form.button.Save"
+                   value="Save"
+                   i18n:attributes="value"
+                   tal:attributes="tabindex tabindex/next;"
+                   />
+            <input class="standalone"
+                   tabindex=""
+                   type="submit"
+                   name="form.button.Cancel"
+                   value="Cancel"
+                   i18n:attributes="value"
+                   tal:attributes="tabindex tabindex/next;"
+                   />
+          </div>
+        </fieldset>
+        <input type="hidden" name="form.submitted" value="1" />
+      </form>
+
+    </div>
+
+  </body>
+</html>
+

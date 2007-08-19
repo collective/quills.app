@@ -7,7 +7,8 @@
   <metal:macro use-macro="context/quills_header_macros/macros/feed-links" />
 
   <body>
-    <div metal:fill-slot="main">
+    <div metal:fill-slot="main"
+         tal:define="weblog view/getWeblog">
 
       <div metal:use-macro="context/document_actions/macros/document_actions">
         Document actions (print, sendto etc)

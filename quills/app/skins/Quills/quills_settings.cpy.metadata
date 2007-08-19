@@ -1,0 +1,3 @@
+[actions]
+action.failure=traverse_to:string:quills_settings_form
+action.success=redirect_to:string:plone_control_panel

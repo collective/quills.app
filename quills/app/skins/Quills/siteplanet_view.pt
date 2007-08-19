@@ -1,0 +1,59 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
+      lang="en-US"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      metal:use-macro="here/main_template/macros/master"
+      i18n:domain="quills">
+
+  <body>
+    <div metal:fill-slot="main">
+      <h1 tal:content="here/title_or_id">
+        Title
+      </h1>
+
+      <div class="documentDescription"
+           tal:content="here/Description">
+        description
+      </div>
+
+      <div id="content-weblog"
+           tal:define="results python:container.portal_catalog(portal_type='WeblogEntry',
+                       sort_on='effective',
+                       sort_order='reverse',
+                       review_state='published');
+                       qt python:container.quills_tool;
+                       Batch python:modules['Products.CMFPlone'].Batch;
+                       b_size python:20;
+                       b_start python:0;
+                       b_start request/b_start | b_start;
+                       batch python:Batch(results, b_size, int(b_start), orphan=1);
+                       results_dict python:qt.sortWeblogEntriesToDates(batch);">
+
+        <metal:block tal:repeat="day python:qt.getWeblogEntriesDates(results_dict)">
+
+          <div class="weblog-day">
+            <h2 class="weblog-day-title" tal:content="python:here.toLocalizedTime(day, context=here)" />
+
+            <tal:loop repeat="entry python:results_dict[day]">
+              <tal:block define="weblog python:here;
+                                 entry python:entry.getObject();">
+                <metal:macro use-macro="here/entry_macros/macros/display-entry"/>
+              </tal:block>
+            </tal:loop>
+          </div>
+
+        </metal:block>
+
+        <div metal:use-macro="here/batch_macros/macros/navigation" />
+
+        <div tal:condition="not: results">
+          <p i18n:translate="no_weblog_entries">
+            No weblog entries have been posted.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+  </body>
+</html>
+

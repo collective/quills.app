@@ -2,7 +2,8 @@
            xmlns:browser="http://namespaces.zope.org/browser"
            xmlns:five="http://namespaces.zope.org/five">
 
-  <include file="security.zcml" />
+  <include file="security.zcml"/>
+  <include package=".browser"/>
 
   <adapter
       for="quills.core.interfaces.IWeblog
@@ -18,8 +19,8 @@
 
   <adapter
       for="quills.core.interfaces.IWeblog"
-      provides="quills.core.interfaces.IWeblogViewConfiguration"
-      factory="quills.core.browser.weblogviewconfig.WeblogViewConfigurationAnnotations"
+      provides="quills.core.interfaces.IWeblogConfiguration"
+      factory="quills.core.browser.weblogconfig.WeblogConfigAnnotations"
       />
 
 </configure>

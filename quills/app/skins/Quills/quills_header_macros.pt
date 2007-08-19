@@ -1,0 +1,46 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xml:lang="en-US" lang="en-US"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="quills">
+
+  <head>
+
+    <metal:block define-macro="feed-links">
+      <tal:block define="weblog view/getParentWeblog">
+        <link
+            rel="alternate"
+            type="application/atom+xml"
+            title="Atom feed"
+            i18n:attributes="title"
+            tal:attributes="href string:${weblog/absolute_url}/atom.xml" />
+
+        <link
+            rel="alternate"
+            type="application/rss+xml"
+            title="RSS 2.0 feed"
+            i18n:attributes="title"
+            tal:attributes="href string:${weblog/absolute_url}/rss.xml" />
+
+        <link
+            rel="alternate"
+            type="application/rdf+xml"
+            title="RDF 1.0 feed"
+            i18n:attributes="title"
+            tal:attributes="href string:${weblog/absolute_url}/feed.rdf" />
+
+        <link
+            rel="alternate"
+            type="application/rdf+xml"
+            title="RDF 1.1 feed"
+            i18n:attributes="title"
+            tal:attributes="href string:${weblog/absolute_url}/feed11.rdf" />
+      </tal:block>
+    </metal:block>
+
+  </head>
+  <body>
+    
+  </body>
+</html>

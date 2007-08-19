@@ -1,0 +1,229 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+  xml:lang="en-US" lang="en-US"
+  xmlns:tal="http://xml.zope.org/namespaces/tal"
+  xmlns:metal="http://xml.zope.org/namespaces/metal"
+  xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+  i18n:domain="quills">
+  <head><title></title></head>
+  <body>
+
+    <tal:comment condition="nothing">
+      Collection of macros for displaying individual entries.
+
+      The main macro is display-entry, which you can pass some
+      parameters. The parameters are needed to be able to use this one
+      macro in a number of places: displaying one entry, main weblog
+      page, topic page.
+
+      By passing along some parameters we can keep the template clear
+      of all logic and settings-gathering.
+    </tal:comment>
+
+
+    <metal:displayEntry metal:define-macro="display-entry">
+      <tal:comment condition="nothing">
+        Displays one individual entry.
+
+        The macro is kept generic, so that it can be used in all places
+        where an entry needs to be displayed. Only a feed will use
+        something else.
+
+        The weblogentry_view template adds bells and whistles like
+        trackback, long comments, etc. Don't put those in here!
+      </tal:comment>
+      <div class="weblog-entry"
+           tal:define="secondLevel secondLevel|python:False;
+                       showContent showContent|python:True;
+                       entry nocall:entry|nothing;
+                       entry_content nocall:entry_content|nothing;
+                       displayingOneEntry python:context.absolute_url()==entry_content.absolute_url();
+                       weblog weblog | nocall:entry/getParentWeblog;">
+        <tal:comment condition="nothing">
+          Parameters:
+
+          secondlevel - In listingviews, we're normally at h3. Only if
+          we're not grouped by dates we have to use h2. This setting
+          controls that.
+
+          For headings of level 1, which occur if 'displayingOneEntry'
+          is True, we won't make the header a link as it is the entry
+          itself that's being displayed. For headers of level 2 or 3
+          it will be clickable.
+
+          displayingOneEntry is True if the context's URL is the same
+          as the entry's URL.
+
+          showContent - Whether to show the actual content or just the
+          summary. Default: True.
+
+          entry - The actual entry.
+        </tal:comment>
+
+        <tal:comment condition="nothing"> title </tal:comment>
+        <h1 tal:condition="displayingOneEntry"
+            tal:content="entry/getTitle">
+          Level 1 title, not clickable
+        </h1>
+        <tal:headerInListing tal:condition="not: displayingOneEntry">
+          <h2 tal:condition="secondLevel">
+            <a href=""
+               tal:attributes="href python:view.getArchiveURLFor(entry)"
+               tal:content="entry/Title">
+              Level 2 title, clickable
+            </a>
+          </h2>
+          <h3 tal:condition="not: secondLevel">
+            <a href=""
+               tal:attributes="href python:view.getArchiveURLFor(entry)"
+               tal:content="entry/getTitle">
+              Level 3 title, clickable
+            </a>
+          </h3>
+        </tal:headerInListing>
+
+        <tal:comment condition="nothing"> Topic images  </tal:comment>
+        <metal:macro use-macro="context/entry_macros/macros/topic-images"/>
+
+        <tal:comment condition="nothing"> Byline </tal:comment>
+        <tal:byline tal:condition="displayingOneEntry">
+          <metal:macro use-macro="context/document_byline/macros/byline"/>
+        </tal:byline>
+
+        <tal:comment condition="nothing"> Filed under </tal:comment>
+        <metal:macro use-macro="context/entry_macros/macros/filed-under"/>
+
+        <tal:comment condition="nothing"> Description
+          We add a special class (weblog-entry-only-excerpt) instead of
+          the normal docoumentDescription to allow for a different
+          formatting.
+        </tal:comment>
+        <tal:excerpt condition="not: showContent">
+          <p class="weblog-entry-only-excerpt">
+              <span
+               tal:condition="entry/getExcerpt"
+               tal:content="entry/getExcerpt" />
+             <span class="weblog-read-more">
+              <a href=""
+                 tal:attributes="href python:view.getArchiveURLFor(entry)"
+                 i18n:translate="read_more">
+                 read more...
+              </a>
+            </span>
+          </p>
+        </tal:excerpt>
+        <tal:description condition="showContent">
+          <p class="documentDescription"
+             tal:condition="entry/getExcerpt"
+             tal:content="entry/getExcerpt">
+          </p>
+        </tal:description>
+
+        <tal:comment condition="nothing"> Main content </tal:comment>
+        <div class=""
+             tal:condition="python: entry.getText() and showContent"
+             tal:attributes="class python:test(context.Format() in
+                             ('text/structured', 'text/x-rst', ),
+                             'stx', 'plain')"
+             tal:content="structure entry/getText">
+        </div>
+      </div>
+    </metal:displayEntry>
+
+    <metal:topicImages define-macro="topic-images">
+      <tal:comment condition="nothing">
+        Display the topic images
+
+        It is the responsibility of this macro to determine whether to
+        display the images.
+      </tal:comment>
+      <div class="weblog-topic-images"
+           tal:define="entry nocall:entry|nothing;
+                       weblog nocall:weblog|nothing;
+                       topics entry/getTopics"
+           tal:condition="topics">
+
+        <tal:comment condition="nothing">
+          Parameters
+
+          entry - The entry being displayed
+          weblog - The parent weblog
+        </tal:comment>
+
+        <tal:categories repeat="topic topics">
+          <a href=""
+             tal:attributes="href string:${weblog/absolute_url}/topics/${topic/getId}">
+            <img class="topic-image"
+                 src=""
+                 alt=""
+                 title=""
+                 tal:define="topicimage topic/getImage"
+                 tal:condition="python: topicimage"
+                 tal:attributes="src topicimage/absolute_url;
+                                 title topic/title_or_id;
+                                 alt topic/title_or_id;" />
+          </a>
+        </tal:categories>
+      </div>
+    </metal:topicImages>
+
+    <metal:filedUnder metal:define-macro="filed-under">
+      <tal:comment condition="nothing">
+        Display the "filed under" list.
+
+        The template uses a 'ul' list to get good plone-like
+        semantics. Handy for google ratings. CSS should turn it into
+        something usable.
+      </tal:comment>
+      <div class="weblog-topics"
+           tal:define="entry nocall:entry|nothing;
+                       weblog nocall:weblog|nothing;
+                       topics entry/getTopics"
+           tal:condition="topics">
+        <tal:comment condition="nothing">
+          Parameters
+
+          entry - The entry being displayed
+          weblog - The parent weblog
+        </tal:comment>
+
+        <div class="weblog-topics-label"
+             i18n:translate="filed_under">
+          Filed Under:
+        </div>
+        <ul>
+          <li tal:repeat="topic topics">
+            <a href=""
+              tal:content="topic/getTitle"
+              tal:attributes="href
+                              string:${weblog/absolute_url}/topics/${topic/getId}">
+              Link to the topic
+            </a>
+          </li>
+        </ul>
+      </div>
+    </metal:filedUnder>
+
+    <metal:discussion define-macro="discussion-summary">
+      <div class="weblog-footer discreet"
+           tal:define="discussion nocall:context/portal_discussion;
+                       isDiscussionAllowedFor
+                       nocall:discussion/isDiscussionAllowedFor;
+                       getDiscussionFor nocall:discussion/getDiscussionFor">
+        <tal:if condition="python:isDiscussionAllowedFor(entry)">
+          <a href=""
+             style="text-decoration: none;"
+             tal:attributes="href
+                             string:${entry_content/absolute_url}#comments"
+             i18n:translate="number_of_comments">
+            Comments:
+          </a>
+          <span
+              tal:content="python:getDiscussionFor(entry).replyCount(entry)">
+            0
+          </span>
+        </tal:if>
+      </div>
+    </metal:discussion>
+
+  </body>
+</html>

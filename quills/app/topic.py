@@ -4,6 +4,7 @@ from types import StringTypes
 # Zope 3 imports
 from zope.interface import implements
 from zope.component import getUtility
+from zope.component.interface import interfaceToName
 
 # Zope 2 imports
 from Acquisition import Implicit, aq_base
@@ -17,12 +18,14 @@ from plone.i18n.normalizer.interfaces import IIDNormalizer
 
 # Product imports
 from quills.core.interfaces import ITopic, IAuthorTopic
+from quills.core.interfaces import IWeblog, IWeblogEnhanced
+from quills.core.interfaces import IWeblogEntry, IPossibleWeblogEntry
 from acquiringactions import AcquiringActionProvider
 from weblogentrybrain import WeblogEntryCatalogBrain
-from utilities import WeblogFinder, EvilAATUSHack
+from utilities import EvilAATUSHack, QuillsMixin
 
 
-class Topic(WeblogFinder, AcquiringActionProvider, Traversable, Implicit):
+class Topic(QuillsMixin, AcquiringActionProvider, Traversable, Implicit):
     """Implementation of ITopic as a transient wrapper around a keywords.
     """
 
@@ -52,14 +55,6 @@ class Topic(WeblogFinder, AcquiringActionProvider, Traversable, Implicit):
         if image is not None:
             return image.Title()
         return self.getId()
-
-    #def title_or_id(self):
-    #    """See ITopic.
-    #    """
-    #    image = self.getImage()
-    #    if image is not None:
-    #        return image.title_or_id()
-    #    return self.getId()
 
     def getDescription(self):
         """See ITopic.
@@ -100,11 +95,14 @@ class Topic(WeblogFinder, AcquiringActionProvider, Traversable, Implicit):
     def getEntries(self):
         """See ITopic.
         """
-        weblog = self.getParentWeblog()
+        weblog = self.getParentWeblogContentObject()
         path = '/'.join(weblog.getPhysicalPath())
         catalog = getToolByName(self, 'portal_catalog')
         catalog._catalog.useBrains(WeblogEntryCatalogBrain)
-        results = catalog(meta_type='WeblogEntry',
+        ifaces = [interfaceToName(catalog.aq_parent, IWeblogEntry),
+                  interfaceToName(catalog.aq_parent, IPossibleWeblogEntry)]
+        results = catalog(
+                object_provides={'query' : ifaces, 'operator' : 'or'},
                 path={'query':path, 'level': 0},
                 Subject={'query'    : self.keywords,
                          'operator' : 'and'},
@@ -136,16 +134,6 @@ class AuthorTopic(Topic):
         memb_tool = getToolByName(self, 'portal_membership')
         return memb_tool.getMemberInfo(self.keywords[0])['fullname']
 
-
-    #def title_or_id(self):
-    #    """See ITopic.
-    #    """
-    #    memb_tool = getToolByName(self, 'portal_membership')
-    #    title = memb_tool.getMemberInfo(self.keywords[0])['fullname']
-    #    if title:
-    #        return title
-    #    return self.getId()
-
     def getDescription(self):
         """See ITopic.
         """
@@ -162,11 +150,14 @@ class AuthorTopic(Topic):
     def getEntries(self):
         """See ITopic.
         """
-        weblog = self.getParentWeblog()
+        weblog = self.getParentWeblogContentObject()
         path = '/'.join(weblog.getPhysicalPath())
         catalog = getToolByName(self, 'portal_catalog')
         catalog._catalog.useBrains(WeblogEntryCatalogBrain)
-        results = catalog(meta_type='WeblogEntry',
+        ifaces = [interfaceToName(catalog.aq_parent, IWeblogEntry),
+                  interfaceToName(catalog.aq_parent, IPossibleWeblogEntry)]
+        results = catalog(
+                object_provides={'query' : ifaces, 'operator' : 'or'},
                 path={'query':path, 'level': 0},
                 Creator={'query'    : self.keywords,
                          'operator' : 'or'},

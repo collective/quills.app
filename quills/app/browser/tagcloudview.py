@@ -7,10 +7,10 @@ from Products.CMFCore.utils import getToolByName
 
 # Quills imports
 from quills.core.browser.interfaces import ITagCloudView
-from quills.app.utilities import WeblogFinder
+#from quills.app.utilities import WeblogFinder
 
 
-class TagCloudView(WeblogFinder, BrowserView):
+class TagCloudView(BrowserView):
     """A view to help in rendering tag clouds.
     """
 

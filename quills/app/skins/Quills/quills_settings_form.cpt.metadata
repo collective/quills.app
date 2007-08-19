@@ -1,0 +1,14 @@
+[default]
+title=Quills settings
+
+[security]
+View=0:Authenticated
+
+[validators]
+validators=validate_quills_settings
+validators..Cancel=
+
+[actions]
+action.success=traverse_to:string:quills_settings
+action.success..Cancel=redirect_to:string:quills_settings_form
+action.failure=traverse_to:string:quills_settings_form

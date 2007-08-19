@@ -6,7 +6,7 @@ from Products.CMFPlone.PloneBatch import Batch as PloneBatch
 from Products.CMFCore.utils import getToolByName
 
 # Quills imports
-from quills.core.interfaces import IWeblogViewConfiguration
+from quills.core.interfaces import IWeblogConfiguration
 from quills.core.browser.interfaces import IWeblogView, IWeblogEntryView
 from quills.core.browser.interfaces import ITopicView
 from baseview import BaseView
@@ -21,7 +21,7 @@ class WeblogView(BaseView):
     def getConfig(self):
         """See IWeblogView.
         """
-        return IWeblogViewConfiguration(self.getParentWeblog())
+        return IWeblogConfiguration(self.getParentWeblogContentObject())
 
     def getWeblogEntriesDates(self, entries_dict):
         """See IWeblogView.
@@ -68,9 +68,18 @@ class WeblogEntryView(BaseView):
     def getConfig(self):
         """See IWeblogView.
         """
-        weblog = self.getParentWeblog()
-        return IWeblogViewConfiguration(weblog)
+        weblog = self.context.getParentWeblogContentObject()
+        return IWeblogConfiguration(weblog)
 
+    def getWeblogEntryContent(self):
+        """See IWeblogEntryView.
+        """
+        return self.context
+
+    def getWeblogEntry(self):
+        """See IWeblogEntryView.
+        """
+        return self.context
 
 
 class TopicView(WeblogView):
@@ -84,4 +93,13 @@ class TopicView(WeblogView):
         """
         entries = self.context.getEntries()
         if entries:
+            # XXX modified should be in an interface
             return entries[0].modified
+
+
+class WeblogArchiveView(BaseView):
+    """A class with helper methods for use in views/templates.
+    """
+
+    #implements(IWeblogArchiveView)
+    pass
