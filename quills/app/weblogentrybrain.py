@@ -47,7 +47,7 @@ class WeblogEntryCatalogBrain(QuillsMixin):
         return self._getObject().getText()
 
     def getParentWeblogContentObject(self):
-        """
+        """See IWeblogEntry.
         """
         return recurseToInterface(self._getObject(), (IWeblog, IWeblogEnhanced))
 
@@ -61,55 +61,51 @@ class WeblogEntryCatalogBrain(QuillsMixin):
         return IWeblogEntry(self.getObject())
 
     def getPublicationDate(self):
-        """Return a DateTime instance for when this IWeblogEntry was/will-be
-        published.
+        """See IWeblogEntry.
         """
         return self['effective']
 
     def setTitle(title):
-        """
+        """See IWeblogEntry.
         """
         self._getWeblogEntry().setTitle(title)
 
     def setTopics(topic_ids):
-        """
+        """See IWeblogEntry.
         """
         self._getWeblogEntry().setTopics(topic_ids)
 
     def setExcerpt(excerpt):
-        """
+        """See IWeblogEntry.
         """
         self._getWeblogEntry().setExcerpt(excerpt)
 
     def setText(text):
-        """
+        """See IWeblogEntry.
         """
         self._getWeblogEntry().setText(text)
 
     def edit(self, title, excerpt, text, topics):
-        """
+        """See IWeblogEntry.
         """
         self._getWeblogEntry().edit(title, excerpt, text, topics)
 
     def setPublicationDate(datetime):
-        """Set when this IWeblogEntry was/will-be published.
+        """See IWeblogEntry.
         """
         self._getWeblogEntry().setPublicationDate(datetime)
 
     def publish(pubdate=None):
-        """Publish this weblog entry.  Do nothing if it is already published.
-        `pubdate' defaults to datetime.now().
+        """See IWeblogEntry.
         """
         self._getWeblogEntry().publish(pubdate)
 
-    def retract():
-        """Retract this weblog entry to 'draft' status.  Do nothing if it is
-        already a draft.
+    def retract(self):
+        """See IWeblogEntry.
         """
         self._getWeblogEntry().retract()
 
-    def isPublished():
-        """Return True if this weblog entry is currently published, False
-        otherwise.
+    def isPublished(self):
+        """See IWeblogEntry.
         """
         return self['review_state'] == 'published'
