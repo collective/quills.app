@@ -8,20 +8,21 @@
 
   <body>
     <div metal:fill-slot="main"
-         tal:define="weblog view/getWeblog">
+         tal:define="weblog view/getWeblog;
+                     weblog_content view/getWeblogContent">
 
       <div metal:use-macro="context/document_actions/macros/document_actions">
         Document actions (print, sendto etc)
       </div>
 
       <h1 class="documentFirstHeading" 
-          tal:content="context/title_or_id">
+          tal:content="weblog_content/title_or_id">
         Weblog title
       </h1>
 
       <p class="documentDescription"
-         tal:content="context/Description"
-         tal:condition="context/Description">
+         tal:content="weblog_content/Description"
+         tal:condition="weblog_content/Description">
         Weblog Description
       </p>
 
@@ -33,7 +34,7 @@
           Note: for some weblog editors you will need to provide the
           following string as id to edit this blog:
         </span>
-        <i tal:content="context/UID"/>
+        <i tal:content="weblog_content/UID"/>
       </p>
 
       <div id="content-weblog">

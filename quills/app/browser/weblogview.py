@@ -18,10 +18,20 @@ class WeblogView(BaseView):
 
     implements(IWeblogView)
 
+    def getWeblog(self):
+        """See IWeblogView.
+        """
+        return self.context
+
+    def getWeblogContent(self):
+        """See IWeblogView.
+        """
+        return self.context
+
     def getConfig(self):
         """See IWeblogView.
         """
-        return IWeblogConfiguration(self.getParentWeblogContentObject())
+        return IWeblogConfiguration(self.getWeblogContent())
 
     def getWeblogEntriesDates(self, entries_dict):
         """See IWeblogView.
