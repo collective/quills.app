@@ -1,0 +1,60 @@
+<dl class="portlet portletWeblogAuthors"
+    i18n:domain="plone">
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <span class="tile"
+              tal:content="view/title">_title_</a>
+        <span class="portletTopRight"></span>
+    </dt>
+
+    <tal:block repeat="author view/authors">
+
+      <dd class="portletItem odd" metal:define-macro="author"
+          tal:define="portrait python: view.getPortraitFor(author);
+                      authorinfo python: view.getInfoFor(author);"
+          tal:attributes="class python:oddrow and 'portletItem even' or 'portletItem odd'">
+
+        <h1 class="documentFirstHeading"
+            tal:condition="authorinfo/fullname">
+          <a href=""
+             tal:attributes="href authorinfo/url"
+             tal:content="full_name">
+            Author Name
+          </a>
+        </h1>
+
+        <div class="discreet"
+             condition="python:view.data.show_location and authorinfo['location']"
+             i18n:translate="text_location">
+          Location:
+          <span tal:content="authorinfo/location"
+                tal:omit-tag=""
+                i18n:name="location">
+            Some location
+          </span>
+        </div>
+
+        <img src=""
+             alt=""
+             title=""
+             class="portraitPhoto"
+             style="display:inline; float:left; margin-right:10px;"
+             tal:condition="python:view.data.show_portrait and portrait"
+             tal:attributes="src portrait/absolute_url;
+                             alt authorinfo/fullname;
+                             title authorinfo/fullname;" />
+
+        <div tal:condition="python:view.data.show_description and authorinfo['description']"
+             tal:content="authorinfo/description" />
+
+      </dd>
+
+    </tal:block>
+
+    <dd class="portletFooter">
+        <span class="portletBottomLeft"></span>
+        <span class="portletBottomRight"></span>
+    </dd>
+
+</dl>

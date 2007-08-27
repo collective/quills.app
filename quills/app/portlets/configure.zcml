@@ -1,0 +1,43 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:browser="http://namespaces.zope.org/browser"
+           xmlns:plone="http://namespaces.plone.org/plone">
+
+  <include package="plone.app.portlets" />
+
+  <plone:portlet
+      name="quills.app.portlets.TagCloud"
+      interface=".tagcloud.ITagCloudPortlet"
+      assignment=".tagcloud.Assignment"
+      renderer=".tagcloud.Renderer"
+      addview=".tagcloud.AddForm"
+      editview=".tagcloud.EditForm"
+      />
+
+  <plone:portlet
+      name="quills.app.portlets.WeblogAdmin"
+      interface=".weblogadmin.IWeblogAdminPortlet"
+      assignment=".weblogadmin.Assignment"
+      renderer=".weblogadmin.Renderer"
+      addview=".weblogadmin.AddForm"
+      editview=".weblogadmin.EditForm"
+      />
+
+  <plone:portlet
+      name="quills.app.portlets.Authors"
+      interface=".authors.IWeblogAuthorsPortlet"
+      assignment=".authors.Assignment"
+      renderer=".authors.Renderer"
+      addview=".authors.AddForm"
+      editview=".authors.EditForm"
+      />
+
+  <plone:portlet
+      name="quills.app.portlets.RecentEntries"
+      interface=".recententries.IRecentWeblogEntriesPortlet"
+      assignment=".recententries.Assignment"
+      renderer=".recententries.Renderer"
+      addview=".recententries.AddForm"
+      editview=".recententries.EditForm"
+      />
+
+</configure>

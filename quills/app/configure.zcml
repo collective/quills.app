@@ -2,8 +2,9 @@
            xmlns:browser="http://namespaces.zope.org/browser"
            xmlns:five="http://namespaces.zope.org/five">
 
-  <include file="security.zcml"/>
-  <include package=".browser"/>
+  <include file="security.zcml" />
+  <include package=".browser" />
+  <include package=".portlets" />
 
   <adapter
       for="quills.core.interfaces.IWeblog

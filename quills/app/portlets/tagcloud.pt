@@ -1,0 +1,31 @@
+<dl class="portlet portletTagCloud"
+    i18n:domain="plone">
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <span class="tile"
+              tal:content="view/title">_title_</a>
+        <span class="portletTopRight"></span>
+    </dt>
+
+    <tal:topics tal:repeat="cloud_dict view/getCloud">
+    <dd tal:define="oddrow repeat/obj/odd"
+        tal:attributes="class python:oddrow and 'portletItem even' or 'portletItem odd'">
+
+            <a class="" href="" title=""
+               tal:attributes="
+                    href cloud_dict/topic/absolute_url;
+                    title string:${cloud_dict/number_of_entries} entries;
+                    class string:cloudItem tagRank_${cloud_dict/size}" 
+               tal:content="topic">
+              Topic name
+            </a>
+
+    </dd>
+    </tal:topics>
+
+    <dd class="portletFooter">
+        <span class="portletBottomLeft"></span>
+        <span class="portletBottomRight"></span>
+    </dd>
+</dl>

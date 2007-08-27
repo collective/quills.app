@@ -1,0 +1,29 @@
+<dl class="portlet portletRecentEntries"
+    i18n:domain="plone">
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <span class="tile"
+              tal:content="view/title">_title_</a>
+        <span class="portletTopRight"></span>
+    </dt>
+
+    <tal:block repeat="entry view/getEntries">
+
+      <dd class="portletItem odd"
+          tal:attributes="class python:oddrow and 'portletItem even' or 'portletItem odd'">
+
+        <a href="#"
+           tal:attributes="href python:view.getArchiveURLFor(entry)"
+           tal:content="entry/getTitle">_title_</a>
+
+      </dd>
+
+    </tal:block>
+
+    <dd class="portletFooter">
+        <span class="portletBottomLeft"></span>
+        <span class="portletBottomRight"></span>
+    </dd>
+
+</dl>
