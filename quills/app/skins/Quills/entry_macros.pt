@@ -36,8 +36,8 @@
                        showContent showContent|python:True;
                        entry nocall:entry|nothing;
                        entry_content nocall:entry_content|nothing;
-                       displayingOneEntry python:context.absolute_url()==entry_content.absolute_url();
-                       weblog weblog | nocall:entry/getParentWeblog;">
+                       displayingOneEntry python:entry_content and context.absolute_url()==entry_content.absolute_url();
+                       weblog nocall:weblog | nocall:entry/getParentWeblog;">
         <tal:comment condition="nothing">
           Parameters:
 
