@@ -43,3 +43,11 @@ class BaseView(BrowserView):
         """
         weblog_content = obj.getParentWeblogContentObject()
         return getArchiveURLFor(obj, weblog_content)
+
+    def displayingOneEntry(self, context, weblogentry):
+        """See IWeblogView.
+        """
+        entry_absolute_url = getattr(weblogentry, 'absolute_url', None)
+        if entry_absolute_url is None:
+            entry_absolute_url = weblogentry.context.absolute_url
+        return context.absolute_url() == entry_absolute_url()

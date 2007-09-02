@@ -9,7 +9,6 @@ class WeblogMixin:
         """Return a sequence of all keywords that are associatd with
         IWeblogEntry instances contained in this IWeblog.
         """
-        # XXX Refactor me to quills.app
         entries = self.getAllEntries()
         # Use dict rather than list to avoid duplicates
         keywords = {}

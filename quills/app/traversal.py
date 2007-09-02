@@ -101,7 +101,7 @@ class WeblogTraverser(DefaultPublishTraverse):
             - name is a year.
         """
         weblog_config = IWeblogConfiguration(self.context)
-        if name == weblog_config.archiveFormat:
+        if name == weblog_config.archive_format:
             return True
         return False
 
@@ -119,6 +119,7 @@ class WeblogTraverser(DefaultPublishTraverse):
                 return False
             else:
                 return True
+
 
 class WeblogArchiveTraverser(DefaultPublishTraverse):
     """

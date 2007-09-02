@@ -34,7 +34,7 @@
           Note: for some weblog editors you will need to provide the
           following string as id to edit this blog:
         </span>
-        <i tal:content="weblog_content/UID"/>
+        <i tal:content="weblog_content/UID" />
       </p>
 
       <div id="content-weblog">

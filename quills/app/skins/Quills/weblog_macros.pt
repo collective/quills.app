@@ -12,16 +12,16 @@
 
     <metal:listEntries 
         metal:define-macro="list-entries"
-        tal:define="wvconfig view/getConfig;
+        tal:define="wvconfig wvconfig | view/getConfig;
                     results entries | weblog/getEntries;
                     Batch python:modules['Products.CMFPlone'].Batch;
-                    b_size wvconfig/entriesPerPage;
+                    b_size wvconfig/entries_per_page;
                     b_start python:0;
                     b_start request/b_start | b_start;
                     batch python:Batch(results, b_size, int(b_start), orphan=1);
                     results python:view.sortWeblogEntriesToDates(batch);
-                    showContent not:wvconfig/onlyExcerptInWeblogView | nothing;
-                    groupByDates wvconfig/groupByDates | nothing;">
+                    show_content not:wvconfig/only_excerpt_in_weblog_view | nothing;
+                    group_by_dates wvconfig/group_by_dates | nothing;">
 
       <tal:if condition="b_start">
         <div metal:use-macro="context/batch_macros/macros/navigation" />
@@ -30,7 +30,7 @@
       <metal:block
           tal:repeat="day python:view.getWeblogEntriesDates(results)">
 
-        <tal:byDates tal:condition="groupByDates">
+        <tal:byDates tal:condition="group_by_dates">
           <h2 tal:content="python:context.toLocalizedTime(day, context=context)" />
 
           <tal:entries repeat="entry python:results[day]">
@@ -39,7 +39,7 @@
           </tal:entries>
         </tal:byDates>
 
-        <tal:notByDates tal:condition="not: groupByDates">
+        <tal:notByDates tal:condition="not: group_by_dates">
           <tal:entries repeat="entry python:results[day]">
             <tal:block define="secondLevel python:True;">
               <metal:macro use-macro="context/entry_macros/macros/display-entry"/>

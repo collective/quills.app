@@ -56,7 +56,7 @@ def getArchivePathFor(obj, weblog_content):
         published = published()
     path = []
     weblog_config = IWeblogConfiguration(weblog_content)
-    archive_format = weblog_config.archiveFormat
+    archive_format = weblog_config.archive_format
     if isinstance(archive_format, StringTypes):
         archive_format = archive_format.strip()
     if archive_format is not None and archive_format is not '':

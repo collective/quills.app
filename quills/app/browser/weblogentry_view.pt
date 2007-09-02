@@ -24,12 +24,10 @@
         show related items if they exist
       </div>
       
-      <tal:trackback condition="python:wvconfig.trackbackEnabled and entry.isPublished()">
+      <tal:trackback condition="python:wvconfig.trackback_enabled and entry.isPublished()">
         <div class="weblog-about"> 
           <div class="entry-trackback">
-            <tal:if condition="wvconfig/trackbackEnabled">
-              <metal:macro use-macro="context/trackback/macros/trackback"/>
-            </tal:if>
+            <metal:macro use-macro="context/trackback/macros/trackback"/>
           </div>
         </div>
       </tal:trackback>

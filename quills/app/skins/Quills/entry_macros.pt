@@ -32,47 +32,47 @@
         trackback, long comments, etc. Don't put those in here!
       </tal:comment>
       <div class="weblog-entry"
-           tal:define="secondLevel secondLevel|python:False;
-                       showContent showContent|python:True;
-                       entry nocall:entry|nothing;
-                       entry_content nocall:entry_content|nothing;
-                       displayingOneEntry python:entry_content and context.absolute_url()==entry_content.absolute_url();
-                       weblog nocall:weblog | nocall:entry/getParentWeblog;">
+           tal:define="second_level second_level | python:False;
+                       show_content show_content | python:True;
+                       entry nocall:entry | nothing;
+                       displaying_one_entry python:view.displayingOneEntry(context, entry);
+                       weblog nocall:weblog | python:entry.getParentWeblog();
+                       weblog_content nocall:weblog_content | python:entry.getParentWeblogContentObject()">
         <tal:comment condition="nothing">
           Parameters:
 
-          secondlevel - In listingviews, we're normally at h3. Only if
+          second_level - In listingviews, we're normally at h3. Only if
           we're not grouped by dates we have to use h2. This setting
           controls that.
 
-          For headings of level 1, which occur if 'displayingOneEntry'
+          For headings of level 1, which occur if 'displaying_one_entry'
           is True, we won't make the header a link as it is the entry
           itself that's being displayed. For headers of level 2 or 3
           it will be clickable.
 
-          displayingOneEntry is True if the context's URL is the same
+          displaying_one_entry is True if the context's URL is the same
           as the entry's URL.
 
-          showContent - Whether to show the actual content or just the
+          show_content - Whether to show the actual content or just the
           summary. Default: True.
 
           entry - The actual entry.
         </tal:comment>
 
         <tal:comment condition="nothing"> title </tal:comment>
-        <h1 tal:condition="displayingOneEntry"
+        <h1 tal:condition="displaying_one_entry"
             tal:content="entry/getTitle">
           Level 1 title, not clickable
         </h1>
-        <tal:headerInListing tal:condition="not: displayingOneEntry">
-          <h2 tal:condition="secondLevel">
+        <tal:headerInListing tal:condition="not: displaying_one_entry">
+          <h2 tal:condition="second_level">
             <a href=""
                tal:attributes="href python:view.getArchiveURLFor(entry)"
                tal:content="entry/Title">
               Level 2 title, clickable
             </a>
           </h2>
-          <h3 tal:condition="not: secondLevel">
+          <h3 tal:condition="not: second_level">
             <a href=""
                tal:attributes="href python:view.getArchiveURLFor(entry)"
                tal:content="entry/getTitle">
@@ -85,7 +85,7 @@
         <metal:macro use-macro="context/entry_macros/macros/topic-images"/>
 
         <tal:comment condition="nothing"> Byline </tal:comment>
-        <tal:byline tal:condition="displayingOneEntry">
+        <tal:byline tal:condition="displaying_one_entry">
           <metal:macro use-macro="context/document_byline/macros/byline"/>
         </tal:byline>
 
@@ -97,7 +97,7 @@
           the normal docoumentDescription to allow for a different
           formatting.
         </tal:comment>
-        <tal:excerpt condition="not: showContent">
+        <tal:excerpt condition="not: show_content">
           <p class="weblog-entry-only-excerpt">
               <span
                tal:condition="entry/getExcerpt"
@@ -111,7 +111,7 @@
             </span>
           </p>
         </tal:excerpt>
-        <tal:description condition="showContent">
+        <tal:description condition="show_content">
           <p class="documentDescription"
              tal:condition="entry/getExcerpt"
              tal:content="entry/getExcerpt">
@@ -120,10 +120,8 @@
 
         <tal:comment condition="nothing"> Main content </tal:comment>
         <div class=""
-             tal:condition="python: entry.getText() and showContent"
-             tal:attributes="class python:test(context.Format() in
-                             ('text/structured', 'text/x-rst', ),
-                             'stx', 'plain')"
+             tal:condition="python: entry.getText() and show_content"
+             tal:attributes="class python:test(context.Format() in ('text/structured', 'text/x-rst', ), 'stx', 'plain')"
              tal:content="structure entry/getText">
         </div>
       </div>
@@ -151,7 +149,7 @@
 
         <tal:categories repeat="topic topics">
           <a href=""
-             tal:attributes="href string:${weblog/absolute_url}/topics/${topic/getId}">
+             tal:attributes="href string:${weblog_content/absolute_url}/topics/${topic/getId}">
             <img class="topic-image"
                  src=""
                  alt=""
@@ -212,8 +210,7 @@
         <tal:if condition="python:isDiscussionAllowedFor(entry)">
           <a href=""
              style="text-decoration: none;"
-             tal:attributes="href
-                             string:${entry_content/absolute_url}#comments"
+             tal:attributes="href python:'%s#comments' % view.getArchiveURLFor(entry)"
              i18n:translate="number_of_comments">
             Comments:
           </a>
