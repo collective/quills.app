@@ -42,7 +42,7 @@ class Renderer(base.Renderer):
 
     _template = ViewPageTemplateFile('tagcloud.pt')
 
-    @ram.cache(render_cachekey)
+    #@ram.cache(render_cachekey)
     def render(self):
         return xhtml_compress(self._template())
 
@@ -50,12 +50,16 @@ class Renderer(base.Renderer):
     def available(self):
         return True
 
+    @property
+    def title(self):
+        return _(PORTLET_TITLE)
+
     def getCloud(self):
-        weblog_content = recurseToInterface(self.context,
-                                        (IWeblog, IWeblogEnhanced))
+        weblog_content = recurseToInterface(self.context.aq_inner,
+                                            (IWeblog, IWeblogEnhanced))
         weblog = IWeblog(weblog_content)
         # Get a list of topics, sorted alphabetically
-        topics = weblog.Topics()
+        topics = weblog.getTopics()
         if not topics:
             return []
         # Create a list of entries for each topic

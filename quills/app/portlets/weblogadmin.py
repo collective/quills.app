@@ -15,6 +15,11 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone import PloneMessageFactory as _
 
+# Quills imports
+from quills.core.interfaces import IWeblog, IWeblogEnhanced
+from quills.core.interfaces import IWeblogEnhancedConfiguration
+from quills.app.utilities import recurseToInterface
+
 
 PORTLET_TITLE = u"Weblog Admin"
 PORTLET_DESC = u"This portlet provides useful admin functions for a weblog."
@@ -36,13 +41,45 @@ class Renderer(base.Renderer):
 
     _template = ViewPageTemplateFile('weblogadmin.pt')
 
-    @ram.cache(render_cachekey)
+    #@ram.cache(render_cachekey)
     def render(self):
         return xhtml_compress(self._template())
 
     @property
     def available(self):
         return True
+
+    @property
+    def title(self):
+        return _(PORTLET_TITLE)
+
+    @property
+    def add_entry_url(self):
+        weblog_content = self._getWeblogContent()
+        try:
+            config = IWeblogEnhancedConfiguration(weblog_content)
+            type_name = config.default_type
+        except TypeError: # Could not adapt, so fall back to default.
+            type_name = 'WeblogEntry'
+        url = "%s/createObject?type_name=%s"
+        return url % (weblog_content.absolute_url(), type_name)
+
+    @property
+    def drafts_url(self):
+        weblog_content = self._getWeblogContent()
+        return "%s/drafts/" % weblog_content.absolute_url()
+
+    @property
+    def manage_comments_url(self):
+        weblog_content = self._getWeblogContent()
+        return "%s/manage_comments" % weblog_content.absolute_url()
+
+    def _getWeblogContent(self):
+        weblog_content = getattr(self, '_v_weblog_content', None)
+        if weblog_content is None:
+            weblog_content = recurseToInterface(self.context.aq_inner,
+                                                (IWeblog, IWeblogEnhanced))
+        return weblog_content
 
 
 class AddForm(base.AddForm):

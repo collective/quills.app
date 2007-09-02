@@ -1,5 +1,6 @@
 <configure xmlns="http://namespaces.zope.org/zope"
            xmlns:browser="http://namespaces.zope.org/browser"
+           xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
            xmlns:five="http://namespaces.zope.org/five">
 
   <include file="security.zcml" />
@@ -22,6 +23,16 @@
       for="quills.core.interfaces.IWeblog"
       provides="quills.core.interfaces.IWeblogConfiguration"
       factory="quills.core.browser.weblogconfig.WeblogConfigAnnotations"
+      />
+
+  <!-- profiles -->
+  <genericsetup:registerProfile
+      name="default"
+      title="quills.app"
+      directory="profiles/default"
+      description="Extension profile for the quills.app library."
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
       />
 
 </configure>

@@ -4,14 +4,14 @@
     <dt class="portletHeader">
         <span class="portletTopLeft"></span>
         <span class="tile"
-              tal:content="view/title">_title_</a>
+              tal:content="view/title">_title_</span>
         <span class="portletTopRight"></span>
     </dt>
 
     <tal:block repeat="entry view/getEntries">
 
       <dd class="portletItem odd"
-          tal:attributes="class python:oddrow and 'portletItem even' or 'portletItem odd'">
+          tal:attributes="class python:repeat['entry'].odd and 'portletItem odd' or 'portletItem even'">
 
         <a href="#"
            tal:attributes="href python:view.getArchiveURLFor(entry)"

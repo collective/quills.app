@@ -66,7 +66,7 @@ class Renderer(base.Renderer):
 
     _template = ViewPageTemplateFile('authors.pt')
 
-    @ram.cache(render_cachekey)
+    #@ram.cache(render_cachekey)
     def render(self):
         return xhtml_compress(self._template())
 
@@ -75,19 +75,36 @@ class Renderer(base.Renderer):
         return True
 
     @property
+    def title(self):
+        return _(PORTLET_TITLE)
+
+    @property
     def authors(self):
-        weblog_content = recurseToInterface(self.context,
-                                        (IWeblog, IWeblogEnhanced))
+        weblog_content = recurseToInterface(self.context.aq_inner,
+                                            (IWeblog, IWeblogEnhanced))
         weblog = IWeblog(weblog_content)
         return weblog.getAuthors()
 
     def getPortraitFor(self, author):
         mtool = getToolByName(self.context, 'portal_membership')
-        return mtool.getPersonalPortrait(author)
+        return mtool.getPersonalPortrait(author.getId())
 
     def getInfoFor(self, author):
         mtool = getToolByName(self.context, 'portal_membership')
-        return mtool.getMemberInfo(author)
+        info = mtool.getMemberInfo(author.getId())
+        if info is None:
+            info = { 'fullname'    : author.getId(),
+                     'description' : '',
+                     'location'    : '',
+                     'language'    : '',
+                     'home_page'   : '',
+                     'username'    : author.getId(),
+                   }
+        if not info['fullname']:
+            info['fullname'] = author.getId()
+        if not info['username']:
+            info['username'] = author.getId()
+        return info
 
 
 class AddForm(base.AddForm):

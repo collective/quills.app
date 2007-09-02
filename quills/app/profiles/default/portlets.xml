@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<portlets>
+ 
+  <!-- Portlet type registrations -->
+
+  <portlet
+    addview="quills.app.portlets.TagCloud"
+    title="Tag Cloud Portlet"
+    description="A portlet that displays a tag cloud for a weblog."
+    />
+
+  <portlet
+    addview="quills.app.portlets.WeblogAdmin"
+    title="Weblog Administration Portlet"
+    description="A portlet that provides weblog administration features."
+    />
+
+  <portlet
+    addview="quills.app.portlets.Authors"
+    title="Weblog Authors Portlet"
+    description="A portlet that displays the authors of a weblog."
+    />
+
+  <portlet
+    addview="quills.app.portlets.RecentEntries"
+    title="Weblog Recent Entries Portlet"
+    description="A portlet that displays recent entries to a weblog."
+    />
+
+</portlets>

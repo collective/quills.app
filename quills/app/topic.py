@@ -48,6 +48,12 @@ class Topic(QuillsMixin, AcquiringActionProvider, Traversable, Implicit):
         """
         return self.keywords[0]
 
+    def getKeywords(self):
+        """See ITopic.
+        """
+        # Return a copy so they can't be changed by other code.
+        return self.keywords[:]
+
     def getTitle(self):
         """See ITopic.
         """

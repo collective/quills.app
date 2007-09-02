@@ -99,12 +99,20 @@ class TopicView(WeblogView):
     implements(ITopicView)
 
     def getLastModified(self):
-        """See ITopic.
+        """See ITopicView.
         """
         entries = self.context.getEntries()
         if entries:
             # XXX modified should be in an interface
             return entries[0].modified
+
+    def absolute_url(self):
+        """See ITopicView.
+        """
+        weblog_content = self.context.getParentWeblogContentObject()
+        weblog_url = weblog_content.absolute_url()
+        keywords = '/'.join(self.context.getKeywords())
+        return '%s/topics/%s' % (weblog_url, keywords)
 
 
 class WeblogArchiveView(BaseView):
