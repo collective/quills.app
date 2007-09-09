@@ -17,14 +17,6 @@
         </a>
     </dd>
     <dd class="portletItem even">
-       <a title="View Drafts" href="#"
-          i18n:translate="portlet_blogadmin_view_drafts"
-          i18n:attributes="title"
-          tal:attributes="href view/drafts_url">
-         View Drafts
-       </a>
-    </dd>
-    <dd class="portletItem odd">
        <a title="Manage Comments" href="#"
         i18n:translate="portlet_blogadmin_manage_comments"
         i18n:attributes="title"
