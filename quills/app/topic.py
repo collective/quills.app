@@ -27,6 +27,10 @@ from utilities import EvilAATUSHack, QuillsMixin
 
 class Topic(QuillsMixin, AcquiringActionProvider, Traversable, Implicit):
     """Implementation of ITopic as a transient wrapper around a keywords.
+
+    >>> from zope.interface.verify import verifyClass
+    >>> verifyClass(ITopic, Topic)
+    True
     """
 
     implements(ITopic)

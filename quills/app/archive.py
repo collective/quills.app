@@ -65,6 +65,11 @@ class BaseArchive(QuillsMixin, AcquiringActionProvider, Traversable, Implicit):
 
 
 class ArchiveContainer(BaseArchive):
+    """
+    >>> from zope.interface.verify import verifyClass
+    >>> verifyClass(IWeblogArchive, ArchiveContainer)
+    True
+    """
 
     implements(IWeblogArchiveContainer)
 
@@ -158,6 +163,11 @@ class BaseDateArchive(BaseArchive):
 
 
 class YearArchive(BaseDateArchive):
+    """
+    >>> from zope.interface.verify import verifyClass
+    >>> verifyClass(IWeblogArchive, YearArchive)
+    True
+    """
 
     def __init__(self, year):
         # Check year is of the right sort.
@@ -197,6 +207,11 @@ class YearArchive(BaseDateArchive):
 
 
 class MonthArchive(BaseDateArchive):
+    """
+    >>> from zope.interface.verify import verifyClass
+    >>> verifyClass(IWeblogArchive, MonthArchive)
+    True
+    """
 
     def __init__(self, year, month):
         int(year)
@@ -246,6 +261,9 @@ class MonthArchive(BaseDateArchive):
 
 class DayArchive(BaseDateArchive):
     """
+    >>> from zope.interface.verify import verifyClass
+    >>> verifyClass(IWeblogArchive, DayArchive)
+    True
     """
 
     def __init__(self, year, month, day):

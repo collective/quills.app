@@ -10,7 +10,12 @@ from quills.core.interfaces import IWeblog, IWeblogEnhanced, IWeblogEntry
 
 
 class WeblogEntryCatalogBrain(QuillsMixin):
-    """A catalog brain that implements IWeblogEntry (in and efficient way).
+    """A catalog brain that implements IWeblogEntry (as efficiently as
+    possible).
+
+    >>> from zope.interface.verify import verifyClass
+    >>> verifyClass(IWeblogEntry, WeblogEntryCatalogBrain)
+    True
     """
 
     implements(IWeblogEntry)

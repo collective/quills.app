@@ -14,6 +14,10 @@ from baseview import BaseView
 
 class WeblogView(BaseView):
     """A class with helper methods for use in views/templates.
+
+    >>> from zope.interface.verify import verifyClass
+    >>> verifyClass(IWeblogView, WeblogView)
+    True
     """
 
     implements(IWeblogView)
@@ -71,6 +75,9 @@ class WeblogView(BaseView):
 
 class WeblogEntryView(BaseView):
     """
+    >>> from zope.interface.verify import verifyClass
+    >>> verifyClass(IWeblogEntryView, WeblogEntryView)
+    True
     """
 
     implements(IWeblogEntryView)
@@ -94,6 +101,9 @@ class WeblogEntryView(BaseView):
 
 class TopicView(WeblogView):
     """
+    >>> from zope.interface.verify import verifyClass
+    >>> verifyClass(ITopicView, TopicView)
+    True
     """
 
     implements(ITopicView)
