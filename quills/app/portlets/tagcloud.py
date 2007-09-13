@@ -84,7 +84,7 @@ class Renderer(base.Renderer):
                 # Add the result
                 cloud_dict = {'topic'               :   topic,
                               'rank'                :   rel,
-                              'size'                :   rel*10,
+                              'size'                :   int(rel*10),
                               'number_of_entries'   :   number_of_entries}
                 result.append(cloud_dict)
         # Done...
