@@ -1,8 +1,5 @@
-# Standard library imports
 import unittest
-# Standard library imports
-import unittest
-from doctest import DocFileSuite, DocTestSuite
+from doctest import DocTestSuite
 
 # Zope imports
 import zope.component.testing

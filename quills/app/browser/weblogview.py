@@ -3,11 +3,11 @@ from zope.interface import implements
 
 # Plone imports
 from Products.CMFPlone.PloneBatch import Batch as PloneBatch
-from Products.CMFCore.utils import getToolByName
 
 # Quills imports
 from quills.core.interfaces import IWeblogConfiguration
-from quills.core.browser.interfaces import IWeblogView, IWeblogEntryView
+from quills.core.browser.interfaces import IWeblogView
+from quills.core.browser.interfaces import IWeblogEntryView
 from quills.core.browser.interfaces import ITopicView
 from baseview import BaseView
 

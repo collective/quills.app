@@ -17,12 +17,14 @@ from Products.CMFCore.utils import getToolByName
 from plone.i18n.normalizer.interfaces import IIDNormalizer
 
 # Product imports
-from quills.core.interfaces import ITopic, IAuthorTopic
-from quills.core.interfaces import IWeblog, IWeblogEnhanced
-from quills.core.interfaces import IWeblogEntry, IPossibleWeblogEntry
+from quills.core.interfaces import ITopic
+from quills.core.interfaces import IAuthorTopic
+from quills.core.interfaces import IWeblogEntry
+from quills.core.interfaces import IPossibleWeblogEntry
 from acquiringactions import AcquiringActionProvider
 from weblogentrybrain import WeblogEntryCatalogBrain
-from utilities import EvilAATUSHack, QuillsMixin
+from utilities import EvilAATUSHack
+from utilities import QuillsMixin
 
 
 class Topic(QuillsMixin, AcquiringActionProvider, Traversable, Implicit):

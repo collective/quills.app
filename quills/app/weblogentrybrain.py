@@ -2,8 +2,11 @@
 from zope.interface import implements
 
 # Quills imports
-from utilities import QuillsMixin, recurseToInterface
-from quills.core.interfaces import IWeblog, IWeblogEnhanced, IWeblogEntry
+from utilities import QuillsMixin
+from utilities import recurseToInterface
+from quills.core.interfaces import IWeblog
+from quills.core.interfaces import IWeblogEnhanced
+from quills.core.interfaces import IWeblogEntry
 # Commented out to avoid circular import problems with archive and topic
 # modules. The imports happen within each of the methods that require them.
 #from topic import Topic, AuthorTopic
@@ -57,9 +60,6 @@ class WeblogEntryCatalogBrain(QuillsMixin):
         return recurseToInterface(self._getObject(), (IWeblog, IWeblogEnhanced))
 
     def _getObject(self):
-        #if getattr(self, '__object', None) is None:
-        #    self.__object = self.getObject()
-        #return self.__object
         return self.getObject()
 
     def _getWeblogEntry(self):
@@ -70,22 +70,22 @@ class WeblogEntryCatalogBrain(QuillsMixin):
         """
         return self['effective']
 
-    def setTitle(title):
+    def setTitle(self, title):
         """See IWeblogEntry.
         """
         self._getWeblogEntry().setTitle(title)
 
-    def setTopics(topic_ids):
+    def setTopics(self, topic_ids):
         """See IWeblogEntry.
         """
         self._getWeblogEntry().setTopics(topic_ids)
 
-    def setExcerpt(excerpt):
+    def setExcerpt(self, excerpt):
         """See IWeblogEntry.
         """
         self._getWeblogEntry().setExcerpt(excerpt)
 
-    def setText(text):
+    def setText(self, text):
         """See IWeblogEntry.
         """
         self._getWeblogEntry().setText(text)
@@ -95,12 +95,12 @@ class WeblogEntryCatalogBrain(QuillsMixin):
         """
         self._getWeblogEntry().edit(title, excerpt, text, topics)
 
-    def setPublicationDate(datetime):
+    def setPublicationDate(self, datetime):
         """See IWeblogEntry.
         """
         self._getWeblogEntry().setPublicationDate(datetime)
 
-    def publish(pubdate=None):
+    def publish(self, pubdate=None):
         """See IWeblogEntry.
         """
         self._getWeblogEntry().publish(pubdate)

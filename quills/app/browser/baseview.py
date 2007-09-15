@@ -2,9 +2,6 @@
 from zope.interface import implements
 from Products.Five import BrowserView
 
-# Plone imports
-from Products.CMFCore.interfaces import ISiteRoot
-
 # Quills imports
 from quills.core.interfaces import IWeblogArchive, ITopic, IWeblog, IWeblogEntry
 from quills.core.browser.interfaces import IBaseView

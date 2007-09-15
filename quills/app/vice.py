@@ -1,5 +1,5 @@
 # Zope imports
-from zope.component import adapts, getMultiAdapter
+from zope.component import adapts
 from zope.interface import implements
 
 # Vice imports

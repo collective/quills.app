@@ -4,8 +4,6 @@ from zope.component import getMultiAdapter
 
 # Plone imports
 from plone.portlets.interfaces import IPortletRetriever
-from plone.portlets.interfaces import IPortletManager
-from plone.portlets.interfaces import IPortletStorage
 
 # Quills imports
 from quills.core.interfaces import IWeblog, IWeblogEnhanced

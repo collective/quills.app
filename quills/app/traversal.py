@@ -1,18 +1,23 @@
 # Zope imports
-from zope.interface import implements
-from zope.component import adapts, getMultiAdapter, queryMultiAdapter
+from zope.component import adapts, getMultiAdapter
+from zope.component import queryMultiAdapter
 from zope.app.publisher.browser import getDefaultViewName
-from zope.publisher.interfaces import IPublishTraverse
 from zope.publisher.interfaces.http import IHTTPRequest
 from ZPublisher.BaseRequest import DefaultPublishTraverse
 
 # Quills imports
-from quills.core.interfaces import IWeblog, IWeblogArchive, IWeblogConfiguration
+from quills.core.interfaces import IWeblog
+from quills.core.interfaces import IWeblogArchive
+from quills.core.interfaces import IWeblogConfiguration
 from quills.core.interfaces import IPossibleWeblogEntry
 
 # Local imports
-from topic import Topic, AuthorTopic
-from archive import ArchiveContainer, YearArchive, MonthArchive, DayArchive
+from topic import Topic
+from topic import AuthorTopic
+from archive import ArchiveContainer
+from archive import YearArchive
+from archive import MonthArchive
+from archive import DayArchive
 
 
 class WeblogTraverser(DefaultPublishTraverse):

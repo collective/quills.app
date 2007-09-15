@@ -1,15 +1,18 @@
 # Standard library imports
-from types import ListType, TupleType, StringTypes
+from types import ListType
+from types import TupleType
+from types import StringTypes
 
 # Zope imports
-from Acquisition import aq_base, aq_parent, Explicit
-from Products.ZCatalog.CatalogBrains import AbstractCatalogBrain
+from Acquisition import Explicit
+from Acquisition import aq_parent
 
 # Plone imports
 from Products.CMFCore.interfaces import ISiteRoot
 
 # Quills imports
-from quills.core.interfaces import IWeblog, IWeblogEnhanced
+from quills.core.interfaces import IWeblog
+from quills.core.interfaces import IWeblogEnhanced
 from quills.core.interfaces import IWeblogConfiguration
 
 

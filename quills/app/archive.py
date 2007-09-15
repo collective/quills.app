@@ -22,26 +22,26 @@
 # Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 ###############################################################################
 
-# Standard library imports
-from types import StringTypes
-
 # Zope imports
 from zope.interface import implements
 from zope.component.interface import interfaceToName
-from Acquisition import Implicit, aq_base
-from DateTime.DateTime import DateTime, DateError
+from Acquisition import Implicit
+from DateTime.DateTime import DateTime
+from DateTime.DateTime import DateError
 from OFS.Traversable import Traversable
 
 # CMF imports
 from Products.CMFCore.utils import getToolByName
 
 # Quills imports
-from quills.core.interfaces import IWeblog, IWeblogEnhanced
-from quills.core.interfaces import IWeblogEntry, IPossibleWeblogEntry
-from quills.core.interfaces import IWeblogArchive, IWeblogArchiveContainer
+from quills.core.interfaces import IWeblogEntry
+from quills.core.interfaces import IPossibleWeblogEntry
+from quills.core.interfaces import IWeblogArchive
+from quills.core.interfaces import IWeblogArchiveContainer
 from acquiringactions import AcquiringActionProvider
 from weblogentrybrain import WeblogEntryCatalogBrain
-from utilities import EvilAATUSHack, QuillsMixin
+from utilities import EvilAATUSHack
+from utilities import QuillsMixin
 
 
 class BaseArchive(QuillsMixin, AcquiringActionProvider, Traversable, Implicit):

@@ -1,23 +1,18 @@
-# Zope imports
-from zope import schema
-from zope.component import getMultiAdapter
 from zope.formlib import form
 from zope.interface import implements
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
-# Plone imports
 from plone.app.portlets.portlets import base
-from plone.memoize import ram
 from plone.memoize.compress import xhtml_compress
-#from plone.memoize.instance import memoize
 from plone.portlets.interfaces import IPortletDataProvider
-from plone.app.portlets.cache import render_cachekey
-from Products.CMFCore.utils import getToolByName
+
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFPlone import PloneMessageFactory as _
 
 # Quills imports
-from quills.core.interfaces import IWeblog, IWeblogEnhanced
+from quills.core.interfaces import IWeblogEnhanced
+from quills.core.interfaces import IWeblog
 from quills.app.utilities import recurseToInterface
+
 
 
 PORTLET_TITLE = u"Tag Cloud"

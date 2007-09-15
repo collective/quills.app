@@ -1,5 +1,4 @@
 from Products.Five import BrowserView
-from Products.CMFCore.utils import getToolByName
     
 class QuillsBaseView(BrowserView):
     """ Common base class for all Quills view classes. 
