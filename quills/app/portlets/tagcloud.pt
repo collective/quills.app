@@ -8,10 +8,9 @@
         <span class="portletTopRight"></span>
     </dt>
 
-    <tal:topics tal:repeat="cloud_dict view/getCloud">
     <dd class="portletItem lastItem tagCloud">
-
         <a class="" href="" title=""
+           tal:repeat="cloud_dict view/getCloud"
            tal:attributes="
                 href cloud_dict/topic/@@topic_view/absolute_url;
                 title string:${cloud_dict/number_of_entries} entries;
@@ -19,9 +18,7 @@
            tal:content="cloud_dict/topic/getTitle">
           Topic name
         </a>
-
     </dd>
-    </tal:topics>
 
     <dd class="portletFooter">
         <span class="portletBottomLeft"></span>

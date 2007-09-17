@@ -11,7 +11,7 @@
     <tal:block repeat="entry view/getEntries">
 
       <dd class="portletItem odd"
-          tal:attributes="class python:repeat['entry'].odd and 'portletItem odd' or 'portletItem even'">
+          tal:attributes="class python:repeat['entry'].odd() and 'portletItem odd' or 'portletItem even'">
 
         <a href="#"
            tal:attributes="href python:view.getArchiveURLFor(entry)"

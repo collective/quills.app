@@ -39,7 +39,6 @@
              alt=""
              title=""
              class="portraitPhoto"
-             style="display:inline; float:left; margin-right:10px;"
              tal:condition="python:view.data.show_portrait and portrait"
              tal:attributes="src portrait/absolute_url;
                              alt authorinfo/fullname;
