@@ -104,7 +104,7 @@ class Topic(QuillsMixin, AcquiringActionProvider, Traversable, Implicit):
                 image = getattr(topic_images, self.keywords[0])
         return image
 
-    def getEntries(self):
+    def getEntries(self, max=None, offset=0):
         """See ITopic.
         """
         weblog = self.getParentWeblogContentObject()
@@ -121,6 +121,9 @@ class Topic(QuillsMixin, AcquiringActionProvider, Traversable, Implicit):
                 sort_on='effective',
                 sort_order='reverse',
                 review_state='published')
+        results = results[offset:]
+        if max is not None:
+            results = results[:max]
         return results
 
     def __str__(self):

@@ -58,6 +58,11 @@ class WeblogEntryCatalogBrain(QuillsMixin):
         """See IWeblogEntry.
         """
         return recurseToInterface(self._getObject(), (IWeblog, IWeblogEnhanced))
+        
+    def getWeblogEntryContentObject(self):
+        """See IWeblogEntry
+        """
+        return self._getObject()
 
     def _getObject(self):
         return self.getObject()

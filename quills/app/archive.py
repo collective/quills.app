@@ -109,11 +109,13 @@ class ArchiveContainer(BaseArchive):
         years = self._getEntryYears()
         return [YearArchive(year).__of__(self) for year in years]
 
-    def getEntries(self):
+    def getEntries(self, max=None, offset=0):
         """
         """
         # Just return the weblog's getEntries.
-        self.results = self.getParentWeblog().getEntries()
+        self.results = self.getParentWeblog().getEntries()[offset:]
+        if max is not None:
+            self.results = self.results[:max]
         return self.results
 
 
@@ -139,7 +141,7 @@ class BaseDateArchive(BaseArchive):
         """
         return '%s %s' % (self.getTimeUnit(), self.getId())
 
-    def getEntries(self):
+    def getEntries(self, max=None, offset=0):
         """
         """
         if self.results is None:
@@ -158,7 +160,9 @@ class BaseDateArchive(BaseArchive):
                      'query' : [min_datetime, max_datetime],
                      'range': 'minmax'}
                 )
-            self.results = results
+            self.results = results[offset:]
+            if max is not None:
+                self.results = self.results[:max]
         return self.results
 
 
