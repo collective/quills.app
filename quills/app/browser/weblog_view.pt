@@ -4,9 +4,13 @@
       metal:use-macro="here/main_template/macros/master"
       i18n:domain="quills">
 
-  <metal:macro use-macro="context/quills_header_macros/macros/feed-links" />
 
   <body>
+    <metal:feed fill-slot="head_slot"
+         tal:define="weblog view/getWeblog;">
+         <metal:block metal:use-macro="context/quills_header_macros/macros/feed-links-base"></metal:block>
+         
+    </metal:feed>
     <div metal:fill-slot="main"
          tal:define="weblog view/getWeblog;
                      weblog_content view/getWeblogContent">
