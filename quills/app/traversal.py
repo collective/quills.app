@@ -11,11 +11,9 @@ from quills.core.interfaces import IWeblogArchive
 from quills.core.interfaces import IWeblogConfiguration
 from quills.core.interfaces import IPossibleWeblogEntry
 from quills.core.interfaces import ITopicContainer
-from quills.core.interfaces import IAuthorContainer
 
 # Local imports
 from topic import Topic
-from topic import AuthorTopic
 from topic import TopicContainer
 from topic import AuthorContainer
 from archive import ArchiveContainer
