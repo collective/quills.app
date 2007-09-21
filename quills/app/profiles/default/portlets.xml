@@ -28,6 +28,12 @@
     />
 
   <portlet
+    addview="quills.app.portlets.RecentComments"
+    title="Weblog Recent Comments Portlet"
+    description="A portlet that displays recent comments to a weblog."
+    />
+
+  <portlet
     addview="quills.app.portlets.QuillsLinks"
     title="Quills Links Portlet"
     description="A portlet that displays the feed links of a blog instance."

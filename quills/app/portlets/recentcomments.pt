@@ -1,0 +1,26 @@
+<dl class="portlet portletRecentComments"
+    i18n:domain="plone">
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <span class="tile"
+              tal:content="view/title">_title_</span>
+        <span class="portletTopRight"></span>
+    </dt>
+
+    <tal:block repeat="entry view/getComments">
+
+      <dd class="portletItem odd"
+          tal:attributes="class python:repeat['entry'].odd() and 'portletItem odd' or 'portletItem even'">
+
+          <a href="">foo</a>
+      </dd>
+
+    </tal:block>
+
+    <dd class="portletFooter">
+        <span class="portletBottomLeft"></span>
+        <span class="portletBottomRight"></span>
+    </dd>
+
+</dl>

@@ -41,6 +41,15 @@
       />
 
   <plone:portlet
+      name="quills.app.portlets.RecentComments"
+      interface=".recentcomments.IRecentWeblogCommentsPortlet"
+      assignment=".recentcomments.Assignment"
+      renderer=".recentcomments.Renderer"
+      addview=".recentcomments.AddForm"
+      editview=".recentcomments.EditForm"
+      />
+
+  <plone:portlet
       name="quills.app.portlets.QuillsLinks"
       interface=".quillslinks.IQuillsLinksPortlet"
       assignment=".quillslinks.Assignment"
