@@ -54,6 +54,11 @@ class WeblogEntryCatalogBrain(QuillsMixin):
         """
         return self._getObject().getText()
 
+    def getMimeType(self):
+        """See IWeblogEntry.
+        """
+        return self._getObject().getMimeType()
+
     def getWeblogContentObject(self):
         """See IWeblogEntry.
         """
@@ -90,15 +95,15 @@ class WeblogEntryCatalogBrain(QuillsMixin):
         """
         self._getWeblogEntry().setExcerpt(excerpt)
 
-    def setText(self, text):
+    def setText(self, text, mimetype=None):
         """See IWeblogEntry.
         """
-        self._getWeblogEntry().setText(text)
+        self._getWeblogEntry().setText(text, mimetype=mimetype)
 
-    def edit(self, title, excerpt, text, topics):
+    def edit(self, title, excerpt, text, topics, mimetype=None):
         """See IWeblogEntry.
         """
-        self._getWeblogEntry().edit(title, excerpt, text, topics)
+        self._getWeblogEntry().edit(title, excerpt, text, topics, mimetype=mimetype)
 
     def setPublicationDate(self, datetime):
         """See IWeblogEntry.
