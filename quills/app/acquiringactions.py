@@ -33,7 +33,7 @@ class AcquiringActionProvider:
         raise NotImplementedError
 
     def listActionInfos(self, action_chain=None, object=None, check_visibility=1,
-                        check_permissions=1, check_condition=1, max=-1):
+                        check_permissions=1, check_condition=1, maximum=-1):
         """ List ActionInfo objects.
 
         'action_chain' is a sequence of action 'paths' (e.g. 'object/view').
@@ -41,7 +41,7 @@ class AcquiringActionProvider:
 
         If 'object' is specified, object specific Actions are included.
 
-        If 'max' is specified, only the first max Actions are returned.
+        If 'maximum' is specified, only the first maximum Actions are returned.
 
         Permission -- Always available (not publishable)
 
