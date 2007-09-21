@@ -40,7 +40,7 @@ class WeblogEntryCatalogBrain(QuillsMixin):
         """See IWeblogEntry.
         """
         from topic import AuthorTopic
-        creators = self['creators']
+        creators = self['listCreators']
         weblog_content = self.getWeblogContentObject()
         return [AuthorTopic(each).__of__(weblog_content) for each in creators]
 

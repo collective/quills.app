@@ -19,6 +19,8 @@ from plone.i18n.normalizer.interfaces import IIDNormalizer
 # Product imports
 from quills.core.interfaces import ITopic
 from quills.core.interfaces import IAuthorTopic
+from quills.core.interfaces import ITopicContainer
+from quills.core.interfaces import IAuthorContainer
 from quills.core.interfaces import IWeblogEntry
 from quills.core.interfaces import IPossibleWeblogEntry
 from acquiringactions import AcquiringActionProvider
@@ -180,3 +182,108 @@ class AuthorTopic(Topic):
                 sort_order='reverse',
                 review_state='published')
         return results
+
+
+class TopicContainer(QuillsMixin, AcquiringActionProvider, Traversable,
+                     Implicit):
+    """
+    >>> from zope.interface.verify import verifyClass
+    >>> verifyClass(ITopicContainer, TopicContainer)
+    True
+    """
+
+    implements(ITopicContainer)
+
+    __allow_access_to_unprotected_subobjects__ = EvilAATUSHack()
+
+    def __init__(self, id, title='Topics'):
+        self.id = str(id)
+        self._title = title
+
+    def getId(self):
+        """
+        """
+        return self.id
+
+    def Title(self):
+        """
+        """
+        return self._title
+
+    def getTopics(self):
+        """See ITopicContainer.
+        """
+        keywords = self._getKeywordsForBlogEntries()
+        return [Topic(kw).__of__(self) for kw in keywords]
+
+    def getTopicById(self, id):
+        """See ITopicContainer.
+        """
+        return Topic(id).__of__(self)
+
+    def _getKeywordsForBlogEntries(self):
+        """Return a sequence of all keywords that are associatd with
+        IWeblogEntry instances contained in this IWeblog.
+        """
+        entries = self.getWeblog().getAllEntries()
+        # Use dict rather than list to avoid duplicates
+        keywords = {}
+        for entry in entries:
+            for kw in entry.Subject:
+                keywords[kw] = None
+        keys = keywords.keys()
+        keys.sort()
+        return keys
+
+
+
+class AuthorContainer(QuillsMixin, AcquiringActionProvider, Traversable,
+                     Implicit):
+    """
+    >>> from zope.interface.verify import verifyClass
+    >>> verifyClass(IAuthorContainer, AuthorContainer)
+    True
+    """
+
+    implements(IAuthorContainer)
+
+    __allow_access_to_unprotected_subobjects__ = EvilAATUSHack()
+
+    def __init__(self, id, title='Authors'):
+        self.id = str(id)
+        self._title = title
+
+    def getId(self):
+        """
+        """
+        return self.id
+
+    def Title(self):
+        """
+        """
+        return self._title
+
+    def getAuthors(self):
+        """See IAuthorContainer.
+        """
+        authors = self._getAuthorsForBlogEntries()
+        return [AuthorTopic(author).__of__(self) for author in authors]
+
+    def getAuthorById(self, id):
+        """See IAuthorContainer.
+        """
+        return AuthorTopic(id).__of__(self)
+
+    def _getAuthorsForBlogEntries(self):
+        """Return a sequence of all keywords that are associatd with
+        IWeblogEntry instances contained in this IWeblog.
+        """
+        entries = self.getWeblog().getEntries()
+        # Use dict rather than list to avoid duplicates
+        authors = {}
+        for entry in entries:
+            for author in entry.getAuthors():
+                authors[author.getId()] = None
+        authors = authors.keys()
+        authors.sort()
+        return authors

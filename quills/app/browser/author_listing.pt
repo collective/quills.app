@@ -14,20 +14,17 @@
   <body>
     <div metal:fill-slot="main" id="weblog-topics">
 
-        <div tal:define="weblog python:here.quills_tool.getParentWeblog(here)">
-
         <h1 class="documentFirstHeading"
           i18n:translate="heading_weblog_topics">Weblog Authors</h1>
 
         <ul>
-            <li tal:repeat="author here/getAuthors">
+            <li tal:repeat="author context/getAuthors">
               <a href=""
                  tal:content="author"
-                 tal:attributes="href string:${request/URL0}/$author">topic</a>
+                 tal:attributes="href string:${context/absolute_url}/$author">author</a>
             </li>
         </ul>
 
-      </div>
     </div>
   </body>
 

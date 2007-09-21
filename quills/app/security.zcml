@@ -44,4 +44,18 @@
             />
     </class>
 
+    <class class=".topic.TopicContainer">
+        <require
+            permission="zope2.View"
+            interface="quills.core.interfaces.ITopicContainer"
+            />
+    </class>
+
+    <class class=".topic.AuthorContainer">
+        <require
+            permission="zope2.View"
+            interface="quills.core.interfaces.IAuthorContainer"
+            />
+    </class>
+
 </configure>
