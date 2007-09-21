@@ -38,7 +38,7 @@ class BaseView(BrowserView):
     def getArchiveURLFor(self, obj):
         """See IWeblogView.
         """
-        weblog_content = obj.getParentWeblogContentObject()
+        weblog_content = obj.getWeblogContentObject()
         return getArchiveURLFor(obj, weblog_content)
 
     def displayingOneEntry(self, context, weblogentry):

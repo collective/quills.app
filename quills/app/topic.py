@@ -107,7 +107,7 @@ class Topic(QuillsMixin, AcquiringActionProvider, Traversable, Implicit):
     def getEntries(self, max=None, offset=0):
         """See ITopic.
         """
-        weblog = self.getParentWeblogContentObject()
+        weblog = self.getWeblogContentObject()
         path = '/'.join(weblog.getPhysicalPath())
         catalog = getToolByName(self, 'portal_catalog')
         catalog._catalog.useBrains(WeblogEntryCatalogBrain)
@@ -165,7 +165,7 @@ class AuthorTopic(Topic):
     def getEntries(self):
         """See ITopic.
         """
-        weblog = self.getParentWeblogContentObject()
+        weblog = self.getWeblogContentObject()
         path = '/'.join(weblog.getPhysicalPath())
         catalog = getToolByName(self, 'portal_catalog')
         catalog._catalog.useBrains(WeblogEntryCatalogBrain)

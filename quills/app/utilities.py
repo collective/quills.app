@@ -36,11 +36,11 @@ class QuillsMixin:
     """
     """
 
-    def getParentWeblogContentObject(self):
+    def getWeblogContentObject(self):
         return recurseToInterface(self, (IWeblog, IWeblogEnhanced))
 
-    def getParentWeblog(self):
-        obj = self.getParentWeblogContentObject()
+    def getWeblog(self):
+        obj = self.getWeblogContentObject()
         if IWeblog.providedBy(obj):
             return obj
         return IWeblog(obj)

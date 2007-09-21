@@ -36,8 +36,8 @@
                        show_content show_content | python:True;
                        entry nocall:entry | nothing;
                        displaying_one_entry python:view.displayingOneEntry(context, entry);
-                       weblog nocall:weblog | python:entry.getParentWeblog();
-                       weblog_content nocall:weblog_content | python:entry.getParentWeblogContentObject()">
+                       weblog nocall:weblog | python:entry.getWeblog();
+                       weblog_content nocall:weblog_content | python:entry.getWeblogContentObject()">
         <tal:comment condition="nothing">
           Parameters:
 

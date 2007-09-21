@@ -33,7 +33,7 @@ class WeblogEntryCatalogBrain(QuillsMixin):
         """
         from topic import Topic
         subjects = self['Subject']
-        weblog_content = self.getParentWeblogContentObject()
+        weblog_content = self.getWeblogContentObject()
         return [Topic(each).__of__(weblog_content) for each in subjects]
 
     def getAuthors(self):
@@ -41,7 +41,7 @@ class WeblogEntryCatalogBrain(QuillsMixin):
         """
         from topic import AuthorTopic
         creators = self['creators']
-        weblog_content = self.getParentWeblogContentObject()
+        weblog_content = self.getWeblogContentObject()
         return [AuthorTopic(each).__of__(weblog_content) for each in creators]
 
     def getExcerpt(self):
@@ -54,7 +54,7 @@ class WeblogEntryCatalogBrain(QuillsMixin):
         """
         return self._getObject().getText()
 
-    def getParentWeblogContentObject(self):
+    def getWeblogContentObject(self):
         """See IWeblogEntry.
         """
         return recurseToInterface(self._getObject(), (IWeblog, IWeblogEnhanced))

@@ -113,7 +113,7 @@ class ArchiveContainer(BaseArchive):
         """
         """
         # Just return the weblog's getEntries.
-        self.results = self.getParentWeblog().getEntries()[offset:]
+        self.results = self.getWeblog().getEntries()[offset:]
         if max is not None:
             self.results = self.results[:max]
         return self.results
@@ -148,7 +148,7 @@ class BaseDateArchive(BaseArchive):
             min_datetime, max_datetime = self._getDateRange()
             catalog = getToolByName(self, 'portal_catalog')
             catalog._catalog.useBrains(WeblogEntryCatalogBrain)
-            weblog = self.getParentWeblogContentObject()
+            weblog = self.getWeblogContentObject()
             path = '/'.join(weblog.getPhysicalPath())
             ifaces = [interfaceToName(catalog.aq_parent, IWeblogEntry),
                       interfaceToName(catalog.aq_parent, IPossibleWeblogEntry)]
