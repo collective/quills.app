@@ -78,16 +78,6 @@ class WeblogEntryView(BaseView):
         weblog = self.context.getWeblogContentObject()
         return IWeblogConfiguration(weblog)
 
-    def getWeblogEntryContent(self):
-        """See IWeblogEntryView.
-        """
-        return self.context
-
-    def getWeblogEntry(self):
-        """See IWeblogEntryView.
-        """
-        return self.context
-
 
 class TopicView(WeblogView):
     """
@@ -105,14 +95,6 @@ class TopicView(WeblogView):
         if entries:
             # XXX modified should be in an interface
             return entries[0].modified
-
-    def absolute_url(self):
-        """See ITopicView.
-        """
-        weblog_content = self.context.getWeblogContentObject()
-        weblog_url = weblog_content.absolute_url()
-        keywords = '/'.join(self.context.getKeywords())
-        return '%s/topics/%s' % (weblog_url, keywords)
 
 
 class WeblogArchiveView(BaseView):

@@ -12,7 +12,7 @@
         <a class="" href="" title=""
            tal:repeat="cloud_dict view/getCloud"
            tal:attributes="
-                href cloud_dict/topic/@@topic_view/absolute_url;
+                href cloud_dict/topic/absolute_url;
                 title string:${cloud_dict/number_of_entries} entries;
                 class string:cloudItem tagRank_${cloud_dict/size}" 
            tal:content="cloud_dict/topic/getTitle">
