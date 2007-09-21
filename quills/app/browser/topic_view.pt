@@ -29,7 +29,7 @@
       <div id="content-weblog">
         <tal:dummy define="entries context/getEntries;
                            batch_base_url request/ACTUAL_URL;
-                           weblog python:context.getParentWeblog();
+                           weblog context;
                            wvconfig weblog/@@weblog_view/getConfig">
         <metal:macro
             use-macro="context/weblog_macros/macros/list-entries"/>
