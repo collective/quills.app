@@ -75,7 +75,7 @@ class WeblogEntryView(BaseView):
     def getConfig(self):
         """See IWeblogView.
         """
-        weblog = self.context.getParentWeblogContentObject()
+        weblog = self.context.getWeblogContentObject()
         return IWeblogConfiguration(weblog)
 
     def getWeblogEntryContent(self):
@@ -109,7 +109,7 @@ class TopicView(WeblogView):
     def absolute_url(self):
         """See ITopicView.
         """
-        weblog_content = self.context.getParentWeblogContentObject()
+        weblog_content = self.context.getWeblogContentObject()
         weblog_url = weblog_content.absolute_url()
         keywords = '/'.join(self.context.getKeywords())
         return '%s/topics/%s' % (weblog_url, keywords)
