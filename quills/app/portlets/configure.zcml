@@ -40,4 +40,13 @@
       editview=".recententries.EditForm"
       />
 
+  <plone:portlet
+      name="quills.app.portlets.QuillsLinks"
+      interface=".quillslinks.IQuillsLinksPortlet"
+      assignment=".quillslinks.Assignment"
+      renderer=".quillslinks.Renderer"
+      addview=".quillslinks.AddForm"
+      editview=".quillslinks.EditForm"
+      />
+
 </configure>

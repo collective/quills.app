@@ -27,4 +27,10 @@
     description="A portlet that displays recent entries to a weblog."
     />
 
+  <portlet
+    addview="quills.app.portlets.QuillsLinks"
+    title="Quills Links Portlet"
+    description="A portlet that displays the feed links of a blog instance."
+    />
+
 </portlets>

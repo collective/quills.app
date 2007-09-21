@@ -1,0 +1,65 @@
+<dl class="portlet portletQuillsLinks"
+    i18n:domain="quills"
+    tal:define="weblog python:context.getWeblog();
+                portal_url view/portal_url;">
+
+    <dt class="portletHeader">
+        <span class="portletTopLeft"></span>
+        <span class="tile"
+              tal:content="view/title">_title_</span>
+        <span class="portletTopRight"></span>
+    </dt>
+
+        <dd class="portletItem odd" id="quills-portlet-atom">
+          <a href="#"
+             tal:attributes="href string:${weblog/absolute_url}/atom.xml">
+            <img src="" 
+                 height="15" 
+                 width="80" 
+                 alt="Atom"
+                 title="Atom Enabled" 
+                 i18n:attributes="alt; title"
+                 tal:attributes="src string:$portal_url/atom_feed.gif" />
+          </a>
+        </dd>
+
+        <dd class="portletItem even" id="quills-portlet-rdf">
+          <a href=""
+             tal:attributes="href string:${weblog/absolute_url}/feed.rdf">
+            <img src="" 
+                 height="15" 
+                 width="80" 
+                 alt="RDF"
+                 title="Semantic feed" 
+                 i18n:attributes="alt; title"
+                 tal:attributes="src string:$portal_url/rdf_feed.gif" />
+          </a>
+        </dd>
+
+        <dd class="portletItem odd" id="quills-portlet-rss">
+          <a href=""
+             tal:attributes="href string:${weblog/absolute_url}/rss.xml">
+            <img src="" 
+                 height="15" 
+                 width="80" 
+                 alt="RSS 2.0"
+                 title="RSS 2.0 feed" 
+                 i18n:attributes="alt; title"
+                 tal:attributes="src string:$portal_url/rss_feed.gif" />
+          </a>
+        </dd>
+        <dd class="portletFooter" 
+            id="quills-portlet-quills">
+          <a href="http://plone.org/products/quills">
+            <img src="" 
+                 height="15" 
+                 width="80" 
+                 alt="Powered by Quills"
+                 title="Quills weblog system for Plone"
+                 i18n:attributes="alt; title"
+                 tal:attributes="src string:$portal_url/quills_powered.gif" />
+          </a>
+          <span class="portletBottomLeft"></span>
+            <span class="portletBottomRight"></span>
+        </dd>
+</dl>
