@@ -29,5 +29,4 @@ class AcquiringWeblogPortletRetriever(object):
         return weblog_retriever.getPortlets()
 
     def _getWeblog(self):
-        return recurseToInterface(self.context.aq_inner,
-                                  (IWeblog, IWeblogEnhanced))
+        return self.context.aq_inner.getWeblog()

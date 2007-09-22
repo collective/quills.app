@@ -16,7 +16,7 @@ from Products.CMFCore.utils import getToolByName
 # Plone imports
 from plone.i18n.normalizer.interfaces import IIDNormalizer
 
-# Product imports
+# Quills imports
 from quills.core.interfaces import ITopic
 from quills.core.interfaces import IAuthorTopic
 from quills.core.interfaces import ITopicContainer
@@ -27,7 +27,8 @@ from acquiringactions import AcquiringActionProvider
 from weblogentrybrain import WeblogEntryCatalogBrain
 from utilities import EvilAATUSHack
 from utilities import QuillsMixin
-
+from interfaces import ITransientTopicContainer
+from interfaces import ITransientAuthorContainer
 
 class Topic(QuillsMixin, AcquiringActionProvider, Traversable, Implicit):
     """Implementation of ITopic as a transient wrapper around a keywords.
@@ -192,7 +193,7 @@ class TopicContainer(QuillsMixin, AcquiringActionProvider, Traversable,
     True
     """
 
-    implements(ITopicContainer)
+    implements(ITopicContainer, ITransientTopicContainer)
 
     __allow_access_to_unprotected_subobjects__ = EvilAATUSHack()
 
@@ -245,7 +246,7 @@ class AuthorContainer(QuillsMixin, AcquiringActionProvider, Traversable,
     True
     """
 
-    implements(IAuthorContainer)
+    implements(IAuthorContainer, ITransientAuthorContainer)
 
     __allow_access_to_unprotected_subobjects__ = EvilAATUSHack()
 
