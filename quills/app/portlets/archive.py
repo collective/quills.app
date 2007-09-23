@@ -11,7 +11,6 @@ from Products.CMFPlone import PloneMessageFactory as _
 # Quills imports
 from quills.core.interfaces import IWeblogEnhanced
 from quills.core.interfaces import IWeblog
-from quills.core.interfaces import IWeblogArchive
 from quills.app.utilities import recurseToInterface
 from quills.app.browser.baseview import BaseView
 

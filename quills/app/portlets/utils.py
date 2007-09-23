@@ -5,10 +5,6 @@ from zope.component import getMultiAdapter
 # Plone imports
 from plone.portlets.interfaces import IPortletRetriever
 
-# Quills imports
-from quills.core.interfaces import IWeblog, IWeblogEnhanced
-from quills.app.utilities import recurseToInterface
-
 
 class AcquiringWeblogPortletRetriever(object):
     """This implementation just delegates to the acquisition parent's
