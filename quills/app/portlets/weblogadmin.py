@@ -68,6 +68,11 @@ class Renderer(base.Renderer):
         weblog_content = self._getWeblogContent()
         return "%s/manage_comments" % weblog_content.absolute_url()
 
+    @property
+    def config_view_url(self):
+        weblog_content = self._getWeblogContent()
+        return "%s/config_view" % weblog_content.absolute_url()
+
     def _getWeblogContent(self):
         weblog_content = getattr(self, '_v_weblog_content', None)
         if weblog_content is None:

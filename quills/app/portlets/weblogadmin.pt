@@ -24,10 +24,13 @@
         Manage Comments
        </a>
     </dd>
-
-    <dd class="portletFooter">
-        <span class="portletBottomLeft"></span>
-        <span class="portletBottomRight"></span>
+    <dd class="portletItem odd">
+       <a title="Configure Blog" href="#"
+        i18n:translate="portlet_blogadmin_configure_blog"
+        i18n:attributes="title"
+        tal:attributes="href view/config_view_url">
+        Configure Blog
+       </a>
     </dd>
 
 </dl>
