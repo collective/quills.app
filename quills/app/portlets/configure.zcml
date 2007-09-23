@@ -58,4 +58,14 @@
       editview=".quillslinks.EditForm"
       />
 
+  <plone:portlet
+      name="quills.app.portlets.WeblogArchive"
+      interface=".archive.IWeblogArchivePortlet"
+      assignment=".archive.Assignment"
+      renderer=".archive.Renderer"
+      addview=".archive.AddForm"
+      editview=".archive.EditForm"
+      />
+
+
 </configure>

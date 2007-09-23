@@ -147,16 +147,15 @@ p .weblog-read-more a {
 
 /* portlets */
 
-#portlet-creativecommons {
-   text-align: center;
-}
-#portlet-weblogarchives .portletBody,
-#portlet-weblogtopics .portletBody {
+.portletWeblogArchive .portletBody {
    padding:   20px;
 }
 
-#portlet-weblogarchives a,
-#portlet-weblogtopics a {
+.portletWeblogArchive li {
+    list-style: none;
+}
+
+.portletWeblogArchive a {
     margin: 0 0 0.2em 0;
     border: &dtml-borderWidth; &dtml-borderStyle; &dtml-backgroundColor;;
     display: block;
@@ -166,14 +165,13 @@ p .weblog-read-more a {
     text-decoration: none;
 }
 
-#portlet-weblogarchives a:hover,
-#portlet-weblogtopics a:hover {
+.portletWeblogArchive a:hover {
     background-color: &dtml-globalBackgroundColor;;
     color: &dtml-globalFontColor;;
     border: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
 }
 
-#portlet-quills dd { 
+.portletQuillsLinks dd { 
     text-align:center;
 }
 
