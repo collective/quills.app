@@ -22,8 +22,9 @@
       </div>
 
       <div metal:use-macro="context/entry_macros/macros/display-entry"/>
+      <tal:pubdate tal:condition="python: view.workflow_state()=='published'">
       <div metal:use-macro="context/entry_macros/macros/discussion-summary"/>
-
+      </tal:pubdate>
       <div metal:use-macro="context/document_relateditems/macros/relatedItems">
         show related items if they exist
       </div>

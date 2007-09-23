@@ -3,6 +3,7 @@ from zope.interface import implements
 
 # Plone imports
 from Products.CMFPlone.PloneBatch import Batch as PloneBatch
+from Products.CMFCore.utils import getToolByName
 
 # Quills imports
 from quills.core.interfaces import IWeblogConfiguration
@@ -77,6 +78,11 @@ class WeblogEntryView(BaseView):
         """
         weblog = self.context.getWeblogContentObject()
         return IWeblogConfiguration(weblog)
+    
+    def workflow_state(self):
+        """returns the current workflow state of the context"""
+        wftool = getToolByName(self.context, 'portal_workflow')
+        return wftool.getInfoFor(self.context, "review_state")
 
 
 class TopicView(WeblogView):
