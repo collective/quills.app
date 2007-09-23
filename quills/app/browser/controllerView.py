@@ -1,4 +1,4 @@
-from quills.app.browser.QuillsBaseView import QuillsBaseView
+from quills.app.browser.baseview import BaseView
 from Products.CMFCore.utils import getToolByName
 
 # A basic form controller designed for maximum compatibility with CMFFormController
@@ -19,7 +19,7 @@ class FormControllerViewState:
         return self.errors
     
 
-class FormControllerView(QuillsBaseView):
+class FormControllerView(BaseView):
     """ a very basic formcontroller-like view class """
     
     def __call__(self, *args, **kw):

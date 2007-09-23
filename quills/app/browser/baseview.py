@@ -48,3 +48,12 @@ class BaseView(BrowserView):
         if entry_absolute_url is None:
             entry_absolute_url = weblogentry.context.absolute_url
         return context.absolute_url() == entry_absolute_url()
+
+    def test(self, value, trueVal, falseVal):
+        """
+            helper method, mainly for setting html attributes.
+        """
+        if value:
+            return trueVal
+        else:
+            return falseVal
