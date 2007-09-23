@@ -7,6 +7,7 @@ from Products.CMFCore.utils import getToolByName
 
 # Quills imports
 from quills.core.interfaces import IWeblogConfiguration
+from quills.core.interfaces import IWeblogEntry
 from quills.core.browser.interfaces import IWeblogView
 from quills.core.browser.interfaces import IWeblogEntryView
 from quills.core.browser.interfaces import ITopicView
@@ -62,6 +63,10 @@ class WeblogView(BaseView):
             except:
                 results[date] = [lazy_entry,]
         return results
+        
+        def brain2object(self, brain):
+            """returns an IWeblogEntry instance for the given weblogentry brain"""
+            return IWeblogEntry(brain.getObject())
 
 
 class WeblogEntryView(BaseView):

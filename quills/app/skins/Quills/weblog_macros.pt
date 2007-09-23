@@ -44,7 +44,7 @@
         <tal:notByDates tal:condition="not: group_by_dates">
           <tal:entries repeat="entry python:results[day]">
             <tal:block tal:define="secondLevel python:True;
-                                   entry python:entry.getObject();">
+                                   entry python:view.brain2object(entry);">
                                    <em tal:content="entry"></em>
               <metal:macro use-macro="context/entry_macros/macros/display-entry"/>
               <metal:macro use-macro="context/entry_macros/macros/discussion-summary"/>
