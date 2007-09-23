@@ -209,16 +209,28 @@
     <metal:discussion define-macro="discussion-summary">
       <div class="weblog-footer discreet"
            tal:define="discussion nocall:context/portal_discussion;
+                       displaying_one_entry python:view.displayingOneEntry(context, entry);
                        isDiscussionAllowedFor
                        nocall:discussion/isDiscussionAllowedFor;
                        getDiscussionFor nocall:discussion/getDiscussionFor">
         <tal:if condition="python:isDiscussionAllowedFor(entry)">
+          <tal:single tal:condition="displaying_one_entry">
+          <a href=""
+             style="text-decoration: none;"
+             name="comments"
+             tal:attributes="href python:'%s#comments' % view.getArchiveURLFor(entry)"
+             i18n:translate="number_of_comments">
+            Comments:
+          </a>
+          </tal:single>
+          <tal:single tal:condition="not: displaying_one_entry">
           <a href=""
              style="text-decoration: none;"
              tal:attributes="href python:'%s#comments' % view.getArchiveURLFor(entry)"
              i18n:translate="number_of_comments">
             Comments:
           </a>
+          </tal:single>
           <span
               tal:content="python:getDiscussionFor(entry).replyCount(entry)">
             0

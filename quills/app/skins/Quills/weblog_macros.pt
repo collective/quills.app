@@ -34,14 +34,18 @@
           <h2 tal:content="python:context.toLocalizedTime(day, context=context)" />
 
           <tal:entries repeat="entry python:results[day]">
+            <tal:define tal:define="entry python:entry.getObject()">
             <metal:macro use-macro="context/entry_macros/macros/display-entry"/>
             <metal:macro use-macro="context/entry_macros/macros/discussion-summary"/>
+            </tal:define>
           </tal:entries>
         </tal:byDates>
 
         <tal:notByDates tal:condition="not: group_by_dates">
           <tal:entries repeat="entry python:results[day]">
-            <tal:block define="secondLevel python:True;">
+            <tal:block tal:define="secondLevel python:True;
+                                   entry python:entry.getObject();">
+                                   <em tal:content="entry"></em>
               <metal:macro use-macro="context/entry_macros/macros/display-entry"/>
               <metal:macro use-macro="context/entry_macros/macros/discussion-summary"/>
             </tal:block>
