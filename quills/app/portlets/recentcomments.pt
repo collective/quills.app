@@ -14,7 +14,7 @@
       <dd class="portletItem odd"
           tal:attributes="class python:repeat['comment'].odd() and 'portletItem odd' or 'portletItem even'">
 
-          <a href="" tal:attributes="href comment/getURL">
+          <a href="" tal:attributes="href python:view.talkbackURL(comment)">
               <span tal:replace ="comment/Title">foo</span>
               <tal:author tal:condition="comment/Creator"> (<span tal:replace="comment/Creator">user</span>)</tal:author></a>
       </dd>

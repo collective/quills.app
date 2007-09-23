@@ -1,4 +1,5 @@
 from controllerView import FormControllerView, getToolByName
+from quills.app.utilities import talkbackURL
 
 class ManageCommentsView(FormControllerView):
     """ The view class for the comments management form """
@@ -80,3 +81,5 @@ class ManageCommentsView(FormControllerView):
         self.has_comments = self.num_of_comments > 0
         return self.comment_brains
 
+    def talkbackURL(self, item):
+        return talkbackURL(item)

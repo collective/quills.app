@@ -14,6 +14,7 @@ from Products.CMFPlone import PloneMessageFactory as _
 from quills.core.interfaces import IWeblogEnhanced
 from quills.core.interfaces import IWeblog
 from quills.app.utilities import recurseToInterface
+from quills.app.utilities import talkbackURL
 from quills.app.browser.baseview import BaseView
 
 
@@ -66,6 +67,8 @@ class Renderer(base.Renderer, BaseView):
         view = getMultiAdapter((weblog, self.request), name='manage_comments')
         return view.getComments()[:self.data.max_comments]
 
+    def talkbackURL(self, item):
+        return talkbackURL(item)
 
 class AddForm(base.AddForm):
     form_fields = form.Fields(IRecentWeblogCommentsPortlet)

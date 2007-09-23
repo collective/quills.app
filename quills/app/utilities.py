@@ -15,6 +15,8 @@ from quills.core.interfaces import IWeblog
 from quills.core.interfaces import IWeblogEnhanced
 from quills.core.interfaces import IWeblogConfiguration
 
+import re
+talkback_url_extractor = re.compile("(.*)/talkback/\d+")
 
 class EvilAATUSHack(Explicit):
 
@@ -92,3 +94,11 @@ def recurseToInterface(item, ifaces):
             # Stop when we get to the portal root.
             return None
     return recurseToInterface(parent, ifaces)
+
+def talkbackURL(discussion_brain):
+    """expects the brain of a discussion item and constructs a url for it.
+    n.b. we're using a regex in order to allow for the string 'talkback' to appear
+    in the url in other places, too.
+    """
+    absolute_url = talkback_url_extractor.search(discussion_brain.getURL()).groups()[0]
+    return "%s#%s" % (absolute_url, discussion_brain.id)
