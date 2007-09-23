@@ -59,11 +59,16 @@
           entry - The actual entry.
         </tal:comment>
 
+
         <tal:comment condition="nothing"> title </tal:comment>
-        <h1 tal:condition="displaying_one_entry"
-            tal:content="entry/getTitle">
+        <tal:headerInListing tal:condition="displaying_one_entry">
+
+        <div tal:replace="structure provider:plone.abovecontenttitle" />
+        <h1 tal:content="entry/getTitle">
           Level 1 title, not clickable
         </h1>
+        <div tal:replace="structure provider:plone.abovecontentbody" />
+        </tal:headerInListing>
         <tal:headerInListing tal:condition="not: displaying_one_entry">
           <h2 tal:condition="second_level">
             <a href=""
