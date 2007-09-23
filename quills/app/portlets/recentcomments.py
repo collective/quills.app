@@ -1,6 +1,7 @@
 from zope import schema
 from zope.formlib import form
 from zope.interface import implements
+from zope.component import getMultiAdapter
 
 from plone.app.portlets.portlets import base
 from plone.memoize.compress import xhtml_compress
@@ -62,8 +63,8 @@ class Renderer(base.Renderer, BaseView):
         weblog_content = recurseToInterface(self.context.aq_inner,
                                            (IWeblog, IWeblogEnhanced))
         weblog = IWeblog(weblog_content)
-        return []
-        # return weblog.getComments(maximum=self.data.max_comments)
+        view = getMultiAdapter((weblog, self.request), name='manage_comments')
+        return view.getComments()[:self.data.max_comments]
 
 
 class AddForm(base.AddForm):

@@ -78,4 +78,5 @@ class ManageCommentsView(FormControllerView):
         self.comment_brains = self.portal_catalog(self.contentFilter)
         self.num_of_comments = len(self.comment_brains)
         self.has_comments = self.num_of_comments > 0
+        return self.comment_brains
 

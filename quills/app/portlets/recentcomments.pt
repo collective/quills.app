@@ -1,5 +1,6 @@
 <dl class="portlet portletRecentComments"
-    i18n:domain="plone">
+    i18n:domain="plone"
+    tal:define="comments view/getComments;">
 
     <dt class="portletHeader">
         <span class="portletTopLeft"></span>
@@ -8,19 +9,16 @@
         <span class="portletTopRight"></span>
     </dt>
 
-    <tal:block repeat="entry view/getComments">
+    <tal:block repeat="comment comments">
 
       <dd class="portletItem odd"
-          tal:attributes="class python:repeat['entry'].odd() and 'portletItem odd' or 'portletItem even'">
+          tal:attributes="class python:repeat['comment'].odd() and 'portletItem odd' or 'portletItem even'">
 
-          <a href="">foo</a>
+          <a href="" tal:attributes="href comment/getURL">
+              <span tal:replace ="comment/Title">foo</span>
+              <tal:author tal:condition="comment/Creator"> (<span tal:replace="comment/Creator">user</span>)</tal:author></a>
       </dd>
 
     </tal:block>
-
-    <dd class="portletFooter">
-        <span class="portletBottomLeft"></span>
-        <span class="portletBottomRight"></span>
-    </dd>
 
 </dl>
