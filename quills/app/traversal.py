@@ -93,12 +93,6 @@ class WeblogArchiveTraverser(DefaultPublishTraverse):
             # So, we do standard traversal to get the actual object.
             obj = super(WeblogArchiveTraverser,
                         self).publishTraverse(request, name)
-            # if we've reached a blog entry we set the request's ACTUAL_URL to
-            # the entry's absolute_url to signal to plone.app.layout.globals
-            # that it's dealing with a view_template (see also #97)
-            if IPossibleWeblogEntry.providedBy(obj) or \
-                IWeblogEntry.providedBy(obj):
-                request['ACTUAL_URL'] = obj.absolute_url()
             # Then we return a particular view on it if it provides what we're
             # after.
             if IPossibleWeblogEntry.providedBy(obj):
