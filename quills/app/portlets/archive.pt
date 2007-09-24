@@ -1,6 +1,6 @@
 <dl class="portlet portletWeblogArchive"
     i18n:domain="quills"
-    tal:define="years view/getSubArchives;"
+    tal:define="years python:context.getWeblog().getSubArchives();"
     tal:condition="years">
 
     <dt class="portletHeader">

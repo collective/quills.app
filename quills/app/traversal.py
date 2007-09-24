@@ -44,9 +44,8 @@ class WeblogTraverser(DefaultPublishTraverse):
         return super(WeblogTraverser, self).publishTraverse(request, name)
 
     def isArchiveFolder(self, name):
-        """Test if 'name' is an archive folder.  This is True when:
-            - name is the value indicated by weblog_config;
-            - name is a year.
+        """Test if 'name' is an archive folder.  This is True when name is the
+        value indicated by weblog_config
         """
         weblog_config = IWeblogConfiguration(self.context)
         if name == weblog_config.archive_format:

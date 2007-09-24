@@ -42,6 +42,7 @@ from acquiringactions import AcquiringActionProvider
 from weblogentrybrain import WeblogEntryCatalogBrain
 from utilities import EvilAATUSHack
 from utilities import QuillsMixin
+from interfaces import ITransientArchive
 
 
 class BaseArchive(QuillsMixin, AcquiringActionProvider, Traversable, Implicit):
@@ -121,7 +122,7 @@ class ArchiveContainer(BaseArchive):
 
 class BaseDateArchive(BaseArchive):
 
-    implements(IWeblogArchive)
+    implements(IWeblogArchive, ITransientArchive)
 
     def getId(self):
         """

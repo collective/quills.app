@@ -48,11 +48,11 @@ class Renderer(base.Renderer, BaseView):
     def title(self):
         return _(PORTLET_TITLE)
 
-    @property
-    def getSubArchives(self):
-        weblog_content = recurseToInterface(self.context.aq_inner,
-                                           (IWeblog, IWeblogEnhanced))
-        return weblog_content.getArchives().getSubArchives()
+    #@property
+    #def getSubArchives(self):
+    #    weblog_content = recurseToInterface(self.context.aq_inner,
+    #                                       (IWeblog, IWeblogEnhanced))
+    #    return weblog_content.getSubArchives()
 
 class AddForm(base.AddForm):
     form_fields = form.Fields(IWeblogArchivePortlet)
