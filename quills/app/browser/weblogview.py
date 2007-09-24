@@ -63,10 +63,6 @@ class WeblogView(BaseView):
             except:
                 results[date] = [lazy_entry,]
         return results
-        
-        def brain2object(self, brain):
-            """returns an IWeblogEntry instance for the given weblogentry brain"""
-            return IWeblogEntry(brain.getObject())
 
 
 class WeblogEntryView(BaseView):

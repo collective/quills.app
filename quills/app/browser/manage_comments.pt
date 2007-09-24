@@ -89,7 +89,7 @@
                                         comment_subject      comment/Title;
                                         comment_modified     comment/modified;
                                         oddrow               repeat/comment/odd;"
-                                        tal:attributes="class python:view.test(oddrow, 'even', 'odd')" >
+                                        tal:attributes="class python:test(oddrow, 'even', 'odd')" >
 
                                         <td>
                                             <input type="checkbox"
@@ -99,7 +99,7 @@
                                                 tal:attributes="
                                                     value   comment_path;
                                                     id      string:cb_$comment_id;
-                                                    checked python:view.test(request.get('ids_checked', False), 'checked', None);
+                                                    checked python:test(request.get('ids_checked', False), 'checked', None);
                                                     alt     string:Select $comment_subject;
                                                     title   string:Select $comment_subject;" />
 

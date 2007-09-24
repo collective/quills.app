@@ -208,11 +208,8 @@
 
     <metal:discussion define-macro="discussion-summary">
       <div class="weblog-footer discreet"
-           tal:define="discussion nocall:context/portal_discussion;
-                       displaying_one_entry python:view.displayingOneEntry(context, entry);
-                       isDiscussionAllowedFor
-                       nocall:discussion/isDiscussionAllowedFor;
-                       getDiscussionFor nocall:discussion/getDiscussionFor">
+           tal:define="displaying_one_entry python:view.displayingOneEntry(context, entry);
+                       isDiscussionAllowedFor nocall:view/isDiscussionAllowedFor;">
         <tal:if condition="python:isDiscussionAllowedFor(entry)">
           <tal:single tal:condition="displaying_one_entry">
           <a href=""
@@ -232,7 +229,7 @@
           </a>
           </tal:single>
           <span
-              tal:content="python:getDiscussionFor(entry).replyCount(entry)">
+              tal:content="python:view.getCommentCountFor(entry)">
             0
           </span>
         </tal:if>
