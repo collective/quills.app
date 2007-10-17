@@ -64,6 +64,7 @@ div.entry-trackback {
     font-size: &dtml-fontSmallSize;;
     text-transform: &dtml-textTransform;;
     color: &dtml-discreetColor;;
+    margin-bottom: 0.5em;
 }
 
 .weblog-entry .weblog-topics a {
