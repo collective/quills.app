@@ -90,7 +90,7 @@
         <metal:macro use-macro="context/entry_macros/macros/topic-images"/>
 
         <tal:comment condition="nothing"> Byline </tal:comment>
-        <tal:byline tal:condition="displaying_one_entry">
+        <tal:byline>
           <metal:macro use-macro="context/document_byline/macros/byline"/>
         </tal:byline>
 
