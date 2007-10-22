@@ -1,6 +1,6 @@
 <dl class="portlet portletWeblogArchive"
     i18n:domain="quills"
-    tal:define="years python:context.getWeblog().getSubArchives();"
+    tal:define="years view/getSubArchives;"
     tal:condition="years">
 
     <dt class="portletHeader">
@@ -18,7 +18,7 @@
                     <li tal:repeat="month months">
                         <a href=""
                             tal:attributes="href month/absolute_url">
-                            <span tal:content="month/Title" /> 
+                            <span tal:content="python: view.getMonthName(month.getId())" /> 
                             (<b tal:content="python:len(month)"/>)
                         </a>
                     </li>
