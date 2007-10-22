@@ -13,7 +13,7 @@
     <dd class="portletItem lastItem">
         <ul tal:repeat="year years">
             <li>
-                <strong tal:content="year/Title" ></strong><br />
+                <h5 tal:content="year/Title" ></h5>
                 <ul tal:define="months year/getSubArchives;" >
                     <li tal:repeat="month months">
                         <a href=""
