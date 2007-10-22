@@ -1,16 +1,15 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
 "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 <html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en-US"
-  lang="en-US"
-  metal:use-macro="context/main_template/macros/master"
-  i18n:domain="quills">
+      lang="en-US"
+      metal:use-macro="context/main_template/macros/master"
+      i18n:domain="quills">
 
   <body>
     <metal:feed fill-slot="head_slot"
-         tal:define="weblog context/getWeblog;">
-         <metal:block metal:use-macro="context/quills_header_macros/macros/feed-links-base"></metal:block>
-         
+                tal:define="weblog context/getWeblog;">
+      <metal:block metal:use-macro="context/quills_header_macros/macros/feed-links-base"></metal:block>
+
     </metal:feed>
     <div metal:fill-slot="main"
          tal:define="entry_content python:context.getWeblogEntryContentObject();
@@ -23,12 +22,12 @@
 
       <div metal:use-macro="context/entry_macros/macros/display-entry"/>
       <tal:pubdate tal:condition="python: view.workflow_state()=='published'">
-      <div metal:use-macro="context/entry_macros/macros/discussion-summary"/>
+        <div metal:use-macro="context/entry_macros/macros/discussion-summary"/>
       </tal:pubdate>
       <div metal:use-macro="context/document_relateditems/macros/relatedItems">
         show related items if they exist
       </div>
-      
+
     </div>
   </body>
 </html>
