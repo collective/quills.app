@@ -1,9 +1,9 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
-  xml:lang="en-US" lang="en-US"
-  xmlns:tal="http://xml.zope.org/namespaces/tal"
-  xmlns:metal="http://xml.zope.org/namespaces/metal"
-  xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-  i18n:domain="quills">
+      xml:lang="en-US" lang="en-US"
+      xmlns:tal="http://xml.zope.org/namespaces/tal"
+      xmlns:metal="http://xml.zope.org/namespaces/metal"
+      xmlns:i18n="http://xml.zope.org/namespaces/i18n"
+      i18n:domain="quills">
   <head><title></title></head>
   <body>
 
@@ -63,11 +63,11 @@
         <tal:comment condition="nothing"> title </tal:comment>
         <tal:headerInListing tal:condition="displaying_one_entry">
 
-        <div tal:replace="structure provider:plone.abovecontenttitle" />
-        <h1 tal:content="entry/getTitle">
-          Level 1 title, not clickable
-        </h1>
-        <div tal:replace="structure provider:plone.abovecontentbody" />
+          <div tal:replace="structure provider:plone.abovecontenttitle" />
+          <h1 tal:content="entry/getTitle">
+            Level 1 title, not clickable
+          </h1>
+          <div tal:replace="structure provider:plone.abovecontentbody" />
         </tal:headerInListing>
         <tal:headerInListing tal:condition="not: displaying_one_entry">
           <h2 tal:condition="second_level">
@@ -98,20 +98,20 @@
         <metal:macro use-macro="context/entry_macros/macros/filed-under"/>
 
         <tal:comment condition="nothing"> Description
-          We add a special class (weblog-entry-only-excerpt) instead of
-          the normal docoumentDescription to allow for a different
-          formatting.
+        We add a special class (weblog-entry-only-excerpt) instead of
+        the normal docoumentDescription to allow for a different
+        formatting.
         </tal:comment>
         <tal:excerpt condition="not: show_content">
           <p class="weblog-entry-only-excerpt">
-              <span
-               tal:condition="entry/getExcerpt"
-               tal:content="entry/getExcerpt" />
-             <span class="weblog-read-more">
+            <span
+                tal:condition="entry/getExcerpt"
+                tal:content="entry/getExcerpt" />
+            <span class="weblog-read-more">
               <a href=""
                  tal:attributes="href python:view.getArchiveURLFor(entry)"
                  i18n:translate="read_more">
-                 read more...
+                read more...
               </a>
             </span>
           </p>
@@ -196,9 +196,9 @@
         <ul>
           <li tal:repeat="topic topics">
             <a href=""
-              tal:content="topic/getTitle"
-              tal:attributes="href
-                              string:${weblog/absolute_url}/topics/${topic/getId}">
+               tal:content="topic/getTitle"
+               tal:attributes="href
+                               string:${weblog/absolute_url}/topics/${topic/getId}">
               Link to the topic
             </a>
           </li>
@@ -212,21 +212,21 @@
                        isDiscussionAllowedFor nocall:view/isDiscussionAllowedFor;">
         <tal:if condition="python:isDiscussionAllowedFor(entry)">
           <tal:single tal:condition="displaying_one_entry">
-          <a href=""
-             style="text-decoration: none;"
-             name="comments"
-             tal:attributes="href python:'%s#comments' % view.getArchiveURLFor(entry)"
-             i18n:translate="number_of_comments">
-            Comments:
-          </a>
+            <a href=""
+               style="text-decoration: none;"
+               name="comments"
+               tal:attributes="href python:'%s#comments' % view.getArchiveURLFor(entry)"
+               i18n:translate="number_of_comments">
+              Comments:
+            </a>
           </tal:single>
           <tal:single tal:condition="not: displaying_one_entry">
-          <a href=""
-             style="text-decoration: none;"
-             tal:attributes="href python:'%s#comments' % view.getArchiveURLFor(entry)"
-             i18n:translate="number_of_comments">
-            Comments:
-          </a>
+            <a href=""
+               style="text-decoration: none;"
+               tal:attributes="href python:'%s#comments' % view.getArchiveURLFor(entry)"
+               i18n:translate="number_of_comments">
+              Comments:
+            </a>
           </tal:single>
           <span
               tal:content="python:view.getCommentCountFor(entry)">
