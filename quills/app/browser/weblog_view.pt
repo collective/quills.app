@@ -14,11 +14,7 @@
          tal:define="weblog context/getWeblog;
                      weblog_content context/getWeblogContentObject">
 
-      <div metal:use-macro="context/document_actions/macros/document_actions">
-        Document actions (print, sendto etc)
-      </div>
-
-      <h1 class="documentFirstHeading" 
+      <h1 class="documentFirstHeading"
           tal:content="weblog_content/title_or_id">
         Weblog title
       </h1>
@@ -29,7 +25,7 @@
         Weblog Description
       </p>
 
-      <p id="blog-uid" 
+      <p id="blog-uid"
          class="discreet"
          tal:define="show_border python:context.showEditableBorder(template_id=template_id, actions=actions );"
          tal:condition="show_border">
@@ -43,6 +39,8 @@
       <div id="content-weblog">
         <metal:macro use-macro="context/weblog_macros/macros/list-entries"/>
       </div>
+      <div tal:replace="structure provider:plone.belowcontentbody" />
+
     </div>
 
   </body>
