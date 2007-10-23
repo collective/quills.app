@@ -13,20 +13,35 @@
     </metal:feed>
     <div metal:fill-slot="main"
          tal:define="entry_content python:context.getWeblogEntryContentObject();
-                     entry         nocall:context;
-                     wvconfig      view/getConfig;">
+                     entry nocall:context;
+                     weblog_content python:context.getWeblogContentObject();
+                     weblog nocall:weblog_content;
+                     wvconfig view/getConfig;">
 
-      <div metal:use-macro="context/document_actions/macros/document_actions">
-        Document actions (print, sendto etc)
+      <div tal:replace="structure provider:plone.abovecontenttitle" />
+      <h1 class="documentFirstHeading">
+        <metal:field use-macro="python:here.widget('title', mode='view')">
+          Title
+        </metal:field>
+      </h1>
+      <!-- Commented out for now, we don't want the global keywords, we
+           want our own system.
+           <div tal:replace="structure provider:plone.belowcontenttitle" />
+      -->
+      <metal:macro use-macro="context/entry_macros/macros/filed-under"/>
+      <metal:macro use-macro="context/entry_macros/macros/topic-images" />
+      <p class="weblog-entry-only-excerpt">
+        <metal:field use-macro="python:here.widget('description', mode='view')">
+          Description
+        </metal:field>
+      </p>
+      <div tal:replace="structure provider:plone.abovecontentbody" />
+      <div>
+        <metal:field use-macro="python:here.widget('text', mode='view')">
+          Main text
+        </metal:field>
       </div>
-
-      <div metal:use-macro="context/entry_macros/macros/display-entry"/>
-      <tal:pubdate tal:condition="python: view.workflow_state()=='published'">
-        <div metal:use-macro="context/entry_macros/macros/discussion-summary"/>
-      </tal:pubdate>
-      <div metal:use-macro="context/document_relateditems/macros/relatedItems">
-        show related items if they exist
-      </div>
+      <div tal:replace="structure provider:plone.belowcontentbody" />
 
     </div>
   </body>
