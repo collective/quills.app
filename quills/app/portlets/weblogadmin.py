@@ -1,11 +1,16 @@
+# Zope imports
 from zope.formlib import form
 from zope.interface import implements
+from AccessControl import getSecurityManager
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
+# CMF imports
+from Products.CMFCore.permissions import AddPortalContent
+
+# Plone imports
 from plone.app.portlets.portlets import base
 from plone.memoize.compress import xhtml_compress
 from plone.portlets.interfaces import IPortletDataProvider
-
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFPlone import PloneMessageFactory as _
 
 # Quills imports
@@ -41,7 +46,14 @@ class Renderer(base.Renderer):
 
     @property
     def available(self):
-        return True
+        # This admin portlet is only available to people with the
+        # 'Add portal content' permission.
+        user = getSecurityManager().getUser()
+        # I think has_permission sometimes returns 1 or None, so make sure that
+        # we return True/False.
+        if user.has_permission(AddPortalContent, self.context.aq_inner):
+            return True
+        return False
 
     @property
     def title(self):
