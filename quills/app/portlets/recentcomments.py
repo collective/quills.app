@@ -15,6 +15,7 @@ from quills.core.interfaces import IWeblogEnhanced
 from quills.core.interfaces import IWeblog
 from quills.app.utilities import recurseToInterface
 from quills.app.utilities import talkbackURL
+from quills.app.utilities import getArchiveURLFor
 from quills.app.browser.baseview import BaseView
 
 
@@ -61,14 +62,25 @@ class Renderer(base.Renderer, BaseView):
 
     @property
     def getComments(self):
-        weblog_content = recurseToInterface(self.context.aq_inner,
-                                           (IWeblog, IWeblogEnhanced))
+        weblog_content = self._getWeblogContent()
         weblog = IWeblog(weblog_content)
         view = getMultiAdapter((weblog, self.request), name='manage_comments')
         return view.getComments()[:self.data.max_comments]
 
     def talkbackURL(self, item):
-        return talkbackURL(item)
+        # XXX This is (sadly) CMF-DiscussionItem-specific :(.
+        comment = item.getObject()
+        parent_comments = comment.parentsInThread()
+        commented_object = parent_comments[0]
+        weblog_content = self._getWeblogContent()
+        base_url = getArchiveURLFor(commented_object, weblog_content)
+        return '%s#%s' % (base_url, item.id)
+
+    def _getWeblogContent(self):
+        weblog_content = recurseToInterface(self.context.aq_inner,
+                                            (IWeblog, IWeblogEnhanced))
+        return weblog_content
+
 
 class AddForm(base.AddForm):
     form_fields = form.Fields(IRecentWeblogCommentsPortlet)

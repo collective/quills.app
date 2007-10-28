@@ -2,6 +2,7 @@
 from types import ListType
 from types import TupleType
 from types import StringTypes
+import re
 
 # Zope imports
 from Acquisition import Explicit
@@ -15,8 +16,6 @@ from quills.core.interfaces import IWeblog
 from quills.core.interfaces import IWeblogEnhanced
 from quills.core.interfaces import IWeblogConfiguration
 
-import re
-talkback_url_extractor = re.compile("(.*)/talkback/\d+")
 
 class EvilAATUSHack(Explicit):
 
@@ -94,6 +93,9 @@ def recurseToInterface(item, ifaces):
             # Stop when we get to the portal root.
             return None
     return recurseToInterface(parent, ifaces)
+
+
+talkback_url_extractor = re.compile("(.*)/talkback/\d+")
 
 def talkbackURL(discussion_brain):
     """expects the brain of a discussion item and constructs a url for it.
