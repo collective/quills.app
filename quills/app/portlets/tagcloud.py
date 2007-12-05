@@ -52,6 +52,8 @@ class Renderer(base.Renderer):
     def getCloud(self):
         weblog_content = recurseToInterface(self.context.aq_inner,
                                             (IWeblog, IWeblogEnhanced))
+        if weblog_content is None:
+            return []
         weblog = IWeblog(weblog_content)
         # Get a list of topics, sorted alphabetically
         topics = weblog.getTopics()
