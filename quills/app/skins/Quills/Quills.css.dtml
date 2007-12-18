@@ -172,8 +172,8 @@ p .weblog-read-more a {
     border: &dtml-borderWidth; &dtml-borderStyle; &dtml-globalBorderColor;;
 }
 
-.portletQuillsLinks dd { 
-    text-align:center;
+.portletQuillsLinks dd, dd.portletFooter { 
+    text-align:center !important;
 }
 
 .blogName{ }
