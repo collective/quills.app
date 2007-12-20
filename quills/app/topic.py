@@ -150,7 +150,11 @@ class AuthorTopic(Topic):
         """See ITopic.
         """
         memb_tool = getToolByName(self, 'portal_membership')
-        return memb_tool.getMemberInfo(self.keywords[0])['fullname']
+        user_id = self.keywords[0]
+        fullname = memb_tool.getMemberInfo(user_id)['fullname']
+        if fullname == '':
+            return user_id
+        return fullname
 
     def getDescription(self):
         """See ITopic.
