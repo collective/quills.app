@@ -15,7 +15,9 @@
 
   <body>
 
-    <div metal:fill-slot="main" id="weblogtopics">
+    <div metal:fill-slot="main"
+         id="weblogtopics"
+         tal:define="current_base_url context/@@plone_context_state/current_base_url;">
 
       <h1 class="documentFirstHeading" i18n:translate="heading_topics">Topics</h1>
 
@@ -28,7 +30,7 @@
                tal:define="topicimage python:topic.getImage()"
                tal:condition="topicimage">
             <a href="#"
-               tal:attributes="href string:${request/URL0}/${topic/getId}">
+               tal:attributes="href string:${current_base_url}/${topic/getId}">
               <img src="" 
                    tal:attributes="src topicimage/absolute_url;
                                    alt topic/getTitle" />
@@ -39,7 +41,7 @@
             <strong>
               <a href="#"
                  tal:content="topic/getTitle"
-                 tal:attributes="href string:${request/URL0}/${topic/getId}">_topic_link_</a>
+                 tal:attributes="href string:${current_base_url}/${topic/getId}">_topic_link_</a>
               (<span tal:content="python:len(topic)"></span>)
             </strong>
             <div class="discreet">
