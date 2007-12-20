@@ -7,6 +7,7 @@ from plone.portlets.interfaces import IPortletDataProvider
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFPlone import PloneMessageFactory as _
+from plone.memoize.instance import memoize
 
 # Quills imports
 from quills.core.interfaces import IWeblogEnhanced
@@ -48,13 +49,17 @@ class Renderer(base.Renderer):
     @property
     def title(self):
         return _(PORTLET_TITLE)
-
-    def getCloud(self):
+    
+    @memoize
+    def getWeblogContent(self):
         weblog_content = recurseToInterface(self.context.aq_inner,
                                             (IWeblog, IWeblogEnhanced))
         if weblog_content is None:
             return []
-        weblog = IWeblog(weblog_content)
+        return IWeblog(weblog_content)
+    
+    def getCloud(self):
+        weblog = self.getWeblogContent()
         # Get a list of topics, sorted alphabetically
         topics = weblog.getTopics()
         if not topics:
@@ -86,6 +91,10 @@ class Renderer(base.Renderer):
                 result.append(cloud_dict)
         # Done...
         return result
+    
+    def getTopicsURL(self):
+        weblog = self.getWeblogContent()
+        return "%s/topics" % weblog.absolute_url()
 
 
 class AddForm(base.AddForm):

@@ -3,8 +3,9 @@
 
     <dt class="portletHeader">
         <span class="portletTopLeft"></span>
-        <span class="tile"
-              tal:content="view/title">_title_</span>
+        <a class="tile"
+           tal:content="view/title"
+           tal:attributes="href view/getTopicsURL">_title_</a>
         <span class="portletTopRight"></span>
     </dt>
 
