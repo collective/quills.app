@@ -18,14 +18,17 @@
 
       <p tal:content="python:len(context)">_len_</p>
 
-      <h3>Sub-archives</h3>
-      <ul>
-        <li tal:repeat="archive context/getSubArchives">
-          <a href=""
-             tal:attributes="href archive/absolute_url"
-             tal:content="archive/getId">_archive_url_</a>
-        </li>
-      </ul>
+      <tal:sub-archives define="sub_archives context/getSubArchives"
+                        condition="sub_archives">
+          <h3>Sub-archives</h3>
+          <ul>
+            <li tal:repeat="archive sub_archives">
+              <a href=""
+                 tal:attributes="href archive/absolute_url"
+                 tal:content="archive/getId">_archive_url_</a>
+            </li>
+          </ul>
+     </tal:sub-archives>
 
       <h3>Posts</h3>
       <ul>
