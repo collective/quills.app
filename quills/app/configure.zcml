@@ -27,6 +27,12 @@
       factory=".traversal.TopicContainerTraverser" />
 
   <adapter
+      for="quills.core.interfaces.IAuthorContainer
+           zope.publisher.interfaces.http.IHTTPRequest"
+      provides="zope.publisher.interfaces.IPublishTraverse"
+      factory=".traversal.AuthorContainerTraverser" />
+
+  <adapter
       for="quills.core.interfaces.IWeblog"
       provides="quills.core.interfaces.IWeblogConfiguration"
       factory="quills.core.browser.weblogconfig.WeblogConfigAnnotations"

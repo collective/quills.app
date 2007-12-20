@@ -3,8 +3,9 @@
 
     <dt class="portletHeader">
         <span class="portletTopLeft"></span>
-        <span class="tile"
-              tal:content="view/title">_title_</span>
+        <a class="tile"
+           tal:content="view/title"
+           tal:attributes="href view/getAuthorsURL">_title_</a>
         <span class="portletTopRight"></span>
     </dt>
 
@@ -12,13 +13,13 @@
 
       <dd class="portletItem odd" metal:define-macro="author"
           tal:define="portrait python: view.getPortraitFor(author);
-                      authorinfo python: view.getInfoFor(author);"
+                      authorinfo python: view.getInfoFor(author);
+                      author_listing_url python:view.getAuthorURL(authorinfo['username']);"
           tal:attributes="class python:repeat['author'].odd and 'portletItem even' or 'portletItem odd'">
 
         <h1 class="documentFirstHeading">
           <a href=""
-             tal:omit-tag="not:authorinfo/home_page"
-             tal:attributes="href authorinfo/home_page"
+             tal:attributes="href author_listing_url"
              tal:content="authorinfo/fullname">
               Author Name
           </a>
@@ -34,15 +35,18 @@
             Some location
           </span>
         </div>
-
-        <img src=""
-             alt=""
-             title=""
-             class="portraitPhoto"
-             tal:condition="python:view.data.show_portrait and portrait"
-             tal:attributes="src portrait/absolute_url;
-                             alt authorinfo/fullname;
-                             title authorinfo/fullname;" />
+        
+        <a href=""
+           tal:attributes="href author_listing_url">
+            <img src=""
+                 alt=""
+                 title=""
+                 class="portraitPhoto"
+                 tal:condition="python:view.data.show_portrait and portrait"
+                 tal:attributes="src portrait/absolute_url;
+                                 alt authorinfo/fullname;
+                                 title authorinfo/fullname;" />
+        </a>
 
         <div tal:condition="python:view.data.show_description and authorinfo['description']"
              tal:content="authorinfo/description" />

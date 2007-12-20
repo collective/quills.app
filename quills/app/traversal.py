@@ -12,9 +12,11 @@ from quills.core.interfaces import IWeblogArchive
 from quills.core.interfaces import IWeblogConfiguration
 from quills.core.interfaces import IPossibleWeblogEntry
 from quills.core.interfaces import ITopicContainer
+from quills.core.interfaces import IAuthorContainer
 
 # Local imports
 from topic import Topic
+from topic import AuthorTopic
 from topic import TopicContainer
 from topic import AuthorContainer
 from archive import ArchiveContainer
@@ -117,17 +119,10 @@ class WeblogArchiveTraverser(DefaultPublishTraverse):
         return ob
 
 
-class TopicContainerTraverser(DefaultPublishTraverse):
+class BaseContainerTraverser(DefaultPublishTraverse):
+    """Base traverser for Topics and Authors
     """
-    """
-
-    adapts(ITopicContainer, IHTTPRequest)
-
-    def publishTraverse(self, request, name):
-        """
-        """
-        return self.traverseSubpath(request, name, Topic)
-
+    
     def traverseSubpath(self, request, name, klass):
         # Now the guts of it...
         furtherPath = request['TraversalRequestNameStack']
@@ -167,3 +162,28 @@ class TopicContainerTraverser(DefaultPublishTraverse):
             furtherPath.pop()
         return subpath
 
+class TopicContainerTraverser(BaseContainerTraverser):
+    """Topic container traversal
+    
+    blog/topics/topic_name
+    """
+
+    adapts(ITopicContainer, IHTTPRequest)
+
+    def publishTraverse(self, request, name):
+        """
+        """
+        return self.traverseSubpath(request, name, Topic)
+
+class AuthorContainerTraverser(BaseContainerTraverser):
+    """Author container traversal
+    
+    blog/authors/author_id
+    """
+    
+    adapts(IAuthorContainer, IHTTPRequest)
+    
+    def publishTraverse(self, request, name):
+        """
+        """
+        return self.traverseSubpath(request, name, AuthorTopic)

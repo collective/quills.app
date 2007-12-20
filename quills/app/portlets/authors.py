@@ -9,6 +9,7 @@ from plone.portlets.interfaces import IPortletDataProvider
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone import PloneMessageFactory as _
+from plone.memoize.instance import memoize
 
 # Quills imports
 from quills.core.interfaces import IWeblogEnhanced
@@ -72,12 +73,18 @@ class Renderer(base.Renderer):
     @property
     def title(self):
         return _(PORTLET_TITLE)
-
-    @property
-    def authors(self):
+    
+    @memoize
+    def getWeblogContent(self):
         weblog_content = recurseToInterface(self.context.aq_inner,
                                             (IWeblog, IWeblogEnhanced))
-        weblog = IWeblog(weblog_content)
+        if weblog_content is None:
+            return []
+        return IWeblog(weblog_content)
+    
+    @property
+    def authors(self):
+        weblog = self.getWeblogContent()
         return weblog.getAuthors()
 
     def getPortraitFor(self, author):
@@ -100,6 +107,14 @@ class Renderer(base.Renderer):
         if not info['username']:
             info['username'] = author.getId()
         return info
+    
+    def getAuthorURL(self, author_id):
+        weblog = self.getWeblogContent()
+        return "%s/authors/%s" % (weblog.absolute_url(), author_id)
+    
+    def getAuthorsURL(self):
+        weblog = self.getWeblogContent()
+        return "%s/authors" % weblog.absolute_url()
 
 
 class AddForm(base.AddForm):
