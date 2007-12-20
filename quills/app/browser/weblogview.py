@@ -3,6 +3,7 @@ from zope.interface import implements
 
 # Plone imports
 from Products.CMFPlone.PloneBatch import Batch as PloneBatch
+from plone.app.layout.globals.interfaces import IViewView
 from Products.CMFCore.utils import getToolByName
 
 # Quills imports
@@ -72,7 +73,7 @@ class WeblogEntryView(BaseView):
     True
     """
 
-    implements(IWeblogEntryView)
+    implements(IWeblogEntryView, IViewView)
 
     def getConfig(self):
         """See IWeblogView.
