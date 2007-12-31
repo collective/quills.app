@@ -201,7 +201,8 @@ class YearArchive(BaseDateArchive):
 
     def _getDateRange(self):
         min_datetime = DateTime('%s/01/01' % self.year)
-        max_datetime = DateTime('%s/12/31' % self.year)
+        # +1 to max_datetime so that it becomes inclusive
+        max_datetime = DateTime('%s/12/31' % self.year)+1
         return min_datetime, max_datetime
 
     def getSubArchives(self):
@@ -261,7 +262,8 @@ class MonthArchive(BaseDateArchive):
                 break
             except DateError:
                 day = day - 1
-        return min_datetime, max_datetime
+        # +1 to max_datetime so that it becomes inclusive
+        return min_datetime, max_datetime+1
 
 
 class DayArchive(BaseDateArchive):
@@ -292,6 +294,7 @@ class DayArchive(BaseDateArchive):
     def _getDateRange(self):
         min_datetime = DateTime('%s/%s/%s' % (self.year, self.month, self.day))
         max_datetime = DateTime('%s/%s/%s' % (self.year, self.month, self.day))
+        # +1 to max_datetime so that it becomes inclusive
         return min_datetime, max_datetime+1
     
     def __getitem__(self, key):
