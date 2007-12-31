@@ -82,16 +82,16 @@ def recurseToInterface(item, ifaces):
     and return that.
     """
     if not isinstance(ifaces, (ListType, TupleType)):
-        ifaces = [ifaces]    
-    parent = aq_parent(item)
-    if parent is None:
-        return None
+        ifaces = [ifaces]
+    parent = item.aq_parent
     for iface in ifaces:
         if iface.providedBy(item):
             return item
-        elif iface.providedBy(parent):
+    for iface in ifaces:
+        if iface.providedBy(parent):
             return parent
-        elif ISiteRoot.providedBy(parent):
+    for iface in ifaces:
+        if ISiteRoot.providedBy(parent):
             # Stop when we get to the portal root.
             return None
     return recurseToInterface(parent, ifaces)
