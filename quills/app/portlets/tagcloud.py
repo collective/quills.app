@@ -60,6 +60,8 @@ class Renderer(base.Renderer):
     
     def getCloud(self):
         weblog = self.getWeblogContent()
+        if weblog == []:
+            return []
         # Get a list of topics, sorted alphabetically
         topics = weblog.getTopics()
         if not topics:
@@ -94,7 +96,9 @@ class Renderer(base.Renderer):
     
     def getTopicsURL(self):
         weblog = self.getWeblogContent()
-        return "%s/topics" % weblog.absolute_url()
+        if weblog!= []:
+            return "%s/topics" % weblog.absolute_url()
+        return ''
 
 
 class AddForm(base.AddForm):
