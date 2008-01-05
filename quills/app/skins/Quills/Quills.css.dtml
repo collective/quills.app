@@ -82,7 +82,7 @@ div.entry-trackback {
 }
 
 .weblog-topics ul li {
-    display: inline;
+    display: inline !important;
 }
 
 .weblog-topic-images {
