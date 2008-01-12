@@ -38,6 +38,25 @@
       factory="quills.core.browser.weblogconfig.WeblogConfigAnnotations"
       />
 
+  <adapter
+      for="quills.core.interfaces.IWeblogEntry"
+      provides="quills.core.interfaces.IWeblogLocator"
+      factory="quills.app.locator.RecursingUpLocator"
+      />
+
+  <adapter
+      for="quills.core.interfaces.IWeblog"
+      provides="quills.core.interfaces.IWeblogLocator"
+      factory="quills.app.locator.SelfLocator"
+      />
+
+  <adapter
+      for="*"
+      provides="quills.core.interfaces.IWeblogLocator"
+      factory="quills.app.locator.LatestFromCatalogLocator"
+      />
+
+
   <!-- profiles -->
   <genericsetup:registerProfile
       name="default"

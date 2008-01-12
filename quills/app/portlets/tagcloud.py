@@ -10,11 +10,7 @@ from Products.CMFPlone import PloneMessageFactory as _
 from plone.memoize.instance import memoize
 
 # Quills imports
-from quills.core.interfaces import IWeblogEnhanced
-from quills.core.interfaces import IWeblog
-from quills.app.utilities import recurseToInterface
-
-
+from quills.core.interfaces import IWeblogLocator
 
 PORTLET_TITLE = u"Tag Cloud"
 PORTLET_DESC = u"This portlet displays a tag cloud."
@@ -52,11 +48,9 @@ class Renderer(base.Renderer):
     
     @memoize
     def getWeblogContent(self):
-        weblog_content = recurseToInterface(self.context.aq_inner,
-                                            (IWeblog, IWeblogEnhanced))
-        if weblog_content is None:
-            return []
-        return IWeblog(weblog_content)
+        locator = IWeblogLocator(self.context)
+        weblog = locator.find()
+        return weblog
     
     def getCloud(self):
         weblog = self.getWeblogContent()
