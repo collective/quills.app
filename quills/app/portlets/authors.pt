@@ -47,6 +47,7 @@
                                  alt authorinfo/fullname;
                                  title authorinfo/fullname;" />
         </a>
+        <div class="visualClear"><!----></div>
 
         <div tal:condition="python:view.data.show_description and authorinfo['description']"
              tal:content="authorinfo/description" />
