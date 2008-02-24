@@ -202,13 +202,13 @@ class TopicContainer(QuillsMixin, AcquiringActionProvider, Traversable,
     __allow_access_to_unprotected_subobjects__ = EvilAATUSHack()
 
     def __init__(self, id, title='Topics'):
-        self.id = str(id)
+        self._id = str(id)
         self._title = title
 
     def getId(self):
         """
         """
-        return self.id
+        return self._id
 
     def Title(self):
         """
@@ -255,13 +255,13 @@ class AuthorContainer(QuillsMixin, AcquiringActionProvider, Traversable,
     __allow_access_to_unprotected_subobjects__ = EvilAATUSHack()
 
     def __init__(self, id, title='Authors'):
-        self.id = str(id)
+        self._id = str(id)
         self._title = title
 
     def getId(self):
         """
         """
-        return self.id
+        return self._id
 
     def Title(self):
         """
