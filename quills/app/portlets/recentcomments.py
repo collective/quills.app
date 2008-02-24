@@ -54,7 +54,7 @@ class Renderer(base.Renderer, BaseView):
 
     @property
     def available(self):
-        return True
+        return len(self.getComments) > 0
 
     @property
     def title(self):
