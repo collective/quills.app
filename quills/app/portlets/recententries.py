@@ -10,9 +10,7 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFPlone import PloneMessageFactory as _
 
 # Quills imports
-from quills.core.interfaces import IWeblogEnhanced
-from quills.core.interfaces import IWeblog
-from quills.app.utilities import recurseToInterface
+from quills.core.interfaces import IWeblogLocator
 from quills.app.browser.baseview import BaseView
 
 
@@ -59,9 +57,8 @@ class Renderer(base.Renderer, BaseView):
 
     @property
     def getEntries(self):
-        weblog_content = recurseToInterface(self.context.aq_inner,
-                                           (IWeblog, IWeblogEnhanced))
-        weblog = IWeblog(weblog_content)
+        locator = IWeblogLocator(self.context)
+        weblog = locator.find()
         return weblog.getEntries(maximum=self.data.max_entries)
 
 

@@ -10,13 +10,12 @@ from Products.CMFCore.permissions import AddPortalContent
 # Plone imports
 from plone.app.portlets.portlets import base
 from plone.memoize.compress import xhtml_compress
+from plone.memoize.instance import memoize
 from plone.portlets.interfaces import IPortletDataProvider
 from Products.CMFPlone import PloneMessageFactory as _
 
 # Quills imports
-from quills.core.interfaces import IWeblogEnhanced
-from quills.core.interfaces import IWeblog
-from quills.app.utilities import recurseToInterface
+from quills.core.interfaces import IWeblogLocator
 from quills.core.interfaces import IWeblogEnhancedConfiguration
 
 
@@ -85,12 +84,11 @@ class Renderer(base.Renderer):
         weblog_content = self._getWeblogContent()
         return "%s/config_view" % weblog_content.absolute_url()
 
+    @memoize
     def _getWeblogContent(self):
-        weblog_content = getattr(self, '_v_weblog_content', None)
-        if weblog_content is None:
-            weblog_content = recurseToInterface(self.context.aq_inner,
-                                                (IWeblog, IWeblogEnhanced))
-        return weblog_content
+        locator = IWeblogLocator(self.context)
+        weblog = locator.find()
+        return weblog
 
 
 class AddForm(base.AddForm):
