@@ -28,7 +28,8 @@
            want our own system.
            <div tal:replace="structure provider:plone.belowcontenttitle" />
       -->
-      <metal:macro use-macro="context/entry_macros/macros/filed-under"/>
+      <metal:macro use-macro="context/entry_macros/macros/byline" />
+      <metal:macro use-macro="context/entry_macros/macros/filed-under" />
       <metal:macro use-macro="context/entry_macros/macros/topic-images" />
       <p class="weblog-entry-only-excerpt">
         <metal:field use-macro="python:here.widget('description', mode='view')">
