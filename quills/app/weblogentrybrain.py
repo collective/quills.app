@@ -57,7 +57,11 @@ class WeblogEntryCatalogBrain(QuillsMixin):
     def getMimeType(self):
         """See IWeblogEntry.
         """
-        return self._getObject().getMimeType()
+        # In order to keep this implementation generic, we adapt the real object
+        # to IWeblogEntry and just defer to that getMimeType implementation. The
+        # reason being that we don't know if we're in a Quills world or a
+        # QuillsEnabled world.
+        return IWeblogEntry(self._getObject()).getMimeType()
 
     def getWeblogContentObject(self):
         """See IWeblogEntry.

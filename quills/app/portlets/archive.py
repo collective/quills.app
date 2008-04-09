@@ -15,6 +15,9 @@ from quills.core.interfaces import IWeblog
 from quills.app.utilities import recurseToInterface
 from quills.app.browser.baseview import BaseView
 
+# Local imports
+from base import BasePortletRenderer
+
 
 PORTLET_TITLE = u"Weblog Archive"
 PORTLET_DESC = u"This portlet lists the archive of this weblog."
@@ -33,7 +36,7 @@ class Assignment(base.Assignment):
         return _(PORTLET_TITLE)
 
 
-class Renderer(base.Renderer, BaseView):
+class Renderer(BasePortletRenderer, base.Renderer, BaseView):
 
     _template = ViewPageTemplateFile('archive.pt')
     
@@ -45,10 +48,6 @@ class Renderer(base.Renderer, BaseView):
         self.data = data
         self._translation_service = getToolByName(self.context, 'translation_service')
 
-    #@ram.cache(render_cachekey)
-    def render(self):
-        return xhtml_compress(self._template())
-
     def getMonthName(self, month):
         """Returns the current month name as a Message."""
         msgid   = self._translation_service.month_msgid(month)
@@ -56,18 +55,14 @@ class Renderer(base.Renderer, BaseView):
         return _(msgid, default=english)
 
     @property
-    def available(self):
-        return True
-
-    @property
     def title(self):
         return _(PORTLET_TITLE)
 
     @property
     def getSubArchives(self):
-       weblog_content = recurseToInterface(self.context.aq_inner,
-                                          (IWeblog, IWeblogEnhanced))
-       return weblog_content.getSubArchives()
+       weblog = self.getWeblog()
+       return weblog.getSubArchives()
+
 
 class AddForm(base.AddForm):
     form_fields = form.Fields(IWeblogArchivePortlet)

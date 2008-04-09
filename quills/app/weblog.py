@@ -26,3 +26,24 @@ class WeblogMixin:
             else:
                 return results[offset:offset+maximum]
         return results
+
+    def _genUniqueId(self, folder, id, title):
+        if id:
+            if not folder.hasObject(id):
+                return id
+        if id is None and title:
+            id = getUtility(IIDNormalizer).normalize(title)
+            if not folder.hasObject(id):
+                return id
+        else:
+            # No id or title, so just generate something random (and unique)
+            id = INameChooser(folder).chooseName(name='', object=None)
+        return id
+
+    def _getPortalTypeForMimeType(self, mimetype):
+        # XXX Implement me properly!
+        if 'image' in mimetype:
+            return 'Image'
+        return 'File'
+
+

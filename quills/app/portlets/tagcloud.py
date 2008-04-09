@@ -12,6 +12,10 @@ from plone.memoize.instance import memoize
 # Quills imports
 from quills.core.interfaces import IWeblogLocator
 
+# Local imports
+from base import BasePortletRenderer
+
+
 PORTLET_TITLE = u"Tag Cloud"
 PORTLET_DESC = u"This portlet displays a tag cloud."
 
@@ -30,30 +34,16 @@ class Assignment(base.Assignment):
         return _(PORTLET_TITLE)
 
 
-class Renderer(base.Renderer):
+class Renderer(BasePortletRenderer, base.Renderer):
 
     _template = ViewPageTemplateFile('tagcloud.pt')
-
-    #@ram.cache(render_cachekey)
-    def render(self):
-        return xhtml_compress(self._template())
-
-    @property
-    def available(self):
-        return True
 
     @property
     def title(self):
         return _(PORTLET_TITLE)
     
-    @memoize
-    def getWeblogContent(self):
-        locator = IWeblogLocator(self.context)
-        weblog = locator.find()
-        return weblog
-    
     def getCloud(self):
-        weblog = self.getWeblogContent()
+        weblog = self.getWeblog()
         if weblog == []:
             return []
         # Get a list of topics, sorted alphabetically
@@ -89,10 +79,17 @@ class Renderer(base.Renderer):
         return result
     
     def getTopicsURL(self):
-        weblog = self.getWeblogContent()
-        if weblog!= []:
-            return "%s/topics" % weblog.absolute_url()
-        return ''
+        weblog = self.getWeblog()
+        if weblog == []:
+            return ''
+        # XXX This feels very hacky!
+        if getattr(weblog, 'absolute_url', None):
+           url = weblog.absolute_url()
+        else:
+            # The `weblog' object must be an adapter, so we'll use its context
+            # to get hold of the url.
+            url = weblog.context.absolute_url()
+        return "%s/topics" % url
 
 
 class AddForm(base.AddForm):

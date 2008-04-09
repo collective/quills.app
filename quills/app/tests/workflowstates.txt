@@ -1,0 +1,54 @@
+This brief doctest is to ensure that support for arbitrary and configurable
+workflow state mappings to Quills' (implicit) "published" and "draft" 'states'
+is maintained.
+
+We start with a bit of setup, making sure that we've got hold of objects
+representing an IWeblog and its (plone-ish) content object representation.
+
+  >>> weblog = self.weblog
+  >>> weblog_content = self.weblog_content
+
+The workflow handling is done via an adapter, so we need the appropriate
+interface to adapt to.
+
+  >>> from quills.app.interfaces import IStateAwareWeblogConfiguration
+
+The adapter is looked up for the `weblog_content' object.
+
+  >>> weblog_config = IStateAwareWeblogConfiguration(weblog_content)
+
+The default settings are as follows:
+
+  >>> weblog_config.published_states
+  ['published']
+  >>> weblog_config.draft_states
+  ['private']
+
+We'll need an entry to properly test the workflow state handling.
+
+  >>> entry1 = weblog.addEntry(title='Just a Title',
+  ...                          excerpt='Something short.',
+  ...                          text='foo bar baz',
+  ...                          topics=['aTopic', 'b Topic with spaces'])
+
+If we publish the entry and then ask the weblog for the published entries, it
+should show up.
+
+  >>> entry1.publish()
+  >>> len(weblog.getEntries())
+  1
+
+This should still work if we add some more workflow states to be considered as
+"published".
+
+  >>> weblog_config.published_states = ['published', 'randomstate', 'whatever']
+  >>> len(weblog.getEntries())
+  1
+
+However, if we remove "published" from the list of published states, our entry
+should no longer be returned as its workflow state (as understood by the
+workflow tool) is "published".
+
+  >>> weblog_config.published_states = ['randomstate', 'whatever']
+  >>> len(weblog.getEntries())
+  0

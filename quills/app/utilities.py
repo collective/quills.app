@@ -104,5 +104,6 @@ def talkbackURL(discussion_brain):
     n.b. we're using a regex in order to allow for the string 'talkback' to appear
     in the url in other places, too.
     """
-    absolute_url = talkback_url_extractor.search(discussion_brain.getURL()).groups()[0]
+    url = discussion_brain.getURL()
+    absolute_url = talkback_url_extractor.search(url).groups()[0]
     return "%s#%s" % (absolute_url, discussion_brain.id)

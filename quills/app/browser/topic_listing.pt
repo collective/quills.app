@@ -15,9 +15,7 @@
 
   <body>
 
-    <div metal:fill-slot="main"
-         id="weblogtopics"
-         tal:define="current_base_url context/@@plone_context_state/current_base_url;">
+    <div metal:fill-slot="main" id="weblogtopics">
 
       <h1 class="documentFirstHeading" i18n:translate="heading_topics">Topics</h1>
 
@@ -30,7 +28,7 @@
                tal:define="topicimage python:topic.getImage()"
                tal:condition="topicimage">
             <a href="#"
-               tal:attributes="href string:${current_base_url}/${topic/getId}">
+               tal:attributes="href string:${request/URL0}/${topic/getId}">
               <img src="" 
                    tal:attributes="src topicimage/absolute_url;
                                    alt topic/getTitle" />
@@ -41,7 +39,7 @@
             <strong>
               <a href="#"
                  tal:content="topic/getTitle"
-                 tal:attributes="href string:${current_base_url}/${topic/getId}">_topic_link_</a>
+                 tal:attributes="href string:${context/absolute_url}/${topic/getId}">_topic_link_</a>
               (<span tal:content="python:len(topic)"></span>)
             </strong>
             <div class="discreet">
@@ -52,7 +50,7 @@
                 <span i18n:translate="label_last_post">Last Post:</span> 
                 <a href=""
                   tal:attributes="href python:view.getArchiveURLFor(entries[0])"
-                  tal:content="python:here.toLocalizedTime(view.getLastModified(), long_format=1)">
+                  tal:content="python:here.toLocalizedTime(view.getLastModified(topic), long_format=1)">
                   August 16, 2001 at 23:35:59
                 </a>
               </tal:if>

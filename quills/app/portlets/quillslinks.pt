@@ -1,7 +1,8 @@
 <dl class="portlet portletQuillsLinks"
     i18n:domain="quills"
-    tal:define="weblog python:context.getWeblog();
-                portal_url view/portal_url;">
+    tal:define="weblog         python:view.getWeblog();
+                weblog_content python:view.getWeblogContentObject();
+                portal_url            view/portal_url;">
 
     <dt class="portletHeader">
         <span class="portletTopLeft"></span>
@@ -12,7 +13,7 @@
 
         <dd class="portletItem odd" id="quills-portlet-atom">
           <a href="#"
-             tal:attributes="href string:${weblog/absolute_url}/atom.xml">
+             tal:attributes="href string:${weblog_content/absolute_url}/atom.xml">
             <img src="" 
                  height="15" 
                  width="80" 
@@ -25,7 +26,7 @@
 
         <dd class="portletItem even" id="quills-portlet-rdf">
           <a href=""
-             tal:attributes="href string:${weblog/absolute_url}/feed.rdf">
+             tal:attributes="href string:${weblog_content/absolute_url}/feed.rdf">
             <img src="" 
                  height="15" 
                  width="80" 
@@ -38,7 +39,7 @@
 
         <dd class="portletItem odd" id="quills-portlet-rss">
           <a href=""
-             tal:attributes="href string:${weblog/absolute_url}/rss.xml">
+             tal:attributes="href string:${weblog_content/absolute_url}/rss.xml">
             <img src="" 
                  height="15" 
                  width="80" 

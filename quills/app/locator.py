@@ -6,6 +6,7 @@ from quills.core.interfaces import IWeblog
 from quills.app.utilities import recurseToInterface
 from quills.core.interfaces import IWeblogLocator
 
+
 class RecursingUpLocator(object):
     """see Interface, recurses up"""
     implements(IWeblogLocator)
@@ -21,6 +22,7 @@ class RecursingUpLocator(object):
             return []
         return IWeblog(weblog_content)
 
+
 class SelfLocator(object):
     """see Interface, takes always the context itself."""
     implements(IWeblogLocator)
@@ -32,6 +34,7 @@ class SelfLocator(object):
         """see Interface"""
         assert(IWeblog.providedBy(self.context)) 
         return self.context
+
 
 
 class LatestFromCatalogLocator(object):
@@ -54,4 +57,3 @@ class LatestFromCatalogLocator(object):
         if len(result) == 0:
             return []
         return result[0].getObject()
-    

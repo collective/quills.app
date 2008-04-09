@@ -38,60 +38,6 @@
       factory="quills.core.browser.weblogconfig.WeblogConfigAnnotations"
       />
 
-  <adapter
-      for="quills.core.interfaces.IWeblogEntry"
-      provides="quills.core.interfaces.IWeblogLocator"
-      factory="quills.app.locator.RecursingUpLocator"
-      />
-
-  <adapter
-      for="quills.core.interfaces.IWeblog"
-      provides="quills.core.interfaces.IWeblogLocator"
-      factory="quills.app.locator.SelfLocator"
-      />
-
-  <adapter
-      for="quills.core.interfaces.ITopicContainer"
-      provides="quills.core.interfaces.IWeblogLocator"
-      factory="quills.app.locator.RecursingUpLocator"
-      />
-
-  <adapter
-      for="quills.core.interfaces.ITopic"
-      provides="quills.core.interfaces.IWeblogLocator"
-      factory="quills.app.locator.RecursingUpLocator"
-      />
-
-  <adapter
-      for="quills.core.interfaces.IAuthorContainer"
-      provides="quills.core.interfaces.IWeblogLocator"
-      factory="quills.app.locator.RecursingUpLocator"
-      />
-
-  <adapter
-      for="quills.core.interfaces.IAuthorTopic"
-      provides="quills.core.interfaces.IWeblogLocator"
-      factory="quills.app.locator.RecursingUpLocator"
-      />
-
-  <adapter
-      for="quills.core.interfaces.IWeblogArchive"
-      provides="quills.core.interfaces.IWeblogLocator"
-      factory="quills.app.locator.RecursingUpLocator"
-      />
-
-  <adapter
-      for="quills.core.interfaces.IWeblogArchiveContainer"
-      provides="quills.core.interfaces.IWeblogLocator"
-      factory="quills.app.locator.RecursingUpLocator"
-      />
-
-  <adapter
-      for="*"
-      provides="quills.core.interfaces.IWeblogLocator"
-      factory="quills.app.locator.LatestFromCatalogLocator"
-      />
-
 
   <!-- profiles -->
   <genericsetup:registerProfile

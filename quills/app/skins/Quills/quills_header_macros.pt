@@ -8,7 +8,7 @@
   <head>
 
     <metal:block define-macro="feed-links">
-      <tal:block define="weblog python:context.getWeblog()">
+      <tal:block define="weblog_content python:view.getWeblogContentObject()">
          <metal:block metal:use-macro="context/quills_header_macros/macros/feed-links-base"></metal:block>
       </tal:block>
     </metal:block>
@@ -19,28 +19,28 @@
             type="application/atom+xml"
             title="Atom feed"
             i18n:attributes="title"
-            tal:attributes="href string:${weblog/absolute_url}/atom.xml" />
+            tal:attributes="href string:${weblog_content/absolute_url}/atom.xml" />
 
         <link
             rel="alternate"
             type="application/rss+xml"
             title="RSS 2.0 feed"
             i18n:attributes="title"
-            tal:attributes="href string:${weblog/absolute_url}/rss.xml" />
+            tal:attributes="href string:${weblog_content/absolute_url}/rss.xml" />
 
         <link
             rel="alternate"
             type="application/rdf+xml"
             title="RDF 1.0 feed"
             i18n:attributes="title"
-            tal:attributes="href string:${weblog/absolute_url}/feed.rdf" />
+            tal:attributes="href string:${weblog_content/absolute_url}/feed.rdf" />
 
         <link
             rel="alternate"
             type="application/rdf+xml"
             title="RDF 1.1 feed"
             i18n:attributes="title"
-            tal:attributes="href string:${weblog/absolute_url}/feed11.rdf" />
+            tal:attributes="href string:${weblog_content/absolute_url}/feed11.rdf" />
     </metal:block>
 
   </head>

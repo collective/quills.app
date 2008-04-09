@@ -9,6 +9,14 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFPlone import PloneMessageFactory as _
 from Products.CMFCore.utils import getToolByName
 
+# Quills imports
+from quills.core.interfaces import IWeblogEnhanced
+from quills.core.interfaces import IWeblog
+from quills.app.utilities import recurseToInterface
+
+# Local imports
+from base import BasePortletRenderer
+
 
 PORTLET_TITLE = u"Quills"
 PORTLET_DESC = u"This portlet provides links to the various feeds of this instance."
@@ -26,17 +34,9 @@ class Assignment(base.Assignment):
         return _(PORTLET_TITLE)
 
 
-class Renderer(base.Renderer):
+class Renderer(BasePortletRenderer, base.Renderer):
 
     _template = ViewPageTemplateFile('quillslinks.pt')
-
-    #@ram.cache(render_cachekey)
-    def render(self):
-        return xhtml_compress(self._template())
-
-    @property
-    def available(self):
-        return True
 
     @property
     def title(self):
@@ -45,6 +45,7 @@ class Renderer(base.Renderer):
     @property
     def portal_url(self):
         return getToolByName(self.context, 'portal_url')
+
 
 class AddForm(base.AddForm):
     form_fields = form.Fields(IQuillsLinksPortlet)

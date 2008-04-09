@@ -13,6 +13,9 @@ from Products.CMFPlone import PloneMessageFactory as _
 from quills.core.interfaces import IWeblogLocator
 from quills.app.browser.baseview import BaseView
 
+# Local imports
+from base import BasePortletRenderer
+
 
 PORTLET_TITLE = u"Recent Entries"
 PORTLET_DESC = u"This portlet lists recent weblog entries."
@@ -39,17 +42,9 @@ class Assignment(base.Assignment):
         return _(PORTLET_TITLE)
 
 
-class Renderer(base.Renderer, BaseView):
+class Renderer(BasePortletRenderer, base.Renderer, BaseView):
 
     _template = ViewPageTemplateFile('recententries.pt')
-
-    #@ram.cache(render_cachekey)
-    def render(self):
-        return xhtml_compress(self._template())
-
-    @property
-    def available(self):
-        return True
 
     @property
     def title(self):
@@ -57,8 +52,7 @@ class Renderer(base.Renderer, BaseView):
 
     @property
     def getEntries(self):
-        locator = IWeblogLocator(self.context)
-        weblog = locator.find()
+        weblog = self.getWeblog()
         return weblog.getEntries(maximum=self.data.max_entries)
 
 

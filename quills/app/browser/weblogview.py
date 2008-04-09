@@ -3,12 +3,12 @@ from zope.interface import implements
 
 # Plone imports
 from Products.CMFPlone.PloneBatch import Batch as PloneBatch
-from plone.app.layout.globals.interfaces import IViewView
 from Products.CMFCore.utils import getToolByName
 
 # Quills imports
-from quills.core.interfaces import IWeblogConfiguration
+from quills.core.interfaces import IWeblog
 from quills.core.interfaces import IWeblogEntry
+from quills.core.interfaces import IWeblogConfiguration
 from quills.core.browser.interfaces import IWeblogView
 from quills.core.browser.interfaces import IWeblogEntryView
 from quills.core.browser.interfaces import ITopicView
@@ -24,6 +24,12 @@ class WeblogView(BaseView):
     """
 
     implements(IWeblogView)
+
+    def getWeblog(self):
+        return IWeblog(self.context)
+
+    def getWeblogContentObject(self):
+        return self.context
 
     def getConfig(self):
         """See IWeblogView.
@@ -73,12 +79,21 @@ class WeblogEntryView(BaseView):
     True
     """
 
-    implements(IWeblogEntryView, IViewView)
+    implements(IWeblogEntryView)
+
+    def getWeblog(self):
+        return self.getWeblogEntry().getWeblog()
+
+    def getWeblogContentObject(self):
+        return IWeblogEntry(self.context).getWeblogContentObject()
+
+    def getWeblogEntry(self):
+        return IWeblogEntry(self.context)
 
     def getConfig(self):
         """See IWeblogView.
         """
-        weblog = self.context.getWeblogContentObject()
+        weblog = self.getWeblogContentObject()
         return IWeblogConfiguration(weblog)
     
     def workflow_state(self):
@@ -96,10 +111,12 @@ class TopicView(WeblogView):
 
     implements(ITopicView)
 
-    def getLastModified(self):
+    def getLastModified(self, topic=None):
         """See ITopicView.
         """
-        entries = self.context.getEntries()
+        if topic is None:
+            topic = self.context
+        entries = topic.getEntries()
         if entries:
             # XXX modified should be in an interface
             return entries[0].modified

@@ -1,6 +1,89 @@
-<configure xmlns="http://namespaces.zope.org/zope"
-           xmlns:browser="http://namespaces.zope.org/browser"
-           xmlns:five="http://namespaces.zope.org/five">
+<configure xmlns="http://namespaces.zope.org/browser">
+
+      <page
+          for="quills.core.interfaces.IWeblog"
+          class=".weblogview.WeblogView"
+          template="weblog_view.pt"
+          allowed_interface="quills.core.browser.interfaces.IWeblogView"
+          permission="zope2.View"
+          name="weblog_view" />
+
+      <defaultView
+          for="quills.core.interfaces.IWeblog"
+          name="weblog_view" />
+
+      <page
+          for="quills.core.interfaces.IWeblogEntry"
+          class=".weblogview.WeblogEntryView"
+          template="weblogentry_view.pt"
+          allowed_interface="quills.core.browser.interfaces.IWeblogEntryView"
+          permission="zope2.View"
+          name="weblogentry_view" />
+
+      <defaultView
+          for="quills.core.interfaces.IWeblogEntry"
+          name="weblogentry_view" />
+
+      <page
+          for="quills.core.interfaces.IWeblog"
+          class=".commentViews.ManageCommentsView"
+          template="manage_comments.pt"
+          permission="cmf.ManagePortal"
+          name="manage_comments" />
+
+      <page
+          for="quills.core.interfaces.IWeblog"
+          name="config_view"
+          class="quills.core.browser.weblogconfig.WeblogConfigEditForm"
+          permission="zope2.ChangeConfig"
+          />
+
+      <page
+          for="quills.core.interfaces.ITopicContainer"
+          class=".weblogview.TopicView"
+          allowed_interface="quills.core.interfaces.ITopicContainer"
+          template="topic_listing.pt"
+          permission="zope2.View"
+          name="topic_listing" />
+
+      <defaultView
+          for="quills.core.interfaces.ITopicContainer"
+          name="topic_listing" />
+
+      <page
+          for="quills.core.interfaces.IAuthorContainer"
+          class=".weblogview.TopicView"
+          allowed_interface="quills.core.interfaces.IAuthorContainer"
+          template="author_listing.pt"
+          permission="zope2.View"
+          name="author_listing" />
+
+      <defaultView
+          for="quills.core.interfaces.IAuthorContainer"
+          name="author_listing" />
+
+      <page
+          for="quills.core.interfaces.ITopic"
+          template="topic_view.pt"
+          class=".weblogview.TopicView"
+          allowed_interface="quills.core.browser.interfaces.ITopicView"
+          permission="zope2.View"
+          name="index.html" />
+
+      <defaultView
+          for="quills.core.interfaces.ITopic"
+          name="index.html" />
+
+      <page
+          for="quills.core.interfaces.IWeblogArchive"
+          class=".weblogview.WeblogArchiveView"
+          template="archive_view.pt"
+          permission="zope2.View"
+          name="index.html" />
+
+      <defaultView
+          for="quills.core.interfaces.IWeblogArchive"
+          name="index.html" />
 
 
 </configure>

@@ -12,7 +12,14 @@ from Products.CMFPlone import PloneMessageFactory as _
 from plone.memoize.instance import memoize
 
 # Quills imports
-from quills.core.interfaces import IWeblogLocator
+from quills.core.interfaces import IBaseContent
+from quills.core.interfaces import IWeblogEnhanced
+from quills.core.interfaces import IWeblog
+from quills.app.utilities import recurseToInterface
+
+# Local imports
+from base import BasePortletRenderer
+
 
 PORTLET_TITLE = u"Weblog Authors"
 PORTLET_DESC = u"This portlet lists weblog authors."
@@ -56,31 +63,17 @@ class Assignment(base.Assignment):
         return _(PORTLET_TITLE)
 
 
-class Renderer(base.Renderer):
+class Renderer(BasePortletRenderer, base.Renderer):
 
     _template = ViewPageTemplateFile('authors.pt')
-
-    #@ram.cache(render_cachekey)
-    def render(self):
-        return xhtml_compress(self._template())
-
-    @property
-    def available(self):
-        return True
 
     @property
     def title(self):
         return _(PORTLET_TITLE)
     
-    @memoize
-    def getWeblogContent(self):
-        locator = IWeblogLocator(self.context)
-        weblog = locator.find()
-        return weblog
-    
     @property
     def authors(self):
-        weblog = self.getWeblogContent()
+        weblog = self.getWeblog()
         return weblog.getAuthors()
 
     def getPortraitFor(self, author):
@@ -105,11 +98,11 @@ class Renderer(base.Renderer):
         return info
     
     def getAuthorURL(self, author_id):
-        weblog = self.getWeblogContent()
+        weblog = self.getWeblogContentObject()
         return "%s/authors/%s" % (weblog.absolute_url(), author_id)
     
     def getAuthorsURL(self):
-        weblog = self.getWeblogContent()
+        weblog = self.getWeblogContentObject()
         return "%s/authors" % weblog.absolute_url()
 
 

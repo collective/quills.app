@@ -6,16 +6,15 @@
       i18n:domain="quills">
 
   <body>
-    <metal:feed fill-slot="head_slot"
-                tal:define="weblog context/getWeblog;">
-      <metal:block metal:use-macro="context/quills_header_macros/macros/feed-links-base"></metal:block>
+    <metal:feed fill-slot="head_slot">
+      <metal:block metal:use-macro="context/quills_header_macros/macros/feed-links"></metal:block>
 
     </metal:feed>
     <div metal:fill-slot="main"
-         tal:define="entry_content python:context.getWeblogEntryContentObject();
-                     entry nocall:context;
-                     weblog_content python:context.getWeblogContentObject();
-                     weblog nocall:weblog_content;
+         tal:define="entry_content nocall:context;
+                     entry view/getWeblogEntry;
+                     weblog_content python:view.getWeblogContentObject();
+                     weblog python:view.getWeblog();
                      wvconfig view/getConfig;">
 
       <div tal:replace="structure provider:plone.abovecontenttitle" />

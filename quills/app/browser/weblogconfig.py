@@ -1,0 +1,71 @@
+# Zope imports
+from zope.interface import implements
+from zope.formlib import form
+
+# plone imports
+from Products.statusmessages.interfaces import IStatusMessage
+
+# Quills imports
+from quills.core.browser.weblogconfig import WeblogConfigAnnotations
+from quills.core.browser.weblogconfig import WeblogConfigEditForm
+from quills.app.interfaces import IStateAwareWeblogConfiguration
+from quills.app.interfaces import IWeblogEnhancedConfiguration
+
+
+class StateAwareWeblogConfig(WeblogConfigAnnotations):
+    """
+    >>> from zope.interface.verify import verifyClass
+    >>> verifyClass(IWeblogEnhancedConfiguration, StateAwareWeblogConfig)
+    True
+    """
+
+    implements(IWeblogEnhancedConfiguration)
+
+    default_type = None
+
+    def _get_published_states(self):
+        return self._config.get('published_states', ['published',])
+    def _set_published_states(self, value):
+        self._config['published_states'] = value
+    published_states = property(_get_published_states, _set_published_states)
+
+    def _get_draft_states(self):
+        return self._config.get('draft_states', ['private',])
+    def _set_draft_states(self, value):
+        self._config['draft_states'] = value
+    draft_states = property(_get_draft_states, _set_draft_states)
+
+
+class StateAwareWeblogConfigEditForm(WeblogConfigEditForm):
+    """Edit form for weblog view configuration.
+    """
+
+    # We use IStateAwareWeblogConfiguration instead of
+    # IWeblogEnhancedConfiguration because we don't want to generate form
+    # input for the default_type field.
+    form_fields = form.Fields(IStateAwareWeblogConfiguration)
+
+    label = u'Weblog View Configuration'
+
+    def setUpWidgets(self, ignore_request=False):
+        self.adapters = {}
+        # We use IStateAwareWeblogConfiguration instead of
+        # IWeblogEnhancedConfiguration because we don't want to generate form
+        # input for the default_type field.
+        wvconfig = IStateAwareWeblogConfiguration(self.context)
+        self.widgets = form.setUpEditWidgets(
+            self.form_fields, self.prefix, wvconfig, self.request,
+            adapters=self.adapters, ignore_request=ignore_request
+            )
+
+    @form.action("submit")
+    def submit(self, action, data):
+        """
+        """
+        # We use IStateAwareWeblogConfiguration instead of
+        # IWeblogEnhancedConfiguration because we don't want to generate form
+        # input for the default_type field.
+        wvconfig = IStateAwareWeblogConfiguration(self.context)
+        form.applyChanges(wvconfig, self.form_fields, data)
+        msg = 'Configuration saved.'
+        IStatusMessage(self.request).addStatusMessage(msg, type='info')

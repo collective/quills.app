@@ -2,6 +2,7 @@
 from zope.component import adapts, getMultiAdapter
 from zope.component import queryMultiAdapter
 from zope.app.publisher.browser import getDefaultViewName
+from zope.interface import alsoProvides
 from zope.publisher.interfaces.http import IHTTPRequest
 from ZPublisher.BaseRequest import DefaultPublishTraverse
 
@@ -13,6 +14,9 @@ from quills.core.interfaces import IWeblogConfiguration
 from quills.core.interfaces import IPossibleWeblogEntry
 from quills.core.interfaces import ITopicContainer
 from quills.core.interfaces import IAuthorContainer
+
+# plone imports
+from plone.app.layout.globals.interfaces import IViewView
 
 # Local imports
 from topic import Topic
@@ -100,9 +104,11 @@ class WeblogArchiveTraverser(DefaultPublishTraverse):
                 view = queryMultiAdapter((obj, request),
                                          name='weblogentry_view')
                 if view is not None:
+                    alsoProvides(view, IViewView)
                     return view.__of__(obj)
             # Otherwise, we just return obj, as would have happened normally.
             return obj
+
         year = getattr(self.context, 'year', None)
         month = getattr(self.context, 'month', None)
         day = getattr(self.context, 'day', None)

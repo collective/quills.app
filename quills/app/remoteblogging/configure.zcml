@@ -1,0 +1,29 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           xmlns:browser="http://namespaces.zope.org/browser">
+
+  <adapter
+      for="quills.core.interfaces.IWeblog"
+      provides="quills.remoteblogging.interfaces.IUserManager"
+      factory="quills.app.remoteblogging.usermanager.WeblogUserManager" />
+
+  <adapter
+      for="quills.core.interfaces.IWeblog"
+      provides="quills.remoteblogging.interfaces.IUIDManager"
+      factory="quills.app.remoteblogging.uidmanager.UIDManager" />
+
+  <adapter
+      for="quills.core.interfaces.IWeblogEnhanced"
+      provides="quills.remoteblogging.interfaces.IUserManager"
+      factory="quills.app.remoteblogging.usermanager.WeblogUserManager" />
+
+  <adapter
+      for="quills.core.interfaces.IWeblogEnhanced"
+      provides="quills.remoteblogging.interfaces.IUIDManager"
+      factory="quills.app.remoteblogging.uidmanager.UIDManager" />
+
+  <adapter
+      for="quills.core.interfaces.IWeblogEntry"
+      provides="quills.remoteblogging.interfaces.IUIDManager"
+      factory="quills.app.remoteblogging.uidmanager.UIDManager" />
+
+</configure>

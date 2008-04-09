@@ -11,12 +11,16 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFPlone import PloneMessageFactory as _
 
 # Quills imports
+from quills.core.interfaces import IBaseContent
 from quills.core.interfaces import IWeblogEnhanced
 from quills.core.interfaces import IWeblog
 from quills.app.utilities import recurseToInterface
 from quills.app.utilities import talkbackURL
 from quills.app.utilities import getArchiveURLFor
 from quills.app.browser.baseview import BaseView
+
+# Local imports
+from base import BasePortletRenderer
 
 
 PORTLET_TITLE = u"Recent Comments"
@@ -44,13 +48,9 @@ class Assignment(base.Assignment):
         return _(PORTLET_TITLE)
 
 
-class Renderer(base.Renderer, BaseView):
+class Renderer(BasePortletRenderer, base.Renderer, BaseView):
 
     _template = ViewPageTemplateFile('recentcomments.pt')
-
-    #@ram.cache(render_cachekey)
-    def render(self):
-        return xhtml_compress(self._template())
 
     @property
     def available(self):
@@ -62,9 +62,8 @@ class Renderer(base.Renderer, BaseView):
 
     @property
     def getComments(self):
-        weblog_content = self._getWeblogContent()
-        weblog = IWeblog(weblog_content)
-        view = getMultiAdapter((weblog, self.request), name='manage_comments')
+        weblog_content = self.getWeblogContentObject()
+        view = getMultiAdapter((weblog_content, self.request), name='manage_comments')
         return view.getComments()[:self.data.max_comments]
 
     def talkbackURL(self, item):
@@ -72,14 +71,9 @@ class Renderer(base.Renderer, BaseView):
         comment = item.getObject()
         parent_comments = comment.parentsInThread()
         commented_object = parent_comments[0]
-        weblog_content = self._getWeblogContent()
+        weblog_content = self.getWeblogContentObject()
         base_url = getArchiveURLFor(commented_object, weblog_content)
         return '%s#%s' % (base_url, item.id)
-
-    def _getWeblogContent(self):
-        weblog_content = recurseToInterface(self.context.aq_inner,
-                                            (IWeblog, IWeblogEnhanced))
-        return weblog_content
 
 
 class AddForm(base.AddForm):

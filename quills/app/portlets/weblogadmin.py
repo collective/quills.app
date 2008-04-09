@@ -16,11 +16,15 @@ from Products.CMFPlone import PloneMessageFactory as _
 
 # Quills imports
 from quills.core.interfaces import IWeblogLocator
-from quills.core.interfaces import IWeblogEnhancedConfiguration
+from quills.app.interfaces import IWeblogEnhancedConfiguration
+
+# Local imports
+from base import BasePortletRenderer
 
 
 PORTLET_TITLE = u"Weblog Admin"
 PORTLET_DESC = u"This portlet provides useful admin functions for a weblog."
+
 
 class IWeblogAdminPortlet(IPortletDataProvider):
     """A weblog administration portlet.
@@ -35,13 +39,9 @@ class Assignment(base.Assignment):
         return _(PORTLET_TITLE)
 
 
-class Renderer(base.Renderer):
+class Renderer(BasePortletRenderer, base.Renderer):
 
     _template = ViewPageTemplateFile('weblogadmin.pt')
-
-    #@ram.cache(render_cachekey)
-    def render(self):
-        return xhtml_compress(self._template())
 
     @property
     def available(self):
@@ -51,7 +51,11 @@ class Renderer(base.Renderer):
         # I think has_permission sometimes returns 1 or None, so make sure that
         # we return True/False.
         if user.has_permission(AddPortalContent, self.context.aq_inner):
-            return True
+            # XXX Before returning True, we should also check the
+            # BasePortletRenderer.available implementation. Not sure how to do
+            # that as it's been property-ized on the base class.
+            #return True
+            return super(Renderer, self).available
         return False
 
     @property
@@ -60,7 +64,7 @@ class Renderer(base.Renderer):
 
     @property
     def add_entry_url(self):
-        weblog_content = self._getWeblogContent()
+        weblog_content = self.getWeblogContentObject()
         try:
             config = IWeblogEnhancedConfiguration(weblog_content)
             type_name = config.default_type
@@ -71,24 +75,18 @@ class Renderer(base.Renderer):
 
     @property
     def drafts_url(self):
-        weblog_content = self._getWeblogContent()
+        weblog_content = self.getWeblogContentObject()
         return "%s/drafts/" % weblog_content.absolute_url()
 
     @property
     def manage_comments_url(self):
-        weblog_content = self._getWeblogContent()
+        weblog_content = self.getWeblogContentObject()
         return "%s/manage_comments" % weblog_content.absolute_url()
 
     @property
     def config_view_url(self):
-        weblog_content = self._getWeblogContent()
+        weblog_content = self.getWeblogContentObject()
         return "%s/config_view" % weblog_content.absolute_url()
-
-    @memoize
-    def _getWeblogContent(self):
-        locator = IWeblogLocator(self.context)
-        weblog = locator.find()
-        return weblog
 
 
 class AddForm(base.AddForm):

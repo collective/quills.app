@@ -181,14 +181,14 @@
       </tal:comment>
       <div class="weblog-topics"
            tal:define="entry nocall:entry|nothing;
-                       weblog nocall:weblog|nothing;
+                       weblog_content nocall:weblog_content|nothing;
                        topics entry/getTopics"
            tal:condition="topics">
         <tal:comment condition="nothing">
           Parameters
 
           entry - The entry being displayed
-          weblog - The parent weblog
+          weblog_content - The parent weblog
         </tal:comment>
 
         <div class="weblog-topics-label"
@@ -200,7 +200,7 @@
             <a href=""
                tal:content="topic/getTitle"
                tal:attributes="href
-                               string:${weblog/absolute_url}/topics/${topic/getId}">
+                               string:${weblog_content/absolute_url}/topics/${topic/getId}">
               Link to the topic
             </a>
           </li>
