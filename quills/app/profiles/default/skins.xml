@@ -1,19 +1,13 @@
 <?xml version="1.0"?>
-<object name="portal_skins"
-        meta_type="Plone Skins Tool"
-        allow_any="False"
-        cookie_persistence="False"
-        default_skin="Plone Default"
-        request_varname="plone_skin">
+<object name="portal_skins">
 
- <object name="Quills"
-         meta_type="Filesystem Directory View"
-         directory="quills.app:skins/Quills"/>
+  <object name="Quills"
+          meta_type="Filesystem Directory View"
+          directory="quills.app:skins/Quills"/>
 
- <skin-path name="Plone Default"
-            based-on="Plone Default">
-  <layer name="Quills"
-         insert-after="custom" />
- </skin-path>
+  <skin-path name="*">
+   <layer name="Quills"
+          insert-after="custom" />
+  </skin-path>
 
 </object>
