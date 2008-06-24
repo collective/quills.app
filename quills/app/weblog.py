@@ -1,3 +1,5 @@
+from zope.app.container.interfaces import INameChooser
+from plone.i18n.normalizer.interfaces import IIDNormalizer
 
 
 class WeblogMixin:
