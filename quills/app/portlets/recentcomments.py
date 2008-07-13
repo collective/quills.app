@@ -63,6 +63,8 @@ class Renderer(BasePortletRenderer, base.Renderer, BaseView):
     @property
     def getComments(self):
         weblog_content = self.getWeblogContentObject()
+        if weblog_content is None:
+            return []
         view = getMultiAdapter((weblog_content, self.request), name='manage_comments')
         return view.getComments()[:self.data.max_comments]
 
