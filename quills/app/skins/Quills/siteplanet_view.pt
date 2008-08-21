@@ -16,10 +16,7 @@
       </div>
 
       <div id="content-weblog"
-           tal:define="results python:container.portal_catalog(portal_type='WeblogEntry',
-                       sort_on='effective',
-                       sort_order='reverse',
-                       review_state='published');
+           tal:define="results python:container.getWeblog().getEntries();
                        qt python:container.quills_tool;
                        Batch python:modules['Products.CMFPlone'].Batch;
                        b_size python:20;

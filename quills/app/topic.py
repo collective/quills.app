@@ -29,6 +29,7 @@ from utilities import EvilAATUSHack
 from utilities import QuillsMixin
 from interfaces import ITransientTopicContainer
 from interfaces import ITransientAuthorContainer
+from interfaces import IWeblogEnhancedConfiguration
 
 class Topic(QuillsMixin, AcquiringActionProvider, Traversable, Implicit):
     """Implementation of ITopic as a transient wrapper around a keywords.
@@ -111,6 +112,7 @@ class Topic(QuillsMixin, AcquiringActionProvider, Traversable, Implicit):
         """See ITopic.
         """
         weblog = self.getWeblogContentObject()
+        weblog_config = IWeblogEnhancedConfiguration(weblog)
         path = '/'.join(weblog.getPhysicalPath())
         catalog = getToolByName(self, 'portal_catalog')
         catalog._catalog.useBrains(WeblogEntryCatalogBrain)
@@ -123,7 +125,7 @@ class Topic(QuillsMixin, AcquiringActionProvider, Traversable, Implicit):
                          'operator' : 'and'},
                 sort_on='effective',
                 sort_order='reverse',
-                review_state='published')
+                review_state=weblog_config.published_states)
         results = results[offset:]
         if maximum is not None:
             results = results[:maximum]
@@ -173,6 +175,7 @@ class AuthorTopic(Topic):
         """See ITopic.
         """
         weblog = self.getWeblogContentObject()
+        weblog_config = IWeblogEnhancedConfiguration(weblog)
         path = '/'.join(weblog.getPhysicalPath())
         catalog = getToolByName(self, 'portal_catalog')
         catalog._catalog.useBrains(WeblogEntryCatalogBrain)
@@ -185,7 +188,7 @@ class AuthorTopic(Topic):
                          'operator' : 'or'},
                 sort_on='effective',
                 sort_order='reverse',
-                review_state='published')
+                review_state=weblog_config.published_states)
         return results
 
 

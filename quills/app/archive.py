@@ -43,6 +43,7 @@ from weblogentrybrain import WeblogEntryCatalogBrain
 from utilities import EvilAATUSHack
 from utilities import QuillsMixin
 from interfaces import ITransientArchive
+from interfaces import IWeblogEnhancedConfiguration
 
 
 class BaseArchive(QuillsMixin, AcquiringActionProvider, Traversable, Implicit):
@@ -150,13 +151,14 @@ class BaseDateArchive(BaseArchive):
             catalog = getToolByName(self, 'portal_catalog')
             catalog._catalog.useBrains(WeblogEntryCatalogBrain)
             weblog = self.getWeblogContentObject()
+            weblog_config = IWeblogEnhancedConfiguration(weblog)            
             path = '/'.join(weblog.getPhysicalPath())
             ifaces = [interfaceToName(catalog.aq_parent, IWeblogEntry),
                       interfaceToName(catalog.aq_parent, IPossibleWeblogEntry)]
             results = catalog(
                 object_provides={'query' : ifaces, 'operator' : 'or'},
                 path={'query':path, 'level': 0},
-                review_state='published',
+                review_state=weblog_config.published_states,
                 effective={
                      'query' : [min_datetime, max_datetime],
                      'range': 'minmax'}
@@ -302,9 +304,11 @@ class DayArchive(BaseDateArchive):
             return self._items[key]
         min_datetime, max_datetime = self._getDateRange()
         catalog = getToolByName(self, 'portal_catalog')
+        weblog = self.getWeblogContentObject()
+        weblog_config = IWeblogEnhancedConfiguration(weblog)
         results = catalog(
                 getId=key,
-                review_state='published',
+                review_state=weblog_config.published_states,
                 effective={
                      'query' : [min_datetime, max_datetime],
                      'range': 'minmax'}

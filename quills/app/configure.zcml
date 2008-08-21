@@ -34,8 +34,8 @@
 
   <adapter
       for="quills.core.interfaces.IWeblog"
-      provides="quills.core.interfaces.IWeblogConfiguration"
-      factory="quills.core.browser.weblogconfig.WeblogConfigAnnotations"
+      provides="quills.app.interfaces.IWeblogEnhancedConfiguration"
+      factory="quills.app.browser.weblogconfig.StateAwareWeblogConfig"
       />
 
 

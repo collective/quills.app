@@ -127,4 +127,5 @@ class WeblogEntryCatalogBrain(QuillsMixin):
     def isPublished(self):
         """See IWeblogEntry.
         """
-        return self['review_state'] == 'published'
+        # this is insane! it counteracts Plones separation between brain and object!
+        self._getWeblogEntry().isPublished()

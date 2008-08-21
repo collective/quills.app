@@ -8,11 +8,11 @@ from Products.CMFCore.utils import getToolByName
 # Quills imports
 from quills.core.interfaces import IWeblog
 from quills.core.interfaces import IWeblogEntry
-from quills.core.interfaces import IWeblogConfiguration
 from quills.core.browser.interfaces import IWeblogView
 from quills.core.browser.interfaces import IWeblogEntryView
 from quills.core.browser.interfaces import ITopicView
 from baseview import BaseView
+from quills.app.interfaces import IWeblogEnhancedConfiguration
 
 
 class WeblogView(BaseView):
@@ -34,7 +34,7 @@ class WeblogView(BaseView):
     def getConfig(self):
         """See IWeblogView.
         """
-        return IWeblogConfiguration(self.context.getWeblogContentObject())
+        return IWeblogEnhancedConfiguration(self.getWeblogContentObject())
 
     def getWeblogEntriesDates(self, entries_dict):
         """See IWeblogView.
@@ -94,7 +94,7 @@ class WeblogEntryView(BaseView):
         """See IWeblogView.
         """
         weblog = self.getWeblogContentObject()
-        return IWeblogConfiguration(weblog)
+        return IWeblogEnhancedConfiguration(weblog)
     
     def workflow_state(self):
         """returns the current workflow state of the context"""

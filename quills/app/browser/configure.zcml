@@ -34,7 +34,7 @@
       <page
           for="quills.core.interfaces.IWeblog"
           name="config_view"
-          class="quills.core.browser.weblogconfig.WeblogConfigEditForm"
+          class="quills.app.browser.weblogconfig.StateAwareWeblogConfigEditForm"
           permission="zope2.ChangeConfig"
           />
 
