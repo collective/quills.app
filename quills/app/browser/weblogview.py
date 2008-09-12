@@ -62,7 +62,7 @@ class WeblogView(BaseView):
             lazy_entries = lazy_entries._sequence[start:end]
         results = {}
         for lazy_entry in lazy_entries:
-            date = lazy_entry.effective.strftime(format)
+            date = lazy_entry.getPublicationDate().strftime(format)
             try:
                 if results[date]:
                     # Add the entry to the top of the list for that day

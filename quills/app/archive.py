@@ -98,7 +98,7 @@ class ArchiveContainer(BaseArchive):
             self.getEntries()
             years= {}
             for entry in self.results:
-                year = entry['effective'].strftime('%Y')
+                year = entry.getPublicationDate().strftime('%Y')
                 years[year] = year
             years = years.keys()
             years.sort()
@@ -194,7 +194,7 @@ class YearArchive(BaseDateArchive):
             self.getEntries()
             months = {}
             for entry in self.results:
-                month = entry['effective'].strftime('%m')
+                month = entry.getPublicationDate().strftime('%m')
                 months[month] = month
             months = months.keys()
             months.sort()
@@ -240,7 +240,7 @@ class MonthArchive(BaseDateArchive):
             self.getEntries()
             days = {}
             for entry in self.results:
-                day = entry['effective'].strftime('%d')
+                day = entry.getPublicationDate().strftime('%d')
                 days[day] = day
             days = days.keys()
             days.sort()
