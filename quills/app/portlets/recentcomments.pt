@@ -1,5 +1,4 @@
 <dl class="portlet portletRecentComments"
-    i18n:domain="plone"
     tal:define="comments view/getComments;">
 
     <dt class="portletHeader">

@@ -1,6 +1,4 @@
-<dl class="portlet portletTagCloud"
-    i18n:domain="plone">
-
+<dl class="portlet portletTagCloud">
     <dt class="portletHeader">
         <span class="portletTopLeft"></span>
         <a class="tile"

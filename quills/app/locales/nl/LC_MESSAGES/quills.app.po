@@ -1,0 +1,277 @@
+# --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
+# SOME DESCRIPTIVE TITLE.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2008-10-02 08:23+0000\n"
+"PO-Revision-Date: 2006-09-15 13:41+0200\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: nl\n"
+"Language-Name: Dutch\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: quills.app\n"
+
+#: ./portlets/archive.py:69
+msgid "Add %s Portlet"
+msgstr ""
+
+#: ./portlets/tagcloud.py:97
+msgid "Add Tag Cloud Portlet"
+msgstr ""
+
+#. Default: "Add new blog entry"
+#: ./portlets/weblogadmin.pt:12
+msgid "Add new blog entry"
+msgstr ""
+
+#. Default: "Atom"
+#: ./portlets/quillslinks.pt:17
+msgid "Atom"
+msgstr "Atom"
+
+#. Default: "Atom Enabled"
+#: ./portlets/quillslinks.pt:17
+msgid "Atom Enabled"
+msgstr "Geschikt voor Atom"
+
+#. Default: "Atom feed"
+#: ./skins/Quills/quills_header_macros.pt:17
+msgid "Atom feed"
+msgstr "Atom feed"
+
+#. Default: "Author"
+#: ./browser/manage_comments.pt:31
+msgid "Author"
+msgstr ""
+
+#. Default: "Configure Blog"
+#: ./portlets/weblogadmin.pt:28
+msgid "Configure Blog"
+msgstr ""
+
+#: ./interfaces.py:40
+msgid "Default type."
+msgstr ""
+
+#. Default: "Delete"
+#: ./browser/manage_comments.pt:49
+msgid "Delete"
+msgstr ""
+
+#: ./interfaces.py:60
+msgid "Draft workflow states"
+msgstr ""
+
+#: ./portlets/archive.py:78
+msgid "Edit %s Portlet"
+msgstr ""
+
+#: ./portlets/authors.py:44
+msgid "If available, should the author's description be shown?"
+msgstr ""
+
+#: ./portlets/authors.py:32
+msgid "If available, should the author's location be shown?"
+msgstr ""
+
+#: ./portlets/authors.py:38
+msgid "If available, should the author's portrait be shown?"
+msgstr ""
+
+#. Default: "Manage Comments"
+#: ./portlets/weblogadmin.pt:20
+msgid "Manage Comments"
+msgstr ""
+
+#: ./portlets/recentcomments.py:33
+msgid "Maximum comments"
+msgstr ""
+
+#: ./portlets/recententries.py:27
+msgid "Maximum entries"
+msgstr ""
+
+#. Default: "Powered by Quills"
+#: ./portlets/quillslinks.pt:55
+msgid "Powered by Quills"
+msgstr "Gemaakt met Quills"
+
+#: ./interfaces.py:52
+msgid "Published workflow states"
+msgstr ""
+
+#. Default: "Quills weblog system for Plone"
+#: ./portlets/quillslinks.pt:55
+msgid "Quills weblog system for Plone"
+msgstr ""
+
+#. Default: "RDF"
+#: ./portlets/quillslinks.pt:30
+msgid "RDF"
+msgstr "RDF"
+
+#. Default: "RDF 1.0 feed"
+#: ./skins/Quills/quills_header_macros.pt:31
+msgid "RDF 1.0 feed"
+msgstr "RDF 1.0 feed"
+
+#. Default: "RDF 1.1 feed"
+#: ./skins/Quills/quills_header_macros.pt:38
+msgid "RDF 1.1 feed"
+msgstr "RDF 1.1 feed"
+
+#. Default: "RSS 2.0"
+#: ./portlets/quillslinks.pt:43
+msgid "RSS 2.0"
+msgstr "RSS 2.0"
+
+#. Default: "RSS 2.0 feed"
+#: ./skins/Quills/quills_header_macros.pt:24
+msgid "RSS 2.0 feed"
+msgstr "RSS 2.0 feed"
+
+#. Default: "Reset"
+#: ./browser/manage_comments.pt:41
+msgid "Reset"
+msgstr ""
+
+#. Default: "Semantic feed"
+#: ./portlets/quillslinks.pt:30
+msgid "Semantic feed"
+msgstr "Semantische feed"
+
+#: ./portlets/authors.py:43
+msgid "Show author description?"
+msgstr ""
+
+#: ./portlets/authors.py:31
+msgid "Show author location?"
+msgstr ""
+
+#: ./portlets/authors.py:37
+msgid "Show author portrait?"
+msgstr ""
+
+#. Default: "Subject"
+#: ./browser/manage_comments.pt:32
+msgid "Subject"
+msgstr ""
+
+#: ./interfaces.py:41
+msgid "The default portal_type to add for this weblog."
+msgstr ""
+
+#. Default: "Update"
+#: ./browser/manage_comments.pt:34
+msgid "Update"
+msgstr ""
+
+#: ./portlets/recentcomments.py:34
+msgid "What's the maximum number of comments to list?"
+msgstr ""
+
+#: ./portlets/recententries.py:28
+msgid "What's the maximum number of entries to list?"
+msgstr ""
+
+#: ./interfaces.py:61
+msgid "Workflow states to treat as draft."
+msgstr ""
+
+#: ./interfaces.py:53
+msgid "Workflow states to treat as published."
+msgstr ""
+
+#. Default: "last modified"
+#: ./skins/Quills/entry_macros.pt:262
+msgid "box_last_modified"
+msgstr ""
+
+#. Default: "Filed Under:"
+#: ./skins/Quills/entry_macros.pt:194
+msgid "filed_under"
+msgstr "Opgeslagen onder:"
+
+#. Default: "Topics"
+#: ./browser/topic_listing.pt:20
+msgid "heading_topics"
+msgstr "Onderwerpen"
+
+#. Default: "Weblog Authors"
+#: ./browser/author_listing.pt:17
+msgid "heading_weblog_authors"
+msgstr ""
+
+#. Default: "by ${author}"
+#: ./skins/Quills/entry_macros.pt:250
+msgid "label_by_author"
+msgstr ""
+
+#. Default: "Last Post:"
+#: ./browser/topic_listing.pt:50
+msgid "label_last_post"
+msgstr "Meest recente bericht:"
+
+#. Default: "No Posts"
+#: ./browser/topic_listing.pt:46
+msgid "label_no_posts"
+msgstr "Geen berichten"
+
+#. Default: "Select all items"
+#: ./browser/manage_comments.pt:65
+msgid "label_select_all_items"
+msgstr ""
+
+#. Default: "Manage Comments"
+#: ./browser/manage_comments.pt:16
+msgid "manage_comments"
+msgstr ""
+
+#. Default: "There are no comments for Weblog entries."
+#: ./browser/manage_comments.pt:20
+msgid "no_comments"
+msgstr ""
+
+#. Default: "No weblog entries have been posted."
+#: ./skins/Quills/siteplanet_view.pt:46
+msgid "no_weblog_entries"
+msgstr "Er zijn nog geen berichten geplaatst."
+
+#. Default: "Comments:"
+#: ./skins/Quills/entry_macros.pt:217
+msgid "number_of_comments"
+msgstr "Commentaren:"
+
+#. Default: "Configure Blog"
+#: ./portlets/weblogadmin.pt:28
+msgid "portlet_blogadmin_configure_blog"
+msgstr ""
+
+#. Default: "Manage Comments"
+#: ./portlets/weblogadmin.pt:20
+msgid "portlet_blogadmin_manage_comments"
+msgstr ""
+
+#. Default: "Add Entry"
+#: ./portlets/weblogadmin.pt:12
+msgid "portlet_blogadmin_new_entry"
+msgstr ""
+
+#. Default: "read more..."
+#: ./skins/Quills/entry_macros.pt:113
+msgid "read_more"
+msgstr "Lees verder..."
+
+#. Default: "Note: for some weblog editors you will need to provide the following string as id to edit this blog:"
+#: ./browser/weblog_view.pt:31
+msgid "weblog_edit_app_note"
+msgstr ""
+"Opmerking: bij sommige externe weblog programma's moet je het volgende\n"
+"ID doorgeven om dit weblog te kunnen bewerken:"
+

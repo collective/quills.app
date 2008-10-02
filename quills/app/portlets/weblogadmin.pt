@@ -1,5 +1,5 @@
 <dl class="portlet portletWeblogAdmin"
-    i18n:domain="plone">
+    i18n:domain="quills.app">
 
     <dt class="portletHeader">
         <span class="portletTopLeft"></span>

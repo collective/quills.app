@@ -4,7 +4,7 @@
       metal:use-macro="here/main_template/macros/master"
       xmlns:tal="http://xml.zope.org/namespaces/tal"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
-      i18n:domain="quills">
+      i18n:domain="quills.app">
 
   <metal:block fill-slot="css_slot">
     <style type="text/css" media="all" tal:content="string:@import url(${portal_url}/Quills.css);">
@@ -15,7 +15,7 @@
     <div metal:fill-slot="main" id="weblog-topics">
 
         <h1 class="documentFirstHeading"
-          i18n:translate="heading_weblog_topics">Weblog Authors</h1>
+          i18n:translate="heading_weblog_authors">Weblog Authors</h1>
 
         <ul>
             <li tal:repeat="author context/getAuthors">

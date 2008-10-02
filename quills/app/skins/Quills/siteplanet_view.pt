@@ -2,7 +2,7 @@
       lang="en-US"
       xmlns:i18n="http://xml.zope.org/namespaces/i18n"
       metal:use-macro="here/main_template/macros/master"
-      i18n:domain="quills">
+      i18n:domain="quills.app">
 
   <body>
     <div metal:fill-slot="main">

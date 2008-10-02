@@ -1,0 +1,295 @@
+# Gettext Message File for Quills.
+# This one should include the workflow names, content type names and
+# other strangely not i18n-taggable stuff. Empty for now.
+msgid ""
+msgstr ""
+"Project-Id-Version: Quills 1.5\n"
+"POT-Creation-Date: 2008-10-02 08:23+0000\n"
+"PO-Revision-Date: 2006-08-18 12:40+0900\n"
+"Last-Translator: Reinout van Rees <reinout@vanrees.org>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language-Code: ja\n"
+"Language-Name: Japanese\n"
+"Preferred-Encodings: utf-8\n"
+"Domain: quills.app\n"
+
+#: ./portlets/archive.py:69
+msgid "Add %s Portlet"
+msgstr ""
+
+#: ./portlets/tagcloud.py:97
+msgid "Add Tag Cloud Portlet"
+msgstr ""
+
+#. Default: "Add new blog entry"
+#: ./portlets/weblogadmin.pt:12
+msgid "Add new blog entry"
+msgstr ""
+
+#. <img alt="Atom" height="15" i18n:attributes="alt title" src="" tal:attributes="src string:$portal_url/atom_feed.gif" title="Atom Enabled" width="80"/>
+#. Default: "Atom"
+#: ./portlets/quillslinks.pt:17
+msgid "Atom"
+msgstr "Atom"
+
+#. <img alt="Atom" height="15" i18n:attributes="alt title" src="" tal:attributes="src string:$portal_url/atom_feed.gif" title="Atom Enabled" width="80"/>
+#. Default: "Atom Enabled"
+#: ./portlets/quillslinks.pt:17
+msgid "Atom Enabled"
+msgstr "Atomを有効にする"
+
+#. <link href="atom.xml" i18n:attributes="title" rel="alternate" title="Atom feed" type="application/atom+xml"/>
+#. Default: "Atom feed"
+#: ./skins/Quills/quills_header_macros.pt:17
+msgid "Atom feed"
+msgstr "Atomフィード"
+
+#. Default: "Author"
+#: ./browser/manage_comments.pt:31
+msgid "Author"
+msgstr ""
+
+#. Default: "Configure Blog"
+#: ./portlets/weblogadmin.pt:28
+msgid "Configure Blog"
+msgstr ""
+
+#: ./interfaces.py:40
+msgid "Default type."
+msgstr ""
+
+#. Default: "Delete"
+#: ./browser/manage_comments.pt:49
+msgid "Delete"
+msgstr ""
+
+#: ./interfaces.py:60
+msgid "Draft workflow states"
+msgstr ""
+
+#: ./portlets/archive.py:78
+msgid "Edit %s Portlet"
+msgstr ""
+
+#: ./portlets/authors.py:44
+msgid "If available, should the author's description be shown?"
+msgstr ""
+
+#: ./portlets/authors.py:32
+msgid "If available, should the author's location be shown?"
+msgstr ""
+
+#: ./portlets/authors.py:38
+msgid "If available, should the author's portrait be shown?"
+msgstr ""
+
+#. Default: "Manage Comments"
+#: ./portlets/weblogadmin.pt:20
+msgid "Manage Comments"
+msgstr ""
+
+#: ./portlets/recentcomments.py:33
+msgid "Maximum comments"
+msgstr ""
+
+#: ./portlets/recententries.py:27
+msgid "Maximum entries"
+msgstr ""
+
+#. <img alt="Powered by Quills" height="15" i18n:attributes="alt title" src="" tal:attributes="src string:$portal_url/quills_powered.gif" title="Quills weblog system for Plone: by Etria" width="80"/>
+#. Default: "Powered by Quills"
+#: ./portlets/quillslinks.pt:55
+msgid "Powered by Quills"
+msgstr "Powered by Quills"
+
+#: ./interfaces.py:52
+msgid "Published workflow states"
+msgstr ""
+
+#. Default: "Quills weblog system for Plone"
+#: ./portlets/quillslinks.pt:55
+msgid "Quills weblog system for Plone"
+msgstr ""
+
+#. <img alt="RDF" height="15" i18n:attributes="alt title" src="" tal:attributes="src string:$portal_url/rdf_feed.gif" title="Semantic feed" width="80"/>
+#. Default: "RDF"
+#: ./portlets/quillslinks.pt:30
+msgid "RDF"
+msgstr "RDF"
+
+#. Default: "RDF 1.0 feed"
+#: ./skins/Quills/quills_header_macros.pt:31
+msgid "RDF 1.0 feed"
+msgstr "RDF 1.0 feed"
+
+#. Default: "RDF 1.1 feed"
+#: ./skins/Quills/quills_header_macros.pt:38
+msgid "RDF 1.1 feed"
+msgstr "RDF 1.1 feed"
+
+#. <img alt="RSS 2.0" height="15" i18n:attributes="alt title" src="" tal:attributes="src string:$portal_url/rss_feed.gif" title="RSS 2.0 feed" width="80"/>
+#. Default: "RSS 2.0"
+#: ./portlets/quillslinks.pt:43
+msgid "RSS 2.0"
+msgstr "RSS 2.0"
+
+# RSS 2.0 フィード
+#. <img alt="RSS 2.0" height="15" i18n:attributes="alt title" src="" tal:attributes="src string:$portal_url/rss_feed.gif" title="RSS 2.0 feed" width="80"/>
+#. Default: "RSS 2.0 feed"
+#: ./skins/Quills/quills_header_macros.pt:24
+msgid "RSS 2.0 feed"
+msgstr "RSS 2.0 feed"
+
+#. Default: "Reset"
+#: ./browser/manage_comments.pt:41
+msgid "Reset"
+msgstr ""
+
+#. <img alt="RDF" height="15" i18n:attributes="alt title" src="" tal:attributes="src string:$portal_url/rdf_feed.gif" title="Semantic feed" width="80"/>
+#. Default: "Semantic feed"
+#: ./portlets/quillslinks.pt:30
+msgid "Semantic feed"
+msgstr "Semanticフィード"
+
+#: ./portlets/authors.py:43
+msgid "Show author description?"
+msgstr ""
+
+#: ./portlets/authors.py:31
+msgid "Show author location?"
+msgstr ""
+
+#: ./portlets/authors.py:37
+msgid "Show author portrait?"
+msgstr ""
+
+#. Default: "Subject"
+#: ./browser/manage_comments.pt:32
+msgid "Subject"
+msgstr ""
+
+#: ./interfaces.py:41
+msgid "The default portal_type to add for this weblog."
+msgstr ""
+
+#. Default: "Update"
+#: ./browser/manage_comments.pt:34
+msgid "Update"
+msgstr ""
+
+#: ./portlets/recentcomments.py:34
+msgid "What's the maximum number of comments to list?"
+msgstr ""
+
+#: ./portlets/recententries.py:28
+msgid "What's the maximum number of entries to list?"
+msgstr ""
+
+#: ./interfaces.py:61
+msgid "Workflow states to treat as draft."
+msgstr ""
+
+#: ./interfaces.py:53
+msgid "Workflow states to treat as published."
+msgstr ""
+
+#. Default: "last modified"
+#: ./skins/Quills/entry_macros.pt:262
+msgid "box_last_modified"
+msgstr ""
+
+## 2 more: Quills/trunk/skins/Quills/weblog_macros.pt, Quills/trunk/skins/Quills/weblog_macros.pt
+#. <span i18n:translate="filed_under">
+#. Filed Under:
+#. </span>
+#. Default: "Filed Under:"
+#: ./skins/Quills/entry_macros.pt:194
+msgid "filed_under"
+msgstr "Filed Under:"
+
+#. <h5 i18n:translate="heading_topics">
+#. Topics
+#. </h5>
+#. Default: "Topics"
+#: ./browser/topic_listing.pt:20
+msgid "heading_topics"
+msgstr "トピック"
+
+#. Default: "Weblog Authors"
+#: ./browser/author_listing.pt:17
+msgid "heading_weblog_authors"
+msgstr ""
+
+#. Default: "by ${author}"
+#: ./skins/Quills/entry_macros.pt:250
+msgid "label_by_author"
+msgstr ""
+
+#. Default: "Last Post:"
+#: ./browser/topic_listing.pt:50
+msgid "label_last_post"
+msgstr ""
+
+#. Default: "No Posts"
+#: ./browser/topic_listing.pt:46
+msgid "label_no_posts"
+msgstr ""
+
+#. Default: "Select all items"
+#: ./browser/manage_comments.pt:65
+msgid "label_select_all_items"
+msgstr ""
+
+#. Default: "Manage Comments"
+#: ./browser/manage_comments.pt:16
+msgid "manage_comments"
+msgstr ""
+
+#. Default: "There are no comments for Weblog entries."
+#: ./browser/manage_comments.pt:20
+msgid "no_comments"
+msgstr ""
+
+## 1 more: Quills/trunk/skins/Quills/siteplanet_view.pt
+#. <p i18n:translate="no_weblog_entries">
+#. No weblog entries have been posted.
+#. </p>
+#. Default: "No weblog entries have been posted."
+#: ./skins/Quills/siteplanet_view.pt:46
+msgid "no_weblog_entries"
+msgstr "Weblogエントリが投稿されていません。"
+
+#. Default: "Comments:"
+#: ./skins/Quills/entry_macros.pt:217
+msgid "number_of_comments"
+msgstr "コメント数"
+
+#. Default: "Configure Blog"
+#: ./portlets/weblogadmin.pt:28
+msgid "portlet_blogadmin_configure_blog"
+msgstr ""
+
+#. Default: "Manage Comments"
+#: ./portlets/weblogadmin.pt:20
+msgid "portlet_blogadmin_manage_comments"
+msgstr ""
+
+#. Default: "Add Entry"
+#: ./portlets/weblogadmin.pt:12
+msgid "portlet_blogadmin_new_entry"
+msgstr ""
+
+#. Default: "read more..."
+#: ./skins/Quills/entry_macros.pt:113
+msgid "read_more"
+msgstr "続きを読む…"
+
+#. Default: "Note: for some weblog editors you will need to provide the following string as id to edit this blog:"
+#: ./browser/weblog_view.pt:31
+msgid "weblog_edit_app_note"
+msgstr "注意: ウェブログエディタの中には以下の文字列をIDとして編集時に必要とすることがあります:"
+

@@ -1,5 +1,5 @@
 <dl class="portlet portletWeblogArchive"
-    i18n:domain="quills"
+    i18n:domain="plone"
     tal:define="years view/getSubArchives;"
     tal:condition="years">
 

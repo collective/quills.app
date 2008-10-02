@@ -1,5 +1,5 @@
 <dl class="portlet portletQuillsLinks"
-    i18n:domain="quills"
+    i18n:domain="quills.app"
     tal:define="weblog         python:view.getWeblog();
                 weblog_content python:view.getWeblogContentObject();
                 portal_url            view/portal_url;">
