@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-version = '0.1'
+version = '1.7'
 
 setup(name='quills.app',
       version=version,
@@ -26,6 +26,7 @@ setup(name='quills.app',
       zip_safe=False,
       install_requires=[
           'setuptools',
+	  'quills.core',
           # -*- Extra requirements: -*-
       ],
       entry_points="""
