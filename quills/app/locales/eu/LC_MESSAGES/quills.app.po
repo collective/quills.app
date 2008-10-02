@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Quills 1.5\n"
 "POT-Creation-Date: 2008-10-02 08:17+0000\n"
-"PO-Revision-Date: 2008-10-02 10:33+0100\n"
+"PO-Revision-Date: 2008-10-02 17:25+0100\n"
 "Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -19,16 +19,16 @@ msgstr ""
 
 #: ./portlets/archive.py:69
 msgid "Add %s Portlet"
-msgstr ""
+msgstr "%s portleta gehitu"
 
 #: ./portlets/tagcloud.py:97
 msgid "Add Tag Cloud Portlet"
-msgstr ""
+msgstr "Etiketa lainoen portleta gehitu"
 
 #. Default: "Add new blog entry"
 #: ./portlets/weblogadmin.pt:12
 msgid "Add new blog entry"
-msgstr ""
+msgstr "Sarrera berria gehitu"
 
 #. Default: "Atom"
 #: ./portlets/quillslinks.pt:17
@@ -48,16 +48,16 @@ msgstr "Atom jarioa"
 #. Default: "Author"
 #: ./browser/manage_comments.pt:31
 msgid "Author"
-msgstr ""
+msgstr "Egilea"
 
 #. Default: "Configure Blog"
 #: ./portlets/weblogadmin.pt:28
 msgid "Configure Blog"
-msgstr ""
+msgstr "Bloga konfiguratu"
 
 #: ./interfaces.py:40
 msgid "Default type."
-msgstr ""
+msgstr "Defektuzko mota."
 
 #. Default: "Delete"
 #: ./browser/manage_comments.pt:49
@@ -66,36 +66,36 @@ msgstr "Ezabatu"
 
 #: ./interfaces.py:60
 msgid "Draft workflow states"
-msgstr ""
+msgstr "Zirriborro egoerak"
 
 #: ./portlets/archive.py:78
 msgid "Edit %s Portlet"
-msgstr ""
+msgstr "%s portleta editatu"
 
 #: ./portlets/authors.py:44
 msgid "If available, should the author's description be shown?"
-msgstr ""
+msgstr "Existitzen bada, egilearen deskribapena erakutsi?"
 
 #: ./portlets/authors.py:32
 msgid "If available, should the author's location be shown?"
-msgstr ""
+msgstr "Existitzen bada, egilearen jatorria erakutsi?"
 
 #: ./portlets/authors.py:38
 msgid "If available, should the author's portrait be shown?"
-msgstr ""
+msgstr "Existitzen bada, egilearen argazkia erakutsi?"
 
 #. Default: "Manage Comments"
 #: ./portlets/weblogadmin.pt:20
 msgid "Manage Comments"
-msgstr ""
+msgstr "Erantzunak kudeatu"
 
 #: ./portlets/recentcomments.py:33
 msgid "Maximum comments"
-msgstr ""
+msgstr "Gehienezko erantzun kopurua"
 
 #: ./portlets/recententries.py:27
 msgid "Maximum entries"
-msgstr ""
+msgstr "Gehienezko elementu kopurua"
 
 #. Default: "Powered by Quills"
 #: ./portlets/quillslinks.pt:55
@@ -104,12 +104,12 @@ msgstr "Quillsekin egina"
 
 #: ./interfaces.py:52
 msgid "Published workflow states"
-msgstr ""
+msgstr "Argitaratutako egoerak"
 
 #. Default: "Quills weblog system for Plone"
 #: ./portlets/quillslinks.pt:55
 msgid "Quills weblog system for Plone"
-msgstr ""
+msgstr "Plonerako Quills blog sistema"
 
 #. Default: "RDF"
 #: ./portlets/quillslinks.pt:30
@@ -139,7 +139,7 @@ msgstr "RSS 2.0 jarioa"
 #. Default: "Reset"
 #: ./browser/manage_comments.pt:41
 msgid "Reset"
-msgstr ""
+msgstr "Berrezarri"
 
 #. Default: "Semantic feed"
 #: ./portlets/quillslinks.pt:30
@@ -148,50 +148,50 @@ msgstr "Jario semantikoa"
 
 #: ./portlets/authors.py:43
 msgid "Show author description?"
-msgstr ""
+msgstr "Egilearen deskribapena erakutsi?"
 
 #: ./portlets/authors.py:31
 msgid "Show author location?"
-msgstr ""
+msgstr "Egilearen jatorria erakutsi?"
 
 #: ./portlets/authors.py:37
 msgid "Show author portrait?"
-msgstr ""
+msgstr "Egilearen argazkia erakutsi?"
 
 #. Default: "Subject"
 #: ./browser/manage_comments.pt:32
 msgid "Subject"
-msgstr ""
+msgstr "Gaia"
 
 #: ./interfaces.py:41
 msgid "The default portal_type to add for this weblog."
-msgstr ""
+msgstr "Blog honetan gehituko den defektuzko elementu mota"
 
 #. Default: "Update"
 #: ./browser/manage_comments.pt:34
 msgid "Update"
-msgstr ""
+msgstr "Eguneratu"
 
 #: ./portlets/recentcomments.py:34
 msgid "What's the maximum number of comments to list?"
-msgstr ""
+msgstr "Gehienez zenbat erantzun erakutsiko dira?"
 
 #: ./portlets/recententries.py:28
 msgid "What's the maximum number of entries to list?"
-msgstr ""
+msgstr "Gehienez zenbat sarrera erakutsiko dira?"
 
 #: ./interfaces.py:61
 msgid "Workflow states to treat as draft."
-msgstr ""
+msgstr "Zirriborro bezala tratatu behar diren workflow egoerak"
 
 #: ./interfaces.py:53
 msgid "Workflow states to treat as published."
-msgstr ""
+msgstr "Argitaratu bezala tratatu behar diren workflow egoerak"
 
 #. Default: "last modified"
 #: ./skins/Quills/entry_macros.pt:262
 msgid "box_last_modified"
-msgstr ""
+msgstr "azken aldaketa"
 
 #. Default: "Filed Under:"
 #: ./skins/Quills/entry_macros.pt:194
@@ -206,12 +206,12 @@ msgstr "Gaiak"
 #. Default: "Weblog Authors"
 #: ./browser/author_listing.pt:17
 msgid "heading_weblog_authors"
-msgstr ""
+msgstr "Idazleak"
 
 #. Default: "by ${author}"
 #: ./skins/Quills/entry_macros.pt:250
 msgid "label_by_author"
-msgstr ""
+msgstr "${author}"
 
 #. Default: "Last Post:"
 #: ./browser/topic_listing.pt:50
@@ -226,7 +226,7 @@ msgstr "Ez dago mezurik"
 #. Default: "Select all items"
 #: ./browser/manage_comments.pt:65
 msgid "label_select_all_items"
-msgstr ""
+msgstr "Elementu guztiak aukeratu"
 
 #. Default: "Manage Comments"
 #: ./browser/manage_comments.pt:16
