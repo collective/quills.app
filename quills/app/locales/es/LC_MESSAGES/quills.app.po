@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2008-10-02 08:23+0000\n"
-"PO-Revision-Date: 2006-06-29 18:01+0200\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"PO-Revision-Date: 2008-10-03 08:26+0100\n"
+"Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -19,22 +19,22 @@ msgstr ""
 
 #: ./portlets/archive.py:69
 msgid "Add %s Portlet"
-msgstr ""
+msgstr "Añadir portletl %s"
 
 #: ./portlets/tagcloud.py:97
 msgid "Add Tag Cloud Portlet"
-msgstr ""
+msgstr "Añadir portlet de nube de etiquetas"
 
 #. Default: "Add new blog entry"
 #: ./portlets/weblogadmin.pt:12
 msgid "Add new blog entry"
-msgstr ""
+msgstr "Añadir nuevo mensaje"
 
 #. <img alt="Atom" height="15" i18n:attributes="alt title" src="" tal:attributes="src string:$portal_url/atom_feed.gif" title="Atom Enabled" width="80"/>
 #. Default: "Atom"
 #: ./portlets/quillslinks.pt:17
 msgid "Atom"
-msgstr ""
+msgstr "Atom"
 
 #. <img alt="Atom" height="15" i18n:attributes="alt title" src="" tal:attributes="src string:$portal_url/atom_feed.gif" title="Atom Enabled" width="80"/>
 #. Default: "Atom Enabled"
@@ -51,75 +51,75 @@ msgstr ""
 #. Default: "Author"
 #: ./browser/manage_comments.pt:31
 msgid "Author"
-msgstr ""
+msgstr "Autor"
 
 #. Default: "Configure Blog"
 #: ./portlets/weblogadmin.pt:28
 msgid "Configure Blog"
-msgstr ""
+msgstr "Configurar blog"
 
 #: ./interfaces.py:40
 msgid "Default type."
-msgstr ""
+msgstr "Tipo por defecto"
 
 #. Default: "Delete"
 #: ./browser/manage_comments.pt:49
 msgid "Delete"
-msgstr ""
+msgstr "Eliminar"
 
 #: ./interfaces.py:60
 msgid "Draft workflow states"
-msgstr ""
+msgstr "Estados pendientes"
 
 #: ./portlets/archive.py:78
 msgid "Edit %s Portlet"
-msgstr ""
+msgstr "Editar portlet %s"
 
 #: ./portlets/authors.py:44
 msgid "If available, should the author's description be shown?"
-msgstr ""
+msgstr "¿Si existe, se debería mostrar la descripción del autor?"
 
 #: ./portlets/authors.py:32
 msgid "If available, should the author's location be shown?"
-msgstr ""
+msgstr "¿Si existe, se debería mostrar la procedencia del autor?"
 
 #: ./portlets/authors.py:38
 msgid "If available, should the author's portrait be shown?"
-msgstr ""
+msgstr "¿Si existe, se debería mostrar la foto del autor?"
 
 #. Default: "Manage Comments"
 #: ./portlets/weblogadmin.pt:20
 msgid "Manage Comments"
-msgstr ""
+msgstr "Gestionar comentarios"
 
 #: ./portlets/recentcomments.py:33
 msgid "Maximum comments"
-msgstr ""
+msgstr "Número máximo de comentarios"
 
 #: ./portlets/recententries.py:27
 msgid "Maximum entries"
-msgstr ""
+msgstr "Número máximo de mensajes"
 
 #. <img alt="Powered by Quills" height="15" i18n:attributes="alt title" src="" tal:attributes="src string:$portal_url/quills_powered.gif" title="Quills weblog system for Plone: by Etria" width="80"/>
 #. Default: "Powered by Quills"
 #: ./portlets/quillslinks.pt:55
 msgid "Powered by Quills"
-msgstr ""
+msgstr "Hecho con Quills"
 
 #: ./interfaces.py:52
 msgid "Published workflow states"
-msgstr ""
+msgstr "Estados publicados"
 
 #. Default: "Quills weblog system for Plone"
 #: ./portlets/quillslinks.pt:55
 msgid "Quills weblog system for Plone"
-msgstr ""
+msgstr "Quills, software para blogs de Plone"
 
 #. <img alt="RDF" height="15" i18n:attributes="alt title" src="" tal:attributes="src string:$portal_url/rdf_feed.gif" title="Semantic feed" width="80"/>
 #. Default: "RDF"
 #: ./portlets/quillslinks.pt:30
 msgid "RDF"
-msgstr ""
+msgstr "RDF"
 
 #. Default: "RDF 1.0 feed"
 #: ./skins/Quills/quills_header_macros.pt:31
@@ -146,7 +146,7 @@ msgstr ""
 #. Default: "Reset"
 #: ./browser/manage_comments.pt:41
 msgid "Reset"
-msgstr ""
+msgstr "Resetear"
 
 #. <img alt="RDF" height="15" i18n:attributes="alt title" src="" tal:attributes="src string:$portal_url/rdf_feed.gif" title="Semantic feed" width="80"/>
 #. Default: "Semantic feed"
@@ -156,50 +156,50 @@ msgstr ""
 
 #: ./portlets/authors.py:43
 msgid "Show author description?"
-msgstr ""
+msgstr "¿Mostrar descripción del autor?"
 
 #: ./portlets/authors.py:31
 msgid "Show author location?"
-msgstr ""
+msgstr "¿Mostrar procedencia del autor?"
 
 #: ./portlets/authors.py:37
 msgid "Show author portrait?"
-msgstr ""
+msgstr "¿Mostrar foto del autor?"
 
 #. Default: "Subject"
 #: ./browser/manage_comments.pt:32
 msgid "Subject"
-msgstr ""
+msgstr "Asunto"
 
 #: ./interfaces.py:41
 msgid "The default portal_type to add for this weblog."
-msgstr ""
+msgstr "El tipo de elemento por defecto a añadir a este blog."
 
 #. Default: "Update"
 #: ./browser/manage_comments.pt:34
 msgid "Update"
-msgstr ""
+msgstr "Actualizar"
 
 #: ./portlets/recentcomments.py:34
 msgid "What's the maximum number of comments to list?"
-msgstr ""
+msgstr "¿Cuál es el máximo número de comentarios a mostrar?"
 
 #: ./portlets/recententries.py:28
 msgid "What's the maximum number of entries to list?"
-msgstr ""
+msgstr "¿Cuál es el máximo número de mensajes a mostrar?"
 
 #: ./interfaces.py:61
 msgid "Workflow states to treat as draft."
-msgstr ""
+msgstr "Estados del workflow que se tratarán como pendientes"
 
 #: ./interfaces.py:53
 msgid "Workflow states to treat as published."
-msgstr ""
+msgstr "Estados del workflow que se tratarán como publicados"
 
 #. Default: "last modified"
 #: ./skins/Quills/entry_macros.pt:262
 msgid "box_last_modified"
-msgstr ""
+msgstr "última modificación"
 
 #. <span i18n:translate="filed_under">
 #. Filed Under:
@@ -207,7 +207,7 @@ msgstr ""
 #. Default: "Filed Under:"
 #: ./skins/Quills/entry_macros.pt:194
 msgid "filed_under"
-msgstr ""
+msgstr "Etiquetas:"
 
 #. <h5 i18n:translate="heading_topics">
 #. Topics
@@ -215,42 +215,42 @@ msgstr ""
 #. Default: "Topics"
 #: ./browser/topic_listing.pt:20
 msgid "heading_topics"
-msgstr ""
+msgstr "Etiquetas"
 
 #. Default: "Weblog Authors"
 #: ./browser/author_listing.pt:17
 msgid "heading_weblog_authors"
-msgstr ""
+msgstr "Autores"
 
 #. Default: "by ${author}"
 #: ./skins/Quills/entry_macros.pt:250
 msgid "label_by_author"
-msgstr ""
+msgstr "por ${author}"
 
 #. Default: "Last Post:"
 #: ./browser/topic_listing.pt:50
 msgid "label_last_post"
-msgstr ""
+msgstr "Último mensaje:"
 
 #. Default: "No Posts"
 #: ./browser/topic_listing.pt:46
 msgid "label_no_posts"
-msgstr ""
+msgstr "No hay mensajes"
 
 #. Default: "Select all items"
 #: ./browser/manage_comments.pt:65
 msgid "label_select_all_items"
-msgstr ""
+msgstr "Seleccionar todos"
 
 #. Default: "Manage Comments"
 #: ./browser/manage_comments.pt:16
 msgid "manage_comments"
-msgstr ""
+msgstr "Gestionar comentarios"
 
 #. Default: "There are no comments for Weblog entries."
 #: ./browser/manage_comments.pt:20
 msgid "no_comments"
-msgstr ""
+msgstr "No hay comentarios"
 
 #. <p i18n:translate="no_weblog_entries">
 #. No weblog entries have been posted.
@@ -258,35 +258,35 @@ msgstr ""
 #. Default: "No weblog entries have been posted."
 #: ./skins/Quills/siteplanet_view.pt:46
 msgid "no_weblog_entries"
-msgstr "No hay entradas en el weblog"
+msgstr "No hay entradas en el blog"
 
 #. Default: "Comments:"
 #: ./skins/Quills/entry_macros.pt:217
 msgid "number_of_comments"
-msgstr ""
+msgstr "Comentarios:"
 
 #. Default: "Configure Blog"
 #: ./portlets/weblogadmin.pt:28
 msgid "portlet_blogadmin_configure_blog"
-msgstr ""
+msgstr "Configurar blog"
 
 #. Default: "Manage Comments"
 #: ./portlets/weblogadmin.pt:20
 msgid "portlet_blogadmin_manage_comments"
-msgstr ""
+msgstr "Gestionar comentarios"
 
 #. Default: "Add Entry"
 #: ./portlets/weblogadmin.pt:12
 msgid "portlet_blogadmin_new_entry"
-msgstr ""
+msgstr "Añadir mensaje"
 
 #. Default: "read more..."
 #: ./skins/Quills/entry_macros.pt:113
 msgid "read_more"
-msgstr ""
+msgstr "leer más"
 
 #. Default: "Note: for some weblog editors you will need to provide the following string as id to edit this blog:"
 #: ./browser/weblog_view.pt:31
 msgid "weblog_edit_app_note"
-msgstr ""
+msgstr "Nota: para utilizar algunos editores de blogs, necesitaras utilizar esta cadena de caracteres:"
 
