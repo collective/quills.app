@@ -10,6 +10,7 @@
   <include file="security.zcml" />
   <include package=".browser" />
   <include package=".portlets" />
+  <include file="syndication.zcml" />
 
   <adapter
       for="quills.core.interfaces.IWeblog
