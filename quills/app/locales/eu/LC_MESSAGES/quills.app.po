@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Quills 1.5\n"
 "POT-Creation-Date: 2008-10-21 13:17+0000\n"
-"PO-Revision-Date: 2008-10-02 17:25+0100\n"
+"PO-Revision-Date: 2008-10-21 15:36+0100\n"
 "Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -38,7 +38,7 @@ msgstr "Atom"
 #. Default: "Atom Enabled"
 #: ./portlets/quillslinks.pt:17
 msgid "Atom Enabled"
-msgstr ""
+msgstr "Atom"
 
 #. Default: "Atom feed"
 #: ./skins/Quills/quills_header_macros.pt:17
@@ -53,7 +53,7 @@ msgstr "Egilea"
 #. Default: "Cancel"
 #: ./skins/Quills/quills_settings_form.cpt:71
 msgid "Cancel"
-msgstr ""
+msgstr "Utzi"
 
 #. Default: "Configure Blog"
 #: ./portlets/weblogadmin.pt:28
@@ -149,7 +149,7 @@ msgstr "Berrezarri"
 #. Default: "Save"
 #: ./skins/Quills/quills_settings_form.cpt:63
 msgid "Save"
-msgstr ""
+msgstr "Gorde"
 
 #. Default: "Semantic feed"
 #: ./portlets/quillslinks.pt:30
@@ -206,7 +206,7 @@ msgstr "azken aldaketa"
 #. Default: "Portal-wide Quills settings."
 #: ./skins/Quills/quills_settings_form.cpt:24
 msgid "description_quills_settings"
-msgstr ""
+msgstr "Quillsen ezarpenak"
 
 #. Default: "Filed Under:"
 #: ./skins/Quills/entry_macros.pt:194
@@ -216,7 +216,7 @@ msgstr "Etiketak:"
 #. Default: "Quills Settings"
 #: ./skins/Quills/quills_settings_form.cpt:15
 msgid "heading_quills_settings"
-msgstr ""
+msgstr "Quillsen ezarpenak"
 
 #. Default: "Topics"
 #: ./browser/topic_listing.pt:20
@@ -231,7 +231,7 @@ msgstr "Idazleak"
 #. Default: "Addresses that match the following regular expressions will be blocked from posting trackback comments to weblog entries."
 #: ./skins/Quills/quills_settings_form.cpt:46
 msgid "help_trackback_blacklist"
-msgstr ""
+msgstr "Ondoko adierazpen erregularrekin bat datozen helbideetatik datozen trackbackak blokeatu egingo dira"
 
 #. Default: "by ${author}"
 #: ./skins/Quills/entry_macros.pt:250
@@ -256,17 +256,17 @@ msgstr "Elementu guztiak aukeratu"
 #. Default: "Trackback Blacklist"
 #: ./skins/Quills/quills_settings_form.cpt:42
 msgid "label_trackback_blacklist"
-msgstr ""
+msgstr "Trackbacken zerrenda-beltza"
 
 #. Default: "Up to Plone Setup"
 #: ./skins/Quills/quills_settings_form.cpt:17
 msgid "label_up_to_plone_setup"
-msgstr ""
+msgstr "Ploneren konfiguraziora"
 
 #. Default: "Spam Protection"
 #: ./skins/Quills/quills_settings_form.cpt:35
 msgid "legend_spam_protection"
-msgstr ""
+msgstr "Spam babesa"
 
 #. Default: "Manage Comments"
 #: ./browser/manage_comments.pt:16
