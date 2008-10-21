@@ -19,7 +19,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Quills 1.5\n"
-"POT-Creation-Date: 2008-10-21 13:17+0000\n"
+"POT-Creation-Date: 2008-10-21 15:02+0000\n"
 "PO-Revision-Date: 2006-08-19 16:31+0200\n"
 "Last-Translator: Filip Miletic <f dot miletic at ewi dot tudelft dot nl>\n"
 "Language-Team: Serbian <gnu@prevod.org>\n"
@@ -31,14 +31,6 @@ msgstr ""
 "Language-Name: Serbian\n"
 "Preferred-Encodings: utf-8\n"
 "Domain: quills.app\n"
-
-#: ./portlets/archive.py:69
-msgid "Add %s Portlet"
-msgstr ""
-
-#: ./portlets/tagcloud.py:97
-msgid "Add Tag Cloud Portlet"
-msgstr ""
 
 #. Default: "Add new blog entry"
 #: ./portlets/weblogadmin.pt:12
@@ -88,10 +80,6 @@ msgstr ""
 msgid "Draft workflow states"
 msgstr ""
 
-#: ./portlets/archive.py:78
-msgid "Edit %s Portlet"
-msgstr ""
-
 #: ./portlets/authors.py:44
 msgid "If available, should the author's description be shown?"
 msgstr ""
@@ -126,6 +114,10 @@ msgstr "Покрећу нас Пера"
 msgid "Published workflow states"
 msgstr ""
 
+#: ./portlets/quillslinks.py:21
+msgid "Quills"
+msgstr ""
+
 #. Default: "Quills weblog system for Plone"
 #: ./portlets/quillslinks.pt:55
 msgid "Quills weblog system for Plone"
@@ -155,6 +147,14 @@ msgstr "RSS 2.0"
 #: ./skins/Quills/quills_header_macros.pt:24
 msgid "RSS 2.0 feed"
 msgstr "Довод за RSS 2.0"
+
+#: ./portlets/recentcomments.py:26
+msgid "Recent Comments"
+msgstr ""
+
+#: ./portlets/recententries.py:20
+msgid "Recent Entries"
+msgstr ""
 
 #. Default: "Reset"
 #: ./browser/manage_comments.pt:41
@@ -188,13 +188,57 @@ msgstr ""
 msgid "Subject"
 msgstr ""
 
+#: ./portlets/tagcloud.py:19
+msgid "Tag Cloud"
+msgstr ""
+
 #: ./interfaces.py:41
 msgid "The default portal_type to add for this weblog."
+msgstr ""
+
+#: ./portlets/tagcloud.py:20
+msgid "This portlet displays a tag cloud."
+msgstr ""
+
+#: ./portlets/recentcomments.py:27
+msgid "This portlet lists recent weblog comments."
+msgstr ""
+
+#: ./portlets/recententries.py:21
+msgid "This portlet lists recent weblog entries."
+msgstr ""
+
+#: ./portlets/archive.py:24
+msgid "This portlet lists the archive of this weblog."
+msgstr ""
+
+#: ./portlets/authors.py:25
+msgid "This portlet lists weblog authors."
+msgstr ""
+
+#: ./portlets/quillslinks.py:22
+msgid "This portlet provides links to the various feeds of this instance."
+msgstr ""
+
+#: ./portlets/weblogadmin.py:26
+msgid "This portlet provides useful admin functions for a weblog."
 msgstr ""
 
 #. Default: "Update"
 #: ./browser/manage_comments.pt:34
 msgid "Update"
+msgstr ""
+
+#: ./portlets/weblogadmin.py:25
+msgid "Weblog Admin"
+msgstr ""
+
+#: ./portlets/archive.py:23
+msgid "Weblog Archive"
+msgstr ""
+
+#: ./portlets/authors.py:24
+msgid "Weblog Authors"
 msgstr ""
 
 #: ./portlets/recentcomments.py:34
@@ -213,6 +257,11 @@ msgstr ""
 msgid "Workflow states to treat as published."
 msgstr ""
 
+#. Default: "Add ${portlet-name} Portlet"
+#: ./portlets/archive.py:70
+msgid "add-portlet"
+msgstr ""
+
 #. Default: "last modified"
 #: ./skins/Quills/entry_macros.pt:262
 msgid "box_last_modified"
@@ -223,15 +272,30 @@ msgstr ""
 msgid "description_quills_settings"
 msgstr ""
 
+#. Default: "Edit ${portlet-name} Portlet"
+#: ./portlets/archive.py:79
+msgid "edit-portlet"
+msgstr ""
+
 ## 2 more: Quills/trunk/skins/Quills/weblog_macros.pt, Quills/trunk/skins/Quills/weblog_macros.pt
 #. Default: "Filed Under:"
 #: ./skins/Quills/entry_macros.pt:194
 msgid "filed_under"
 msgstr "Разврстано као:"
 
+#. Default: "Posts"
+#: ./browser/archive_view.pt:33
+msgid "heading_archive_posts"
+msgstr ""
+
 #. Default: "Quills Settings"
 #: ./skins/Quills/quills_settings_form.cpt:15
 msgid "heading_quills_settings"
+msgstr ""
+
+#. Default: "Sub-archives"
+#: ./browser/archive_view.pt:23
+msgid "heading_sub-archives"
 msgstr ""
 
 #. Default: "Topics"

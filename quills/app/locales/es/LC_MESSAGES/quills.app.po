@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2008-10-21 13:17+0000\n"
+"POT-Creation-Date: 2008-10-21 15:02+0000\n"
 "PO-Revision-Date: 2008-10-21 15:34+0100\n"
 "Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -16,14 +16,6 @@ msgstr ""
 "Language-Name: Spanish\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: quills.app\n"
-
-#: ./portlets/archive.py:69
-msgid "Add %s Portlet"
-msgstr "Añadir portletl %s"
-
-#: ./portlets/tagcloud.py:97
-msgid "Add Tag Cloud Portlet"
-msgstr "Añadir portlet de nube de etiquetas"
 
 #. Default: "Add new blog entry"
 #: ./portlets/weblogadmin.pt:12
@@ -76,10 +68,6 @@ msgstr "Eliminar"
 msgid "Draft workflow states"
 msgstr "Estados pendientes"
 
-#: ./portlets/archive.py:78
-msgid "Edit %s Portlet"
-msgstr "Editar portlet %s"
-
 #: ./portlets/authors.py:44
 msgid "If available, should the author's description be shown?"
 msgstr "¿Si existe, se debería mostrar la descripción del autor?"
@@ -115,6 +103,10 @@ msgstr "Hecho con Quills"
 msgid "Published workflow states"
 msgstr "Estados publicados"
 
+#: ./portlets/quillslinks.py:21
+msgid "Quills"
+msgstr ""
+
 #. Default: "Quills weblog system for Plone"
 #: ./portlets/quillslinks.pt:55
 msgid "Quills weblog system for Plone"
@@ -147,6 +139,14 @@ msgstr "RSS 2.0"
 #: ./skins/Quills/quills_header_macros.pt:24
 msgid "RSS 2.0 feed"
 msgstr "Feed RSS 2.0"
+
+#: ./portlets/recentcomments.py:26
+msgid "Recent Comments"
+msgstr ""
+
+#: ./portlets/recententries.py:20
+msgid "Recent Entries"
+msgstr ""
 
 #. Default: "Reset"
 #: ./browser/manage_comments.pt:41
@@ -181,14 +181,58 @@ msgstr "¿Mostrar foto del autor?"
 msgid "Subject"
 msgstr "Asunto"
 
+#: ./portlets/tagcloud.py:19
+msgid "Tag Cloud"
+msgstr ""
+
 #: ./interfaces.py:41
 msgid "The default portal_type to add for this weblog."
 msgstr "El tipo de elemento por defecto a añadir a este blog."
+
+#: ./portlets/tagcloud.py:20
+msgid "This portlet displays a tag cloud."
+msgstr ""
+
+#: ./portlets/recentcomments.py:27
+msgid "This portlet lists recent weblog comments."
+msgstr ""
+
+#: ./portlets/recententries.py:21
+msgid "This portlet lists recent weblog entries."
+msgstr ""
+
+#: ./portlets/archive.py:24
+msgid "This portlet lists the archive of this weblog."
+msgstr ""
+
+#: ./portlets/authors.py:25
+msgid "This portlet lists weblog authors."
+msgstr ""
+
+#: ./portlets/quillslinks.py:22
+msgid "This portlet provides links to the various feeds of this instance."
+msgstr ""
+
+#: ./portlets/weblogadmin.py:26
+msgid "This portlet provides useful admin functions for a weblog."
+msgstr ""
 
 #. Default: "Update"
 #: ./browser/manage_comments.pt:34
 msgid "Update"
 msgstr "Actualizar"
+
+#: ./portlets/weblogadmin.py:25
+msgid "Weblog Admin"
+msgstr ""
+
+#: ./portlets/archive.py:23
+msgid "Weblog Archive"
+msgstr ""
+
+#: ./portlets/authors.py:24
+msgid "Weblog Authors"
+msgstr ""
 
 #: ./portlets/recentcomments.py:34
 msgid "What's the maximum number of comments to list?"
@@ -206,6 +250,11 @@ msgstr "Estados del workflow que se tratarán como pendientes"
 msgid "Workflow states to treat as published."
 msgstr "Estados del workflow que se tratarán como publicados"
 
+#. Default: "Add ${portlet-name} Portlet"
+#: ./portlets/archive.py:70
+msgid "add-portlet"
+msgstr ""
+
 #. Default: "last modified"
 #: ./skins/Quills/entry_macros.pt:262
 msgid "box_last_modified"
@@ -216,6 +265,11 @@ msgstr "última modificación"
 msgid "description_quills_settings"
 msgstr "Configuración de Quills"
 
+#. Default: "Edit ${portlet-name} Portlet"
+#: ./portlets/archive.py:79
+msgid "edit-portlet"
+msgstr ""
+
 #. <span i18n:translate="filed_under">
 #. Filed Under:
 #. </span>
@@ -224,10 +278,20 @@ msgstr "Configuración de Quills"
 msgid "filed_under"
 msgstr "Etiquetas:"
 
+#. Default: "Posts"
+#: ./browser/archive_view.pt:33
+msgid "heading_archive_posts"
+msgstr ""
+
 #. Default: "Quills Settings"
 #: ./skins/Quills/quills_settings_form.cpt:15
 msgid "heading_quills_settings"
 msgstr "Configuración de Quills"
+
+#. Default: "Sub-archives"
+#: ./browser/archive_view.pt:23
+msgid "heading_sub-archives"
+msgstr ""
 
 #. <h5 i18n:translate="heading_topics">
 #. Topics
