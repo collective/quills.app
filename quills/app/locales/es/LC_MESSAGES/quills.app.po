@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2008-10-02 08:23+0000\n"
+"POT-Creation-Date: 2008-10-21 13:17+0000\n"
 "PO-Revision-Date: 2008-10-03 08:26+0100\n"
 "Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -52,6 +52,11 @@ msgstr ""
 #: ./browser/manage_comments.pt:31
 msgid "Author"
 msgstr "Autor"
+
+#. Default: "Cancel"
+#: ./skins/Quills/quills_settings_form.cpt:71
+msgid "Cancel"
+msgstr ""
 
 #. Default: "Configure Blog"
 #: ./portlets/weblogadmin.pt:28
@@ -148,6 +153,11 @@ msgstr ""
 msgid "Reset"
 msgstr "Resetear"
 
+#. Default: "Save"
+#: ./skins/Quills/quills_settings_form.cpt:63
+msgid "Save"
+msgstr ""
+
 #. <img alt="RDF" height="15" i18n:attributes="alt title" src="" tal:attributes="src string:$portal_url/rdf_feed.gif" title="Semantic feed" width="80"/>
 #. Default: "Semantic feed"
 #: ./portlets/quillslinks.pt:30
@@ -201,6 +211,11 @@ msgstr "Estados del workflow que se tratarán como publicados"
 msgid "box_last_modified"
 msgstr "última modificación"
 
+#. Default: "Portal-wide Quills settings."
+#: ./skins/Quills/quills_settings_form.cpt:24
+msgid "description_quills_settings"
+msgstr ""
+
 #. <span i18n:translate="filed_under">
 #. Filed Under:
 #. </span>
@@ -208,6 +223,11 @@ msgstr "última modificación"
 #: ./skins/Quills/entry_macros.pt:194
 msgid "filed_under"
 msgstr "Etiquetas:"
+
+#. Default: "Quills Settings"
+#: ./skins/Quills/quills_settings_form.cpt:15
+msgid "heading_quills_settings"
+msgstr ""
 
 #. <h5 i18n:translate="heading_topics">
 #. Topics
@@ -221,6 +241,11 @@ msgstr "Etiquetas"
 #: ./browser/author_listing.pt:17
 msgid "heading_weblog_authors"
 msgstr "Autores"
+
+#. Default: "Addresses that match the following regular expressions will be blocked from posting trackback comments to weblog entries."
+#: ./skins/Quills/quills_settings_form.cpt:46
+msgid "help_trackback_blacklist"
+msgstr ""
 
 #. Default: "by ${author}"
 #: ./skins/Quills/entry_macros.pt:250
@@ -241,6 +266,21 @@ msgstr "No hay mensajes"
 #: ./browser/manage_comments.pt:65
 msgid "label_select_all_items"
 msgstr "Seleccionar todos"
+
+#. Default: "Trackback Blacklist"
+#: ./skins/Quills/quills_settings_form.cpt:42
+msgid "label_trackback_blacklist"
+msgstr ""
+
+#. Default: "Up to Plone Setup"
+#: ./skins/Quills/quills_settings_form.cpt:17
+msgid "label_up_to_plone_setup"
+msgstr ""
+
+#. Default: "Spam Protection"
+#: ./skins/Quills/quills_settings_form.cpt:35
+msgid "legend_spam_protection"
+msgstr ""
 
 #. Default: "Manage Comments"
 #: ./browser/manage_comments.pt:16

@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2008-10-02 08:23+0000\n"
+"POT-Creation-Date: 2008-10-21 13:17+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -45,6 +45,11 @@ msgstr ""
 #. Default: "Author"
 #: ./browser/manage_comments.pt:31
 msgid "Author"
+msgstr ""
+
+#. Default: "Cancel"
+#: ./skins/Quills/quills_settings_form.cpt:71
+msgid "Cancel"
 msgstr ""
 
 #. Default: "Configure Blog"
@@ -138,6 +143,11 @@ msgstr ""
 msgid "Reset"
 msgstr ""
 
+#. Default: "Save"
+#: ./skins/Quills/quills_settings_form.cpt:63
+msgid "Save"
+msgstr ""
+
 #. Default: "Semantic feed"
 #: ./portlets/quillslinks.pt:30
 msgid "Semantic feed"
@@ -190,9 +200,19 @@ msgstr ""
 msgid "box_last_modified"
 msgstr ""
 
+#. Default: "Portal-wide Quills settings."
+#: ./skins/Quills/quills_settings_form.cpt:24
+msgid "description_quills_settings"
+msgstr ""
+
 #. Default: "Filed Under:"
 #: ./skins/Quills/entry_macros.pt:194
 msgid "filed_under"
+msgstr ""
+
+#. Default: "Quills Settings"
+#: ./skins/Quills/quills_settings_form.cpt:15
+msgid "heading_quills_settings"
 msgstr ""
 
 #. Default: "Topics"
@@ -203,6 +223,11 @@ msgstr ""
 #. Default: "Weblog Authors"
 #: ./browser/author_listing.pt:17
 msgid "heading_weblog_authors"
+msgstr ""
+
+#. Default: "Addresses that match the following regular expressions will be blocked from posting trackback comments to weblog entries."
+#: ./skins/Quills/quills_settings_form.cpt:46
+msgid "help_trackback_blacklist"
 msgstr ""
 
 #. Default: "by ${author}"
@@ -223,6 +248,21 @@ msgstr ""
 #. Default: "Select all items"
 #: ./browser/manage_comments.pt:65
 msgid "label_select_all_items"
+msgstr ""
+
+#. Default: "Trackback Blacklist"
+#: ./skins/Quills/quills_settings_form.cpt:42
+msgid "label_trackback_blacklist"
+msgstr ""
+
+#. Default: "Up to Plone Setup"
+#: ./skins/Quills/quills_settings_form.cpt:17
+msgid "label_up_to_plone_setup"
+msgstr ""
+
+#. Default: "Spam Protection"
+#: ./skins/Quills/quills_settings_form.cpt:35
+msgid "legend_spam_protection"
 msgstr ""
 
 #. Default: "Manage Comments"
