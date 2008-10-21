@@ -33,6 +33,10 @@ from OFS.Traversable import Traversable
 # CMF imports
 from Products.CMFCore.utils import getToolByName
 
+# Plone imports
+from Products.CMFPlone import PloneLocalesMessageFactory as _PLMF
+from Products.CMFPlone.i18nl10n import utranslate, monthname_msgid, monthname_english
+
 # Quills imports
 from quills.core.interfaces import IWeblogEntry
 from quills.core.interfaces import IPossibleWeblogEntry
@@ -141,7 +145,7 @@ class BaseDateArchive(BaseArchive):
     def Title(self):
         """
         """
-        return '%s %s' % (self.getTimeUnit(), self.getId())
+        return self.getId()
 
     def getEntries(self, maximum=None, offset=0):
         """
@@ -231,6 +235,10 @@ class MonthArchive(BaseDateArchive):
 
     def getTimeUnit(self):
         return 'Month'
+
+    def Title(self):
+        # Get utranslate script from context...
+        return self.utranslate(msgid=monthname_msgid(self.month), default=monthname_english(self.month), domain='plonelocales')
 
     def _getEntryDays(self):
         """

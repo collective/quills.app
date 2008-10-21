@@ -20,7 +20,7 @@
 
       <tal:sub-archives define="sub_archives context/getSubArchives"
                         condition="sub_archives">
-          <h3>Sub-archives</h3>
+          <h3 i18n:translate="heading_sub-archives">Sub-archives</h3>
           <ul>
             <li tal:repeat="archive sub_archives">
               <a href=""
@@ -30,7 +30,7 @@
           </ul>
      </tal:sub-archives>
 
-      <h3>Posts</h3>
+      <h3 i18n:translate="heading_archive_posts">Posts</h3>
       <ul>
         <li tal:repeat="entry context/getEntries">
           <a href=""
