@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2008-10-21 13:17+0000\n"
-"PO-Revision-Date: 2008-10-03 08:26+0100\n"
+"PO-Revision-Date: 2008-10-21 15:34+0100\n"
 "Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -40,13 +40,13 @@ msgstr "Atom"
 #. Default: "Atom Enabled"
 #: ./portlets/quillslinks.pt:17
 msgid "Atom Enabled"
-msgstr ""
+msgstr "Soporte Atom"
 
 #. <link href="atom.xml" i18n:attributes="title" rel="alternate" title="Atom feed" type="application/atom+xml"/>
 #. Default: "Atom feed"
 #: ./skins/Quills/quills_header_macros.pt:17
 msgid "Atom feed"
-msgstr ""
+msgstr "Feed Atom"
 
 #. Default: "Author"
 #: ./browser/manage_comments.pt:31
@@ -56,7 +56,7 @@ msgstr "Autor"
 #. Default: "Cancel"
 #: ./skins/Quills/quills_settings_form.cpt:71
 msgid "Cancel"
-msgstr ""
+msgstr "Cancelar"
 
 #. Default: "Configure Blog"
 #: ./portlets/weblogadmin.pt:28
@@ -129,24 +129,24 @@ msgstr "RDF"
 #. Default: "RDF 1.0 feed"
 #: ./skins/Quills/quills_header_macros.pt:31
 msgid "RDF 1.0 feed"
-msgstr ""
+msgstr "Feed RDF 1.0"
 
 #. Default: "RDF 1.1 feed"
 #: ./skins/Quills/quills_header_macros.pt:38
 msgid "RDF 1.1 feed"
-msgstr ""
+msgstr "Feed RDF 1.1"
 
 #. <img alt="RSS 2.0" height="15" i18n:attributes="alt title" src="" tal:attributes="src string:$portal_url/rss_feed.gif" title="RSS 2.0 feed" width="80"/>
 #. Default: "RSS 2.0"
 #: ./portlets/quillslinks.pt:43
 msgid "RSS 2.0"
-msgstr ""
+msgstr "RSS 2.0"
 
 #. <img alt="RSS 2.0" height="15" i18n:attributes="alt title" src="" tal:attributes="src string:$portal_url/rss_feed.gif" title="RSS 2.0 feed" width="80"/>
 #. Default: "RSS 2.0 feed"
 #: ./skins/Quills/quills_header_macros.pt:24
 msgid "RSS 2.0 feed"
-msgstr ""
+msgstr "Feed RSS 2.0"
 
 #. Default: "Reset"
 #: ./browser/manage_comments.pt:41
@@ -156,13 +156,13 @@ msgstr "Resetear"
 #. Default: "Save"
 #: ./skins/Quills/quills_settings_form.cpt:63
 msgid "Save"
-msgstr ""
+msgstr "Guardar"
 
 #. <img alt="RDF" height="15" i18n:attributes="alt title" src="" tal:attributes="src string:$portal_url/rdf_feed.gif" title="Semantic feed" width="80"/>
 #. Default: "Semantic feed"
 #: ./portlets/quillslinks.pt:30
 msgid "Semantic feed"
-msgstr ""
+msgstr "Feed semántico"
 
 #: ./portlets/authors.py:43
 msgid "Show author description?"
@@ -214,7 +214,7 @@ msgstr "última modificación"
 #. Default: "Portal-wide Quills settings."
 #: ./skins/Quills/quills_settings_form.cpt:24
 msgid "description_quills_settings"
-msgstr ""
+msgstr "Configuración de Quills"
 
 #. <span i18n:translate="filed_under">
 #. Filed Under:
@@ -227,7 +227,7 @@ msgstr "Etiquetas:"
 #. Default: "Quills Settings"
 #: ./skins/Quills/quills_settings_form.cpt:15
 msgid "heading_quills_settings"
-msgstr ""
+msgstr "Configuración de Quills"
 
 #. <h5 i18n:translate="heading_topics">
 #. Topics
@@ -245,7 +245,7 @@ msgstr "Autores"
 #. Default: "Addresses that match the following regular expressions will be blocked from posting trackback comments to weblog entries."
 #: ./skins/Quills/quills_settings_form.cpt:46
 msgid "help_trackback_blacklist"
-msgstr ""
+msgstr "Las direcciones que concuerden con las siguientes expresiones regulares se bloquearán al hacer trackbacks a las entradas de los blogs"
 
 #. Default: "by ${author}"
 #: ./skins/Quills/entry_macros.pt:250
@@ -270,17 +270,17 @@ msgstr "Seleccionar todos"
 #. Default: "Trackback Blacklist"
 #: ./skins/Quills/quills_settings_form.cpt:42
 msgid "label_trackback_blacklist"
-msgstr ""
+msgstr "Lista negra de trackbacks"
 
 #. Default: "Up to Plone Setup"
 #: ./skins/Quills/quills_settings_form.cpt:17
 msgid "label_up_to_plone_setup"
-msgstr ""
+msgstr "A la configuración de Plone"
 
 #. Default: "Spam Protection"
 #: ./skins/Quills/quills_settings_form.cpt:35
 msgid "legend_spam_protection"
-msgstr ""
+msgstr "Protección de Spam"
 
 #. Default: "Manage Comments"
 #: ./browser/manage_comments.pt:16
