@@ -7,20 +7,21 @@ from plone.portlets.interfaces import IPortletDataProvider
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFCore.utils import getToolByName
-from Products.CMFPlone import PloneMessageFactory as _
+from Products.CMFPlone import PloneLocalesMessageFactory as _PLMF
 
 # Quills imports
 from quills.core.interfaces import IWeblogEnhanced
 from quills.core.interfaces import IWeblog
 from quills.app.utilities import recurseToInterface
 from quills.app.browser.baseview import BaseView
+from quills.app import QuillsAppMessageFactory as _
 
 # Local imports
 from base import BasePortletRenderer
 
 
-PORTLET_TITLE = u"Weblog Archive"
-PORTLET_DESC = u"This portlet lists the archive of this weblog."
+PORTLET_TITLE = _(u"Weblog Archive")
+PORTLET_DESC = _(u"This portlet lists the archive of this weblog.")
 
 
 class IWeblogArchivePortlet(IPortletDataProvider):
@@ -33,7 +34,7 @@ class Assignment(base.Assignment):
 
     @property
     def title(self):
-        return _(PORTLET_TITLE)
+        return PORTLET_TITLE
 
 
 class Renderer(BasePortletRenderer, base.Renderer, BaseView):
@@ -52,11 +53,11 @@ class Renderer(BasePortletRenderer, base.Renderer, BaseView):
         """Returns the current month name as a Message."""
         msgid   = self._translation_service.month_msgid(month)
         english = self._translation_service.month_english(month)
-        return _(msgid, default=english)
+        return _PLMF(msgid, default=english)
 
     @property
     def title(self):
-        return _(PORTLET_TITLE)
+        return PORTLET_TITLE
 
     @property
     def getSubArchives(self):
@@ -66,8 +67,8 @@ class Renderer(BasePortletRenderer, base.Renderer, BaseView):
 
 class AddForm(base.AddForm):
     form_fields = form.Fields(IWeblogArchivePortlet)
-    label = _(u"Add %s Portlet" % PORTLET_TITLE)
-    description = _(PORTLET_DESC)
+    label = _(u'add-portlet', default=u"Add ${portlet-name} Portlet", mapping={u'portlet-name': PORTLET_TITLE})
+    description = PORTLET_DESC
 
     def create(self, data):
         return Assignment()
@@ -75,5 +76,5 @@ class AddForm(base.AddForm):
 
 class EditForm(base.EditForm):
     form_fields = form.Fields(IWeblogArchivePortlet)
-    label = _(u"Edit %s Portlet" % PORTLET_TITLE)
-    description = _(PORTLET_DESC)
+    label = _(u'edit-portlet', default=u"Edit ${portlet-name} Portlet", mapping={u'portlet-name': PORTLET_TITLE})
+    description = PORTLET_DESC

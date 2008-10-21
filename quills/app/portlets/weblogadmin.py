@@ -12,18 +12,18 @@ from plone.app.portlets.portlets import base
 from plone.memoize.compress import xhtml_compress
 from plone.memoize.instance import memoize
 from plone.portlets.interfaces import IPortletDataProvider
-from Products.CMFPlone import PloneMessageFactory as _
 
 # Quills imports
 from quills.core.interfaces import IWeblogLocator
 from quills.app.interfaces import IWeblogEnhancedConfiguration
+from quills.app import QuillsAppMessageFactory as _
 
 # Local imports
 from base import BasePortletRenderer
 
 
-PORTLET_TITLE = u"Weblog Admin"
-PORTLET_DESC = u"This portlet provides useful admin functions for a weblog."
+PORTLET_TITLE = _(u"Weblog Admin")
+PORTLET_DESC = _(u"This portlet provides useful admin functions for a weblog.")
 
 
 class IWeblogAdminPortlet(IPortletDataProvider):
@@ -36,7 +36,7 @@ class Assignment(base.Assignment):
 
     @property
     def title(self):
-        return _(PORTLET_TITLE)
+        return PORTLET_TITLE
 
 
 class Renderer(BasePortletRenderer, base.Renderer):
@@ -60,7 +60,7 @@ class Renderer(BasePortletRenderer, base.Renderer):
 
     @property
     def title(self):
-        return _(PORTLET_TITLE)
+        return PORTLET_TITLE
 
     @property
     def add_entry_url(self):
@@ -91,8 +91,8 @@ class Renderer(BasePortletRenderer, base.Renderer):
 
 class AddForm(base.AddForm):
     form_fields = form.Fields(IWeblogAdminPortlet)
-    label = _(u"Add %s Portlet" % PORTLET_TITLE)
-    description = _(PORTLET_DESC)
+    label = _(u'add-portlet', default=u"Add ${portlet-name} Portlet", mapping={u'portlet-name': PORTLET_TITLE})
+    description = PORTLET_DESC
 
     def create(self, data):
         return Assignment()
@@ -100,5 +100,5 @@ class AddForm(base.AddForm):
 
 class EditForm(base.EditForm):
     form_fields = form.Fields(IWeblogAdminPortlet)
-    label = _(u"Edit %s Portlet" % PORTLET_TITLE)
-    description = _(PORTLET_DESC)
+    label = _(u'edit-portlet', default=u"Edit ${portlet-name} Portlet", mapping={u'portlet-name': PORTLET_TITLE})
+    description = PORTLET_DESC

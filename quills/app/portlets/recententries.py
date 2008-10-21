@@ -7,18 +7,18 @@ from plone.memoize.compress import xhtml_compress
 from plone.portlets.interfaces import IPortletDataProvider
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from Products.CMFPlone import PloneMessageFactory as _
 
 # Quills imports
 from quills.core.interfaces import IWeblogLocator
 from quills.app.browser.baseview import BaseView
+from quills.app import QuillsAppMessageFactory as _
 
 # Local imports
 from base import BasePortletRenderer
 
 
-PORTLET_TITLE = u"Recent Entries"
-PORTLET_DESC = u"This portlet lists recent weblog entries."
+PORTLET_TITLE = _(u"Recent Entries")
+PORTLET_DESC = _(u"This portlet lists recent weblog entries.")
 
 
 class IRecentWeblogEntriesPortlet(IPortletDataProvider):
@@ -39,7 +39,7 @@ class Assignment(base.Assignment):
 
     @property
     def title(self):
-        return _(PORTLET_TITLE)
+        return PORTLET_TITLE
 
 
 class Renderer(BasePortletRenderer, base.Renderer, BaseView):
@@ -48,7 +48,7 @@ class Renderer(BasePortletRenderer, base.Renderer, BaseView):
 
     @property
     def title(self):
-        return _(PORTLET_TITLE)
+        return PORTLET_TITLE
 
     @property
     def getEntries(self):
@@ -58,8 +58,8 @@ class Renderer(BasePortletRenderer, base.Renderer, BaseView):
 
 class AddForm(base.AddForm):
     form_fields = form.Fields(IRecentWeblogEntriesPortlet)
-    label = _(u"Add %s Portlet" % PORTLET_TITLE)
-    description = _(PORTLET_DESC)
+    label = _(u'add-portlet', default=u"Add ${portlet-name} Portlet", mapping={u'portlet-name': PORTLET_TITLE})
+    description = PORTLET_DESC
 
     def create(self, data):
         return Assignment(max_entries=5)
@@ -67,5 +67,5 @@ class AddForm(base.AddForm):
 
 class EditForm(base.EditForm):
     form_fields = form.Fields(IRecentWeblogEntriesPortlet)
-    label = _(u"Edit %s Portlet" % PORTLET_TITLE)
-    description = _(PORTLET_DESC)
+    label = _(u'edit-portlet', default=u"Edit ${portlet-name} Portlet", mapping={u'portlet-name': PORTLET_TITLE})
+    description = PORTLET_DESC

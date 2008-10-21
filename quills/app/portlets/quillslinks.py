@@ -6,20 +6,20 @@ from plone.memoize.compress import xhtml_compress
 from plone.portlets.interfaces import IPortletDataProvider
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from Products.CMFPlone import PloneMessageFactory as _
 from Products.CMFCore.utils import getToolByName
 
 # Quills imports
 from quills.core.interfaces import IWeblogEnhanced
 from quills.core.interfaces import IWeblog
 from quills.app.utilities import recurseToInterface
+from quills.app import QuillsAppMessageFactory as _
 
 # Local imports
 from base import BasePortletRenderer
 
 
-PORTLET_TITLE = u"Quills"
-PORTLET_DESC = u"This portlet provides links to the various feeds of this instance."
+PORTLET_TITLE = _(u"Quills")
+PORTLET_DESC = _(u"This portlet provides links to the various feeds of this instance.")
 
 class IQuillsLinksPortlet(IPortletDataProvider):
     """A weblog administration portlet.
@@ -31,7 +31,7 @@ class Assignment(base.Assignment):
 
     @property
     def title(self):
-        return _(PORTLET_TITLE)
+        return PORTLET_TITLE
 
 
 class Renderer(BasePortletRenderer, base.Renderer):
@@ -40,7 +40,7 @@ class Renderer(BasePortletRenderer, base.Renderer):
 
     @property
     def title(self):
-        return _(PORTLET_TITLE)
+        return PORTLET_TITLE
 
     @property
     def portal_url(self):
@@ -49,8 +49,8 @@ class Renderer(BasePortletRenderer, base.Renderer):
 
 class AddForm(base.AddForm):
     form_fields = form.Fields(IQuillsLinksPortlet)
-    label = _(u"Add %s Portlet" % PORTLET_TITLE)
-    description = _(PORTLET_DESC)
+    label = _(u'add-portlet', default=u"Add ${portlet-name} Portlet", mapping={u'portlet-name': PORTLET_TITLE})
+    description = PORTLET_DESC
 
     def create(self, data):
         return Assignment()
@@ -58,5 +58,5 @@ class AddForm(base.AddForm):
 
 class EditForm(base.EditForm):
     form_fields = form.Fields(IQuillsLinksPortlet)
-    label = _(u"Edit %s Portlet" % PORTLET_TITLE)
+    label = _(u'edit-portlet', default=u"Edit ${portlet-name} Portlet", mapping={u'portlet-name': PORTLET_TITLE})
     description = _(PORTLET_DESC)

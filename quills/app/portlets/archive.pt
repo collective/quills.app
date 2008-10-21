@@ -18,7 +18,7 @@
                     <li tal:repeat="month months">
                         <a href=""
                             tal:attributes="href month/absolute_url">
-                            <span tal:replace="python: view.getMonthName(month.getId())" />&nbsp;(<b tal:content="python:len(month)"/>)
+                            <span i18n:translate="" i18n:domain="plone" tal:content="python: view.getMonthName(month.getId())" />&nbsp;(<b tal:content="python:len(month)"/>)
                         </a>
                     </li>
                 </ul>
