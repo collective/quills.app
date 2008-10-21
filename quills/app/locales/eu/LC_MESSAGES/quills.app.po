@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Quills 1.5\n"
 "POT-Creation-Date: 2008-10-21 15:02+0000\n"
-"PO-Revision-Date: 2008-10-21 15:36+0100\n"
+"PO-Revision-Date: 2008-10-21 17:06+0100\n"
 "Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -101,7 +101,7 @@ msgstr "Argitaratutako egoerak"
 
 #: ./portlets/quillslinks.py:21
 msgid "Quills"
-msgstr ""
+msgstr "Quills"
 
 #. Default: "Quills weblog system for Plone"
 #: ./portlets/quillslinks.pt:55
@@ -135,11 +135,11 @@ msgstr "RSS 2.0 jarioa"
 
 #: ./portlets/recentcomments.py:26
 msgid "Recent Comments"
-msgstr ""
+msgstr "Azken erantzunak"
 
 #: ./portlets/recententries.py:20
 msgid "Recent Entries"
-msgstr ""
+msgstr "Azken mezuak"
 
 #. Default: "Reset"
 #: ./browser/manage_comments.pt:41
@@ -175,7 +175,7 @@ msgstr "Gaia"
 
 #: ./portlets/tagcloud.py:19
 msgid "Tag Cloud"
-msgstr ""
+msgstr "Etiketa lainoa"
 
 #: ./interfaces.py:41
 msgid "The default portal_type to add for this weblog."
@@ -183,31 +183,31 @@ msgstr "Blog honetan gehituko den defektuzko elementu mota"
 
 #: ./portlets/tagcloud.py:20
 msgid "This portlet displays a tag cloud."
-msgstr ""
+msgstr "Portlet honek etiketa laino bat erakusten du"
 
 #: ./portlets/recentcomments.py:27
 msgid "This portlet lists recent weblog comments."
-msgstr ""
+msgstr "Portlet honek blogean egondako azken erantzunak erakusten ditu"
 
 #: ./portlets/recententries.py:21
 msgid "This portlet lists recent weblog entries."
-msgstr ""
+msgstr "Portlet honek blogean egondako azken mezuak erakusten ditu"
 
 #: ./portlets/archive.py:24
 msgid "This portlet lists the archive of this weblog."
-msgstr ""
+msgstr "Portlet honek blogaren artxiboa erakusten du"
 
 #: ./portlets/authors.py:25
 msgid "This portlet lists weblog authors."
-msgstr ""
+msgstr "Portlet honek blogaren egileak erakusten ditu"
 
 #: ./portlets/quillslinks.py:22
 msgid "This portlet provides links to the various feeds of this instance."
-msgstr ""
+msgstr "Portlet honek blogaren RSS jarioen loturak erakusten ditu"
 
 #: ./portlets/weblogadmin.py:26
 msgid "This portlet provides useful admin functions for a weblog."
-msgstr ""
+msgstr "Portlet honek blogaren kudeaketaren inguruko loturak erakusten ditu"
 
 #. Default: "Update"
 #: ./browser/manage_comments.pt:34
@@ -216,15 +216,15 @@ msgstr "Eguneratu"
 
 #: ./portlets/weblogadmin.py:25
 msgid "Weblog Admin"
-msgstr ""
+msgstr "Blogaren kudeaketa"
 
 #: ./portlets/archive.py:23
 msgid "Weblog Archive"
-msgstr ""
+msgstr "Blogaren artxiboa"
 
 #: ./portlets/authors.py:24
 msgid "Weblog Authors"
-msgstr ""
+msgstr "Blogeko egileak"
 
 #: ./portlets/recentcomments.py:34
 msgid "What's the maximum number of comments to list?"
@@ -245,7 +245,7 @@ msgstr "Argitaratu bezala tratatu behar diren workflow egoerak"
 #. Default: "Add ${portlet-name} Portlet"
 #: ./portlets/archive.py:70
 msgid "add-portlet"
-msgstr ""
+msgstr "${portlet-name} portleta gehitu"
 
 #. Default: "last modified"
 #: ./skins/Quills/entry_macros.pt:262
@@ -260,7 +260,7 @@ msgstr "Quillsen ezarpenak"
 #. Default: "Edit ${portlet-name} Portlet"
 #: ./portlets/archive.py:79
 msgid "edit-portlet"
-msgstr ""
+msgstr "${portlet-name} portleta editatu"
 
 #. Default: "Filed Under:"
 #: ./skins/Quills/entry_macros.pt:194
@@ -270,7 +270,7 @@ msgstr "Etiketak:"
 #. Default: "Posts"
 #: ./browser/archive_view.pt:33
 msgid "heading_archive_posts"
-msgstr ""
+msgstr "Mezuak"
 
 #. Default: "Quills Settings"
 #: ./skins/Quills/quills_settings_form.cpt:15
@@ -280,7 +280,7 @@ msgstr "Quillsen ezarpenak"
 #. Default: "Sub-archives"
 #: ./browser/archive_view.pt:23
 msgid "heading_sub-archives"
-msgstr ""
+msgstr "Azpi-artxiboak"
 
 #. Default: "Topics"
 #: ./browser/topic_listing.pt:20
