@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2008-10-21 15:02+0000\n"
-"PO-Revision-Date: 2008-10-21 15:34+0100\n"
+"PO-Revision-Date: 2008-10-21 17:10+0100\n"
 "Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -105,7 +105,7 @@ msgstr "Estados publicados"
 
 #: ./portlets/quillslinks.py:21
 msgid "Quills"
-msgstr ""
+msgstr "Quills"
 
 #. Default: "Quills weblog system for Plone"
 #: ./portlets/quillslinks.pt:55
@@ -142,11 +142,11 @@ msgstr "Feed RSS 2.0"
 
 #: ./portlets/recentcomments.py:26
 msgid "Recent Comments"
-msgstr ""
+msgstr "Comentarios recientes"
 
 #: ./portlets/recententries.py:20
 msgid "Recent Entries"
-msgstr ""
+msgstr "Mensajes recientes"
 
 #. Default: "Reset"
 #: ./browser/manage_comments.pt:41
@@ -183,7 +183,7 @@ msgstr "Asunto"
 
 #: ./portlets/tagcloud.py:19
 msgid "Tag Cloud"
-msgstr ""
+msgstr "Nube de etiquetas"
 
 #: ./interfaces.py:41
 msgid "The default portal_type to add for this weblog."
@@ -191,31 +191,31 @@ msgstr "El tipo de elemento por defecto a añadir a este blog."
 
 #: ./portlets/tagcloud.py:20
 msgid "This portlet displays a tag cloud."
-msgstr ""
+msgstr "Este portlet muestra una nube de etiquetas"
 
 #: ./portlets/recentcomments.py:27
 msgid "This portlet lists recent weblog comments."
-msgstr ""
+msgstr "Este portlets muestra los últimos comentarios del blog"
 
 #: ./portlets/recententries.py:21
 msgid "This portlet lists recent weblog entries."
-msgstr ""
+msgstr "Este portlets muestra los últimos mensajes del blog"
 
 #: ./portlets/archive.py:24
 msgid "This portlet lists the archive of this weblog."
-msgstr ""
+msgstr "Este portlet muestra el archivo del blog"
 
 #: ./portlets/authors.py:25
 msgid "This portlet lists weblog authors."
-msgstr ""
+msgstr "Este portlet muestra los autores del blog"
 
 #: ./portlets/quillslinks.py:22
 msgid "This portlet provides links to the various feeds of this instance."
-msgstr ""
+msgstr "Este portlet muestra los enlaces a los diferentes feeds de sindicación del blog"
 
 #: ./portlets/weblogadmin.py:26
 msgid "This portlet provides useful admin functions for a weblog."
-msgstr ""
+msgstr "Este portlet muestra enlaces para gestionar el blog"
 
 #. Default: "Update"
 #: ./browser/manage_comments.pt:34
@@ -224,15 +224,15 @@ msgstr "Actualizar"
 
 #: ./portlets/weblogadmin.py:25
 msgid "Weblog Admin"
-msgstr ""
+msgstr "Gestionar blog"
 
 #: ./portlets/archive.py:23
 msgid "Weblog Archive"
-msgstr ""
+msgstr "Archivo"
 
 #: ./portlets/authors.py:24
 msgid "Weblog Authors"
-msgstr ""
+msgstr "Autores del blog"
 
 #: ./portlets/recentcomments.py:34
 msgid "What's the maximum number of comments to list?"
@@ -253,7 +253,7 @@ msgstr "Estados del workflow que se tratarán como publicados"
 #. Default: "Add ${portlet-name} Portlet"
 #: ./portlets/archive.py:70
 msgid "add-portlet"
-msgstr ""
+msgstr "Añadir portlet ${portlet-name}"
 
 #. Default: "last modified"
 #: ./skins/Quills/entry_macros.pt:262
@@ -268,7 +268,7 @@ msgstr "Configuración de Quills"
 #. Default: "Edit ${portlet-name} Portlet"
 #: ./portlets/archive.py:79
 msgid "edit-portlet"
-msgstr ""
+msgstr "Editar portlet ${portlet-name}"
 
 #. <span i18n:translate="filed_under">
 #. Filed Under:
@@ -281,7 +281,7 @@ msgstr "Etiquetas:"
 #. Default: "Posts"
 #: ./browser/archive_view.pt:33
 msgid "heading_archive_posts"
-msgstr ""
+msgstr "Mensajes"
 
 #. Default: "Quills Settings"
 #: ./skins/Quills/quills_settings_form.cpt:15
@@ -291,7 +291,7 @@ msgstr "Configuración de Quills"
 #. Default: "Sub-archives"
 #: ./browser/archive_view.pt:23
 msgid "heading_sub-archives"
-msgstr ""
+msgstr "Sub-archivos"
 
 #. <h5 i18n:translate="heading_topics">
 #. Topics
