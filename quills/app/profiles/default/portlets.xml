@@ -1,5 +1,6 @@
 <?xml version="1.0"?>
-<portlets>
+<portlets
+    i18n:domain="quills.app" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
  
   <!-- Portlet type registrations -->
 
