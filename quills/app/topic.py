@@ -90,7 +90,7 @@ class Topic(QuillsMixin, AcquiringActionProvider, Traversable, Implicit):
         if topic_images is None:
             return None
         normalizer = getUtility(IIDNormalizer)
-        keyword_id = normalizer.normalize(self.keywords[0])
+        keyword_id = normalizer.normalize(self.keywords[0].decode('utf-8'))
         # To check for the presence of the image, we want to limit ourselves to
         # unacquired objects, so we use aq_base.
         image = getattr(aq_base(topic_images), keyword_id, None)
