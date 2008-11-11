@@ -55,7 +55,9 @@ def getArchivePathFor(obj, weblog_content):
     id = getattr(obj, 'getId')
     if callable(id):
         id = id()
-    published = obj.getPublicationDate()
+    published = getattr(obj, 'effective')
+    if callable(published):
+        published = published() 
     path = []
     weblog_config = IWeblogConfiguration(weblog_content)
     archive_format = weblog_config.archive_format
