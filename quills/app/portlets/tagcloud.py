@@ -2,6 +2,7 @@ from zope.formlib import form
 from zope.interface import implements
 
 from plone.app.portlets.portlets import base
+from plone.app.portlets.browser.formhelper import NullAddForm
 from plone.memoize.compress import xhtml_compress
 from plone.portlets.interfaces import IPortletDataProvider
 
@@ -92,12 +93,12 @@ class Renderer(BasePortletRenderer, base.Renderer):
         return "%s/topics" % url
 
 
-class AddForm(base.AddForm):
+class AddForm(NullAddForm):
     form_fields = form.Fields(ITagCloudPortlet)
     label = _(u'add-portlet', default=u"Add ${portlet-name} Portlet", mapping={u'portlet-name': PORTLET_TITLE})
     description = PORTLET_DESC
 
-    def create(self, data):
+    def create(self):
         return Assignment()
 
 

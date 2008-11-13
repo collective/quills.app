@@ -9,6 +9,7 @@ from Products.CMFCore.permissions import AddPortalContent
 
 # Plone imports
 from plone.app.portlets.portlets import base
+from plone.app.portlets.browser.formhelper import NullAddForm
 from plone.memoize.compress import xhtml_compress
 from plone.memoize.instance import memoize
 from plone.portlets.interfaces import IPortletDataProvider
@@ -89,12 +90,12 @@ class Renderer(BasePortletRenderer, base.Renderer):
         return "%s/config_view" % weblog_content.absolute_url()
 
 
-class AddForm(base.AddForm):
+class AddForm(NullAddForm):
     form_fields = form.Fields(IWeblogAdminPortlet)
     label = _(u'add-portlet', default=u"Add ${portlet-name} Portlet", mapping={u'portlet-name': PORTLET_TITLE})
     description = PORTLET_DESC
 
-    def create(self, data):
+    def create(self):
         return Assignment()
 
 
