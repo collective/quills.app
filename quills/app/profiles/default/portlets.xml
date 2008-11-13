@@ -3,6 +3,11 @@
     i18n:domain="quills.app" xmlns:i18n="http://xml.zope.org/namespaces/i18n">
  
   <!-- Portlet type registrations -->
+  <portlet
+    addview="quills.app.portlets.WeblogArchive"
+    title="Weblog Archive"
+    description="This portlet lists the archive of this weblog."
+    />
 
   <portlet
     addview="quills.app.portlets.TagCloud"
