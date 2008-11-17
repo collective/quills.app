@@ -33,7 +33,7 @@ class EvilAATUSHack(Explicit):
         return 1
 
 
-class QuillsMixin:
+class QuillsMixin(object):
     """
     """
 
