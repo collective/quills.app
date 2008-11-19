@@ -7,7 +7,7 @@
            i18n_domain="quills.app">
 
   <i18n:registerTranslations directory="locales" />
-
+  <include package="quills.core" />
   <include file="security.zcml" />
   <include package=".browser" />
   <include package=".portlets" />
