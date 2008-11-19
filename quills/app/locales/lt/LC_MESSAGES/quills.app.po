@@ -278,7 +278,7 @@ msgstr ""
 #. Default: "Filed Under:"
 #: ./skins/Quills/entry_macros.pt:194
 msgid "filed_under"
-msgstr "IÅ¡saugota po:"
+msgstr "Išsaugota po:"
 
 #. Default: "Posts"
 #: ./browser/archive_view.pt:33
@@ -375,7 +375,7 @@ msgstr ""
 #. Default: "No weblog entries have been posted."
 #: ./skins/Quills/weblog_macros.pt:56
 msgid "no_weblog_entries"
-msgstr "NÄra publikuotÅ³ blog'o Ä¯raÅ¡Å³."
+msgstr "Nėra publikuotų blog'o įrašų."
 
 #. Default: "Comments:"
 #: ./skins/Quills/entry_macros.pt:217

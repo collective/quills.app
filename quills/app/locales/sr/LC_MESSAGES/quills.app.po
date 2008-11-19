@@ -14,7 +14,7 @@
 # distributed one with the other.
 # 
 # If you have any questions regarding this translation, you can write to
-# the first translator, Ð¤Ð¸Ð»Ð¸Ð¿ ÐÐ¸Ð»ÐµÑÐ¸Ñ (f dot miletic at ewi dot tudelft
+# the first translator, Филип Милетић (f dot miletic at ewi dot tudelft
 # dot nl).
 msgid ""
 msgstr ""
@@ -40,17 +40,17 @@ msgstr ""
 #. Default: "Atom"
 #: ./portlets/quillslinks.pt:17
 msgid "Atom"
-msgstr "ÐÑÐ¾Ð¼"
+msgstr "Атом"
 
 #. Default: "Atom Enabled"
 #: ./portlets/quillslinks.pt:17
 msgid "Atom Enabled"
-msgstr "ÐÑÐ¾Ð¼ ÑÐµ ÑÐºÑÑÑÐµÐ½"
+msgstr "Атом је укључен"
 
 #. Default: "Atom feed"
 #: ./skins/Quills/quills_header_macros.pt:17
 msgid "Atom feed"
-msgstr "ÐÑÐ¾Ð¼Ð¾Ð² Ð´Ð¾Ð²Ð¾Ð´"
+msgstr "Атомов довод"
 
 #. Default: "Author"
 #: ./browser/manage_comments.pt:31
@@ -108,7 +108,7 @@ msgstr ""
 #. Default: "Powered by Quills"
 #: ./portlets/quillslinks.pt:55
 msgid "Powered by Quills"
-msgstr "ÐÐ¾ÐºÑÐµÑÑ Ð½Ð°Ñ ÐÐµÑÐ°"
+msgstr "Покрећу нас Пера"
 
 #: ./portlets/quillslinks.py:21
 msgid "Quills"
@@ -127,12 +127,12 @@ msgstr "RDF"
 #. Default: "RDF 1.0 feed"
 #: ./skins/Quills/quills_header_macros.pt:31
 msgid "RDF 1.0 feed"
-msgstr "ÐÐ¾Ð²Ð¾Ð´ Ð·Ð° RDF 1.0"
+msgstr "Довод за RDF 1.0"
 
 #. Default: "RDF 1.1 feed"
 #: ./skins/Quills/quills_header_macros.pt:38
 msgid "RDF 1.1 feed"
-msgstr "ÐÐ¾Ð²Ð¾Ð´ Ð·Ð° RDF 1.1"
+msgstr "Довод за RDF 1.1"
 
 #. Default: "RSS 2.0"
 #: ./portlets/quillslinks.pt:43
@@ -142,7 +142,7 @@ msgstr "RSS 2.0"
 #. Default: "RSS 2.0 feed"
 #: ./skins/Quills/quills_header_macros.pt:24
 msgid "RSS 2.0 feed"
-msgstr "ÐÐ¾Ð²Ð¾Ð´ Ð·Ð° RSS 2.0"
+msgstr "Довод за RSS 2.0"
 
 #: ./portlets/recentcomments.py:26
 msgid "Recent Comments"
@@ -165,7 +165,7 @@ msgstr ""
 #. Default: "Semantic feed"
 #: ./portlets/quillslinks.pt:30
 msgid "Semantic feed"
-msgstr "Ð¡ÐµÐ¼Ð°Ð½ÑÐ¸ÑÐºÐ¸ Ð´Ð¾Ð²Ð¾Ð´"
+msgstr "Семантички довод"
 
 #: ./portlets/authors.py:43
 msgid "Show author description?"
@@ -281,7 +281,7 @@ msgstr ""
 #. Default: "Filed Under:"
 #: ./skins/Quills/entry_macros.pt:194
 msgid "filed_under"
-msgstr "Ð Ð°Ð·Ð²ÑÑÑÐ°Ð½Ð¾ ÐºÐ°Ð¾:"
+msgstr "Разврстано као:"
 
 #. Default: "Posts"
 #: ./browser/archive_view.pt:33
@@ -301,7 +301,7 @@ msgstr ""
 #. Default: "Topics"
 #: ./browser/topic_listing.pt:20
 msgid "heading_topics"
-msgstr "Ð¢ÐµÐ¼Ðµ"
+msgstr "Теме"
 
 #. Default: "Weblog Authors"
 #: ./browser/author_listing.pt:17
@@ -372,13 +372,13 @@ msgstr ""
 #. Default: "No weblog entries have been posted."
 #: ./skins/Quills/weblog_macros.pt:56
 msgid "no_weblog_entries"
-msgstr "ÐÐ¾Ñ ÑÐ²ÐµÐº Ð½ÐµÐ¼Ð° ÑÐ½Ð¾ÑÐ° Ñ Ð´Ð½ÐµÐ²Ð½Ð¸Ðº."
+msgstr "Још увек нема уноса у дневник."
 
 #. Default: "Comments:"
 #: ./skins/Quills/entry_macros.pt:217
 #, fuzzy
 msgid "number_of_comments"
-msgstr "ÐÐ¾Ð¼ÐµÐ½ÑÐ°ÑÐ¸"
+msgstr "Коментари"
 
 #. Default: "Configure Blog"
 #: ./portlets/weblogadmin.pt:28
@@ -403,5 +403,5 @@ msgstr ""
 #. Default: "Note: for some weblog editors you will need to provide the following string as id to edit this blog:"
 #: ./browser/weblog_view.pt:31
 msgid "weblog_edit_app_note"
-msgstr "ÐÑÐ¸Ð¼ÐµÐ´Ð±Ð°: Ð·Ð° Ð½ÐµÐºÐµ ÑÑÐµÑÐ¸Ð²Ð°ÑÐµ Ð±Ð»Ð¾Ð³Ð¾Ð²Ð° Ð¼Ð¾ÑÐ°ÑÐµÑÐµ Ð´Ð° ÐºÐ¾ÑÐ¸ÑÑÐ¸ÑÐµ Ð½Ð°ÑÐµÐ´Ð½Ð¸ Ð¸Ð´ÐµÐ½ÑÐ¸ÑÐ¸ÐºÐ°ÑÐ¾Ñ ÐºÐ°ÐºÐ¾ Ð±Ð¸ÑÑÐµ Ð¼Ð¾Ð³Ð»Ð¸ Ð´Ð° Ð¼ÐµÑÐ°ÑÐµ Ð±Ð»Ð¾Ð³:"
+msgstr "Примедба: за неке уређиваче блогова мораћете да користите наредни идентификатор како бисте могли да мењате блог:"
 

@@ -32,13 +32,13 @@ msgstr "Atom"
 #. Default: "Atom Enabled"
 #: ./portlets/quillslinks.pt:17
 msgid "Atom Enabled"
-msgstr "Atomãæå¹ã«ãã"
+msgstr "Atomを有効にする"
 
 #. <link href="atom.xml" i18n:attributes="title" rel="alternate" title="Atom feed" type="application/atom+xml"/>
 #. Default: "Atom feed"
 #: ./skins/Quills/quills_header_macros.pt:17
 msgid "Atom feed"
-msgstr "Atomãã£ã¼ã"
+msgstr "Atomフィード"
 
 #. Default: "Author"
 #: ./browser/manage_comments.pt:31
@@ -130,7 +130,7 @@ msgstr "RDF 1.1 feed"
 msgid "RSS 2.0"
 msgstr "RSS 2.0"
 
-# RSS 2.0 ãã£ã¼ã
+# RSS 2.0 フィード
 #. <img alt="RSS 2.0" height="15" i18n:attributes="alt title" src="" tal:attributes="src string:$portal_url/rss_feed.gif" title="RSS 2.0 feed" width="80"/>
 #. Default: "RSS 2.0 feed"
 #: ./skins/Quills/quills_header_macros.pt:24
@@ -159,7 +159,7 @@ msgstr ""
 #. Default: "Semantic feed"
 #: ./portlets/quillslinks.pt:30
 msgid "Semantic feed"
-msgstr "Semanticãã£ã¼ã"
+msgstr "Semanticフィード"
 
 #: ./portlets/authors.py:43
 msgid "Show author description?"
@@ -301,7 +301,7 @@ msgstr ""
 #. Default: "Topics"
 #: ./browser/topic_listing.pt:20
 msgid "heading_topics"
-msgstr "ãããã¯"
+msgstr "トピック"
 
 #. Default: "Weblog Authors"
 #: ./browser/author_listing.pt:17
@@ -375,12 +375,12 @@ msgstr ""
 #. Default: "No weblog entries have been posted."
 #: ./skins/Quills/weblog_macros.pt:56
 msgid "no_weblog_entries"
-msgstr "Weblogã¨ã³ããªãæç¨¿ããã¦ãã¾ããã"
+msgstr "Weblogエントリが投稿されていません。"
 
 #. Default: "Comments:"
 #: ./skins/Quills/entry_macros.pt:217
 msgid "number_of_comments"
-msgstr "ã³ã¡ã³ãæ°"
+msgstr "コメント数"
 
 #. Default: "Configure Blog"
 #: ./portlets/weblogadmin.pt:28
@@ -400,10 +400,10 @@ msgstr ""
 #. Default: "read more..."
 #: ./skins/Quills/entry_macros.pt:113
 msgid "read_more"
-msgstr "ç¶ããèª­ãâ¦"
+msgstr "続きを読む…"
 
 #. Default: "Note: for some weblog editors you will need to provide the following string as id to edit this blog:"
 #: ./browser/weblog_view.pt:31
 msgid "weblog_edit_app_note"
-msgstr "æ³¨æ: ã¦ã§ãã­ã°ã¨ãã£ã¿ã®ä¸­ã«ã¯ä»¥ä¸ã®æå­åãIDã¨ãã¦ç·¨éæã«å¿è¦ã¨ãããã¨ãããã¾ã:"
+msgstr "注意: ウェブログエディタの中には以下の文字列をIDとして編集時に必要とすることがあります:"
 

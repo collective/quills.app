@@ -14,7 +14,7 @@
 # distributed one with the other.
 # 
 # If you have any questions regarding this translation, you can write to
-# the first translator, Filip MiletiÄ (f dot miletic at ewi dot tudelft
+# the first translator, Filip Miletić (f dot miletic at ewi dot tudelft
 # dot nl).
 msgid ""
 msgstr ""
@@ -45,7 +45,7 @@ msgstr "Atom"
 #. Default: "Atom Enabled"
 #: ./portlets/quillslinks.pt:17
 msgid "Atom Enabled"
-msgstr "Atom je ukljuÄen"
+msgstr "Atom je uključen"
 
 #. Default: "Atom feed"
 #: ./skins/Quills/quills_header_macros.pt:17
@@ -108,7 +108,7 @@ msgstr ""
 #. Default: "Powered by Quills"
 #: ./portlets/quillslinks.pt:55
 msgid "Powered by Quills"
-msgstr "PokreÄu nas Pera"
+msgstr "Pokreću nas Pera"
 
 #: ./portlets/quillslinks.py:21
 msgid "Quills"
@@ -165,7 +165,7 @@ msgstr ""
 #. Default: "Semantic feed"
 #: ./portlets/quillslinks.pt:30
 msgid "Semantic feed"
-msgstr "SemantiÄki dovod"
+msgstr "Semantički dovod"
 
 #: ./portlets/authors.py:43
 msgid "Show author description?"
@@ -372,7 +372,7 @@ msgstr ""
 #. Default: "No weblog entries have been posted."
 #: ./skins/Quills/weblog_macros.pt:56
 msgid "no_weblog_entries"
-msgstr "JoÅ¡ uvek nema unosa u dnevnik."
+msgstr "Još uvek nema unosa u dnevnik."
 
 #. Default: "Comments:"
 #: ./skins/Quills/entry_macros.pt:217
@@ -403,5 +403,5 @@ msgstr ""
 #. Default: "Note: for some weblog editors you will need to provide the following string as id to edit this blog:"
 #: ./browser/weblog_view.pt:31
 msgid "weblog_edit_app_note"
-msgstr "Primedba: za neke ureÄivaÄe blogova moraÄete da koristite naredni identifikator kako biste mogli da menjate blog:"
+msgstr "Primedba: za neke uređivače blogova moraćete da koristite naredni identifikator kako biste mogli da menjate blog:"
 

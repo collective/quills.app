@@ -30,7 +30,7 @@ msgstr "Atom"
 #. Default: "Atom Enabled"
 #: ./portlets/quillslinks.pt:17
 msgid "Atom Enabled"
-msgstr "Atom slÃ¥et til"
+msgstr "Atom slået til"
 
 #. Default: "Atom feed"
 #: ./skins/Quills/quills_header_macros.pt:17
@@ -93,7 +93,7 @@ msgstr ""
 #. Default: "Powered by Quills"
 #: ./portlets/quillslinks.pt:55
 msgid "Powered by Quills"
-msgstr "Baseret pÃ¥ Quils"
+msgstr "Baseret på Quils"
 
 #: ./portlets/quillslinks.py:21
 msgid "Quills"
@@ -355,7 +355,7 @@ msgstr ""
 #. Default: "No weblog entries have been posted."
 #: ./skins/Quills/weblog_macros.pt:56
 msgid "no_weblog_entries"
-msgstr "Ingen indlÃ¦g oprettet"
+msgstr "Ingen indlæg oprettet"
 
 #. Default: "Comments:"
 #: ./skins/Quills/entry_macros.pt:217
@@ -380,10 +380,10 @@ msgstr ""
 #. Default: "read more..."
 #: ./skins/Quills/entry_macros.pt:113
 msgid "read_more"
-msgstr "LÃ¦s mere..."
+msgstr "Læs mere..."
 
 #. Default: "Note: for some weblog editors you will need to provide the following string as id to edit this blog:"
 #: ./browser/weblog_view.pt:31
 msgid "weblog_edit_app_note"
-msgstr "BemÃ¦rk: For nogen brugere af webloggen vil det vÃ¦re nÃ¸dvendigt at indsÃ¦tte fÃ¸lgende tekst som ID for at redigere denne blog:"
+msgstr "Bemærk: For nogen brugere af webloggen vil det være nødvendigt at indsætte følgende tekst som ID for at redigere denne blog:"
 

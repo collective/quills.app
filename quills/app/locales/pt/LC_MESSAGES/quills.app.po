@@ -149,7 +149,7 @@ msgstr ""
 #. Default: "Semantic feed"
 #: ./portlets/quillslinks.pt:30
 msgid "Semantic feed"
-msgstr "Feed semÃ¢ntico"
+msgstr "Feed semântico"
 
 #: ./portlets/authors.py:43
 msgid "Show author description?"
@@ -284,7 +284,7 @@ msgstr ""
 #. Default: "Topics"
 #: ./browser/topic_listing.pt:20
 msgid "heading_topics"
-msgstr "TÃ³picos"
+msgstr "Tópicos"
 
 #. Default: "Weblog Authors"
 #: ./browser/author_listing.pt:17
@@ -304,12 +304,12 @@ msgstr ""
 #. Default: "Last Post:"
 #: ./browser/topic_listing.pt:50
 msgid "label_last_post"
-msgstr "Ãltima Entrada:"
+msgstr "Última Entrada:"
 
 #. Default: "No Posts"
 #: ./browser/topic_listing.pt:46
 msgid "label_no_posts"
-msgstr "NÃ£o hÃ¡ Entradas"
+msgstr "Não há Entradas"
 
 #. Default: "Select all items"
 #: ./browser/manage_comments.pt:65
@@ -359,7 +359,7 @@ msgstr "Nenhuma entrada adicionada"
 #. Default: "Comments:"
 #: ./skins/Quills/entry_macros.pt:217
 msgid "number_of_comments"
-msgstr "ComentÃ¡rios:"
+msgstr "Comentários:"
 
 #. Default: "Configure Blog"
 #: ./portlets/weblogadmin.pt:28
@@ -384,5 +384,5 @@ msgstr "ler mais..."
 #. Default: "Note: for some weblog editors you will need to provide the following string as id to edit this blog:"
 #: ./browser/weblog_view.pt:31
 msgid "weblog_edit_app_note"
-msgstr "Nota: para alguns blogeditors esta id Ã© necessÃ¡ria para para editar o blog"
+msgstr "Nota: para alguns blogeditors esta id é necessária para para editar o blog"
 
