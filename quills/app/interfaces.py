@@ -5,7 +5,7 @@ from zope.i18nmessageid import MessageFactory
 
 # quills imports
 from quills.core.interfaces import IWeblogConfiguration
-
+from quills.app import QuillsAppMessageFactory as _
 
 class ITransientTopicContainer(Interface):
     """A marker interface that allows us to distinguish between IWeblog, which
@@ -30,8 +30,6 @@ class ITransientArchive(Interface):
     """
 
 
-_ = MessageFactory('quills')
-
 class IDefaultTypeAwareWeblogConfiguration(IWeblogConfiguration):
     """
     """
@@ -49,7 +47,7 @@ class IStateAwareWeblogConfiguration(IWeblogConfiguration):
     """
 
     published_states = schema.List(
-        title=_(u'Published workflow states'),
+        title=_(u'label_workflow_states_published', default=u'Published workflow states'),
         description=_(u'Workflow states to treat as published.'),
         default=[u'published'],
         required=True,
@@ -57,7 +55,7 @@ class IStateAwareWeblogConfiguration(IWeblogConfiguration):
         )
 
     draft_states = schema.List(
-        title=_(u'Draft workflow states'),
+        title=_(u'label_workflow_states_draft', default=u'Draft workflow states'),
         description=_(u'Workflow states to treat as draft.'),
         default=[u'private'],
         required=True,

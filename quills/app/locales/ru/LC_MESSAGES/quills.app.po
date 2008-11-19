@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.5svn\n"
-"POT-Creation-Date: 2008-10-21 15:02+0000\n"
+"POT-Creation-Date: 2008-11-18 14:02+0000\n"
 "PO-Revision-Date: 2006-09-15 14:40 +0600\n"
 "Last-Translator: Andrey Fedoseev <andrey.fedoseev@gmail.com>\n"
 "Language-Team: Russian <ru@li.org>\n"
@@ -34,7 +34,7 @@ msgstr ""
 #. Default: "Atom feed"
 #: ./skins/Quills/quills_header_macros.pt:17
 msgid "Atom feed"
-msgstr "Поток Atom"
+msgstr "ÐÐ¾ÑÐ¾Ðº Atom"
 
 #. Default: "Author"
 #: ./browser/manage_comments.pt:31
@@ -46,22 +46,22 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
+#: ./browser/weblogconfig.py:70
+msgid "Configuration saved."
+msgstr ""
+
 #. Default: "Configure Blog"
 #: ./portlets/weblogadmin.pt:28
 msgid "Configure Blog"
 msgstr ""
 
-#: ./interfaces.py:40
+#: ./interfaces.py:38
 msgid "Default type."
 msgstr ""
 
 #. Default: "Delete"
 #: ./browser/manage_comments.pt:49
 msgid "Delete"
-msgstr ""
-
-#: ./interfaces.py:60
-msgid "Draft workflow states"
 msgstr ""
 
 #: ./portlets/authors.py:44
@@ -92,11 +92,7 @@ msgstr ""
 #. Default: "Powered by Quills"
 #: ./portlets/quillslinks.pt:55
 msgid "Powered by Quills"
-msgstr "Использует Quills"
-
-#: ./interfaces.py:52
-msgid "Published workflow states"
-msgstr ""
+msgstr "ÐÑÐ¿Ð¾Ð»ÑÐ·ÑÐµÑ Quills"
 
 #: ./portlets/quillslinks.py:21
 msgid "Quills"
@@ -115,12 +111,12 @@ msgstr "RDF"
 #. Default: "RDF 1.0 feed"
 #: ./skins/Quills/quills_header_macros.pt:31
 msgid "RDF 1.0 feed"
-msgstr "Поток RDF 1.0"
+msgstr "ÐÐ¾ÑÐ¾Ðº RDF 1.0"
 
 #. Default: "RDF 1.1 feed"
 #: ./skins/Quills/quills_header_macros.pt:38
 msgid "RDF 1.1 feed"
-msgstr "Поток RDF 1.1"
+msgstr "ÐÐ¾ÑÐ¾Ðº RDF 1.1"
 
 #. Default: "RSS 2.0"
 #: ./portlets/quillslinks.pt:43
@@ -130,7 +126,7 @@ msgstr "RSS 2.0"
 #. Default: "RSS 2.0 feed"
 #: ./skins/Quills/quills_header_macros.pt:24
 msgid "RSS 2.0 feed"
-msgstr "Поток RSS 2.0"
+msgstr "ÐÐ¾ÑÐ¾Ðº RSS 2.0"
 
 #: ./portlets/recentcomments.py:26
 msgid "Recent Comments"
@@ -172,15 +168,15 @@ msgstr ""
 msgid "Subject"
 msgstr ""
 
-#: ./portlets/tagcloud.py:19
+#: ./portlets/tagcloud.py:20
 msgid "Tag Cloud"
 msgstr ""
 
-#: ./interfaces.py:41
+#: ./interfaces.py:39
 msgid "The default portal_type to add for this weblog."
 msgstr ""
 
-#: ./portlets/tagcloud.py:20
+#: ./portlets/tagcloud.py:21
 msgid "This portlet displays a tag cloud."
 msgstr ""
 
@@ -204,7 +200,7 @@ msgstr ""
 msgid "This portlet provides links to the various feeds of this instance."
 msgstr ""
 
-#: ./portlets/weblogadmin.py:26
+#: ./portlets/weblogadmin.py:27
 msgid "This portlet provides useful admin functions for a weblog."
 msgstr ""
 
@@ -213,7 +209,7 @@ msgstr ""
 msgid "Update"
 msgstr ""
 
-#: ./portlets/weblogadmin.py:25
+#: ./portlets/weblogadmin.py:26
 msgid "Weblog Admin"
 msgstr ""
 
@@ -225,6 +221,10 @@ msgstr ""
 msgid "Weblog Authors"
 msgstr ""
 
+#: ./browser/weblogconfig.py:48
+msgid "Weblog View Configuration"
+msgstr ""
+
 #: ./portlets/recentcomments.py:34
 msgid "What's the maximum number of comments to list?"
 msgstr ""
@@ -233,11 +233,11 @@ msgstr ""
 msgid "What's the maximum number of entries to list?"
 msgstr ""
 
-#: ./interfaces.py:61
+#: ./interfaces.py:59
 msgid "Workflow states to treat as draft."
 msgstr ""
 
-#: ./interfaces.py:53
+#: ./interfaces.py:51
 msgid "Workflow states to treat as published."
 msgstr ""
 
@@ -264,7 +264,7 @@ msgstr ""
 #. Default: "Filed Under:"
 #: ./skins/Quills/entry_macros.pt:194
 msgid "filed_under"
-msgstr "Темы:"
+msgstr "Ð¢ÐµÐ¼Ñ:"
 
 #. Default: "Posts"
 #: ./browser/archive_view.pt:33
@@ -284,7 +284,7 @@ msgstr ""
 #. Default: "Topics"
 #: ./browser/topic_listing.pt:20
 msgid "heading_topics"
-msgstr "Темы"
+msgstr "Ð¢ÐµÐ¼Ñ"
 
 #. Default: "Weblog Authors"
 #: ./browser/author_listing.pt:17
@@ -326,6 +326,16 @@ msgstr ""
 msgid "label_up_to_plone_setup"
 msgstr ""
 
+#. Default: "Draft workflow states"
+#: ./interfaces.py:58
+msgid "label_workflow_states_draft"
+msgstr ""
+
+#. Default: "Published workflow states"
+#: ./interfaces.py:50
+msgid "label_workflow_states_published"
+msgstr ""
+
 #. Default: "Spam Protection"
 #: ./skins/Quills/quills_settings_form.cpt:35
 msgid "legend_spam_protection"
@@ -342,14 +352,14 @@ msgid "no_comments"
 msgstr ""
 
 #. Default: "No weblog entries have been posted."
-#: ./skins/Quills/siteplanet_view.pt:46
+#: ./skins/Quills/weblog_macros.pt:56
 msgid "no_weblog_entries"
-msgstr "В блоге нет записей"
+msgstr "Ð Ð±Ð»Ð¾Ð³Ðµ Ð½ÐµÑ Ð·Ð°Ð¿Ð¸ÑÐµÐ¹"
 
 #. Default: "Comments:"
 #: ./skins/Quills/entry_macros.pt:217
 msgid "number_of_comments"
-msgstr "Комментарии:"
+msgstr "ÐÐ¾Ð¼Ð¼ÐµÐ½ÑÐ°ÑÐ¸Ð¸:"
 
 #. Default: "Configure Blog"
 #: ./portlets/weblogadmin.pt:28
@@ -369,10 +379,10 @@ msgstr ""
 #. Default: "read more..."
 #: ./skins/Quills/entry_macros.pt:113
 msgid "read_more"
-msgstr "читать дальше..."
+msgstr "ÑÐ¸ÑÐ°ÑÑ Ð´Ð°Ð»ÑÑÐµ..."
 
 #. Default: "Note: for some weblog editors you will need to provide the following string as id to edit this blog:"
 #: ./browser/weblog_view.pt:31
 msgid "weblog_edit_app_note"
-msgstr "Замечание: чтобы работать с блогом из внешних редакторах вам понадобится указать следующую строку в качестве идентификатора:"
+msgstr "ÐÐ°Ð¼ÐµÑÐ°Ð½Ð¸Ðµ: ÑÑÐ¾Ð±Ñ ÑÐ°Ð±Ð¾ÑÐ°ÑÑ Ñ Ð±Ð»Ð¾Ð³Ð¾Ð¼ Ð¸Ð· Ð²Ð½ÐµÑÐ½Ð¸Ñ ÑÐµÐ´Ð°ÐºÑÐ¾ÑÐ°Ñ Ð²Ð°Ð¼ Ð¿Ð¾Ð½Ð°Ð´Ð¾Ð±Ð¸ÑÑÑ ÑÐºÐ°Ð·Ð°ÑÑ ÑÐ»ÐµÐ´ÑÑÑÑÑ ÑÑÑÐ¾ÐºÑ Ð² ÐºÐ°ÑÐµÑÑÐ²Ðµ Ð¸Ð´ÐµÐ½ÑÐ¸ÑÐ¸ÐºÐ°ÑÐ¾ÑÐ°:"
 

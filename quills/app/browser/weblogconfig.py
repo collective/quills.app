@@ -10,7 +10,7 @@ from quills.core.browser.weblogconfig import WeblogConfigAnnotations
 from quills.core.browser.weblogconfig import WeblogConfigEditForm
 from quills.app.interfaces import IStateAwareWeblogConfiguration
 from quills.app.interfaces import IWeblogEnhancedConfiguration
-
+from quills.app import QuillsAppMessageFactory as _
 
 class StateAwareWeblogConfig(WeblogConfigAnnotations):
     """
@@ -45,7 +45,7 @@ class StateAwareWeblogConfigEditForm(WeblogConfigEditForm):
     # input for the default_type field.
     form_fields = form.Fields(IStateAwareWeblogConfiguration)
 
-    label = u'Weblog View Configuration'
+    label = _(u'Weblog View Configuration')
 
     def setUpWidgets(self, ignore_request=False):
         self.adapters = {}
@@ -67,5 +67,5 @@ class StateAwareWeblogConfigEditForm(WeblogConfigEditForm):
         # input for the default_type field.
         wvconfig = IStateAwareWeblogConfiguration(self.context)
         form.applyChanges(wvconfig, self.form_fields, data)
-        msg = 'Configuration saved.'
+        msg = _(u'Configuration saved.')
         IStatusMessage(self.request).addStatusMessage(msg, type='info')

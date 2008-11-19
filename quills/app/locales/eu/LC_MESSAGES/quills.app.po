@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Quills 1.5\n"
-"POT-Creation-Date: 2008-10-21 15:02+0000\n"
+"POT-Creation-Date: 2008-11-18 14:02+0000\n"
 "PO-Revision-Date: 2008-10-21 17:06+0100\n"
 "Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
 "Language-Team: \n"
@@ -47,12 +47,16 @@ msgstr "Egilea"
 msgid "Cancel"
 msgstr "Utzi"
 
+#: ./browser/weblogconfig.py:70
+msgid "Configuration saved."
+msgstr ""
+
 #. Default: "Configure Blog"
 #: ./portlets/weblogadmin.pt:28
 msgid "Configure Blog"
 msgstr "Bloga konfiguratu"
 
-#: ./interfaces.py:40
+#: ./interfaces.py:38
 msgid "Default type."
 msgstr "Defektuzko mota."
 
@@ -60,10 +64,6 @@ msgstr "Defektuzko mota."
 #: ./browser/manage_comments.pt:49
 msgid "Delete"
 msgstr "Ezabatu"
-
-#: ./interfaces.py:60
-msgid "Draft workflow states"
-msgstr "Zirriborro egoerak"
 
 #: ./portlets/authors.py:44
 msgid "If available, should the author's description be shown?"
@@ -94,10 +94,6 @@ msgstr "Gehienezko elementu kopurua"
 #: ./portlets/quillslinks.pt:55
 msgid "Powered by Quills"
 msgstr "Quillsekin egina"
-
-#: ./interfaces.py:52
-msgid "Published workflow states"
-msgstr "Argitaratutako egoerak"
 
 #: ./portlets/quillslinks.py:21
 msgid "Quills"
@@ -173,15 +169,15 @@ msgstr "Egilearen argazkia erakutsi?"
 msgid "Subject"
 msgstr "Gaia"
 
-#: ./portlets/tagcloud.py:19
+#: ./portlets/tagcloud.py:20
 msgid "Tag Cloud"
 msgstr "Etiketa lainoa"
 
-#: ./interfaces.py:41
+#: ./interfaces.py:39
 msgid "The default portal_type to add for this weblog."
 msgstr "Blog honetan gehituko den defektuzko elementu mota"
 
-#: ./portlets/tagcloud.py:20
+#: ./portlets/tagcloud.py:21
 msgid "This portlet displays a tag cloud."
 msgstr "Portlet honek etiketa laino bat erakusten du"
 
@@ -205,7 +201,7 @@ msgstr "Portlet honek blogaren egileak erakusten ditu"
 msgid "This portlet provides links to the various feeds of this instance."
 msgstr "Portlet honek blogaren RSS jarioen loturak erakusten ditu"
 
-#: ./portlets/weblogadmin.py:26
+#: ./portlets/weblogadmin.py:27
 msgid "This portlet provides useful admin functions for a weblog."
 msgstr "Portlet honek blogaren kudeaketaren inguruko loturak erakusten ditu"
 
@@ -214,7 +210,7 @@ msgstr "Portlet honek blogaren kudeaketaren inguruko loturak erakusten ditu"
 msgid "Update"
 msgstr "Eguneratu"
 
-#: ./portlets/weblogadmin.py:25
+#: ./portlets/weblogadmin.py:26
 msgid "Weblog Admin"
 msgstr "Blogaren kudeaketa"
 
@@ -226,6 +222,10 @@ msgstr "Blogaren artxiboa"
 msgid "Weblog Authors"
 msgstr "Blogeko egileak"
 
+#: ./browser/weblogconfig.py:48
+msgid "Weblog View Configuration"
+msgstr ""
+
 #: ./portlets/recentcomments.py:34
 msgid "What's the maximum number of comments to list?"
 msgstr "Gehienez zenbat erantzun erakutsiko dira?"
@@ -234,11 +234,11 @@ msgstr "Gehienez zenbat erantzun erakutsiko dira?"
 msgid "What's the maximum number of entries to list?"
 msgstr "Gehienez zenbat sarrera erakutsiko dira?"
 
-#: ./interfaces.py:61
+#: ./interfaces.py:59
 msgid "Workflow states to treat as draft."
 msgstr "Zirriborro bezala tratatu behar diren workflow egoerak"
 
-#: ./interfaces.py:53
+#: ./interfaces.py:51
 msgid "Workflow states to treat as published."
 msgstr "Argitaratu bezala tratatu behar diren workflow egoerak"
 
@@ -327,6 +327,16 @@ msgstr "Trackbacken zerrenda-beltza"
 msgid "label_up_to_plone_setup"
 msgstr "Ploneren konfiguraziora"
 
+#. Default: "Draft workflow states"
+#: ./interfaces.py:58
+msgid "label_workflow_states_draft"
+msgstr ""
+
+#. Default: "Published workflow states"
+#: ./interfaces.py:50
+msgid "label_workflow_states_published"
+msgstr ""
+
 #. Default: "Spam Protection"
 #: ./skins/Quills/quills_settings_form.cpt:35
 msgid "legend_spam_protection"
@@ -343,7 +353,7 @@ msgid "no_comments"
 msgstr "Ez dago erantzunik."
 
 #. Default: "No weblog entries have been posted."
-#: ./skins/Quills/siteplanet_view.pt:46
+#: ./skins/Quills/weblog_macros.pt:56
 msgid "no_weblog_entries"
 msgstr "Ez dago sarrerarik"
 

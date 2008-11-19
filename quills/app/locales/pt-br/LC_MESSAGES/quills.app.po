@@ -4,16 +4,16 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Quills 1.5\n"
-"POT-Creation-Date: 2008-10-21 15:02+0000\n"
+"POT-Creation-Date: 2008-11-18 14:02+0000\n"
 "PO-Revision-Date: 2006-09-26 17:32-0300\n"
-"Last-Translator: �rico Andrei <erico@simplesconsultoria.com.br>\n"
+"Last-Translator: Érico Andrei <erico@simplesconsultoria.com.br>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=iso-8859-1\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 "Language-Code: pt-br\n"
-"Language-Name: Português do Brasil\n"
+"Language-Name: PortuguÃªs do Brasil\n"
 "Preferred-Encodings: latin1 utf-8\n"
 "Domain: quills.app\n"
 
@@ -47,22 +47,22 @@ msgstr ""
 msgid "Cancel"
 msgstr ""
 
+#: ./browser/weblogconfig.py:70
+msgid "Configuration saved."
+msgstr ""
+
 #. Default: "Configure Blog"
 #: ./portlets/weblogadmin.pt:28
 msgid "Configure Blog"
 msgstr ""
 
-#: ./interfaces.py:40
+#: ./interfaces.py:38
 msgid "Default type."
 msgstr ""
 
 #. Default: "Delete"
 #: ./browser/manage_comments.pt:49
 msgid "Delete"
-msgstr ""
-
-#: ./interfaces.py:60
-msgid "Draft workflow states"
 msgstr ""
 
 #: ./portlets/authors.py:44
@@ -94,10 +94,6 @@ msgstr ""
 #: ./portlets/quillslinks.pt:55
 msgid "Powered by Quills"
 msgstr "Powered by Quills"
-
-#: ./interfaces.py:52
-msgid "Published workflow states"
-msgstr ""
 
 #: ./portlets/quillslinks.py:21
 msgid "Quills"
@@ -154,7 +150,7 @@ msgstr ""
 #. Default: "Semantic feed"
 #: ./portlets/quillslinks.pt:30
 msgid "Semantic feed"
-msgstr "Feed semântico"
+msgstr "Feed semÃ¢ntico"
 
 #: ./portlets/authors.py:43
 msgid "Show author description?"
@@ -173,15 +169,15 @@ msgstr ""
 msgid "Subject"
 msgstr ""
 
-#: ./portlets/tagcloud.py:19
+#: ./portlets/tagcloud.py:20
 msgid "Tag Cloud"
 msgstr ""
 
-#: ./interfaces.py:41
+#: ./interfaces.py:39
 msgid "The default portal_type to add for this weblog."
 msgstr ""
 
-#: ./portlets/tagcloud.py:20
+#: ./portlets/tagcloud.py:21
 msgid "This portlet displays a tag cloud."
 msgstr ""
 
@@ -205,7 +201,7 @@ msgstr ""
 msgid "This portlet provides links to the various feeds of this instance."
 msgstr ""
 
-#: ./portlets/weblogadmin.py:26
+#: ./portlets/weblogadmin.py:27
 msgid "This portlet provides useful admin functions for a weblog."
 msgstr ""
 
@@ -214,7 +210,7 @@ msgstr ""
 msgid "Update"
 msgstr ""
 
-#: ./portlets/weblogadmin.py:25
+#: ./portlets/weblogadmin.py:26
 msgid "Weblog Admin"
 msgstr ""
 
@@ -226,6 +222,10 @@ msgstr ""
 msgid "Weblog Authors"
 msgstr ""
 
+#: ./browser/weblogconfig.py:48
+msgid "Weblog View Configuration"
+msgstr ""
+
 #: ./portlets/recentcomments.py:34
 msgid "What's the maximum number of comments to list?"
 msgstr ""
@@ -234,11 +234,11 @@ msgstr ""
 msgid "What's the maximum number of entries to list?"
 msgstr ""
 
-#: ./interfaces.py:61
+#: ./interfaces.py:59
 msgid "Workflow states to treat as draft."
 msgstr ""
 
-#: ./interfaces.py:53
+#: ./interfaces.py:51
 msgid "Workflow states to treat as published."
 msgstr ""
 
@@ -305,7 +305,7 @@ msgstr ""
 #. Default: "Last Post:"
 #: ./browser/topic_listing.pt:50
 msgid "label_last_post"
-msgstr "Última postagem"
+msgstr "Ãltima postagem"
 
 #. Default: "No Posts"
 #: ./browser/topic_listing.pt:46
@@ -327,6 +327,16 @@ msgstr ""
 msgid "label_up_to_plone_setup"
 msgstr ""
 
+#. Default: "Draft workflow states"
+#: ./interfaces.py:58
+msgid "label_workflow_states_draft"
+msgstr ""
+
+#. Default: "Published workflow states"
+#: ./interfaces.py:50
+msgid "label_workflow_states_published"
+msgstr ""
+
 #. Default: "Spam Protection"
 #: ./skins/Quills/quills_settings_form.cpt:35
 msgid "legend_spam_protection"
@@ -343,14 +353,14 @@ msgid "no_comments"
 msgstr ""
 
 #. Default: "No weblog entries have been posted."
-#: ./skins/Quills/siteplanet_view.pt:46
+#: ./skins/Quills/weblog_macros.pt:56
 msgid "no_weblog_entries"
 msgstr "Nenhuma entrada foi postada."
 
 #. Default: "Comments:"
 #: ./skins/Quills/entry_macros.pt:217
 msgid "number_of_comments"
-msgstr "Comentários:"
+msgstr "ComentÃ¡rios:"
 
 #. Default: "Configure Blog"
 #: ./portlets/weblogadmin.pt:28
@@ -375,5 +385,5 @@ msgstr "veja mais ..."
 #. Default: "Note: for some weblog editors you will need to provide the following string as id to edit this blog:"
 #: ./browser/weblog_view.pt:31
 msgid "weblog_edit_app_note"
-msgstr "Nota: para alguns editores de weblog você deverá prover o seguinte texto como id para editar este blog:"
+msgstr "Nota: para alguns editores de weblog vocÃª deverÃ¡ prover o seguinte texto como id para editar este blog:"
 
