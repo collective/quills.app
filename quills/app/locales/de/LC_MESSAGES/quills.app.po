@@ -1,26 +1,27 @@
+# translation of quills.app.po to Deutsch
+# Jan Hackel <plonecode@hackel.name>, 2008.
 # --- PLEASE EDIT THE LINES BELOW CORRECTLY ---
-# SOME DESCRIPTIVE TITLE.
-# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
 msgid ""
 msgstr ""
-"Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2008-10-21 15:02+0000\n"
-"PO-Revision-Date: 2006-06-29 18:01+0200\n"
-"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
-"Language-Team: LANGUAGE <LL@li.org>\n"
+"Project-Id-Version: quills.app\n"
+"POT-Creation-Date: 2008-11-18 14:02+0000\n"
+"PO-Revision-Date: 2008-11-18 15:04+0100\n"
+"Last-Translator: Jan Hackel <plonecode@hackel.name>\n"
+"Language-Team: Deutsch <en@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
+"Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 "Language-Code: de\n"
 "Language-Name: German\n"
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: quills.app\n"
+"X-Generator: KBabel 1.11.4\n"
 
 #. Default: "Add new blog entry"
 #: ./portlets/weblogadmin.pt:12
 msgid "Add new blog entry"
-msgstr ""
+msgstr "Neuer Blog-Eintrag"
 
 #. <input class="standalone" i18n:attributes="value" name="folder_factories:method" type="submit" value="Add Weblog Entry"/>
 #. <input class="standalone" i18n:attributes="value" name="folder_factories:method" type="submit" value="Add a Topic"/>
@@ -45,55 +46,55 @@ msgstr "Atom-Feed"
 #. Default: "Author"
 #: ./browser/manage_comments.pt:31
 msgid "Author"
-msgstr ""
+msgstr "Autor"
 
 #. Default: "Cancel"
 #: ./skins/Quills/quills_settings_form.cpt:71
 msgid "Cancel"
-msgstr ""
+msgstr "Abbruch"
+
+#: ./browser/weblogconfig.py:70
+msgid "Configuration saved."
+msgstr "Konfiguration gespeichert!"
 
 #. Default: "Configure Blog"
 #: ./portlets/weblogadmin.pt:28
 msgid "Configure Blog"
-msgstr ""
+msgstr "Blog konfigurieren"
 
-#: ./interfaces.py:40
+#: ./interfaces.py:38
 msgid "Default type."
-msgstr ""
+msgstr "Voreingestellter Portal-Typ"
 
 #. Default: "Delete"
 #: ./browser/manage_comments.pt:49
 msgid "Delete"
-msgstr ""
-
-#: ./interfaces.py:60
-msgid "Draft workflow states"
-msgstr ""
+msgstr "lÃ¶schen"
 
 #: ./portlets/authors.py:44
 msgid "If available, should the author's description be shown?"
-msgstr ""
+msgstr "Soll die Autorenbeschreibung angezeigt werden, falls verfÃ¼gbar?"
 
 #: ./portlets/authors.py:32
 msgid "If available, should the author's location be shown?"
-msgstr ""
+msgstr "Soll die Herkunft der Autoren angezeigt werden, falls verfÃ¼gbar?"
 
 #: ./portlets/authors.py:38
 msgid "If available, should the author's portrait be shown?"
-msgstr ""
+msgstr "Sollen Autorenportraits angezeigt werden, falls verfÃ¼gbar?"
 
 #. Default: "Manage Comments"
 #: ./portlets/weblogadmin.pt:20
 msgid "Manage Comments"
-msgstr ""
+msgstr "Kommentare verwalten"
 
 #: ./portlets/recentcomments.py:33
 msgid "Maximum comments"
-msgstr ""
+msgstr "HÃ¶chstzahl anzuzeigender Kommentare"
 
 #: ./portlets/recententries.py:27
 msgid "Maximum entries"
-msgstr ""
+msgstr "HÃ¶chstzahl anzuzeigender EintrÃ¤ge"
 
 #. <img alt="Powered by Quills" height="15" i18n:attributes="alt title" src="" tal:attributes="src string:$portal_url/quills_powered.gif" title="Quills weblog system for Plone: by Etria" width="80"/>
 #. Default: "Powered by Quills"
@@ -101,18 +102,14 @@ msgstr ""
 msgid "Powered by Quills"
 msgstr "Betrieben mit Quills"
 
-#: ./interfaces.py:52
-msgid "Published workflow states"
-msgstr ""
-
 #: ./portlets/quillslinks.py:21
 msgid "Quills"
-msgstr ""
+msgstr "Quills"
 
 #. Default: "Quills weblog system for Plone"
 #: ./portlets/quillslinks.pt:55
 msgid "Quills weblog system for Plone"
-msgstr ""
+msgstr "Quills Weblog-System fÃ¼r Plone"
 
 #. <img alt="Powered by Quills" height="15" i18n:attributes="alt title" src="" tal:attributes="src string:$portal_url/quills_powered.gif" title="Quills weblog system for Plone: by Etria" width="80"/>
 #. <img alt="RDF" height="15" i18n:attributes="alt title" src="" tal:attributes="src string:$portal_url/rdf_feed.gif" title="Semantic feed" width="80"/>
@@ -124,7 +121,7 @@ msgstr "RDF"
 #. Default: "RDF 1.0 feed"
 #: ./skins/Quills/quills_header_macros.pt:31
 msgid "RDF 1.0 feed"
-msgstr ""
+msgstr "RDF 1.0 Feed"
 
 #. Default: "RDF 1.1 feed"
 #: ./skins/Quills/quills_header_macros.pt:38
@@ -145,21 +142,21 @@ msgstr "RSS 2.0 Feed"
 
 #: ./portlets/recentcomments.py:26
 msgid "Recent Comments"
-msgstr ""
+msgstr "Neuste Kommentare"
 
 #: ./portlets/recententries.py:20
 msgid "Recent Entries"
-msgstr ""
+msgstr "Neuste EintrÃ¤ge"
 
 #. Default: "Reset"
 #: ./browser/manage_comments.pt:41
 msgid "Reset"
-msgstr ""
+msgstr "ZurÃ¼cksetzen"
 
 #. Default: "Save"
 #: ./skins/Quills/quills_settings_form.cpt:63
 msgid "Save"
-msgstr ""
+msgstr "Speichern"
 
 #. <img alt="RDF" height="15" i18n:attributes="alt title" src="" tal:attributes="src string:$portal_url/rdf_feed.gif" title="Semantic feed" width="80"/>
 #. Default: "Semantic feed"
@@ -169,109 +166,113 @@ msgstr "Semantischer Feed"
 
 #: ./portlets/authors.py:43
 msgid "Show author description?"
-msgstr ""
+msgstr "Autorenbeschreibung angezeigen"
 
 #: ./portlets/authors.py:31
 msgid "Show author location?"
-msgstr ""
+msgstr "Herkunft der Autoren angezeigen"
 
 #: ./portlets/authors.py:37
 msgid "Show author portrait?"
-msgstr ""
+msgstr "Autorenportraits angezeigen"
 
 #. Default: "Subject"
 #: ./browser/manage_comments.pt:32
 msgid "Subject"
-msgstr ""
-
-#: ./portlets/tagcloud.py:19
-msgid "Tag Cloud"
-msgstr ""
-
-#: ./interfaces.py:41
-msgid "The default portal_type to add for this weblog."
-msgstr ""
+msgstr "Thema"
 
 #: ./portlets/tagcloud.py:20
+msgid "Tag Cloud"
+msgstr "Rubriken"
+
+#: ./interfaces.py:39
+msgid "The default portal_type to add for this weblog."
+msgstr "Legt den Vorgabewert fÃ¼r den Inhaltstyp fest, den Quils fÃ¼r Weblog-EintrÃ¤ge in diesem Weblog benutzt."
+
+#: ./portlets/tagcloud.py:21
 msgid "This portlet displays a tag cloud."
-msgstr ""
+msgstr "Dieses Portet zeigt verwendeten Rubriken ('tags') dieses Blogs an. Rubriken mit vielen EintrÃ¤gen werden hervorgehoben."
 
 #: ./portlets/recentcomments.py:27
 msgid "This portlet lists recent weblog comments."
-msgstr ""
+msgstr "Dieses Portlet zeigt die zuletzt verÃ¶ffentlichen Kommentare an."
 
 #: ./portlets/recententries.py:21
 msgid "This portlet lists recent weblog entries."
-msgstr ""
+msgstr "Dieses Portlet zeigt die zuletzt verÃ¶ffentlichen Blog-EntrÃ¤ge an."
 
 #: ./portlets/archive.py:24
 msgid "This portlet lists the archive of this weblog."
-msgstr ""
+msgstr "Diese Portlet zeigt das Blog-Archiv an."
 
 #: ./portlets/authors.py:25
 msgid "This portlet lists weblog authors."
-msgstr ""
+msgstr "Dieses Portlet zeigt die Autoren des Blogs an."
 
 #: ./portlets/quillslinks.py:22
 msgid "This portlet provides links to the various feeds of this instance."
-msgstr ""
+msgstr "Ãber dieses Portlet erreichen Sie die verschiedenen News-Feeds dieses Blogs."
 
-#: ./portlets/weblogadmin.py:26
+#: ./portlets/weblogadmin.py:27
 msgid "This portlet provides useful admin functions for a weblog."
-msgstr ""
+msgstr "Dieses Portlet fasst hÃ¤ufig benÃ¶tigte Admistrationsfunktionen zusammen."
 
 #. Default: "Update"
 #: ./browser/manage_comments.pt:34
 msgid "Update"
-msgstr ""
+msgstr "Aktualisieren"
 
-#: ./portlets/weblogadmin.py:25
+#: ./portlets/weblogadmin.py:26
 msgid "Weblog Admin"
-msgstr ""
+msgstr "Weblog-Administration"
 
 #: ./portlets/archive.py:23
 msgid "Weblog Archive"
-msgstr ""
+msgstr "Archiv"
 
 #: ./portlets/authors.py:24
 msgid "Weblog Authors"
-msgstr ""
+msgstr "Autoren"
+
+#: ./browser/weblogconfig.py:48
+msgid "Weblog View Configuration"
+msgstr "Weblog-Ansicht konfigurieren"
 
 #: ./portlets/recentcomments.py:34
 msgid "What's the maximum number of comments to list?"
-msgstr ""
+msgstr "Wieviele Kommentare sollen hÃ¶chstens angezeigt werden?"
 
 #: ./portlets/recententries.py:28
 msgid "What's the maximum number of entries to list?"
-msgstr ""
+msgstr "Wieviele EintrÃ¤ge sollen hÃ¶chstens angezeigt werden?"
 
-#: ./interfaces.py:61
+#: ./interfaces.py:59
 msgid "Workflow states to treat as draft."
-msgstr ""
+msgstr "Weblog-EintrÃ¤ge, die sich in einem der hier genannten Workflow-ZustÃ¤nden befinden, betrachtet Quills als EntwÃ¼rfe. Sie werden der Ãffentlichkeit nicht angezeigt!"
 
-#: ./interfaces.py:53
+#: ./interfaces.py:51
 msgid "Workflow states to treat as published."
-msgstr ""
+msgstr "Weblog-EintrÃ¤ge, die sich in einem der hier genannten Workflow-ZustÃ¤nden befinden, betrachtet Quills als verÃ¶ffentlicht. Nur verÃ¶ffentlichte EintrÃ¤ge sind in der Weblog-Ansicht sichbar!"
 
 #. Default: "Add ${portlet-name} Portlet"
 #: ./portlets/archive.py:70
 msgid "add-portlet"
-msgstr ""
+msgstr "${portlet-name} hinzufÃ¼gen"
 
 #. Default: "last modified"
 #: ./skins/Quills/entry_macros.pt:262
 msgid "box_last_modified"
-msgstr ""
+msgstr "Letzte Ãnderung"
 
 #. Default: "Portal-wide Quills settings."
 #: ./skins/Quills/quills_settings_form.cpt:24
 msgid "description_quills_settings"
-msgstr ""
+msgstr "Einstellungen fÃ¼r alle Quills-Blogs dieses Portals."
 
 #. Default: "Edit ${portlet-name} Portlet"
 #: ./portlets/archive.py:79
 msgid "edit-portlet"
-msgstr ""
+msgstr "${portlet-name}konfigurieren"
 
 ## 2 more: Quills/trunk/skins/Quills/weblog_macros.pt, Quills/trunk/skins/Quills/weblog_macros.pt
 #. <span i18n:translate="filed_under">
@@ -285,17 +286,17 @@ msgstr "Einsortiert unter:"
 #. Default: "Posts"
 #: ./browser/archive_view.pt:33
 msgid "heading_archive_posts"
-msgstr ""
+msgstr "Blog-EintrÃ¤ge"
 
 #. Default: "Quills Settings"
 #: ./skins/Quills/quills_settings_form.cpt:15
 msgid "heading_quills_settings"
-msgstr ""
+msgstr "Quills Einstellungen"
 
 #. Default: "Sub-archives"
 #: ./browser/archive_view.pt:23
 msgid "heading_sub-archives"
-msgstr ""
+msgstr "Sub-Archive"
 
 #. <h5 i18n:translate="heading_topics">
 #. Topics
@@ -308,17 +309,17 @@ msgstr "Rubriken"
 #. Default: "Weblog Authors"
 #: ./browser/author_listing.pt:17
 msgid "heading_weblog_authors"
-msgstr ""
+msgstr "Autoren"
 
 #. Default: "Addresses that match the following regular expressions will be blocked from posting trackback comments to weblog entries."
 #: ./skins/Quills/quills_settings_form.cpt:46
 msgid "help_trackback_blacklist"
-msgstr ""
+msgstr "Trackback Pings von Adressen, die mit dem folgendem regulÃ¤ren Ausdruck Ã¼bereinstimmen, werden von Quills abgewiesen."
 
 #. Default: "by ${author}"
 #: ./skins/Quills/entry_macros.pt:250
 msgid "label_by_author"
-msgstr ""
+msgstr "von ${author}"
 
 #. Default: "Last Post:"
 #: ./browser/topic_listing.pt:50
@@ -328,74 +329,84 @@ msgstr "Neuester Eintrag"
 #. Default: "No Posts"
 #: ./browser/topic_listing.pt:46
 msgid "label_no_posts"
-msgstr "Keine Einträge"
+msgstr "Keine EintrÃ¤ge"
 
 #. Default: "Select all items"
 #: ./browser/manage_comments.pt:65
 msgid "label_select_all_items"
-msgstr ""
+msgstr "Alle auswÃ¤hlen"
 
 #. Default: "Trackback Blacklist"
 #: ./skins/Quills/quills_settings_form.cpt:42
 msgid "label_trackback_blacklist"
-msgstr ""
+msgstr "Sperrliste fÃ¼r Trackback"
 
 #. Default: "Up to Plone Setup"
 #: ./skins/Quills/quills_settings_form.cpt:17
 msgid "label_up_to_plone_setup"
-msgstr ""
+msgstr "ZurÃ¼ck zu den Plone Einstellungen"
+
+#. Default: "Draft workflow states"
+#: ./interfaces.py:58
+msgid "label_workflow_states_draft"
+msgstr "Workflow-ZustÃ¤nde fÃ¼r EntwÃ¼rfe"
+
+#. Default: "Published workflow states"
+#: ./interfaces.py:50
+msgid "label_workflow_states_published"
+msgstr "Workflow-ZustÃ¤nde fÃ¼r verÃ¶ffentlichte EintrÃ¤ge"
 
 #. Default: "Spam Protection"
 #: ./skins/Quills/quills_settings_form.cpt:35
 msgid "legend_spam_protection"
-msgstr ""
+msgstr "Spam-Schutz"
 
 #. Default: "Manage Comments"
 #: ./browser/manage_comments.pt:16
 msgid "manage_comments"
-msgstr ""
+msgstr "Kommentare verwalten"
 
 #. Default: "There are no comments for Weblog entries."
 #: ./browser/manage_comments.pt:20
 msgid "no_comments"
-msgstr ""
+msgstr "Es gibt bisher keine Kommentare."
 
 ## 1 more: Quills/trunk/skins/Quills/siteplanet_view.pt
 #. <p i18n:translate="no_weblog_entries">
 #. No weblog entries have been posted.
 #. </p>
 #. Default: "No weblog entries have been posted."
-#: ./skins/Quills/siteplanet_view.pt:46
+#: ./skins/Quills/weblog_macros.pt:56
 msgid "no_weblog_entries"
-msgstr "Es wurden noch keine Weblog-Einträge angelegt."
+msgstr "Es wurden noch keine Weblog-EintrÃ¤ge angelegt."
 
 #. Default: "Comments:"
 #: ./skins/Quills/entry_macros.pt:217
 msgid "number_of_comments"
-msgstr "Komentare:"
+msgstr "Kommentare:"
 
 #. Default: "Configure Blog"
 #: ./portlets/weblogadmin.pt:28
 msgid "portlet_blogadmin_configure_blog"
-msgstr ""
+msgstr "Konfiguration"
 
 #. Default: "Manage Comments"
 #: ./portlets/weblogadmin.pt:20
 msgid "portlet_blogadmin_manage_comments"
-msgstr ""
+msgstr "Kommentare verwalten"
 
 #. Default: "Add Entry"
 #: ./portlets/weblogadmin.pt:12
 msgid "portlet_blogadmin_new_entry"
-msgstr ""
+msgstr "Neuer Eintrag"
 
 #. Default: "read more..."
 #: ./skins/Quills/entry_macros.pt:113
 msgid "read_more"
-msgstr "mehr lesen..."
+msgstr "weiterlesen..."
 
 #. Default: "Note: for some weblog editors you will need to provide the following string as id to edit this blog:"
 #: ./browser/weblog_view.pt:31
 msgid "weblog_edit_app_note"
-msgstr "Anmerkung: Für einige Web-Log Editoren muss die folgende Zeichenfolge als Identität zum Bearbeiten des Web-Logs angegeben werden:"
+msgstr "Anmerkung: FÃ¼r einige Web-Log Editoren muss die folgende Zeichenfolge als SchlÃ¼ssel angegeben werden, um das Weblog zu bearbeiten:"
 
