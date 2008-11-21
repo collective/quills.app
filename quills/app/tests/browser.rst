@@ -111,17 +111,18 @@ having one published entry also gives us an archive:
     >>> day = str(date.day()).zfill(2)
 
     >>> browser.open('http://nohost/plone/weblog/%s/' % year)
-    >>> browser.contents
-    '...<h1>Year...</h1>...'
+    >>> ('<h1>%s' % year) in browser.contents
+    True
 
 Viewing the archive should still give us a context where the portlets are rendered. We test this by checking for the quillslinks portlet:
 
     >> browser.contents
     '...<dl class="portlet portletQuillsLinks"...'
 
+    >>> from Products.CMFPlone.i18nl10n import monthname_english
     >>> browser.open('http://nohost/plone/weblog/%s/%s/' % (year, month))
-    >>> browser.contents
-    '...<h1>Month...</h1>...'
+    >>> ('<h1>%s' % monthname_english(month)) in browser.contents
+    True
 
     >> browser.contents
     '...<dl class="portlet portletQuillsLinks"...'
