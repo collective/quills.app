@@ -14,7 +14,7 @@ class BasePortletRenderer:
 
     @property
     def available(self):
-        return self.getWeblog() and True or False
+        return self.getWeblog() != [] and True or False
 
     @memoize
     def getWeblog(self):

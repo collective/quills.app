@@ -121,3 +121,49 @@ longer the case.
     >>> browser.open('http://nohost/plone/weblog/')
     >>> 'portletWeblogAdmin' in browser.contents
     False
+
+
+Issue #143: Portlets do not show up in empty blogs
+--------------------------------------------------
+
+This issue is caused by the way BasePortletRenderer implements ``available``.
+
+We do not use one of Quills' portlet here but make our own, as the problem
+is located in BasePortletRenderer.
+
+    >>> from plone.app.portlets.portlets import base
+    >>> from quills.app.portlets.base import BasePortletRenderer
+    >>> class TestRenderer(BasePortletRenderer, base.Renderer):
+    ...     """A simple Renderer"""
+    ...     pass
+
+Now create a blog. And see if we can get our portlet renderer. We first try
+with an empty blog. This a bit overly complicated because this test must work
+with both Quills and QuillsEnabled.
+
+    >>> blog = self.createBlog('issue-143')
+    >>> blogFolder = self.portal['issue-143']
+    >>> from zope.component import getMultiAdapter
+    >>> request = blogFolder.REQUEST
+    >>> view = getMultiAdapter((blogFolder, request), name='view')
+    >>> renderer = TestRenderer(blogFolder, request, view, None, None)
+    >>> renderer.available
+    True
+
+Now with one private entry in it.
+
+    >>> entry = blog.addEntry('Tesing issue #143', 'Nothing', 'Nothing', id="issue-143")
+    >>> renderer.available
+    True
+
+And now with that one published. In all three cases the portlet should show up. We cannot
+do this directly on entry as it might be only an adapter.
+
+    >>> from Products.CMFCore.utils import getToolByName
+    >>> wft = getToolByName(self.getPortal(), 'portal_workflow')
+    >>> wft.getInfoFor(blogFolder['issue-143'], 'review_state')
+    'private'
+
+    >>> entry.publish()
+    >>> renderer.available
+    True
