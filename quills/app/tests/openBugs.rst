@@ -46,20 +46,24 @@ Now make it become effective in the future. It should no longer be visible.
 
     >>> futureDate = now + 7
     >>> self.portal.weblog[id].setEffectiveDate(futureDate)
+    >>> self.portal.weblog[id].indexObject()
     >>> id in map(lambda x: x.id, blog.getEntries())
     False
-
+        
 Now same procedure through the web. Our entry should be invisible.
 
     >>> browser = self.getBrowser(logged_in=False)
     >>> browser.handleErrors = False
     >>> browser.open('http://nohost/plone/weblog/')
-    >>> browser.getLink(url="http://nohost/plone/weblog/%s" % (id,)) is None
-    True
+    >>> browser.getLink(url="http://nohost/plone/weblog/%s" % (id,))
+    Traceback (most recent call last):
+        ...
+    LinkNotFoundError
 
 After resetting the date it should be visible again.
 
     >>> self.portal.weblog[id].setEffectiveDate(effective)
+    >>> self.portal.weblog[id].indexObject()
     >>> browser.open('http://nohost/plone/weblog/')
     >>> browser.getLink(url="http://nohost/plone/weblog/%s" % (id,))
     <Link ...>
@@ -84,9 +88,12 @@ Then with effective in the future.
 
     >>> path = "/".join([archivePrefix, "%s" % (futureDate.year(),)])
     >>> self.portal.weblog[id].setEffectiveDate(futureDate)
+    >>> self.portal.weblog[id].indexObject()
     >>> browser.open('http://nohost/plone/weblog/%s' % (path,))
-    >>> browser.getLink(url="http://nohost/plone/weblog/%s" % (id,)) is None
-    True
+    >>> browser.getLink(url="http://nohost/plone/weblog/%s" % (id,))
+    Traceback (most recent call last):
+        ...
+    LinkNotFoundError
 
 Finally we should test syndication, but this would require some package implementing that
 feature, which we do not want do depend on here.
