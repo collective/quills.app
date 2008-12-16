@@ -90,9 +90,9 @@
         <metal:macro use-macro="context/entry_macros/macros/topic-images"/>
 
         <tal:comment condition="nothing"> Byline </tal:comment>
-        <tal:byline define="item_creator entry/Creator;
-                            item_modified entry/ModificationDate;">
-          <metal:macro use-macro="context/entry_macros/macros/byline" />
+        <tal:byline define="item_creator python:', '.join([each.getTitle() for each in entry.getAuthors()]);
+                            item_modified entry/getPublicationDate;">
+          <meta:macro use-macro="context/entry_macros/macros/byline" />
         </tal:byline>
         
 
@@ -128,7 +128,7 @@
         <tal:comment condition="nothing"> Main content </tal:comment>
         <div class=""
              tal:condition="python: entry.getText() and show_content"
-             tal:attributes="class python:test(context.Format() in ('text/structured', 'text/x-rst', ), 'stx', 'plain')"
+             tal:attributes="class python:test(entry.getMimeType() in ('text/structured', 'text/x-rst', ), 'stx', 'plain')"
              tal:content="structure entry/getText">
         </div>
       </div>
@@ -241,28 +241,27 @@
     <metal:byline define-macro="byline">
       <tal:showme tal:condition="wvconfig/show_about">
         <div class="documentByLine"
-             tal:define="item_creator item_creator | context/Creator;
-                         item_modified item_modified | context/ModificationDate;">
-          <tal:name tal:condition="item_creator"
-              tal:define="author python:mtool.getMemberInfo(item_creator)">
+             tal:define="item_creator item_creator | nothing;
+			             authors python:item_creator and [item_creator,] or entry.getAuthors();">
             <span i18n:translate="label_by_author">
               by
+			</span>
+			<tal:block repeat="author authors">
             <a href="#"
-               tal:attributes="href string:${weblog_content/absolute_url}/authors/${item_creator}"
-               tal:content="python:author and author['fullname'] or item_creator"
-               tal:omit-tag="not:author"
-               i18n:name="author">
+			   tal:define="author_id python:str(author);
+                           ploneauthor python:mtool.getMemberInfo(author_id)"
+               tal:attributes="href string:${weblog_content/absolute_url}/authors/${author_id}"
+               tal:content="python:ploneauthor and ploneauthor['fullname'] or author_id">
               Mister Dobalina, Mister Bob Dobalina
-            </a>
-            </span>
-          
-          </tal:name>
+            </a> 
+			</tal:block>
           
           &mdash;
           <tal:mod i18n:translate="box_last_modified">
             last modified
           </tal:mod>
-          <span tal:replace="python:toLocalizedTime(item_modified,long_format=1)">
+          <span tal:define="item_modified item_modified | entry/getPublicationDate;"
+		        tal:replace="python:toLocalizedTime(item_modified,long_format=1)">
             August 16, 2001 at 23:35:59
           </span>
         </div>
