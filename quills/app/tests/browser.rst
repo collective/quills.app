@@ -224,3 +224,43 @@ development, there was a problem with the entry appearing between 'Home' and
     >>> s = '<a href="http://nohost/plone">Home</a>\s*<span class="breadcrumbSeparator">\s*&rarr;\s*</span>\s*<span dir="ltr">\s*<a href="http://nohost/plone/weblog">weblog</a>'
     >>> re.search(s, browser.contents) is not None
     True
+
+
+Manage Comments View
+********************
+
+We'll test the 'manage_comments' view here - the view that is used to help keep
+all comments within a blog in some sense of order.
+
+Can we access the view?
+
+    >>> browser.open('http://nohost/plone/weblog/@@manage_comments')
+
+What about if there are some comments present within the blog? By default we
+need the `Manager' role to add comments:
+
+    >>> self.setRoles(("Contributor", "Reviewer", "Manager"))
+
+We also need to enable comments for the portal type underlying our weblog entry.
+
+    >>> entry = self.weblog.getEntry('entry')
+    >>> # Remember, the return value from getEntry is catalogbrain-ish...
+    >>> entry_content = entry.getObject()
+    >>> portal_type = entry_content.portal_type
+
+Now we need to enable commenting for our portal_type.
+
+    >>> dtype = self.portal.portal_types[portal_type]
+    >>> dtype.manage_changeProperties(allow_discussion=1)
+    >>> entry_content.allowDiscussion(1)
+    >>> entry_content.reindexObject()
+
+Let's add a comment to our weblog entry.
+
+    >>> dtool = self.portal.portal_discussion
+    >>> discussion = dtool.getDiscussionFor(entry_content)
+    >>> id = discussion.createReply(title='Parrots', text='... talk like people.')
+
+Now, can we still access the comments view?
+
+    >>> browser.open('http://nohost/plone/weblog/@@manage_comments')
