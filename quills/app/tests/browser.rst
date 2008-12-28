@@ -244,8 +244,14 @@ need the `Manager' role to add comments:
 We also need to enable comments for the portal type underlying our weblog entry.
 
     >>> entry = self.weblog.getEntry('entry')
-    >>> # Remember, the return value from getEntry is catalogbrain-ish...
-    >>> entry_content = entry.getObject()
+    >>> # Remember, the return value from getEntry could be catalogbrain-ish, or
+    >>> # an adapter, or an actual content-ish entry object.
+    >>> if hasattr(entry, 'getObject'):
+    ...     entry_content = entry.getObject()
+    ... elif hasattr(entry, 'context'):
+    ...     entry_content = entry.context
+    ... else:
+    ...     entry_content = entry
     >>> portal_type = entry_content.portal_type
 
 Now we need to enable commenting for our portal_type.
