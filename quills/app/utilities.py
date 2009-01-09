@@ -55,7 +55,9 @@ def getArchivePathFor(obj, weblog_content):
     id = getattr(obj, 'getId')
     if callable(id):
         id = id()
-    published = getattr(obj, 'effective')
+    published = getattr(obj, 'effective', None)
+    if published is None:
+        published = getattr(obj, 'getPublicationDate')
     if callable(published):
         published = published() 
     path = []

@@ -4,6 +4,8 @@ from Acquisition import aq_base
 
 from Products.Five import BrowserView
 
+from Products.CMFCore.interfaces import IDiscussionResponse
+
 from Products.CMFPlone.browser.interfaces import INavigationBreadcrumbs
 from Products.CMFPlone.browser.navigation import PhysicalNavigationBreadcrumbs
 
@@ -35,6 +37,11 @@ class ArchiveAwareBreadcrumbs(BrowserView):
             container = request['PARENTS'][1]
         else:
             container = request['PARENTS'][0]
+        # Now, we have to be careful about whether we are viewing a discussion
+        # reply, as this gives us another strange looking acquisition chain.
+        if IDiscussionResponse.providedBy(container):
+            obj = container.parentsInThread()[-1]
+            container = obj.aq_parent
         view = getMultiAdapter((container, request), name='breadcrumbs_view')
         crumbs = tuple(view.breadcrumbs())
         crumbs += ({'absolute_url': context.absolute_url(),
