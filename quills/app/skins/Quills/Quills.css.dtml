@@ -95,6 +95,10 @@ div.entry-trackback {
     margin: 4px;
 }
 
+.weblog-view-entry-title {
+    border-bottom: 0;
+}
+
 .weblog-day-title {
     border-bottom: &dtml-borderWidth; &dtml-globalBorderColor; &dtml-borderStyle;;
     padding: 3px;

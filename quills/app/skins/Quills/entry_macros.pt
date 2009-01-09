@@ -77,13 +77,14 @@
               Level 2 title, clickable
             </a>
           </h2>
-          <h3 tal:condition="not: second_level">
+          <h2 tal:condition="not: second_level"
+              class="weblog-view-entry-title">
             <a href=""
                tal:attributes="href python:view.getArchiveURLFor(entry)"
                tal:content="entry/getTitle">
               Level 3 title, clickable
             </a>
-          </h3>
+          </h2>
         </tal:headerInListing>
 
         <tal:comment condition="nothing"> Topic images  </tal:comment>
