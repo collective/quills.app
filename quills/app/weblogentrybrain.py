@@ -23,6 +23,11 @@ class WeblogEntryCatalogBrain(QuillsMixin):
 
     implements(IWeblogEntry)
 
+    def getId(self):
+        """See IWeblogEntry.
+        """
+        return self['id']
+
     def getTitle(self):
         """See IWeblogEntry.
         """
