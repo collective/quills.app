@@ -112,9 +112,9 @@ class AddForm(base.AddForm):
     description = PORTLET_DESC
 
     def create(self, data):
-        return Assignment(show_location=True,
-                          show_portrait=True,
-                          show_description=True)
+        return Assignment(show_location=data.get('show_location', True),
+                          show_portrait=data.get('show_portrait', True),
+                          show_description=data.get('show_description', True))
 
 
 class EditForm(base.EditForm):
