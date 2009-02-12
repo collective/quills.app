@@ -1,4 +1,5 @@
-<configure xmlns="http://namespaces.zope.org/browser">
+<configure xmlns="http://namespaces.zope.org/browser"
+           xmlns:zope="http://namespaces.zope.org/zope">
 
       <page
           for="quills.core.interfaces.IWeblog"
@@ -8,9 +9,12 @@
           permission="zope2.View"
           name="weblog_view" />
 
-      <defaultView
+      <menuItem
           for="quills.core.interfaces.IWeblog"
-          name="weblog_view" />
+          menu="plone_displayviews"
+          action="weblog_view"
+          title="Weblog"
+      />
 
       <page
           for="quills.core.interfaces.IWeblogEntry"
@@ -46,9 +50,12 @@
           permission="zope2.View"
           name="topic_listing" />
 
-      <defaultView
+      <menuItem
           for="quills.core.interfaces.ITopicContainer"
-          name="topic_listing" />
+          menu="plone_displayviews"
+          action="topic_listing"
+          title="Topics"
+      />
 
       <page
           for="quills.core.interfaces.IAuthorContainer"
@@ -58,9 +65,12 @@
           permission="zope2.View"
           name="author_listing" />
 
-      <defaultView
+      <menuItem
           for="quills.core.interfaces.IAuthorContainer"
-          name="author_listing" />
+          menu="plone_displayviews"
+          action="author_listing"
+          title="Authors"
+      />
 
       <page
           for="quills.core.interfaces.ITopic"
@@ -68,22 +78,41 @@
           class=".weblogview.TopicView"
           allowed_interface="quills.core.browser.interfaces.ITopicView"
           permission="zope2.View"
-          name="index.html" />
+          name="topic_view" />
 
       <defaultView
           for="quills.core.interfaces.ITopic"
-          name="index.html" />
+          name="topic_view" />
 
       <page
           for="quills.core.interfaces.IWeblogArchive"
           class=".weblogview.WeblogArchiveView"
           template="archive_view.pt"
           permission="zope2.View"
-          name="index.html" />
+          name="archive_view" />
 
-      <defaultView
+      <menuItem
           for="quills.core.interfaces.IWeblogArchive"
-          name="index.html" />
+          menu="plone_displayviews"
+          action="archive_view"
+          title="Archive"
+      />
 
+     <!-- Without a defaultView declaration we need to provide the default
+          view for non CMFDynamicViewFTI objects name through a IBrowserPublisher -->
+     <zope:adapter 
+          for="quills.core.interfaces.IWeblogArchive
+               zope.publisher.interfaces.http.IHTTPRequest"
+          factory="quills.app.browser.defaultviews.DefaultArchiveView" />
+
+     <zope:adapter 
+          for="quills.core.interfaces.ITopicContainer
+               zope.publisher.interfaces.http.IHTTPRequest"
+          factory="quills.app.browser.defaultviews.DefaultTopicsView" />
+
+     <zope:adapter 
+          for="quills.core.interfaces.IAuthorContainer
+               zope.publisher.interfaces.http.IHTTPRequest"
+          factory="quills.app.browser.defaultviews.DefaultAuthorsView" />
 
 </configure>
