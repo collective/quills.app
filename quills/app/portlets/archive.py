@@ -1,6 +1,7 @@
 from zope.formlib import form
 from zope.interface import implements
 
+from plone.app.portlets.portlets import base
 from plone.app.portlets.browser.formhelper import NullAddForm
 from plone.memoize.compress import xhtml_compress
 from plone.portlets.interfaces import IPortletDataProvider
