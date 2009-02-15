@@ -1,6 +1,8 @@
 <configure xmlns="http://namespaces.zope.org/browser"
            xmlns:zope="http://namespaces.zope.org/zope">
 
+      <include package="plone.app.contentmenu" />
+      
       <page
           for="quills.core.interfaces.IWeblog"
           class=".weblogview.WeblogView"
