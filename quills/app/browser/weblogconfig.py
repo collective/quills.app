@@ -21,7 +21,7 @@ class StateAwareWeblogConfig(WeblogConfigAnnotations):
 
     implements(IWeblogEnhancedConfiguration)
 
-    default_type = None
+    default_type = "WeblogEntry"
 
     def _get_published_states(self):
         return self._config.get('published_states', ['published',])
