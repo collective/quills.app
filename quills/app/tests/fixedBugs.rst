@@ -289,8 +289,8 @@ Then with effective in the future.
         ...
     LinkNotFoundError
 
-Finally we should test syndication, but this would require some package implementing that
-feature, which we do not want do depend on here.
+Finally we should test syndication, but this would require some package
+implementing that feature, which we do not want do depend on here.
 
 
 Issue #158 — "Add Entry" of the Weblog Admin portlet fails
@@ -306,7 +306,8 @@ portal type before. Populate it a little.
     >>> self.setRoles(("Manager",))
     >>> blog = self.createBlog('issue-158')
     >>> blogFolder = self.portal['issue-158']
-    >>> entry = blog.addEntry('Tesing issue #158', 'Nothing', 'Nothing', id="issue-158")
+    >>> entry = blog.addEntry('Tesing issue #158', 'Nothing',
+    ...                       'Nothing', id="issue-158")
     >>> entry.publish()
 
 Now click the "Add Entry" link. The edit form should be present.
