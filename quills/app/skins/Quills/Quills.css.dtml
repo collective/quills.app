@@ -146,10 +146,6 @@ p .weblog-read-more a {
   margin-bottom: 1em;  
 }
 
-.weblog-entry-only-excerpt {
-  margin-bottom: 0em;
-}
-
 /* portlets */
 
 .portletWeblogArchive .portletBody {
