@@ -43,7 +43,7 @@ from quills.core.interfaces import IPossibleWeblogEntry
 from quills.core.interfaces import IWeblogArchive
 from quills.core.interfaces import IWeblogArchiveContainer
 from acquiringactions import AcquiringActionProvider
-from weblogentrybrain import WeblogEntryCatalogBrain
+from utilities import BloggifiedCatalogResults
 from utilities import EvilAATUSHack
 from utilities import QuillsMixin
 from interfaces import ITransientArchive
@@ -57,7 +57,7 @@ class BaseArchive(QuillsMixin, AcquiringActionProvider, Traversable, Implicit):
     __allow_access_to_unprotected_subobjects__ = EvilAATUSHack()
 
     def __init__(self, *args, **kwargs):
-        self.results = None
+        self._results = None
 
     def Description(self):
         """
@@ -98,10 +98,8 @@ class ArchiveContainer(BaseArchive):
         """
         """
         if self._years is None:
-            # Make sure self.results is populated
-            self.getEntries()
             years= {}
-            for entry in self.results:
+            for entry in self.getEntries():
                 year = entry.getPublicationDate().strftime('%Y')
                 years[year] = year
             years = years.keys()
@@ -119,10 +117,10 @@ class ArchiveContainer(BaseArchive):
         """
         """
         # Just return the weblog's getEntries.
-        self.results = self.getWeblog().getEntries()[offset:]
+        self._results = self.getWeblog().getEntries()[offset:]
         if maximum is not None:
-            self.results = self.results[:maximum]
-        return self.results
+            self._results = self._results[:maximum]
+        return self._results
 
 
 class BaseDateArchive(BaseArchive):
@@ -150,12 +148,11 @@ class BaseDateArchive(BaseArchive):
     def getEntries(self, maximum=None, offset=0):
         """
         """
-        if self.results is None:
+        if self._results is None:
             min_datetime, max_datetime = self._getDateRange()
             catalog = getToolByName(self, 'portal_catalog')
-            catalog._catalog.useBrains(WeblogEntryCatalogBrain)
             weblog = self.getWeblogContentObject()
-            weblog_config = IWeblogEnhancedConfiguration(weblog)            
+            weblog_config = IWeblogEnhancedConfiguration(weblog)
             path = '/'.join(weblog.getPhysicalPath())
             ifaces = [interfaceToName(catalog.aq_parent, IWeblogEntry),
                       interfaceToName(catalog.aq_parent, IPossibleWeblogEntry)]
@@ -167,10 +164,11 @@ class BaseDateArchive(BaseArchive):
                      'query' : [min_datetime, max_datetime],
                      'range': 'minmax'}
                 )
-            self.results = results[offset:]
+            results = results[offset:]
             if maximum is not None:
-                self.results = self.results[:maximum]
-        return self.results
+                results = results[:maximum]
+            self._results = BloggifiedCatalogResults(results)
+        return self._results
 
 
 class YearArchive(BaseDateArchive):
@@ -194,10 +192,8 @@ class YearArchive(BaseDateArchive):
         """
         """
         if self._months is None:
-            # Make sure self.results is populated
-            self.getEntries()
             months = {}
-            for entry in self.results:
+            for entry in self.getEntries():
                 month = entry.getPublicationDate().strftime('%m')
                 months[month] = month
             months = months.keys()
@@ -244,10 +240,8 @@ class MonthArchive(BaseDateArchive):
         """
         """
         if self._days is None:
-            # Make sure self.results is populated
-            self.getEntries()
             days = {}
-            for entry in self.results:
+            for entry in self.getEntries():
                 day = entry.getPublicationDate().strftime('%d')
                 days[day] = day
             days = days.keys()

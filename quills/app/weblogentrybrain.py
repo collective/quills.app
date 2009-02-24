@@ -11,54 +11,73 @@ from quills.core.interfaces import IWeblogEntry
 # modules. The imports happen within each of the methods that require them.
 #from topic import Topic, AuthorTopic
 
+# XXX: We do need to add security assertions to this class because some
+#      page templates access it even though they have been given no permission
+#      to do so. Those templates should be fixed.
+#      Only those methods actually accessed by restricted code are protected,
+#      all other lack assertion and will deny access from restricted code.
+#      Fixing this might even make acquistion unneccessary here.
+from Acquisition import Implicit
+from AccessControl import ClassSecurityInfo
+from Globals import InitializeClass
+from Products.CMFCore import permissions as permissions
 
-class WeblogEntryCatalogBrain(QuillsMixin):
-    """A catalog brain that implements IWeblogEntry (as efficiently as
-    possible).
+# Renamed from WeblogEntryCatalogBrain to make all previous calls break.
+# That way none will slip.
+class CatalogBrainToWeblogEntry(QuillsMixin, Implicit):
+    """Adapt a catalog brain to IWeblogEntry..
 
     >>> from zope.interface.verify import verifyClass
-    >>> verifyClass(IWeblogEntry, WeblogEntryCatalogBrain)
+    >>> verifyClass(IWeblogEntry, CatalogBrainToWeblogEntry)
     True
     """
 
+    security = ClassSecurityInfo()
+
     implements(IWeblogEntry)
+
+    def __init__(self, brain):
+        self.context = brain
 
     def getId(self):
         """See IWeblogEntry.
         """
-        return self['id']
+        return self.context['id']
 
     def getTitle(self):
         """See IWeblogEntry.
         """
-        return self['Title']
+        return self.context['Title']
 
     def getTopics(self):
         """See IWeblogEntry.
         """
         from topic import Topic
-        subjects = self['Subject']
+        subjects = self.context['Subject']
         weblog_content = self.getWeblogContentObject()
         return [Topic(each).__of__(weblog_content) for each in subjects]
 
+    security.declareProtected(permissions.View, "getAuthors")
     def getAuthors(self):
         """See IWeblogEntry.
         """
         from topic import AuthorTopic
-        creators = self['listCreators']
+        creators = self.context['listCreators']
         weblog_content = self.getWeblogContentObject()
         return [AuthorTopic(each).__of__(weblog_content) for each in creators]
 
     def getExcerpt(self):
         """See IWeblogEntry.
         """
-        return self['Description']
+        return self.context['Description']
 
+    security.declareProtected(permissions.View, "getText")
     def getText(self):
         """See IWeblogEntry.
         """
-        return self._getObject().getText()
+        return self.context.getObject().getText()
 
+    security.declareProtected(permissions.View, "getMimeType")
     def getMimeType(self):
         """See IWeblogEntry.
         """
@@ -66,28 +85,26 @@ class WeblogEntryCatalogBrain(QuillsMixin):
         # to IWeblogEntry and just defer to that getMimeType implementation. The
         # reason being that we don't know if we're in a Quills world or a
         # QuillsEnabled world.
-        return IWeblogEntry(self._getObject()).getMimeType()
+        return IWeblogEntry(self.context.getObject()).getMimeType()
 
     def getWeblogContentObject(self):
         """See IWeblogEntry.
         """
-        return recurseToInterface(self._getObject(), (IWeblog, IWeblogEnhanced))
+        return recurseToInterface(self.context.getObject(),
+                                  (IWeblog, IWeblogEnhanced))
         
     def getWeblogEntryContentObject(self):
         """See IWeblogEntry
         """
-        return self._getObject()
-
-    def _getObject(self):
-        return self.getObject()
+        return self.context.getObject()
 
     def _getWeblogEntry(self):
-        return IWeblogEntry(self.getObject())
+        return IWeblogEntry(self.context.getObject())
 
     def getPublicationDate(self):
         """See IWeblogEntry.
         """
-        return self['effective']
+        return self.context['effective']
 
     def setTitle(self, title):
         """See IWeblogEntry.
@@ -112,7 +129,8 @@ class WeblogEntryCatalogBrain(QuillsMixin):
     def edit(self, title, excerpt, text, topics, mimetype=None):
         """See IWeblogEntry.
         """
-        self._getWeblogEntry().edit(title, excerpt, text, topics, mimetype=mimetype)
+        self._getWeblogEntry().edit(title, excerpt, text,
+                                            topics, mimetype=mimetype)
 
     def setPublicationDate(self, datetime):
         """See IWeblogEntry.
@@ -132,5 +150,6 @@ class WeblogEntryCatalogBrain(QuillsMixin):
     def isPublished(self):
         """See IWeblogEntry.
         """
-        # this is insane! it counteracts Plones separation between brain and object!
         self._getWeblogEntry().isPublished()
+
+InitializeClass(CatalogBrainToWeblogEntry)

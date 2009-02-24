@@ -43,6 +43,15 @@
       factory="quills.app.browser.weblogconfig.StateAwareWeblogConfig"
       />
 
+  <!-- Adapts catalog query results to IWeblogEntry. Use
+       quills.app.utilities.BloggifiedCatalogResults to lazy wrap a
+       whole result set. -->
+  <adapter
+      for="Products.ZCatalog.CatalogBrains.AbstractCatalogBrain"
+      provides="quills.core.interfaces.IWeblogEntry"
+      factory="quills.app.weblogentrybrain.CatalogBrainToWeblogEntry"
+      />
+
 
   <!-- profiles -->
   <genericsetup:registerProfile

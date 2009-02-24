@@ -1,7 +1,6 @@
 # Zope imports
 from zope.interface import implements
 from Products.Five import BrowserView
-from Products.ZCatalog.CatalogBrains import AbstractCatalogBrain
 
 # Plone imports
 from Products.CMFCore.utils import getToolByName
@@ -10,7 +9,6 @@ from Products.CMFCore.utils import getToolByName
 from quills.core.interfaces import IWeblogArchive, ITopic, IWeblog, IWeblogEntry
 from quills.core.browser.interfaces import IBaseView
 from quills.app.utilities import getArchivePathFor, getArchiveURLFor
-from quills.app.weblogentrybrain import WeblogEntryCatalogBrain
 
 
 class BaseView(BrowserView):
@@ -57,14 +55,11 @@ class BaseView(BrowserView):
         """
         """
         dtool = getToolByName(self.context, 'portal_discussion')
-        if isinstance(obj, AbstractCatalogBrain):
-            obj = obj.getObject()
-        return dtool.isDiscussionAllowedFor(obj)
+        return dtool.isDiscussionAllowedFor(obj.getWeblogEntryContentObject())
 
     def getCommentCountFor(self, obj):
         """
         """
         dtool = getToolByName(self.context, 'portal_discussion')
-        if isinstance(obj, AbstractCatalogBrain):
-            obj = obj.getObject()
+        obj = obj.getWeblogEntryContentObject()
         return dtool.getDiscussionFor(obj).replyCount(obj)

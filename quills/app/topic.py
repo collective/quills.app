@@ -24,7 +24,7 @@ from quills.core.interfaces import IAuthorContainer
 from quills.core.interfaces import IWeblogEntry
 from quills.core.interfaces import IPossibleWeblogEntry
 from acquiringactions import AcquiringActionProvider
-from weblogentrybrain import WeblogEntryCatalogBrain
+from utilities import BloggifiedCatalogResults
 from utilities import EvilAATUSHack
 from utilities import QuillsMixin
 from interfaces import ITransientTopicContainer
@@ -115,7 +115,6 @@ class Topic(QuillsMixin, AcquiringActionProvider, Traversable, Implicit):
         weblog_config = IWeblogEnhancedConfiguration(weblog)
         path = '/'.join(weblog.getPhysicalPath())
         catalog = getToolByName(self, 'portal_catalog')
-        catalog._catalog.useBrains(WeblogEntryCatalogBrain)
         ifaces = [interfaceToName(catalog.aq_parent, IWeblogEntry),
                   interfaceToName(catalog.aq_parent, IPossibleWeblogEntry)]
         results = catalog(
@@ -129,7 +128,7 @@ class Topic(QuillsMixin, AcquiringActionProvider, Traversable, Implicit):
         results = results[offset:]
         if maximum is not None:
             results = results[:maximum]
-        return results
+        return BloggifiedCatalogResults(results)
 
     def __str__(self):
         """See ITopic.
@@ -178,7 +177,6 @@ class AuthorTopic(Topic):
         weblog_config = IWeblogEnhancedConfiguration(weblog)
         path = '/'.join(weblog.getPhysicalPath())
         catalog = getToolByName(self, 'portal_catalog')
-        catalog._catalog.useBrains(WeblogEntryCatalogBrain)
         ifaces = [interfaceToName(catalog.aq_parent, IWeblogEntry),
                   interfaceToName(catalog.aq_parent, IPossibleWeblogEntry)]
         results = catalog(
@@ -189,7 +187,7 @@ class AuthorTopic(Topic):
                 sort_on='effective',
                 sort_order='reverse',
                 review_state=weblog_config.published_states)
-        return results
+        return BloggifiedCatalogResults(results)
 
 
 class TopicContainer(QuillsMixin, AcquiringActionProvider, Traversable,
@@ -237,8 +235,9 @@ class TopicContainer(QuillsMixin, AcquiringActionProvider, Traversable,
         # Use dict rather than list to avoid duplicates
         keywords = {}
         for entry in entries:
-            for kw in entry.Subject:
-                keywords[kw] = None
+            for kwds in entry.getTopics():
+                for kw in kwds.getKeywords():
+                    keywords[kw] = None
         keys = keywords.keys()
         keys.sort()
         return keys

@@ -4,6 +4,9 @@ from types import TupleType
 from types import StringTypes
 import re
 
+# to workaround slice incompatibility in Zope 2
+from sys import maxint
+
 # Zope imports
 from Acquisition import Explicit
 from Acquisition import aq_parent
@@ -15,6 +18,7 @@ from Products.CMFCore.interfaces import ISiteRoot
 from quills.core.interfaces import IWeblog
 from quills.core.interfaces import IWeblogEnhanced
 from quills.core.interfaces import IWeblogConfiguration
+from quills.core.interfaces import IWeblogEntry
 
 
 class EvilAATUSHack(Explicit):
@@ -109,3 +113,82 @@ def talkbackURL(discussion_brain):
     url = discussion_brain.getURL()
     absolute_url = talkback_url_extractor.search(url).groups()[0]
     return "%s#%s" % (absolute_url, discussion_brain.id)
+
+class BloggifiedCatalogResults(object):
+    """Wrap the CatalogBrains of the given iterable collection into
+       IWeblogEntry adapters. All the elemets of catalogBrain must be
+       wrappable by the same adapter class for reasons of optimization!
+    """
+
+    # A cached instance of the IWeblogEntry adapter to be used for
+    # wrapping the catalog brains.
+    _adapter = None
+
+    def __init__(self, results):
+        self.context = results
+        # Cache an instance of the IWeblogAdapter which is to be used
+        # for wrapping the brains. On class level for now. This expects
+        # that all instances passed to this class actually can be handled
+        # by the same wrapper!
+        if BloggifiedCatalogResults._adapter is None and len(results) > 0:
+            BloggifiedCatalogResults._adapter = IWeblogEntry(results[0])
+            BloggifiedCatalogResults._adapter.context = None
+
+    def __iter__(self):
+        def iter(seq):
+            for brain in self.context:
+                yield BloggifiedCatalogResults.wrap(brain)
+            raise StopIteration
+        return iter(self.context)
+
+
+    def __getitem__(self, k):
+        """Return the item a index k or the slice indicated by k,
+           the former as a IWeblogEntry the latter as an instance
+           of this class.
+        """
+        if isinstance(k, slice):
+            # Work around pre Python 2 collection code in Zope 2,
+            # namely Products.ZCatalog.Lazy. Those will break on
+            # slices. Why cannot things be simple for once?
+            theSlice = None
+            if k.step is None and hasattr(self.context, '__getslice__'):
+                start = k.start
+                stop = k.stop
+                if start is None:
+                    start = 0
+                if stop is None:
+                    stop = maxint
+                theSlice = self.context[start:stop]
+            else:
+                theSlice = self.context[k]
+                
+            return BloggifiedCatalogResults(theSlice)
+        else:
+            return BloggifiedCatalogResults.wrap(self.context[k])
+
+    def __len__(self):
+        return len(self.context)
+
+    def __contains__(self, item):
+        return item in self.context
+            
+    def wrap(brain):
+        """Wrap a catalog brain within an IWeblogEntry adapter.
+        
+        The _adater attribute of this instance is expected to hold
+        an appropriate adapter instance for copying!
+        """
+        # adapter must be pickable for copy.copy to work
+        # from copy import copy
+        # adapter = copy(BloggifiedCatalogResults._adapter)
+        # adapter.context = brain
+        adapter = BloggifiedCatalogResults._adapter.__class__(brain)
+        # Restricted code might (alas, and will) access this adapter,
+        # that's why we will need to acquire the users roles.
+        # XXX: Remove calls to IWeblogEntry from page templates
+        #      that do are not explicitly allowed to access it!
+        return adapter.__of__(brain)
+    
+    wrap = staticmethod(wrap)
+        

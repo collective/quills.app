@@ -54,7 +54,8 @@ class WeblogView(BaseView):
         elif resolution == 'year':
             format = '%Y'
         else:
-            msg = "The 'resolution' parameter must be one of 'day', 'month', or 'year'.  You passed %s."
+            msg = "The 'resolution' parameter must be one of 'day', 'month', \
+                   or 'year'.  You passed %s."
             raise Exception(msg % resolution)
         if isinstance(lazy_entries, PloneBatch):
             start = lazy_entries.start - 1
