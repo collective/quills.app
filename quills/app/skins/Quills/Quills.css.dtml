@@ -166,6 +166,14 @@ p .weblog-read-more a {
     text-decoration: none;
 }
 
+/* Fix for issue #153: Archive portlet broken in IE6.
+   Internet Explorer 6 will compute a margin of 30px for each ul, inheriting.
+   This will crack the portlet open. Zeroing the margin does not hurt
+   Firefox and Co, but fixes IE6. */
+.portletWeblogArchive ul {
+  margin-left: 0em;
+}
+
 .portletWeblogArchive a:hover {
     background-color: &dtml-globalBackgroundColor;;
     color: &dtml-globalFontColor;;
