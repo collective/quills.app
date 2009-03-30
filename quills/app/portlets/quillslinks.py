@@ -53,7 +53,7 @@ class AddForm(NullAddForm):
     label = _(u'add-portlet', default=u"Add ${portlet-name} Portlet", mapping={u'portlet-name': PORTLET_TITLE})
     description = PORTLET_DESC
 
-    def create(self, data):
+    def create(self):
         return Assignment()
 
 
