@@ -1,0 +1,28 @@
+<configure xmlns="http://namespaces.zope.org/zope"
+           i18n_domain="quills">
+
+  <adapter
+      for="quills.core.interfaces.IWeblog
+           zope.publisher.interfaces.http.IHTTPRequest"
+      provides="zope.publisher.interfaces.IPublishTraverse"
+      factory="quills.app.traversal.WeblogTraverser" />
+
+  <adapter
+      for="quills.core.interfaces.IWeblogArchive
+           zope.publisher.interfaces.http.IHTTPRequest"
+      provides="zope.publisher.interfaces.IPublishTraverse"
+      factory="quills.app.traversal.WeblogArchiveTraverser" />
+
+  <adapter
+      for="quills.core.interfaces.ITopicContainer
+           zope.publisher.interfaces.http.IHTTPRequest"
+      provides="zope.publisher.interfaces.IPublishTraverse"
+      factory="quills.app.traversal.TopicContainerTraverser" />
+
+  <adapter
+      for="quills.core.interfaces.IAuthorContainer
+           zope.publisher.interfaces.http.IHTTPRequest"
+      provides="zope.publisher.interfaces.IPublishTraverse"
+      factory="quills.app.traversal.AuthorContainerTraverser" />
+
+</configure>

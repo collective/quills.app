@@ -15,9 +15,6 @@ from quills.core.interfaces import IPossibleWeblogEntry
 from quills.core.interfaces import ITopicContainer
 from quills.core.interfaces import IAuthorContainer
 
-# plone imports
-from plone.app.layout.globals.interfaces import IViewView
-
 # Local imports
 from topic import Topic
 from topic import AuthorTopic
@@ -98,15 +95,6 @@ class WeblogArchiveTraverser(DefaultPublishTraverse):
             # So, we do standard traversal to get the actual object.
             obj = super(WeblogArchiveTraverser,
                         self).publishTraverse(request, name)
-            # Then we return a particular view on it if it provides what we're
-            # after.
-            if IPossibleWeblogEntry.providedBy(obj):
-                view = queryMultiAdapter((obj, request),
-                                         name='weblogentry_view')
-                if view is not None:
-                    alsoProvides(view, IViewView)
-                    return view.__of__(obj)
-            # Otherwise, we just return obj, as would have happened normally.
             return obj
 
         year = getattr(self.context, 'year', None)

@@ -12,30 +12,7 @@
   <include package=".browser" />
   <include package=".portlets" />
   <include file="syndication.zcml" />
-
-  <adapter
-      for="quills.core.interfaces.IWeblog
-           zope.publisher.interfaces.http.IHTTPRequest"
-      provides="zope.publisher.interfaces.IPublishTraverse"
-      factory=".traversal.WeblogTraverser" />
-
-  <adapter
-      for="quills.core.interfaces.IWeblogArchive
-           zope.publisher.interfaces.http.IHTTPRequest"
-      provides="zope.publisher.interfaces.IPublishTraverse"
-      factory=".traversal.WeblogArchiveTraverser" />
-
-  <adapter
-      for="quills.core.interfaces.ITopicContainer
-           zope.publisher.interfaces.http.IHTTPRequest"
-      provides="zope.publisher.interfaces.IPublishTraverse"
-      factory=".traversal.TopicContainerTraverser" />
-
-  <adapter
-      for="quills.core.interfaces.IAuthorContainer
-           zope.publisher.interfaces.http.IHTTPRequest"
-      provides="zope.publisher.interfaces.IPublishTraverse"
-      factory=".traversal.AuthorContainerTraverser" />
+  <include file="traversal.zcml" />
 
   <adapter
       for="quills.core.interfaces.IWeblog"
