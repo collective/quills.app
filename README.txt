@@ -1,7 +1,8 @@
-quills.app Package Readme
-=========================
+==========
+quills.app
+==========
 
-Overview
---------
+This package is a part of the Quills Blogging Suite. It contains code
+shared between Products.Quills and Products.QuillsEnabled.
 
-Code that is reusable within Plone.
+For further information about Quills, see package Products.Quills.

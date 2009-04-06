@@ -1,24 +1,26 @@
 from setuptools import setup, find_packages
+import os
 
-version = '1.7'
+version = '1.7.0b3'
 
 setup(name='quills.app',
       version=version,
-      description="Code that is reusable within Plone.",
-      long_description="""\
-""",
-      # Get more strings from http://www.python.org/pypi?%3Aaction=list_classifiers
+      description="The Quills blogging suite. Contains code shared between "
+                  "Products.Quills and  Products.QuillsEnabled.",
+      long_description=open("README.txt").read() + "\n" +
+                       open(os.path.join("docs", "HISTORY.txt")).read(),
       classifiers=[
+        "Development Status :: 4 - Beta",
         "Framework :: Plone",
-        "Framework :: Zope2",
-        "Framework :: Zope3",
+        "License :: OSI Approved :: GNU General Public License (GPL)",
         "Programming Language :: Python",
         "Topic :: Software Development :: Libraries :: Python Modules",
         ],
-      keywords='Weblog Plone',
-      author='Tim Hicks',
-      author_email='tim@sitefusion.co.uk',
-      url='https://svn.plone.org/svn/collective/quills.app/',
+      keywords='plone blogging',
+      author='Quills Team',
+      author_email='plone-quills@googlegroups.com',
+      url='http://plone.org/products/quills',
+      download_url="http://svn.plone.org/svn/collective/quills.app",
       license='GPL',
       packages=find_packages(exclude=['ez_setup']),
       namespace_packages=['quills'],
@@ -26,8 +28,8 @@ setup(name='quills.app',
       zip_safe=False,
       install_requires=[
           'setuptools',
-	  'quills.core',
-          # -*- Extra requirements: -*-
+          'quills.core>=1.7.0b3',
+          'Products.fatsyndication>=1.0.0b2'
       ],
       entry_points="""
       # -*- Entry points: -*-

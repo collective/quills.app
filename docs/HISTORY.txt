@@ -1,9 +1,20 @@
-Changelog for quills.app
+Changelog
+=========
 
     (name of developer listed in brackets)
 
-quills.app - 0.1 Unreleased
+1.7
+---
 
-    - Initial package structure.
-      [zopeskel]
+- has to be compiled yet...
+
+1.6
+---
+
+- has to be compiled yet...
+
+0.1 Unreleased
+--------------
+
+- Initial package structure. [zopeskel]
 
