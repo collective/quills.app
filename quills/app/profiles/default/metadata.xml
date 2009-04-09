@@ -1,4 +1,9 @@
 <?xml version="1.0"?>
 <metadata>
   <version>1.7</version>
+   <dependencies>
+      <!-- jhackel: This should not be here! It should be an optional
+           dependency. However: the RSS portlet needs it currently.-->
+      <dependency>profile-Products.fatsyndication:default</dependency>
+   </dependencies>
 </metadata>
