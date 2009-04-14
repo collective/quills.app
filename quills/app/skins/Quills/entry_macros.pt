@@ -93,7 +93,7 @@
         <tal:comment condition="nothing"> Byline </tal:comment>
         <tal:byline define="item_creator python:', '.join([each.getTitle() for each in entry.getAuthors()]);
                             item_modified entry/getPublicationDate;">
-          <meta:macro use-macro="context/entry_macros/macros/byline" />
+          <metal:macro use-macro="context/entry_macros/macros/byline" />
         </tal:byline>
         
 
