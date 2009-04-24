@@ -243,7 +243,7 @@
       <tal:showme tal:condition="wvconfig/show_about">
         <div class="documentByLine"
              tal:define="item_creator item_creator | nothing;
-			             authors python:item_creator and [item_creator,] or entry.getAuthors();">
+			             authors python:entry.getAuthors();">
             <span i18n:translate="label_by_author">
               by
 			</span>
