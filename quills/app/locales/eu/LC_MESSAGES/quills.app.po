@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Quills 1.5\n"
-"POT-Creation-Date: 2008-11-18 14:02+0000\n"
+"POT-Creation-Date: 2009-04-27 12:54+0000\n"
 "PO-Revision-Date: 2008-10-21 17:06+0100\n"
 "Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
 "Language-Team: \n"
@@ -46,6 +46,10 @@ msgstr "Egilea"
 #: ./skins/Quills/quills_settings_form.cpt:71
 msgid "Cancel"
 msgstr "Utzi"
+
+#: ./browser/discussionreply.py:78
+msgid "Comment added."
+msgstr ""
 
 #: ./browser/weblogconfig.py:70
 msgid "Configuration saved."
@@ -95,7 +99,7 @@ msgstr "Gehienezko elementu kopurua"
 msgid "Powered by Quills"
 msgstr "Quillsekin egina"
 
-#: ./portlets/quillslinks.py:21
+#: ./portlets/quillslinks.py:22
 msgid "Quills"
 msgstr "Quills"
 
@@ -125,7 +129,7 @@ msgid "RSS 2.0"
 msgstr "RSS 2.0"
 
 #. Default: "RSS 2.0 feed"
-#: ./browser/quills_header_macros.pt:24
+#: ./portlets/quillslinks.pt:43
 msgid "RSS 2.0 feed"
 msgstr "RSS 2.0 jarioa"
 
@@ -189,7 +193,7 @@ msgstr "Portlet honek blogean egondako azken erantzunak erakusten ditu"
 msgid "This portlet lists recent weblog entries."
 msgstr "Portlet honek blogean egondako azken mezuak erakusten ditu"
 
-#: ./portlets/archive.py:24
+#: ./portlets/archive.py:25
 msgid "This portlet lists the archive of this weblog."
 msgstr "Portlet honek blogaren artxiboa erakusten du"
 
@@ -197,7 +201,7 @@ msgstr "Portlet honek blogaren artxiboa erakusten du"
 msgid "This portlet lists weblog authors."
 msgstr "Portlet honek blogaren egileak erakusten ditu"
 
-#: ./portlets/quillslinks.py:22
+#: ./portlets/quillslinks.py:23
 msgid "This portlet provides links to the various feeds of this instance."
 msgstr "Portlet honek blogaren RSS jarioen loturak erakusten ditu"
 
@@ -214,7 +218,7 @@ msgstr "Eguneratu"
 msgid "Weblog Admin"
 msgstr "Blogaren kudeaketa"
 
-#: ./portlets/archive.py:23
+#: ./portlets/archive.py:24
 msgid "Weblog Archive"
 msgstr "Blogaren artxiboa"
 
@@ -243,12 +247,12 @@ msgid "Workflow states to treat as published."
 msgstr "Argitaratu bezala tratatu behar diren workflow egoerak"
 
 #. Default: "Add ${portlet-name} Portlet"
-#: ./portlets/archive.py:70
+#: ./portlets/archive.py:71
 msgid "add-portlet"
 msgstr "${portlet-name} portleta gehitu"
 
 #. Default: "last modified"
-#: ./browser/quills_entry_macros.pt:262
+#: ./browser/quills_entry_macros.pt:261
 msgid "box_last_modified"
 msgstr "azken aldaketa"
 
@@ -258,12 +262,12 @@ msgid "description_quills_settings"
 msgstr "Quillsen ezarpenak"
 
 #. Default: "Edit ${portlet-name} Portlet"
-#: ./portlets/archive.py:79
+#: ./portlets/archive.py:80
 msgid "edit-portlet"
 msgstr "${portlet-name} portleta editatu"
 
 #. Default: "Filed Under:"
-#: ./browser/quills_entry_macros.pt:194
+#: ./browser/quills_entry_macros.pt:195
 msgid "filed_under"
 msgstr "Etiketak:"
 
@@ -297,10 +301,10 @@ msgstr "Idazleak"
 msgid "help_trackback_blacklist"
 msgstr "Ondoko adierazpen erregularrekin bat datozen helbideetatik datozen trackbackak blokeatu egingo dira"
 
-#. Default: "by ${author}"
-#: ./browser/quills_entry_macros.pt:250
+#. Default: "by"
+#: ./browser/quills_entry_macros.pt:247
 msgid "label_by_author"
-msgstr "${author}"
+msgstr ""
 
 #. Default: "Last Post:"
 #: ./browser/topic_listing.pt:50
@@ -353,12 +357,12 @@ msgid "no_comments"
 msgstr "Ez dago erantzunik."
 
 #. Default: "No weblog entries have been posted."
-#: ./browser/quills_weblog_macros.pt:56
+#: ./skins/Quills/siteplanet_view.pt:46
 msgid "no_weblog_entries"
 msgstr "Ez dago sarrerarik"
 
 #. Default: "Comments:"
-#: ./browser/quills_entry_macros.pt:217
+#: ./browser/quills_entry_macros.pt:218
 msgid "number_of_comments"
 msgstr "Erantzun kopurua"
 
@@ -378,7 +382,7 @@ msgid "portlet_blogadmin_new_entry"
 msgstr "Sarrera berria"
 
 #. Default: "read more..."
-#: ./browser/quills_entry_macros.pt:113
+#: ./browser/quills_entry_macros.pt:114
 msgid "read_more"
 msgstr "Gehiago irakurri"
 

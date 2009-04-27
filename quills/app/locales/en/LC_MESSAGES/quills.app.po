@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2008-11-18 14:02+0000\n"
+"POT-Creation-Date: 2009-04-27 12:54+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -42,6 +42,10 @@ msgstr ""
 #. Default: "Cancel"
 #: ./skins/Quills/quills_settings_form.cpt:71
 msgid "Cancel"
+msgstr ""
+
+#: ./browser/discussionreply.py:78
+msgid "Comment added."
 msgstr ""
 
 #: ./browser/weblogconfig.py:70
@@ -92,7 +96,7 @@ msgstr ""
 msgid "Powered by Quills"
 msgstr ""
 
-#: ./portlets/quillslinks.py:21
+#: ./portlets/quillslinks.py:22
 msgid "Quills"
 msgstr ""
 
@@ -122,7 +126,7 @@ msgid "RSS 2.0"
 msgstr ""
 
 #. Default: "RSS 2.0 feed"
-#: ./browser/quills_header_macros.pt:24
+#: ./portlets/quillslinks.pt:43
 msgid "RSS 2.0 feed"
 msgstr ""
 
@@ -186,7 +190,7 @@ msgstr ""
 msgid "This portlet lists recent weblog entries."
 msgstr ""
 
-#: ./portlets/archive.py:24
+#: ./portlets/archive.py:25
 msgid "This portlet lists the archive of this weblog."
 msgstr ""
 
@@ -194,7 +198,7 @@ msgstr ""
 msgid "This portlet lists weblog authors."
 msgstr ""
 
-#: ./portlets/quillslinks.py:22
+#: ./portlets/quillslinks.py:23
 msgid "This portlet provides links to the various feeds of this instance."
 msgstr ""
 
@@ -211,7 +215,7 @@ msgstr ""
 msgid "Weblog Admin"
 msgstr ""
 
-#: ./portlets/archive.py:23
+#: ./portlets/archive.py:24
 msgid "Weblog Archive"
 msgstr ""
 
@@ -240,12 +244,12 @@ msgid "Workflow states to treat as published."
 msgstr ""
 
 #. Default: "Add ${portlet-name} Portlet"
-#: ./portlets/archive.py:70
+#: ./portlets/archive.py:71
 msgid "add-portlet"
 msgstr ""
 
 #. Default: "last modified"
-#: ./browser/quills_entry_macros.pt:262
+#: ./browser/quills_entry_macros.pt:261
 msgid "box_last_modified"
 msgstr ""
 
@@ -255,12 +259,12 @@ msgid "description_quills_settings"
 msgstr ""
 
 #. Default: "Edit ${portlet-name} Portlet"
-#: ./portlets/archive.py:79
+#: ./portlets/archive.py:80
 msgid "edit-portlet"
 msgstr ""
 
 #. Default: "Filed Under:"
-#: ./browser/quills_entry_macros.pt:194
+#: ./browser/quills_entry_macros.pt:195
 msgid "filed_under"
 msgstr ""
 
@@ -294,8 +298,8 @@ msgstr ""
 msgid "help_trackback_blacklist"
 msgstr ""
 
-#. Default: "by ${author}"
-#: ./browser/quills_entry_macros.pt:250
+#. Default: "by"
+#: ./browser/quills_entry_macros.pt:247
 msgid "label_by_author"
 msgstr ""
 
@@ -350,12 +354,12 @@ msgid "no_comments"
 msgstr ""
 
 #. Default: "No weblog entries have been posted."
-#: ./browser/quills_weblog_macros.pt:56
+#: ./skins/Quills/siteplanet_view.pt:46
 msgid "no_weblog_entries"
 msgstr ""
 
 #. Default: "Comments:"
-#: ./browser/quills_entry_macros.pt:217
+#: ./browser/quills_entry_macros.pt:218
 msgid "number_of_comments"
 msgstr ""
 
@@ -375,7 +379,7 @@ msgid "portlet_blogadmin_new_entry"
 msgstr ""
 
 #. Default: "read more..."
-#: ./browser/quills_entry_macros.pt:113
+#: ./browser/quills_entry_macros.pt:114
 msgid "read_more"
 msgstr ""
 

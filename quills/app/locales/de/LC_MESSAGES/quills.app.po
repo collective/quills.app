@@ -4,8 +4,8 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: quills.app\n"
-"POT-Creation-Date: 2008-11-18 14:02+0000\n"
-"PO-Revision-Date: 2008-11-18 15:04+0100\n"
+"POT-Creation-Date: 2009-04-27 12:54+0000\n"
+"PO-Revision-Date: 2009-04-27 14:55+0100\n"
 "Last-Translator: Jan Hackel <plonecode@hackel.name>\n"
 "Language-Team: Deutsch <en@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -52,6 +52,10 @@ msgstr "Autor"
 #: ./skins/Quills/quills_settings_form.cpt:71
 msgid "Cancel"
 msgstr "Abbruch"
+
+#: ./browser/discussionreply.py:78
+msgid "Comment added."
+msgstr "Kommentar hinzugefügt."
 
 #: ./browser/weblogconfig.py:70
 msgid "Configuration saved."
@@ -102,7 +106,7 @@ msgstr "Höchstzahl anzuzeigender Einträge"
 msgid "Powered by Quills"
 msgstr "Betrieben mit Quills"
 
-#: ./portlets/quillslinks.py:21
+#: ./portlets/quillslinks.py:22
 msgid "Quills"
 msgstr "Quills"
 
@@ -136,7 +140,7 @@ msgstr "RSS 2.0"
 
 #. <img alt="RSS 2.0" height="15" i18n:attributes="alt title" src="" tal:attributes="src string:$portal_url/rss_feed.gif" title="RSS 2.0 feed" width="80"/>
 #. Default: "RSS 2.0 feed"
-#: ./browser/quills_header_macros.pt:24
+#: ./portlets/quillslinks.pt:43
 msgid "RSS 2.0 feed"
 msgstr "RSS 2.0 Feed"
 
@@ -201,7 +205,7 @@ msgstr "Dieses Portlet zeigt die zuletzt veröffentlichen Kommentare an."
 msgid "This portlet lists recent weblog entries."
 msgstr "Dieses Portlet zeigt die zuletzt veröffentlichen Blog-Enträge an."
 
-#: ./portlets/archive.py:24
+#: ./portlets/archive.py:25
 msgid "This portlet lists the archive of this weblog."
 msgstr "Diese Portlet zeigt das Blog-Archiv an."
 
@@ -209,7 +213,7 @@ msgstr "Diese Portlet zeigt das Blog-Archiv an."
 msgid "This portlet lists weblog authors."
 msgstr "Dieses Portlet zeigt die Autoren des Blogs an."
 
-#: ./portlets/quillslinks.py:22
+#: ./portlets/quillslinks.py:23
 msgid "This portlet provides links to the various feeds of this instance."
 msgstr "Über dieses Portlet erreichen Sie die verschiedenen News-Feeds dieses Blogs."
 
@@ -226,7 +230,7 @@ msgstr "Aktualisieren"
 msgid "Weblog Admin"
 msgstr "Weblog-Administration"
 
-#: ./portlets/archive.py:23
+#: ./portlets/archive.py:24
 msgid "Weblog Archive"
 msgstr "Archiv"
 
@@ -255,12 +259,12 @@ msgid "Workflow states to treat as published."
 msgstr "Weblog-Einträge, die sich in einem der hier genannten Workflow-Zuständen befinden, betrachtet Quills als veröffentlicht. Nur veröffentlichte Einträge sind in der Weblog-Ansicht sichbar!"
 
 #. Default: "Add ${portlet-name} Portlet"
-#: ./portlets/archive.py:70
+#: ./portlets/archive.py:71
 msgid "add-portlet"
 msgstr "${portlet-name} hinzufügen"
 
 #. Default: "last modified"
-#: ./browser/quills_entry_macros.pt:262
+#: ./browser/quills_entry_macros.pt:261
 msgid "box_last_modified"
 msgstr "Letzte Änderung"
 
@@ -270,7 +274,7 @@ msgid "description_quills_settings"
 msgstr "Einstellungen für alle Quills-Blogs dieses Portals."
 
 #. Default: "Edit ${portlet-name} Portlet"
-#: ./portlets/archive.py:79
+#: ./portlets/archive.py:80
 msgid "edit-portlet"
 msgstr "${portlet-name}konfigurieren"
 
@@ -279,7 +283,7 @@ msgstr "${portlet-name}konfigurieren"
 #. Filed Under:
 #. </span>
 #. Default: "Filed Under:"
-#: ./browser/quills_entry_macros.pt:194
+#: ./browser/quills_entry_macros.pt:195
 msgid "filed_under"
 msgstr "Einsortiert unter:"
 
@@ -316,10 +320,10 @@ msgstr "Autoren"
 msgid "help_trackback_blacklist"
 msgstr "Trackback Pings von Adressen, die mit dem folgendem regulären Ausdruck übereinstimmen, werden von Quills abgewiesen."
 
-#. Default: "by ${author}"
-#: ./browser/quills_entry_macros.pt:250
+#. Default: "by"
+#: ./browser/quills_entry_macros.pt:247
 msgid "label_by_author"
-msgstr "von ${author}"
+msgstr "von"
 
 #. Default: "Last Post:"
 #: ./browser/topic_listing.pt:50
@@ -376,12 +380,12 @@ msgstr "Es gibt bisher keine Kommentare."
 #. No weblog entries have been posted.
 #. </p>
 #. Default: "No weblog entries have been posted."
-#: ./browser/quills_weblog_macros.pt:56
+#: ./skins/Quills/siteplanet_view.pt:46
 msgid "no_weblog_entries"
 msgstr "Es wurden noch keine Weblog-Einträge angelegt."
 
 #. Default: "Comments:"
-#: ./browser/quills_entry_macros.pt:217
+#: ./browser/quills_entry_macros.pt:218
 msgid "number_of_comments"
 msgstr "Kommentare:"
 
@@ -401,7 +405,7 @@ msgid "portlet_blogadmin_new_entry"
 msgstr "Neuer Eintrag"
 
 #. Default: "read more..."
-#: ./browser/quills_entry_macros.pt:113
+#: ./browser/quills_entry_macros.pt:114
 msgid "read_more"
 msgstr "weiterlesen..."
 

@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
-"POT-Creation-Date: 2008-11-18 14:02+0000\n"
+"POT-Creation-Date: 2009-04-27 12:54+0000\n"
 "PO-Revision-Date: 2008-10-21 17:10+0100\n"
 "Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -49,6 +49,10 @@ msgstr "Autor"
 #: ./skins/Quills/quills_settings_form.cpt:71
 msgid "Cancel"
 msgstr "Cancelar"
+
+#: ./browser/discussionreply.py:78
+msgid "Comment added."
+msgstr ""
 
 #: ./browser/weblogconfig.py:70
 msgid "Configuration saved."
@@ -99,7 +103,7 @@ msgstr "Número máximo de mensajes"
 msgid "Powered by Quills"
 msgstr "Hecho con Quills"
 
-#: ./portlets/quillslinks.py:21
+#: ./portlets/quillslinks.py:22
 msgid "Quills"
 msgstr "Quills"
 
@@ -132,7 +136,7 @@ msgstr "RSS 2.0"
 
 #. <img alt="RSS 2.0" height="15" i18n:attributes="alt title" src="" tal:attributes="src string:$portal_url/rss_feed.gif" title="RSS 2.0 feed" width="80"/>
 #. Default: "RSS 2.0 feed"
-#: ./browser/quills_header_macros.pt:24
+#: ./portlets/quillslinks.pt:43
 msgid "RSS 2.0 feed"
 msgstr "Feed RSS 2.0"
 
@@ -197,7 +201,7 @@ msgstr "Este portlets muestra los últimos comentarios del blog"
 msgid "This portlet lists recent weblog entries."
 msgstr "Este portlets muestra los últimos mensajes del blog"
 
-#: ./portlets/archive.py:24
+#: ./portlets/archive.py:25
 msgid "This portlet lists the archive of this weblog."
 msgstr "Este portlet muestra el archivo del blog"
 
@@ -205,7 +209,7 @@ msgstr "Este portlet muestra el archivo del blog"
 msgid "This portlet lists weblog authors."
 msgstr "Este portlet muestra los autores del blog"
 
-#: ./portlets/quillslinks.py:22
+#: ./portlets/quillslinks.py:23
 msgid "This portlet provides links to the various feeds of this instance."
 msgstr "Este portlet muestra los enlaces a los diferentes feeds de sindicación del blog"
 
@@ -222,7 +226,7 @@ msgstr "Actualizar"
 msgid "Weblog Admin"
 msgstr "Gestionar blog"
 
-#: ./portlets/archive.py:23
+#: ./portlets/archive.py:24
 msgid "Weblog Archive"
 msgstr "Archivo"
 
@@ -251,12 +255,12 @@ msgid "Workflow states to treat as published."
 msgstr "Estados del workflow que se tratarán como publicados"
 
 #. Default: "Add ${portlet-name} Portlet"
-#: ./portlets/archive.py:70
+#: ./portlets/archive.py:71
 msgid "add-portlet"
 msgstr "Añadir portlet ${portlet-name}"
 
 #. Default: "last modified"
-#: ./browser/quills_entry_macros.pt:262
+#: ./browser/quills_entry_macros.pt:261
 msgid "box_last_modified"
 msgstr "última modificación"
 
@@ -266,7 +270,7 @@ msgid "description_quills_settings"
 msgstr "Configuración de Quills"
 
 #. Default: "Edit ${portlet-name} Portlet"
-#: ./portlets/archive.py:79
+#: ./portlets/archive.py:80
 msgid "edit-portlet"
 msgstr "Editar portlet ${portlet-name}"
 
@@ -274,7 +278,7 @@ msgstr "Editar portlet ${portlet-name}"
 #. Filed Under:
 #. </span>
 #. Default: "Filed Under:"
-#: ./browser/quills_entry_macros.pt:194
+#: ./browser/quills_entry_macros.pt:195
 msgid "filed_under"
 msgstr "Etiquetas:"
 
@@ -311,10 +315,11 @@ msgstr "Autores"
 msgid "help_trackback_blacklist"
 msgstr "Las direcciones que concuerden con las siguientes expresiones regulares se bloquearán al hacer trackbacks a las entradas de los blogs"
 
-#. Default: "by ${author}"
-#: ./browser/quills_entry_macros.pt:250
+#. Default: "by"
+#: ./browser/quills_entry_macros.pt:247
+#, fuzzy
 msgid "label_by_author"
-msgstr "por ${author}"
+msgstr "por"
 
 #. Default: "Last Post:"
 #: ./browser/topic_listing.pt:50
@@ -370,12 +375,12 @@ msgstr "No hay comentarios"
 #. No weblog entries have been posted.
 #. </p>
 #. Default: "No weblog entries have been posted."
-#: ./browser/quills_weblog_macros.pt:56
+#: ./skins/Quills/siteplanet_view.pt:46
 msgid "no_weblog_entries"
 msgstr "No hay entradas en el blog"
 
 #. Default: "Comments:"
-#: ./browser/quills_entry_macros.pt:217
+#: ./browser/quills_entry_macros.pt:218
 msgid "number_of_comments"
 msgstr "Comentarios:"
 
@@ -395,7 +400,7 @@ msgid "portlet_blogadmin_new_entry"
 msgstr "Añadir mensaje"
 
 #. Default: "read more..."
-#: ./browser/quills_entry_macros.pt:113
+#: ./browser/quills_entry_macros.pt:114
 msgid "read_more"
 msgstr "leer más"
 
