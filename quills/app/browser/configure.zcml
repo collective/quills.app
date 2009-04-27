@@ -2,12 +2,11 @@
            xmlns:zope="http://namespaces.zope.org/zope">
 
       <include package="plone.app.contentmenu" />
-      
+
       <page
           for="quills.core.interfaces.IWeblog"
           class=".weblogview.WeblogView"
           template="weblog_view.pt"
-          allowed_interface="quills.core.browser.interfaces.IWeblogView"
           permission="zope2.View"
           name="weblog_view" />
 
@@ -22,7 +21,6 @@
           for="quills.core.interfaces.IWeblogEntry"
           class=".weblogview.WeblogEntryView"
           template="weblogentry_view.pt"
-          allowed_interface="quills.core.browser.interfaces.IWeblogEntryView"
           permission="zope2.View"
           name="weblogentry_view" />
 
@@ -47,7 +45,6 @@
       <page
           for="quills.core.interfaces.ITopicContainer"
           class=".weblogview.TopicView"
-          allowed_interface="quills.core.interfaces.ITopicContainer"
           template="topic_listing.pt"
           permission="zope2.View"
           name="topic_listing" />
@@ -62,7 +59,6 @@
       <page
           for="quills.core.interfaces.IAuthorContainer"
           class=".weblogview.TopicView"
-          allowed_interface="quills.core.interfaces.IAuthorContainer"
           template="author_listing.pt"
           permission="zope2.View"
           name="author_listing" />
@@ -78,7 +74,6 @@
           for="quills.core.interfaces.ITopic"
           template="topic_view.pt"
           class=".weblogview.TopicView"
-          allowed_interface="quills.core.browser.interfaces.ITopicView"
           permission="zope2.View"
           name="topic_view" />
 
@@ -116,5 +111,24 @@
           for="quills.core.interfaces.IAuthorContainer
                zope.publisher.interfaces.http.IHTTPRequest"
           factory="quills.app.browser.defaultviews.DefaultAuthorsView" />
+
+    <!-- metal macros -->
+    <view for="*"
+        name="quills_header_macros"
+        class=".macros.HeaderMacros"
+        permission="zope2.View"
+    />
+
+    <view for="*"
+        name="quills_weblog_macros"
+        class=".macros.WeblogMacros"
+        permission="zope2.View"
+    />
+
+    <view for="*"
+        name="quills_entry_macros"
+        class=".macros.WeblogEntryMacros"
+        permission="zope2.View"
+    />
 
 </configure>

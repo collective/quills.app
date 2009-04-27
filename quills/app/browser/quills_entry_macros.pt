@@ -88,17 +88,17 @@
         </tal:headerInListing>
 
         <tal:comment condition="nothing"> Topic images  </tal:comment>
-        <metal:macro use-macro="context/entry_macros/macros/topic-images"/>
+        <metal:macro use-macro="context/quills_entry_macros/topic-images"/>
 
         <tal:comment condition="nothing"> Byline </tal:comment>
         <tal:byline define="item_creator python:', '.join([each.getTitle() for each in entry.getAuthors()]);
                             item_modified entry/getPublicationDate;">
-          <metal:macro use-macro="context/entry_macros/macros/byline" />
+          <metal:macro use-macro="context/quills_entry_macros/byline" />
         </tal:byline>
         
 
         <tal:comment condition="nothing"> Filed under </tal:comment>
-        <metal:macro use-macro="context/entry_macros/macros/filed-under"/>
+        <metal:macro use-macro="context/quills_entry_macros/filed-under"/>
 
         <tal:comment condition="nothing"> Description
         We add a special class (weblog-entry-only-excerpt) instead of
@@ -129,7 +129,7 @@
         <tal:comment condition="nothing"> Main content </tal:comment>
         <div class=""
              tal:condition="python: entry.getText() and show_content"
-             tal:attributes="class python:test(entry.getMimeType() in ('text/structured', 'text/x-rst', ), 'stx', 'plain')"
+             tal:attributes="class python:(entry.getMimeType() in ('text/structured', 'text/x-rst', )) and 'stx' or 'plain'"
              tal:content="structure entry/getText">
         </div>
       </div>

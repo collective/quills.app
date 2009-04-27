@@ -33,7 +33,7 @@
             <tal:loop repeat="entry python:results_dict[day]">
               <tal:block define="weblog python:here;
                                  entry python:entry.getObject();">
-                <metal:macro use-macro="here/entry_macros/macros/display-entry"/>
+                <metal:macro use-macro="here/quills_entry_macros/display-entry"/>
               </tal:block>
             </tal:loop>
           </div>

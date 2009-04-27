@@ -10,7 +10,7 @@
   </metal:block>
 
   <metal:block fill-slot="head_slot">
-    <metal:macro use-macro="context/quills_header_macros/macros/feed-links" />
+    <metal:macro use-macro="context/quills_header_macros/feed-links" />
   </metal:block>
 
   <body>

@@ -7,7 +7,7 @@
 
   <body>
     <metal:feed fill-slot="head_slot">
-      <metal:block metal:use-macro="context/quills_header_macros/macros/feed-links"></metal:block>
+      <metal:block metal:use-macro="context/quills_header_macros/feed-links"></metal:block>
 
     </metal:feed>
     <div metal:fill-slot="main"
@@ -27,9 +27,9 @@
            want our own system.
            <div tal:replace="structure provider:plone.belowcontenttitle" />
       -->
-      <metal:macro use-macro="context/entry_macros/macros/byline" />
-      <metal:macro use-macro="context/entry_macros/macros/filed-under" />
-      <metal:macro use-macro="context/entry_macros/macros/topic-images" />
+      <metal:macro use-macro="context/quills_entry_macros/byline" />
+      <metal:macro use-macro="context/quills_entry_macros/filed-under" />
+      <metal:macro use-macro="context/quills_entry_macros/topic-images" />
       <p class="documentDescription">
         <metal:field use-macro="python:here.widget('description', mode='view')">
           Description

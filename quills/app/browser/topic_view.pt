@@ -33,7 +33,7 @@
                            weblog_content python: context.getWeblogContentObject();
                            wvconfig weblog_content/@@weblog_view/getConfig">
         <metal:macro
-            use-macro="context/weblog_macros/macros/list-entries"/>
+            use-macro="context/quills_weblog_macros/list-entries"/>
         </tal:dummy>
       </div>
 
