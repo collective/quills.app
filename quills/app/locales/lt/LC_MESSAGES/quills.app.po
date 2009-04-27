@@ -37,7 +37,7 @@ msgstr "Atom aktyvuotas"
 
 #. <link href="atom.xml" i18n:attributes="title" rel="alternate" title="Atom feed" type="application/atom+xml"/>
 #. Default: "Atom feed"
-#: ./skins/Quills/quills_header_macros.pt:17
+#: ./browser/quills_header_macros.pt:17
 msgid "Atom feed"
 msgstr "Atom srautas"
 
@@ -116,12 +116,12 @@ msgid "RDF"
 msgstr "RDF"
 
 #. Default: "RDF 1.0 feed"
-#: ./skins/Quills/quills_header_macros.pt:31
+#: ./browser/quills_header_macros.pt:31
 msgid "RDF 1.0 feed"
 msgstr ""
 
 #. Default: "RDF 1.1 feed"
-#: ./skins/Quills/quills_header_macros.pt:38
+#: ./browser/quills_header_macros.pt:38
 msgid "RDF 1.1 feed"
 msgstr ""
 
@@ -133,7 +133,7 @@ msgstr "RSS 2.0"
 
 #. <img alt="RSS 2.0" height="15" i18n:attributes="alt title" src="" tal:attributes="src string:$portal_url/rss_feed.gif" title="RSS 2.0 feed" width="80"/>
 #. Default: "RSS 2.0 feed"
-#: ./skins/Quills/quills_header_macros.pt:24
+#: ./browser/quills_header_macros.pt:24
 msgid "RSS 2.0 feed"
 msgstr "RSS 2.0 srautas"
 
@@ -257,7 +257,7 @@ msgid "add-portlet"
 msgstr ""
 
 #. Default: "last modified"
-#: ./skins/Quills/entry_macros.pt:262
+#: ./browser/quills_entry_macros.pt:262
 msgid "box_last_modified"
 msgstr ""
 
@@ -271,12 +271,12 @@ msgstr ""
 msgid "edit-portlet"
 msgstr ""
 
-## 2 more: Quills/trunk/skins/Quills/weblog_macros.pt, Quills/trunk/skins/Quills/weblog_macros.pt
+## 2 more: Quills/trunk/browser/quills_weblog_macros.pt, Quills/trunk/browser/quills_weblog_macros.pt
 #. <span i18n:translate="filed_under">
 #. Filed Under:
 #. </span>
 #. Default: "Filed Under:"
-#: ./skins/Quills/entry_macros.pt:194
+#: ./browser/quills_entry_macros.pt:194
 msgid "filed_under"
 msgstr "Išsaugota po:"
 
@@ -314,7 +314,7 @@ msgid "help_trackback_blacklist"
 msgstr ""
 
 #. Default: "by ${author}"
-#: ./skins/Quills/entry_macros.pt:250
+#: ./browser/quills_entry_macros.pt:250
 msgid "label_by_author"
 msgstr ""
 
@@ -373,12 +373,12 @@ msgstr ""
 #. No weblog entries have been posted.
 #. </p>
 #. Default: "No weblog entries have been posted."
-#: ./skins/Quills/weblog_macros.pt:56
+#: ./browser/quills_weblog_macros.pt:56
 msgid "no_weblog_entries"
 msgstr "Nėra publikuotų blog'o įrašų."
 
 #. Default: "Comments:"
-#: ./skins/Quills/entry_macros.pt:217
+#: ./browser/quills_entry_macros.pt:217
 msgid "number_of_comments"
 msgstr ""
 
@@ -398,7 +398,7 @@ msgid "portlet_blogadmin_new_entry"
 msgstr ""
 
 #. Default: "read more..."
-#: ./skins/Quills/entry_macros.pt:113
+#: ./browser/quills_entry_macros.pt:113
 msgid "read_more"
 msgstr ""
 

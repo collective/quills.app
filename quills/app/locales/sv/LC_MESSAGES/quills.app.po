@@ -30,7 +30,7 @@ msgid "Atom Enabled"
 msgstr ""
 
 #. Default: "Atom feed"
-#: ./skins/Quills/quills_header_macros.pt:17
+#: ./browser/quills_header_macros.pt:17
 msgid "Atom feed"
 msgstr ""
 
@@ -107,12 +107,12 @@ msgid "RDF"
 msgstr ""
 
 #. Default: "RDF 1.0 feed"
-#: ./skins/Quills/quills_header_macros.pt:31
+#: ./browser/quills_header_macros.pt:31
 msgid "RDF 1.0 feed"
 msgstr ""
 
 #. Default: "RDF 1.1 feed"
-#: ./skins/Quills/quills_header_macros.pt:38
+#: ./browser/quills_header_macros.pt:38
 msgid "RDF 1.1 feed"
 msgstr ""
 
@@ -122,7 +122,7 @@ msgid "RSS 2.0"
 msgstr ""
 
 #. Default: "RSS 2.0 feed"
-#: ./skins/Quills/quills_header_macros.pt:24
+#: ./browser/quills_header_macros.pt:24
 msgid "RSS 2.0 feed"
 msgstr ""
 
@@ -245,7 +245,7 @@ msgid "add-portlet"
 msgstr ""
 
 #. Default: "last modified"
-#: ./skins/Quills/entry_macros.pt:262
+#: ./browser/quills_entry_macros.pt:262
 msgid "box_last_modified"
 msgstr ""
 
@@ -260,7 +260,7 @@ msgid "edit-portlet"
 msgstr ""
 
 #. Default: "Filed Under:"
-#: ./skins/Quills/entry_macros.pt:194
+#: ./browser/quills_entry_macros.pt:194
 msgid "filed_under"
 msgstr ""
 
@@ -295,7 +295,7 @@ msgid "help_trackback_blacklist"
 msgstr ""
 
 #. Default: "by ${author}"
-#: ./skins/Quills/entry_macros.pt:250
+#: ./browser/quills_entry_macros.pt:250
 msgid "label_by_author"
 msgstr ""
 
@@ -350,12 +350,12 @@ msgid "no_comments"
 msgstr ""
 
 #. Default: "No weblog entries have been posted."
-#: ./skins/Quills/weblog_macros.pt:56
+#: ./browser/quills_weblog_macros.pt:56
 msgid "no_weblog_entries"
 msgstr ""
 
 #. Default: "Comments:"
-#: ./skins/Quills/entry_macros.pt:217
+#: ./browser/quills_entry_macros.pt:217
 msgid "number_of_comments"
 msgstr ""
 
@@ -375,7 +375,7 @@ msgid "portlet_blogadmin_new_entry"
 msgstr ""
 
 #. Default: "read more..."
-#: ./skins/Quills/entry_macros.pt:113
+#: ./browser/quills_entry_macros.pt:113
 msgid "read_more"
 msgstr ""
 

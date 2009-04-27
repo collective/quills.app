@@ -33,7 +33,7 @@ msgid "Atom Enabled"
 msgstr "Atom"
 
 #. Default: "Atom feed"
-#: ./skins/Quills/quills_header_macros.pt:17
+#: ./browser/quills_header_macros.pt:17
 msgid "Atom feed"
 msgstr "Atom jarioa"
 
@@ -110,12 +110,12 @@ msgid "RDF"
 msgstr "RDF"
 
 #. Default: "RDF 1.0 feed"
-#: ./skins/Quills/quills_header_macros.pt:31
+#: ./browser/quills_header_macros.pt:31
 msgid "RDF 1.0 feed"
 msgstr "RDF 1.0 jarioa"
 
 #. Default: "RDF 1.1 feed"
-#: ./skins/Quills/quills_header_macros.pt:38
+#: ./browser/quills_header_macros.pt:38
 msgid "RDF 1.1 feed"
 msgstr "RDF 1.1 jarioa"
 
@@ -125,7 +125,7 @@ msgid "RSS 2.0"
 msgstr "RSS 2.0"
 
 #. Default: "RSS 2.0 feed"
-#: ./skins/Quills/quills_header_macros.pt:24
+#: ./browser/quills_header_macros.pt:24
 msgid "RSS 2.0 feed"
 msgstr "RSS 2.0 jarioa"
 
@@ -248,7 +248,7 @@ msgid "add-portlet"
 msgstr "${portlet-name} portleta gehitu"
 
 #. Default: "last modified"
-#: ./skins/Quills/entry_macros.pt:262
+#: ./browser/quills_entry_macros.pt:262
 msgid "box_last_modified"
 msgstr "azken aldaketa"
 
@@ -263,7 +263,7 @@ msgid "edit-portlet"
 msgstr "${portlet-name} portleta editatu"
 
 #. Default: "Filed Under:"
-#: ./skins/Quills/entry_macros.pt:194
+#: ./browser/quills_entry_macros.pt:194
 msgid "filed_under"
 msgstr "Etiketak:"
 
@@ -298,7 +298,7 @@ msgid "help_trackback_blacklist"
 msgstr "Ondoko adierazpen erregularrekin bat datozen helbideetatik datozen trackbackak blokeatu egingo dira"
 
 #. Default: "by ${author}"
-#: ./skins/Quills/entry_macros.pt:250
+#: ./browser/quills_entry_macros.pt:250
 msgid "label_by_author"
 msgstr "${author}"
 
@@ -353,12 +353,12 @@ msgid "no_comments"
 msgstr "Ez dago erantzunik."
 
 #. Default: "No weblog entries have been posted."
-#: ./skins/Quills/weblog_macros.pt:56
+#: ./browser/quills_weblog_macros.pt:56
 msgid "no_weblog_entries"
 msgstr "Ez dago sarrerarik"
 
 #. Default: "Comments:"
-#: ./skins/Quills/entry_macros.pt:217
+#: ./browser/quills_entry_macros.pt:217
 msgid "number_of_comments"
 msgstr "Erantzun kopurua"
 
@@ -378,7 +378,7 @@ msgid "portlet_blogadmin_new_entry"
 msgstr "Sarrera berria"
 
 #. Default: "read more..."
-#: ./skins/Quills/entry_macros.pt:113
+#: ./browser/quills_entry_macros.pt:113
 msgid "read_more"
 msgstr "Gehiago irakurri"
 

@@ -30,10 +30,10 @@ msgstr "Atom"
 #. Default: "Atom Enabled"
 #: ./portlets/quillslinks.pt:17
 msgid "Atom Enabled"
-msgstr "Atom slået til"
+msgstr "Atom slï¿½et til"
 
 #. Default: "Atom feed"
-#: ./skins/Quills/quills_header_macros.pt:17
+#: ./browser/quills_header_macros.pt:17
 msgid "Atom feed"
 msgstr "Atom feed"
 
@@ -93,7 +93,7 @@ msgstr ""
 #. Default: "Powered by Quills"
 #: ./portlets/quillslinks.pt:55
 msgid "Powered by Quills"
-msgstr "Baseret på Quils"
+msgstr "Baseret pï¿½ Quils"
 
 #: ./portlets/quillslinks.py:21
 msgid "Quills"
@@ -110,12 +110,12 @@ msgid "RDF"
 msgstr "RDF"
 
 #. Default: "RDF 1.0 feed"
-#: ./skins/Quills/quills_header_macros.pt:31
+#: ./browser/quills_header_macros.pt:31
 msgid "RDF 1.0 feed"
 msgstr ""
 
 #. Default: "RDF 1.1 feed"
-#: ./skins/Quills/quills_header_macros.pt:38
+#: ./browser/quills_header_macros.pt:38
 msgid "RDF 1.1 feed"
 msgstr "RDF 1.0 feed"
 
@@ -125,7 +125,7 @@ msgid "RSS 2.0"
 msgstr "SS 2.0"
 
 #. Default: "RSS 2.0 feed"
-#: ./skins/Quills/quills_header_macros.pt:24
+#: ./browser/quills_header_macros.pt:24
 msgid "RSS 2.0 feed"
 msgstr "RSS 2.0 feed"
 
@@ -248,7 +248,7 @@ msgid "add-portlet"
 msgstr ""
 
 #. Default: "last modified"
-#: ./skins/Quills/entry_macros.pt:262
+#: ./browser/quills_entry_macros.pt:262
 msgid "box_last_modified"
 msgstr ""
 
@@ -263,7 +263,7 @@ msgid "edit-portlet"
 msgstr ""
 
 #. Default: "Filed Under:"
-#: ./skins/Quills/entry_macros.pt:194
+#: ./browser/quills_entry_macros.pt:194
 msgid "filed_under"
 msgstr "Gent under:"
 
@@ -298,7 +298,7 @@ msgid "help_trackback_blacklist"
 msgstr ""
 
 #. Default: "by ${author}"
-#: ./skins/Quills/entry_macros.pt:250
+#: ./browser/quills_entry_macros.pt:250
 msgid "label_by_author"
 msgstr ""
 
@@ -353,12 +353,12 @@ msgid "no_comments"
 msgstr ""
 
 #. Default: "No weblog entries have been posted."
-#: ./skins/Quills/weblog_macros.pt:56
+#: ./browser/quills_weblog_macros.pt:56
 msgid "no_weblog_entries"
-msgstr "Ingen indlæg oprettet"
+msgstr "Ingen indlï¿½g oprettet"
 
 #. Default: "Comments:"
-#: ./skins/Quills/entry_macros.pt:217
+#: ./browser/quills_entry_macros.pt:217
 msgid "number_of_comments"
 msgstr "Kommentarer:"
 
@@ -378,12 +378,12 @@ msgid "portlet_blogadmin_new_entry"
 msgstr ""
 
 #. Default: "read more..."
-#: ./skins/Quills/entry_macros.pt:113
+#: ./browser/quills_entry_macros.pt:113
 msgid "read_more"
-msgstr "Læs mere..."
+msgstr "Lï¿½s mere..."
 
 #. Default: "Note: for some weblog editors you will need to provide the following string as id to edit this blog:"
 #: ./browser/weblog_view.pt:31
 msgid "weblog_edit_app_note"
-msgstr "Bemærk: For nogen brugere af webloggen vil det være nødvendigt at indsætte følgende tekst som ID for at redigere denne blog:"
+msgstr "Bemï¿½rk: For nogen brugere af webloggen vil det vï¿½re nï¿½dvendigt at indsï¿½tte fï¿½lgende tekst som ID for at redigere denne blog:"
 
