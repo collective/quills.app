@@ -480,3 +480,15 @@ Now the blog view.
 Reset user name.
     
     >>> iAm.setProperties({'fullname': oldName})
+
+
+Issue #119: Archive URL not respected when commenting a post
+------------------------------------------------------------
+
+When you added comment to a post, prior this issue was fixed, you would
+end up at the absolute URL of the post no matter if you came from the 
+archive.
+
+To test this I will add a post and navigate to it by archive URL.
+
+[TODO: continue]
