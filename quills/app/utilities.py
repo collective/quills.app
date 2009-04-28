@@ -89,7 +89,7 @@ def recurseToInterface(item, ifaces):
     """
     if not isinstance(ifaces, (ListType, TupleType)):
         ifaces = [ifaces]
-    parent = item.aq_parent
+    parent = item.aq_inner.aq_parent
     for iface in ifaces:
         if iface.providedBy(item):
             return item
