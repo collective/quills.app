@@ -20,6 +20,15 @@
       factory="quills.app.browser.weblogconfig.StateAwareWeblogConfig"
       />
 
+  <!-- Issue 189:  Replying to an comment raises a non-fatal TypeError during
+       portlet rendering. This is fixed by adding a locator for discussion items.
+       -->
+  <adapter
+      for="Products.CMFCore.interfaces.IDiscussionResponse"
+      provides="quills.core.interfaces.IWeblogLocator"
+      factory="quills.app.locator.RecursingUpLocator"
+      />
+
   <!-- Adapts catalog query results to IWeblogEntry. Use
        quills.app.utilities.BloggifiedCatalogResults to lazy wrap a
        whole result set. -->

@@ -513,17 +513,75 @@ from.
     >>> browser.getControl('Subject').value = "Issue 119"
     >>> browser.getControl('Comment').value = "Redirect to archive, please!"
 
-Unfortunately, the next statment will cause a 404 error. At least up until
+Unfortunately, the clicking submit will cause a 404 error. At least up until
 Zope 2.10.6 zope.testbrowser and/or mechanize handle URL fragments incorrectly.
 They send them to the server (which they should) who then chokes on them.
 Recent versions of mechanize (?) and testbrowser (3.5.1) have fixed that. I
 cannot find out though which version of testbrowser ships with individual Zope
-releases.
+releases. As soon as this is fixed the try-except-clause may safely go away.
 
 With Products.Quills this test-case will fail for another reason. There the
 redirect handler (quills.app.browser.discussionreply) is not registered during
-testing. Probably because of the GS profile in the tests module.
+testing; probably because of the GS profile in the tests module.
 
-    >>> browser.getControl('Save').click()
+    >>> from urllib2 import HTTPError
+    >>> try:
+    ...     browser.getControl('Save').click()
+    ... except HTTPError, ex:
+    ...     if ex.code != 404:
+    ...         raise
     >>> browser.url.split('#')[0]
     'http://nohost/plone/weblog/2009/04/28/issue119'
+
+
+Issue #189: Replying to an comment raises a non-fatal TypeError
+---------------------------------------------------------------
+
+This issue was caused by Quills' portlets trying to locate the weblog object.
+They would try to adapt a DiscussionItem to IWeblogLocator. This would happen
+only for responses given, because comment on post have the weblog entry as
+context set.
+
+To test for this issue we will add a comment and a reply and see whether
+our portlet show up in the reply form.
+
+    >>> self.login()
+    >>> self.setRoles(('Manager',))
+
+    >>> entry = self.weblog.addEntry(title="Issue #189", id="issue189",
+    ...                      excerpt="None", text="None")
+    >>> entry.setPublicationDate( DateTime("2009-04-28T16:48:00") )
+    >>> entry_content = entry.getWeblogEntryContentObject()
+    >>> entry_content.allowDiscussion(allowDiscussion=True)
+    >>> entry.publish()
+
+    >>> browser = self.getBrowser(logged_in=True)
+    >>> browser.handleErrors = True
+    >>> browser.open("http://nohost/plone/weblog/issue189")
+
+Add the comment to the post. See if there appears some text which indicates
+the presence of the Administration portlet.
+
+    >>> browser.getControl("Add Comment").click()
+    >>> browser.getControl('Subject').value = "Comment"
+    >>> browser.getControl('Comment').value = "This works"
+
+See test for issue #119 why this try-except statment is here.
+
+    >>> from urllib2 import HTTPError
+    >>> try:
+    ...     browser.getControl('Save').click()
+    ... except HTTPError, ex:
+    ...     if ex.code == 404:
+    ...         browser.open("http://nohost/plone/weblog/issue189")
+    ...     else:
+    ...         raise
+    >>> 'Weblog Admin' in browser.contents
+    True
+    
+Add a reply to that comment.
+      
+    >>> browser.getControl("Reply").click()
+    >>> 'Weblog Admin' in browser.contents
+    True
+
