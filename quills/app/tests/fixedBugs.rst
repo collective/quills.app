@@ -1,7 +1,7 @@
 Quills browser tests
 ====================
 
-Here we check for fixed bugs usins tests, that don't fit into the 'narrative' in
+Here we check for fixed bugs using tests, that don't fit into the 'narrative' in
 the main browser test. First some boilerplate to get our browser up and running:
 
     >>> self.setRoles(("Contributor",))
@@ -29,7 +29,8 @@ Make it discussable and publish it
     >>> day = str(date.day()).zfill(2)
 
     >>> self.setRoles(("Contributor", "Reviewer", "Manager"))
-    >>> browser.open('http://nohost/plone/weblog/%s/%s/%s/entry' % (year, month, day))
+    >>> browser.open('http://nohost/plone/weblog/%s/%s/%s/entry' 
+    ...              % (year, month, day))
     >>> browser.getControl('Add Comment').click()
     >>> browser.getControl('Subject').value = "Parrot"
     >>> browser.getControl('Comment').value = "Is dead. Is deceased."
@@ -485,10 +486,44 @@ Reset user name.
 Issue #119: Archive URL not respected when commenting a post
 ------------------------------------------------------------
 
-When you added comment to a post, prior this issue was fixed, you would
-end up at the absolute URL of the post no matter if you came from the 
-archive.
+When you add comment to a post, you will end up at the absolute URL of
+the post no matter if you came from the archive.
 
-To test this I will add a post and navigate to it by archive URL.
+To test this I will add a post and navigate to it by archive URL. The entry
+must be commentable. It will have a fixed publication date to easy testing.
 
-[TODO: continue]
+    >>> self.login()
+    >>> self.setRoles(('Manager',))
+
+    >>> entry = self.weblog.addEntry(title="Issue #119", id="issue119",
+    ...                      excerpt="None", text="None")
+    >>> entry.setPublicationDate( DateTime("2009-04-28T09:46:00") )
+    >>> entry_content = entry.getWeblogEntryContentObject()
+    >>> entry_content.allowDiscussion(allowDiscussion=True)
+    >>> entry.publish()
+
+    >>> browser = self.getBrowser(logged_in=True)
+    >>> browser.open("http://nohost/plone/weblog/2009/04/28/issue119")
+
+Now add a comment through the web. Saving it should take us back from where we
+from.
+
+    >>> browser.handleErrors = True
+    >>> browser.getControl("Add Comment").click()
+    >>> browser.getControl('Subject').value = "Issue 119"
+    >>> browser.getControl('Comment').value = "Redirect to archive, please!"
+
+Unfortunately, the next statment will cause a 404 error. At least up until
+Zope 2.10.6 zope.testbrowser and/or mechanize handle URL fragments incorrectly.
+They send them to the server (which they should) who then chokes on them.
+Recent versions of mechanize (?) and testbrowser (3.5.1) have fixed that. I
+cannot find out though which version of testbrowser ships with individual Zope
+releases.
+
+With Products.Quills this test-case will fail for another reason. There the
+redirect handler (quills.app.browser.discussionreply) is not registered during
+testing. Probably because of the GS profile in the tests module.
+
+    >>> browser.getControl('Save').click()
+    >>> browser.url.split('#')[0]
+    'http://nohost/plone/weblog/2009/04/28/issue119'
