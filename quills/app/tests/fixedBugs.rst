@@ -497,10 +497,9 @@ must be commentable. It will have a fixed publication date to easy testing.
 
     >>> entry = self.weblog.addEntry(title="Issue #119", id="issue119",
     ...                      excerpt="None", text="None")
-    >>> entry.setPublicationDate( DateTime("2009-04-28T09:46:00") )
     >>> entry_content = entry.getWeblogEntryContentObject()
     >>> entry_content.allowDiscussion(allowDiscussion=True)
-    >>> entry.publish()
+    >>> entry.publish(pubdate=DateTime("2009-04-28T09:46:00"))
 
     >>> browser = self.getBrowser(logged_in=True)
     >>> browser.open("http://nohost/plone/weblog/2009/04/28/issue119")
@@ -550,10 +549,9 @@ our portlet show up in the reply form.
 
     >>> entry = self.weblog.addEntry(title="Issue #189", id="issue189",
     ...                      excerpt="None", text="None")
-    >>> entry.setPublicationDate( DateTime("2009-04-28T16:48:00") )
     >>> entry_content = entry.getWeblogEntryContentObject()
     >>> entry_content.allowDiscussion(allowDiscussion=True)
-    >>> entry.publish()
+    >>> entry.publish( pubdate=DateTime("2009-04-28T16:48:00") )
 
     >>> browser = self.getBrowser(logged_in=True)
     >>> browser.handleErrors = True
