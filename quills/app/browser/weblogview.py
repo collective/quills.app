@@ -173,7 +173,7 @@ class AuthorTopicView(TopicView):
         """See base-class."""
         return "authors"
     
-class WeblogArchiveView(BaseView):
+class WeblogArchiveView(TopicView):
     """A class with helper methods for use in views/templates.
     """
 

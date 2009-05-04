@@ -28,13 +28,16 @@
           </ul>
      </tal:sub-archives>
 
-      <h3 i18n:translate="heading_archive_posts">Posts</h3>
-      <ul>
-        <li tal:repeat="entry context/getEntries">
-          <a href=""
-             tal:attributes="href python:view.getArchiveURLFor(entry)"
-             tal:content="entry/Title">_title_</a></li>
-      </ul>
+      <div id="content-weblog">
+        <tal:dummy define="entries context/getEntries;
+                           batch_base_url request/ACTUAL_URL;
+                           weblog python: context.getWeblog();
+                           weblog_content python: context.getWeblogContentObject();
+                           wvconfig weblog_content/@@weblog_view/getConfig">
+        <metal:macro
+            use-macro="context/quills_weblog_macros/list-entries"/>
+        </tal:dummy>
+      </div>
 
     </div>
   </body>
