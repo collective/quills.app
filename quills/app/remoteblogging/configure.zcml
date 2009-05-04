@@ -26,4 +26,32 @@
       provides="quills.remoteblogging.interfaces.IUIDManager"
       factory="quills.app.remoteblogging.uidmanager.UIDManager" />
 
+  <browser:page
+      for="quills.core.interfaces.IWeblog"
+      class="quills.remoteblogging.browser.metaweblogapi.MetaWeblogAPI"
+      permission="cmf.ModifyPortalContent"
+      name="metaWeblog"
+      allowed_interface="quills.remoteblogging.interfaces.IMetaWeblogAPI" />
+
+  <browser:page
+      for="quills.core.interfaces.IWeblog"
+      class="quills.remoteblogging.browser.metaweblogapi.MetaWeblogAPI"
+      permission="cmf.ModifyPortalContent"
+      name="blogger"
+      allowed_interface="quills.remoteblogging.interfaces.IMetaWeblogAPI" />
+
+  <browser:page
+      for="quills.core.interfaces.IWeblogEnhanced"
+      class="quills.remoteblogging.browser.metaweblogapi.MetaWeblogAPI"
+      permission="cmf.ModifyPortalContent"
+      name="metaWeblog"
+      allowed_interface="quills.remoteblogging.interfaces.IMetaWeblogAPI" />
+
+  <browser:page
+      for="quills.core.interfaces.IWeblogEnhanced"
+      class="quills.remoteblogging.browser.metaweblogapi.MetaWeblogAPI"
+      permission="cmf.ModifyPortalContent"
+      name="blogger"
+      allowed_interface="quills.remoteblogging.interfaces.IMetaWeblogAPI" />
+
 </configure>
