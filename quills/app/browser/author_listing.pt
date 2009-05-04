@@ -20,8 +20,8 @@
         <ul>
             <li tal:repeat="author context/getAuthors">
               <a href=""
-                 tal:content="author"
-                 tal:attributes="href string:${context/absolute_url}/$author">author</a>
+                 tal:content="author/getTitle"
+                 tal:attributes="href python:view.topicViewURLof(author)">author</a>
             </li>
         </ul>
 

@@ -14,7 +14,7 @@ from quills.core.browser.interfaces import IWeblogEntryView
 from quills.core.browser.interfaces import ITopicView
 from baseview import BaseView
 from quills.app.interfaces import IWeblogEnhancedConfiguration
-
+from quills.core.interfaces import IWeblogLocator
 
 class WeblogView(BaseView):
     """A class with helper methods for use in views/templates.
@@ -113,6 +113,24 @@ class TopicView(WeblogView):
 
     implements(ITopicView)
 
+    def getWeblog(self):
+        """Return the weblog object.
+        """
+        locator = IWeblogLocator(self.context)
+        return locator.find()
+
+    def getWeblogContentObject(self):
+        """ Return the content object underlying the weblog object,
+        or the weblog object itself, if there is no such object.
+        """
+        weblog = self.getWeblog()
+        return getattr(weblog, 'context', weblog)
+
+    def getConfig(self):
+        """See IWeblogView.
+        """
+        return IWeblogEnhancedConfiguration(self.getWeblogContentObject())
+
     def getLastModified(self, topic=None):
         """See ITopicView.
         """
@@ -123,7 +141,38 @@ class TopicView(WeblogView):
             # XXX modified should be in an interface
             return entries[0].modified
 
+    def topicViewURLof(self, topic):
+        """Return the URL of the view for given topic."""
+        if self.viewContainerName():
+            return '%s/%s/%s' % (self.getWeblogContentObject().absolute_url(),
+                                 self.viewContainerName(),
+                                 topic.getId())
+        else:
+            return '%s/%s' % (self.getWeblogContentObject().absolute_url(),
+                                 topic.getId())            
 
+    def viewContainerName(self):
+        """Return the vitual container name that can be appended to the
+        weblog url for browsing topics of a certain kind.
+        """
+        raise AttributeError("Sub-class responsibility")
+
+
+class KeywordTopicView(TopicView):
+    """A view for keyword topics."""
+
+    def viewContainerName(self):
+        """See base-class."""
+        return "topics"
+
+
+class AuthorTopicView(TopicView):
+    """A view for author topics."""
+
+    def viewContainerName(self):
+        """See base-class."""
+        return "authors"
+    
 class WeblogArchiveView(BaseView):
     """A class with helper methods for use in views/templates.
     """

@@ -44,7 +44,7 @@
 
       <page
           for="quills.core.interfaces.ITopicContainer"
-          class=".weblogview.TopicView"
+          class=".weblogview.KeywordTopicView"
           template="topic_listing.pt"
           permission="zope2.View"
           name="topic_listing" />
@@ -58,7 +58,7 @@
 
       <page
           for="quills.core.interfaces.IAuthorContainer"
-          class=".weblogview.TopicView"
+          class=".weblogview.AuthorTopicView"
           template="author_listing.pt"
           permission="zope2.View"
           name="author_listing" />
@@ -73,7 +73,7 @@
       <page
           for="quills.core.interfaces.ITopic"
           template="topic_view.pt"
-          class=".weblogview.TopicView"
+          class=".weblogview.KeywordTopicView"
           permission="zope2.View"
           name="topic_view" />
 

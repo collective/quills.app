@@ -522,7 +522,7 @@ releases. As soon as this is fixed the try-except-clause may safely go away.
 
 With Products.Quills this test-case will fail for another reason. There the
 redirect handler (quills.app.browser.discussionreply) is not registered during
-testing; probably because of the GS profile in the tests module.
+testing; probably because of the GS profile in the tests module. FIX ME!
 
     >>> from urllib2 import HTTPError
     >>> try:

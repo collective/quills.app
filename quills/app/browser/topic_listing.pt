@@ -23,12 +23,13 @@
 
       <tal:loop repeat="topic context/getTopics">
         <div class="row"
+	  tal:define="topicURL python:view.topicViewURLof(topic)"
           tal:attributes="class python:repeat['topic'].even() and 'row even' or 'row odd'">
           <div class="icon" style="width: 64px; height: 64px;"
                tal:define="topicimage python:topic.getImage()"
                tal:condition="topicimage">
             <a href="#"
-               tal:attributes="href string:${request/URL0}/${topic/getId}">
+               tal:attributes="href topicURL">
               <img src="" 
                    tal:attributes="src topicimage/absolute_url;
                                    alt topic/getTitle" />
@@ -39,7 +40,7 @@
             <strong>
               <a href="#"
                  tal:content="topic/getTitle"
-                 tal:attributes="href string:${context/absolute_url}/${topic/getId}">_topic_link_</a>
+                 tal:attributes="href topicURL">_topic_link_</a>
               (<span tal:content="python:len(topic)"></span>)
             </strong>
             <div class="discreet">
