@@ -16,8 +16,6 @@
 
       <h1 tal:content="context/Title">_title_</h1>
 
-      <p tal:content="python:len(context)">_len_</p>
-
       <tal:sub-archives define="sub_archives context/getSubArchives"
                         condition="sub_archives">
           <h3 i18n:translate="heading_sub-archives">Sub-archives</h3>
