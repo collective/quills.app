@@ -1,3 +1,4 @@
+from zope.component import getUtility
 from zope.app.container.interfaces import INameChooser
 from plone.i18n.normalizer.interfaces import IIDNormalizer
 
@@ -30,17 +31,17 @@ class WeblogMixin:
         return results
 
     def _genUniqueId(self, folder, id, title):
+        # XXX Add test-case for id generation (e.g. via addFile)
+        idGen = getUtility(IIDNormalizer)
         if id:
-            if not folder.hasObject(id):
-                return id
-        if id is None and title:
-            id = getUtility(IIDNormalizer).normalize(title)
-            if not folder.hasObject(id):
-                return id
+            id = idGen.normalize(id)
+        elif title:
+            id = idGen.normalize(title)
+        if not folder.hasObject(id):
+            return id
         else:
-            # No id or title, so just generate something random (and unique)
-            id = INameChooser(folder).chooseName(name='', object=None)
-        return id
+            # Fall back to auto-gen
+            return INameChooser(folder).chooseName(name='', object=None)
 
     def _getPortalTypeForMimeType(self, mimetype):
         # XXX Implement me properly!
