@@ -331,8 +331,8 @@ Now click the "Add Entry" link. The edit form should be present.
     >>> browser.handleErrors = True
     >>> browser.open('http://nohost/plone/issue-158/')
     >>> browser.getLink(text='Add Entry').click()
-    >>> browser.getForm(id='weblogentry-base-edit')
-    <zope.testbrowser.browser.Form object ...>
+    >>> '/portal_factory/' in browser.url
+    True
 
 
 Issues #149 & #162: Memory leak and folder listing breakage
