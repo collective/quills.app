@@ -549,6 +549,9 @@ They would try to adapt a DiscussionItem to IWeblogLocator. This would happen
 only for responses given, because comment on post have the weblog entry as
 context set.
 
+Btw. adding visiting Quills uploads or topic image folder or adding anything
+to them would raise the same error.
+
 To test for this issue we will add a comment and a reply and see whether
 our portlet show up in the reply form.
 
