@@ -4,6 +4,7 @@ from Products.CMFCore.interfaces import ISiteRoot
 from quills.core.interfaces import IWeblogEnhanced
 from quills.core.interfaces import IWeblog
 from quills.app.utilities import recurseToInterface
+from quills.app.traversal import IInsideWeblog
 from quills.core.interfaces import IWeblogLocator
 
 
@@ -16,12 +17,17 @@ class RecursingUpLocator(object):
         
     def find(self):
         """see Interface"""
+        # The request tells us if were inside a weblog; if we are
+        # not, we leave immediately. --- jhackel
+        request = self.context.request
+        if not ( request is None or IInsideWeblog.providedBy(request) ):
+            return []
+
         weblog_content = recurseToInterface(self.context.aq_inner,
                                             (IWeblog, IWeblogEnhanced))
         if weblog_content is None:
             return []
         return IWeblog(weblog_content)
-
 
 class SelfLocator(object):
     """see Interface, takes always the context itself."""

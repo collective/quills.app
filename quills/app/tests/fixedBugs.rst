@@ -146,6 +146,14 @@ with both Quills and QuillsEnabled.
     >>> blogFolder = self.portal['issue-143']
     >>> from zope.component import getMultiAdapter
     >>> request = blogFolder.REQUEST
+
+The request will normally be marked by the traversal code to show we are inside
+a weblog. We have to do it here ourselves.
+
+    >>> from zope.interface import alsoProvides
+    >>> from quills.app.traversal import IInsideWeblog
+    >>> alsoProvides(request, IInsideWeblog)
+
     >>> view = getMultiAdapter((blogFolder, request), name='view')
     >>> renderer = TestRenderer(blogFolder, request, view, None, None)
     >>> renderer.available

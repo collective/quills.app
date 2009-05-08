@@ -2,7 +2,7 @@
 from zope.component import adapts, getMultiAdapter
 from zope.component import queryMultiAdapter
 from zope.app.publisher.browser import getDefaultViewName
-from zope.interface import alsoProvides
+from zope.interface import alsoProvides, Interface
 from zope.publisher.interfaces.http import IHTTPRequest
 from ZPublisher.BaseRequest import DefaultPublishTraverse
 
@@ -25,12 +25,20 @@ from archive import YearArchive
 from archive import MonthArchive
 from archive import DayArchive
 
+class IInsideWeblog(Interface):
+    """Marker interface for Requests to signal that traversal moves
+    inside a QuillsEnabled weblog."""
+
 
 class WeblogTraverser(DefaultPublishTraverse):
 
     adapts(IWeblog, IHTTPRequest)
     
     def publishTraverse(self, request, name):
+        # Mark request: we're in a weblog
+        # Maybe a zope layer would be better? -- jhackel
+        alsoProvides(request, IInsideWeblog)
+
         # Only intercept certain names...
         if name == 'topics':
             # XXX 'topics' should probably not be hard-coded here.  Rather,
