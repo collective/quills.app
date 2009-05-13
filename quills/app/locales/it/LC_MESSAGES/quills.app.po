@@ -4,8 +4,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: 1.5rc2\n"
 "POT-Creation-Date: 2009-04-27 12:54+0000\n"
-"PO-Revision-Date: 2006-08-18 19:00+0200\n"
-"Last-Translator: Enzo Cesanelli <enzo at noiza dot com>\n"
+"PO-Revision-Date: 2008-11-26 00:45+0100\n"
+"Last-Translator: Enzo Cesanelli <enzo@noiza.com>\n"
 "Language-Team: Enzo Cesanelli <enzo at noiza dot com>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
@@ -19,32 +19,32 @@ msgstr ""
 #. Default: "Add new blog entry"
 #: ./portlets/weblogadmin.pt:12
 msgid "Add new blog entry"
-msgstr ""
+msgstr "Aggiungi nuovo post"
 
 #. Default: "Atom"
 #: ./portlets/quillslinks.pt:17
 msgid "Atom"
-msgstr ""
+msgstr "Atom"
 
 #. Default: "Atom Enabled"
 #: ./portlets/quillslinks.pt:17
 msgid "Atom Enabled"
-msgstr ""
+msgstr "supporta Atom"
 
 #. Default: "Atom feed"
 #: ./browser/quills_header_macros.pt:17
 msgid "Atom feed"
-msgstr ""
+msgstr "Feed Atom"
 
 #. Default: "Author"
 #: ./browser/manage_comments.pt:31
 msgid "Author"
-msgstr ""
+msgstr "Autore"
 
 #. Default: "Cancel"
 #: ./skins/Quills/quills_settings_form.cpt:71
 msgid "Cancel"
-msgstr ""
+msgstr "Annulla"
 
 #: ./browser/discussionreply.py:78
 msgid "Comment added."
@@ -52,238 +52,238 @@ msgstr ""
 
 #: ./browser/weblogconfig.py:70
 msgid "Configuration saved."
-msgstr ""
+msgstr "Impostazioni registrate."
 
 #. Default: "Configure Blog"
 #: ./portlets/weblogadmin.pt:28
 msgid "Configure Blog"
-msgstr ""
+msgstr "Configura Blog"
 
 #: ./interfaces.py:38
 msgid "Default type."
-msgstr ""
+msgstr "Contenuto di default"
 
 #. Default: "Delete"
 #: ./browser/manage_comments.pt:49
 msgid "Delete"
-msgstr ""
+msgstr "Elimina"
 
 #: ./portlets/authors.py:44
 msgid "If available, should the author's description be shown?"
-msgstr ""
+msgstr "Se disponibile, mostrare la descrizione dell'autore?"
 
 #: ./portlets/authors.py:32
 msgid "If available, should the author's location be shown?"
-msgstr ""
+msgstr "Se disponibile, mostrare l'ubicazione dell'autore?"
 
 #: ./portlets/authors.py:38
 msgid "If available, should the author's portrait be shown?"
-msgstr ""
+msgstr "Se disponibile, mostrare la foto dell'autore?"
 
 #. Default: "Manage Comments"
 #: ./portlets/weblogadmin.pt:20
 msgid "Manage Comments"
-msgstr ""
+msgstr "Gestisci Commenti"
 
 #: ./portlets/recentcomments.py:33
 msgid "Maximum comments"
-msgstr ""
+msgstr "Numero massimo di commenti"
 
 #: ./portlets/recententries.py:27
 msgid "Maximum entries"
-msgstr ""
+msgstr "Numero massimo di post"
 
 #. Default: "Powered by Quills"
 #: ./portlets/quillslinks.pt:55
 msgid "Powered by Quills"
-msgstr ""
+msgstr "Sviluppato con Quills"
 
 #: ./portlets/quillslinks.py:22
 msgid "Quills"
-msgstr ""
+msgstr "Quills"
 
 #. Default: "Quills weblog system for Plone"
 #: ./portlets/quillslinks.pt:55
 msgid "Quills weblog system for Plone"
-msgstr ""
+msgstr "Quills, sistema di blogging per Plone"
 
 #. Default: "RDF"
 #: ./portlets/quillslinks.pt:30
 msgid "RDF"
-msgstr ""
+msgstr "RDF"
 
 #. Default: "RDF 1.0 feed"
 #: ./browser/quills_header_macros.pt:31
 msgid "RDF 1.0 feed"
-msgstr ""
+msgstr "Feed RDF 1.0"
 
 #. Default: "RDF 1.1 feed"
 #: ./browser/quills_header_macros.pt:38
 msgid "RDF 1.1 feed"
-msgstr ""
+msgstr "Feed RDF 1.1"
 
 #. Default: "RSS 2.0"
 #: ./portlets/quillslinks.pt:43
 msgid "RSS 2.0"
-msgstr ""
+msgstr "RSS 2.0"
 
 #. Default: "RSS 2.0 feed"
 #: ./portlets/quillslinks.pt:43
 msgid "RSS 2.0 feed"
-msgstr ""
+msgstr "Feed RSS 2.0"
 
 #: ./portlets/recentcomments.py:26
 msgid "Recent Comments"
-msgstr ""
+msgstr "Commenti recenti"
 
 #: ./portlets/recententries.py:20
 msgid "Recent Entries"
-msgstr ""
+msgstr "Post recenti"
 
 #. Default: "Reset"
 #: ./browser/manage_comments.pt:41
 msgid "Reset"
-msgstr ""
+msgstr "Azzera"
 
 #. Default: "Save"
 #: ./skins/Quills/quills_settings_form.cpt:63
 msgid "Save"
-msgstr ""
+msgstr "Registra"
 
 #. Default: "Semantic feed"
 #: ./portlets/quillslinks.pt:30
 msgid "Semantic feed"
-msgstr ""
+msgstr "Feed semantico"
 
 #: ./portlets/authors.py:43
 msgid "Show author description?"
-msgstr ""
+msgstr "Mostrare descrizione autore?"
 
 #: ./portlets/authors.py:31
 msgid "Show author location?"
-msgstr ""
+msgstr "Mostrare ubicazione autore?"
 
 #: ./portlets/authors.py:37
 msgid "Show author portrait?"
-msgstr ""
+msgstr "Mostrare foto autore?"
 
 #. Default: "Subject"
 #: ./browser/manage_comments.pt:32
 msgid "Subject"
-msgstr ""
+msgstr "Oggetto"
 
 #: ./portlets/tagcloud.py:20
 msgid "Tag Cloud"
-msgstr ""
+msgstr "Tag Cloud"
 
 #: ./interfaces.py:39
 msgid "The default portal_type to add for this weblog."
-msgstr ""
+msgstr "Il tipo di contenuto di default da aggiungere a questo blog."
 
 #: ./portlets/tagcloud.py:21
 msgid "This portlet displays a tag cloud."
-msgstr ""
+msgstr "Questo portlet mostra una nuvola di parole chiave (tag)."
 
 #: ./portlets/recentcomments.py:27
 msgid "This portlet lists recent weblog comments."
-msgstr ""
+msgstr "Questo portlet mostra gli ultimi commenti lasciati nel blog."
 
 #: ./portlets/recententries.py:21
 msgid "This portlet lists recent weblog entries."
-msgstr ""
+msgstr "Questo portlet elenca gli ultimi post inseriti nel blog. "
 
 #: ./portlets/archive.py:25
 msgid "This portlet lists the archive of this weblog."
-msgstr ""
+msgstr "Questo portlet mostra l'archivio del blog."
 
 #: ./portlets/authors.py:25
 msgid "This portlet lists weblog authors."
-msgstr ""
+msgstr "Questo portlet mostra gli autori del blog."
 
 #: ./portlets/quillslinks.py:23
 msgid "This portlet provides links to the various feeds of this instance."
-msgstr ""
+msgstr "Questo portlet fornisce i vari feed del blog."
 
 #: ./portlets/weblogadmin.py:27
 msgid "This portlet provides useful admin functions for a weblog."
-msgstr ""
+msgstr "Questo portlet fornisce collegamenti utili alla gestione del blog."
 
 #. Default: "Update"
 #: ./browser/manage_comments.pt:34
 msgid "Update"
-msgstr ""
+msgstr "Aggiorna"
 
 #: ./portlets/weblogadmin.py:26
 msgid "Weblog Admin"
-msgstr ""
+msgstr "Gestione Blog"
 
 #: ./portlets/archive.py:24
 msgid "Weblog Archive"
-msgstr ""
+msgstr "Archivio"
 
 #: ./portlets/authors.py:24
 msgid "Weblog Authors"
-msgstr ""
+msgstr "Autori del Blog"
 
 #: ./browser/weblogconfig.py:48
 msgid "Weblog View Configuration"
-msgstr ""
+msgstr "Impostazioni Vista Blog"
 
 #: ./portlets/recentcomments.py:34
 msgid "What's the maximum number of comments to list?"
-msgstr ""
+msgstr "Qual è il numero massimo di commenti da mostrare?"
 
 #: ./portlets/recententries.py:28
 msgid "What's the maximum number of entries to list?"
-msgstr ""
+msgstr "Qual è il numero massimo di post da mostrare?"
 
 #: ./interfaces.py:59
 msgid "Workflow states to treat as draft."
-msgstr ""
+msgstr "Stati del workflow da trattare come pendenti."
 
 #: ./interfaces.py:51
 msgid "Workflow states to treat as published."
-msgstr ""
+msgstr "Stati del workflow da trattare come pubblicati."
 
 #. Default: "Add ${portlet-name} Portlet"
 #: ./portlets/archive.py:71
 msgid "add-portlet"
-msgstr ""
+msgstr "Aggiungi ${portlet-name}"
 
 #. Default: "last modified"
 #: ./browser/quills_entry_macros.pt:261
 msgid "box_last_modified"
-msgstr ""
+msgstr "Ultima modifica"
 
 #. Default: "Portal-wide Quills settings."
 #: ./skins/Quills/quills_settings_form.cpt:24
 msgid "description_quills_settings"
-msgstr ""
+msgstr "Configurazione di Quills."
 
 #. Default: "Edit ${portlet-name} Portlet"
 #: ./portlets/archive.py:80
 msgid "edit-portlet"
-msgstr ""
+msgstr "Modifica ${portlet-name}"
 
 #. Default: "Filed Under:"
 #: ./browser/quills_entry_macros.pt:195
 msgid "filed_under"
-msgstr "classificato come"
+msgstr "Tag:"
 
 #. Default: "Posts"
 #: ./browser/archive_view.pt:33
 msgid "heading_archive_posts"
-msgstr ""
+msgstr "Post"
 
 #. Default: "Quills Settings"
 #: ./skins/Quills/quills_settings_form.cpt:15
 msgid "heading_quills_settings"
-msgstr ""
+msgstr "Impostazioni Quills"
 
 #. Default: "Sub-archives"
 #: ./browser/archive_view.pt:23
 msgid "heading_sub-archives"
-msgstr ""
+msgstr "Sotto-archivi"
 
 #. Default: "Topics"
 #: ./browser/topic_listing.pt:20
@@ -293,72 +293,72 @@ msgstr "Argomenti"
 #. Default: "Weblog Authors"
 #: ./browser/author_listing.pt:17
 msgid "heading_weblog_authors"
-msgstr ""
+msgstr "Autori"
 
 #. Default: "Addresses that match the following regular expressions will be blocked from posting trackback comments to weblog entries."
 #: ./skins/Quills/quills_settings_form.cpt:46
 msgid "help_trackback_blacklist"
-msgstr ""
+msgstr "Gli indirizzi che coincidono con le seguenti espressioni regolari saranno bloccati e non potranno inserire il trackback nei commenti dei post."
 
 #. Default: "by"
 #: ./browser/quills_entry_macros.pt:247
 msgid "label_by_author"
-msgstr ""
+msgstr "di ${author}"
 
 #. Default: "Last Post:"
 #: ./browser/topic_listing.pt:50
 msgid "label_last_post"
-msgstr ""
+msgstr "Ultimo Post:"
 
 #. Default: "No Posts"
 #: ./browser/topic_listing.pt:46
 msgid "label_no_posts"
-msgstr ""
+msgstr "Non sono presenti post"
 
 #. Default: "Select all items"
 #: ./browser/manage_comments.pt:65
 msgid "label_select_all_items"
-msgstr ""
+msgstr "Seleziona tutti"
 
 #. Default: "Trackback Blacklist"
 #: ./skins/Quills/quills_settings_form.cpt:42
 msgid "label_trackback_blacklist"
-msgstr ""
+msgstr "Backlist dei trackback"
 
 #. Default: "Up to Plone Setup"
 #: ./skins/Quills/quills_settings_form.cpt:17
 msgid "label_up_to_plone_setup"
-msgstr ""
+msgstr "Vai al pannello di controllo di Plone"
 
 #. Default: "Draft workflow states"
 #: ./interfaces.py:58
 msgid "label_workflow_states_draft"
-msgstr ""
+msgstr "Stati workflow Pendenti"
 
 #. Default: "Published workflow states"
 #: ./interfaces.py:50
 msgid "label_workflow_states_published"
-msgstr ""
+msgstr "Stati workflow Pubblicati"
 
 #. Default: "Spam Protection"
 #: ./skins/Quills/quills_settings_form.cpt:35
 msgid "legend_spam_protection"
-msgstr ""
+msgstr "Protezione dallo Spam"
 
 #. Default: "Manage Comments"
 #: ./browser/manage_comments.pt:16
 msgid "manage_comments"
-msgstr ""
+msgstr "Gestione Commenti"
 
 #. Default: "There are no comments for Weblog entries."
 #: ./browser/manage_comments.pt:20
 msgid "no_comments"
-msgstr ""
+msgstr "Non sono presenti commenti."
 
 #. Default: "No weblog entries have been posted."
-#: ./skins/Quills/siteplanet_view.pt:46
+#: ./skins/Quills/weblog_macros.pt:56
 msgid "no_weblog_entries"
-msgstr "Non sono presenti post nel blog"
+msgstr "Non sono presenti post."
 
 #. Default: "Comments:"
 #: ./browser/quills_entry_macros.pt:218
@@ -368,22 +368,22 @@ msgstr "Commenti:"
 #. Default: "Configure Blog"
 #: ./portlets/weblogadmin.pt:28
 msgid "portlet_blogadmin_configure_blog"
-msgstr ""
+msgstr "Configurazione Blog"
 
 #. Default: "Manage Comments"
 #: ./portlets/weblogadmin.pt:20
 msgid "portlet_blogadmin_manage_comments"
-msgstr ""
+msgstr "Gestione Commenti"
 
 #. Default: "Add Entry"
 #: ./portlets/weblogadmin.pt:12
 msgid "portlet_blogadmin_new_entry"
-msgstr ""
+msgstr "Aggiungi Post"
 
 #. Default: "read more..."
 #: ./browser/quills_entry_macros.pt:114
 msgid "read_more"
-msgstr "Leggi il resto..."
+msgstr "Leggi il resto"
 
 #. Default: "Note: for some weblog editors you will need to provide the following string as id to edit this blog:"
 #: ./browser/weblog_view.pt:31
