@@ -27,9 +27,10 @@ def killAutoList():
 for line in sys.stdin:
     if autoListStartRex.match(line):
         killAutoList()
-    print svnCommit.sub(r"r\1_", line),
-    for match in svnCommit.finditer(line):
-        changeset.append( match.group(1) )
+    else:
+        print svnCommit.sub(r"r\1_", line),
+        for match in svnCommit.finditer(line):
+            changeset.append( match.group(1) )
 
 
 print autoListStart
