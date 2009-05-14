@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.7.0b3'
+version = '1.7.0c1'
 
 setup(name='quills.app',
       version=version,
@@ -28,9 +28,9 @@ setup(name='quills.app',
       zip_safe=False,
       install_requires=[
           'setuptools',
-          'quills.core>=1.7.0b3',
+          'quills.core>=1.7.0c1,<=1.7.99',
           'Products.basesyndication',
-          'Products.fatsyndication>=1.0.0b2'
+          'Products.fatsyndication'
       ],
       entry_points="""
       # -*- Entry points: -*-
