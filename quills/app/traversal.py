@@ -25,9 +25,13 @@ from archive import YearArchive
 from archive import MonthArchive
 from archive import DayArchive
 
-class IInsideWeblog(Interface):
+from zope.publisher.interfaces.browser import IDefaultBrowserLayer
+class IInsideWeblog(IDefaultBrowserLayer):
     """Marker interface for Requests to signal that traversal moves
-    inside a QuillsEnabled weblog."""
+    inside a QuillsEnabled weblog. To trigger a view or a browser page
+    only for content inside a weblog simply set this interface as the layer
+    of the view/page.  
+    """
 
 
 class WeblogTraverser(DefaultPublishTraverse):

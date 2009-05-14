@@ -10,7 +10,11 @@ from quills.core.interfaces import IWeblogEntry
 
 class QuillsContextState(ContextState):
     """A custom view component that knows how to answer is_view_template for
-    Quills objects.
+    Quills objects. This is needed for Plone to recognize view templates at
+    virtual URLSs, like for instance archive URLs. Plone's default
+    implementation bases it's decision only on the absolute object
+    URL (which differs from the virtual URL) and thus always yields "False".
+    See Quills issues #97 and #193 for the ill effects this could have.
     """
 
     def is_view_template(self):

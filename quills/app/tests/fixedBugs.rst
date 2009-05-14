@@ -594,3 +594,29 @@ Add a reply to that comment.
     >>> 'Weblog Admin' in browser.contents
     True
 
+
+Issue #193: Posts viewed by archive URL will not get CSS-styled with NuPlone
+----------------------------------------------------------------------------
+
+This is a reincarnation of Quills issue #97.
+
+NuPlone creates a wrapper 'div' with the 'id="content"' around content rendered
+by the 'view'-View. It checks whether the actual view is a 'view'-View by
+calling plone.app.layout.globals.ContextState.is_view_template. This operation
+will base it's decision merely on URL comparison of the current URL versus the
+object's absolute url. The absolute URL of posts reached by archive URL is
+the URL of the weblog plus the id of the post. Hence posts inside an archive
+will never be recognized as a 'view'-View.
+
+Fortunately there is a way to override this operation since Plone will look-up 
+the context state as a view named 'plone_context_state'. Products.Quills already
+overides the context state that way. Products.QuillsEnabled needs to do so
+also.
+
+To test for this issue we will lookup the weblogentry_view for a post reached
+by absolute URL as well as by archive URL.
+
+(XXX: I do not know how traverse just like tal does. I need to go to:
+"/weblog/entry/@@plone_context_state/is_view_template" without loosing our
+custom IPublishTraverse handler.)
+
