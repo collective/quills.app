@@ -1,20 +1,5 @@
 Changelog
 =========
 
-    (name of developer listed in brackets)
-
-1.7
----
-
-- has to be compiled yet...
-
-1.6
----
-
-- has to be compiled yet...
-
-0.1 Unreleased
---------------
-
-- Initial package structure. [zopeskel]
+See Products.Quills/Products.QuillsEnabled for a changes.
 
