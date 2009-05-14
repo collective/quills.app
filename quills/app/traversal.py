@@ -40,7 +40,7 @@ class WeblogTraverser(DefaultPublishTraverse):
     
     def publishTraverse(self, request, name):
         # Mark request: we're in a weblog
-        # Maybe a zope layer would be better? -- jhackel
+        # You can trigger views/pages by using layer "IInsideWeblog" now.
         alsoProvides(request, IInsideWeblog)
 
         # Only intercept certain names...
