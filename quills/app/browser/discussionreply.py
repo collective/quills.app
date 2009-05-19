@@ -69,7 +69,7 @@ class DiscussionReply(BrowserView):
                                          name=u'weblogentry_view')
                 base = weview.getArchiveURLFor(entry)
         except TypeError:
-            base = redirect_target.getTypeInfo().getActionInfo('object/view',
+            base = obj.getTypeInfo().getActionInfo('object/view',
                                                                obj)['url']
         anchor = reply.getId()
         from Products.CMFPlone.utils import transaction_note
