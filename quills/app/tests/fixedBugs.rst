@@ -575,7 +575,7 @@ the presence of the Administration portlet.
     >>> browser.getControl('Subject').value = "Comment"
     >>> browser.getControl('Comment').value = "This works"
 
-See test for issue #119 why this try-except statment is here.
+See test for issue #119 why this try-except statement is here.
 
     >>> from urllib2 import HTTPError
     >>> try:

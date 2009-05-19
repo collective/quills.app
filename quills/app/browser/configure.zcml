@@ -95,13 +95,13 @@
           title="Archive"
       />
 
-      <!-- Redirect to the properr archive URL after commenting. -->
+      <!-- Redirect to the proper archive URL after commenting. -->
       <page
           for="*"
           name="discussion_reply_redirect"
           class="quills.app.browser.discussionreply.DiscussionReply"
           permission="zope.Public"
-         allowed_attributes="__call__"
+          allowed_attributes="__call__"
       />
 
      <!-- Without a defaultView declaration we need to provide the default
