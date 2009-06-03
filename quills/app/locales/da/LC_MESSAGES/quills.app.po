@@ -5,8 +5,8 @@ msgid ""
 msgstr ""
 "Project-Id-Version: Quills 1.5\n"
 "POT-Creation-Date: 2009-04-27 12:54+0000\n"
-"PO-Revision-Date: 2006-06-29 12:25+0000\n"
-"Last-Translator: Sune Toft <sune@headnet.dk>\n"
+"PO-Revision-Date: 2009-06-03 17:34+0200\n"
+"Last-Translator: Thomas Clement Mogensen <thomas@headnet.dk>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
@@ -20,7 +20,7 @@ msgstr ""
 #. Default: "Add new blog entry"
 #: ./portlets/weblogadmin.pt:12
 msgid "Add new blog entry"
-msgstr ""
+msgstr "Tilføj blogindlæg"
 
 #. Default: "Atom"
 #: ./portlets/quillslinks.pt:17
@@ -40,59 +40,59 @@ msgstr "Atom feed"
 #. Default: "Author"
 #: ./browser/manage_comments.pt:31
 msgid "Author"
-msgstr ""
+msgstr "Forfatter"
 
 #. Default: "Cancel"
 #: ./skins/Quills/quills_settings_form.cpt:71
 msgid "Cancel"
-msgstr ""
+msgstr "Afbryd"
 
 #: ./browser/discussionreply.py:78
 msgid "Comment added."
-msgstr ""
+msgstr "Kommentar tilføjet"
 
 #: ./browser/weblogconfig.py:70
 msgid "Configuration saved."
-msgstr ""
+msgstr "Indstillinger gemt"
 
 #. Default: "Configure Blog"
 #: ./portlets/weblogadmin.pt:28
 msgid "Configure Blog"
-msgstr ""
+msgstr "Konfigurer weblog"
 
 #: ./interfaces.py:38
 msgid "Default type."
-msgstr ""
+msgstr "Standard type."
 
 #. Default: "Delete"
 #: ./browser/manage_comments.pt:49
 msgid "Delete"
-msgstr ""
+msgstr "Slet"
 
 #: ./portlets/authors.py:44
 msgid "If available, should the author's description be shown?"
-msgstr ""
+msgstr "Skal forfatterens beskrivelse vises, hvis den er tilgængelig?"
 
 #: ./portlets/authors.py:32
 msgid "If available, should the author's location be shown?"
-msgstr ""
+msgstr "Skal forfatterens geografiske placering vises, hvis den er tilgængelig?"
 
 #: ./portlets/authors.py:38
 msgid "If available, should the author's portrait be shown?"
-msgstr ""
+msgstr "Skal forfatterens portræt, hvis det er tilgængelig?"
 
 #. Default: "Manage Comments"
 #: ./portlets/weblogadmin.pt:20
 msgid "Manage Comments"
-msgstr ""
+msgstr "Administrer kommentarer"
 
 #: ./portlets/recentcomments.py:33
 msgid "Maximum comments"
-msgstr ""
+msgstr "Max antal kommentarer "
 
 #: ./portlets/recententries.py:27
 msgid "Maximum entries"
-msgstr ""
+msgstr "Max antal indlæg"
 
 #. Default: "Powered by Quills"
 #: ./portlets/quillslinks.pt:55
@@ -101,12 +101,12 @@ msgstr "Baseret på Quils"
 
 #: ./portlets/quillslinks.py:22
 msgid "Quills"
-msgstr ""
+msgstr "RSS"
 
 #. Default: "Quills weblog system for Plone"
 #: ./portlets/quillslinks.pt:55
 msgid "Quills weblog system for Plone"
-msgstr ""
+msgstr "Quills weblog til Plone"
 
 #. Default: "RDF"
 #: ./portlets/quillslinks.pt:30
@@ -116,7 +116,7 @@ msgstr "RDF"
 #. Default: "RDF 1.0 feed"
 #: ./browser/quills_header_macros.pt:31
 msgid "RDF 1.0 feed"
-msgstr ""
+msgstr "RDF 1.0 feed"
 
 #. Default: "RDF 1.1 feed"
 #: ./browser/quills_header_macros.pt:38
@@ -126,7 +126,7 @@ msgstr "RDF 1.0 feed"
 #. Default: "RSS 2.0"
 #: ./portlets/quillslinks.pt:43
 msgid "RSS 2.0"
-msgstr "SS 2.0"
+msgstr "RSS 2.0"
 
 #. Default: "RSS 2.0 feed"
 #: ./portlets/quillslinks.pt:43
@@ -135,156 +135,156 @@ msgstr "RSS 2.0 feed"
 
 #: ./portlets/recentcomments.py:26
 msgid "Recent Comments"
-msgstr ""
+msgstr "Nyeste kommentarer"
 
 #: ./portlets/recententries.py:20
 msgid "Recent Entries"
-msgstr ""
+msgstr "Nyeste indlæg"
 
 #. Default: "Reset"
 #: ./browser/manage_comments.pt:41
 msgid "Reset"
-msgstr ""
+msgstr "Fortryd"
 
 #. Default: "Save"
 #: ./skins/Quills/quills_settings_form.cpt:63
 msgid "Save"
-msgstr ""
+msgstr "Gem"
 
 #. Default: "Semantic feed"
 #: ./portlets/quillslinks.pt:30
 msgid "Semantic feed"
-msgstr "Sematisk feed"
+msgstr "Semantisk feed"
 
 #: ./portlets/authors.py:43
 msgid "Show author description?"
-msgstr ""
+msgstr "Vis beskrivelse af forfatteren?"
 
 #: ./portlets/authors.py:31
 msgid "Show author location?"
-msgstr ""
+msgstr "Vis forfatterens placering?"
 
 #: ./portlets/authors.py:37
 msgid "Show author portrait?"
-msgstr ""
+msgstr "Vis portræt af forfatteren?"
 
 #. Default: "Subject"
 #: ./browser/manage_comments.pt:32
 msgid "Subject"
-msgstr ""
+msgstr "Emne"
 
 #: ./portlets/tagcloud.py:20
 msgid "Tag Cloud"
-msgstr ""
+msgstr "Emneord"
 
 #: ./interfaces.py:39
 msgid "The default portal_type to add for this weblog."
-msgstr ""
+msgstr "Den portal_type der skal benyttes til indlæg i denne weblog."
 
 #: ./portlets/tagcloud.py:21
 msgid "This portlet displays a tag cloud."
-msgstr ""
+msgstr "Denne portlet viser en Tag Cloud"
 
 #: ./portlets/recentcomments.py:27
 msgid "This portlet lists recent weblog comments."
-msgstr ""
+msgstr "Denne portlet viser de seneste weblog kommentarer"
 
 #: ./portlets/recententries.py:21
 msgid "This portlet lists recent weblog entries."
-msgstr ""
+msgstr "Denne portlet viser de seneste weblog indlæg"
 
 #: ./portlets/archive.py:25
 msgid "This portlet lists the archive of this weblog."
-msgstr ""
+msgstr "Denne portlet viser webloggens arkiv"
 
 #: ./portlets/authors.py:25
 msgid "This portlet lists weblog authors."
-msgstr ""
+msgstr "Denne portlet viser weblog-skribenter"
 
 #: ./portlets/quillslinks.py:23
 msgid "This portlet provides links to the various feeds of this instance."
-msgstr ""
+msgstr "Denne portlet viser links til webloggens RSS-feeds."
 
 #: ./portlets/weblogadmin.py:27
 msgid "This portlet provides useful admin functions for a weblog."
-msgstr ""
+msgstr "Denne portlet viser webloggens administratorfunktioner"
 
 #. Default: "Update"
 #: ./browser/manage_comments.pt:34
 msgid "Update"
-msgstr ""
+msgstr "Opdater"
 
 #: ./portlets/weblogadmin.py:26
 msgid "Weblog Admin"
-msgstr ""
+msgstr "Weblog administration"
 
 #: ./portlets/archive.py:24
 msgid "Weblog Archive"
-msgstr ""
+msgstr "Arkiv"
 
 #: ./portlets/authors.py:24
 msgid "Weblog Authors"
-msgstr ""
+msgstr "Skribenter"
 
 #: ./browser/weblogconfig.py:48
 msgid "Weblog View Configuration"
-msgstr ""
+msgstr "Weblog visningsindstillinger"
 
 #: ./portlets/recentcomments.py:34
 msgid "What's the maximum number of comments to list?"
-msgstr ""
+msgstr "Hvad er det maksimale antal kommentarer der må vises?"
 
 #: ./portlets/recententries.py:28
 msgid "What's the maximum number of entries to list?"
-msgstr ""
+msgstr "Hvad er det maksimale antal indlæg der må vises?"
 
 #: ./interfaces.py:59
 msgid "Workflow states to treat as draft."
-msgstr ""
+msgstr "Workflowtilstand der skal benyttes som Udkast."
 
 #: ./interfaces.py:51
 msgid "Workflow states to treat as published."
-msgstr ""
+msgstr "Workflowtilstand der skal benyttes som Publiseret."
 
 #. Default: "Add ${portlet-name} Portlet"
 #: ./portlets/archive.py:71
 msgid "add-portlet"
-msgstr ""
+msgstr "Tilføj ${portlet-name} Portlet"
 
 #. Default: "last modified"
 #: ./browser/quills_entry_macros.pt:261
 msgid "box_last_modified"
-msgstr ""
+msgstr "senest opdateret"
 
 #. Default: "Portal-wide Quills settings."
 #: ./skins/Quills/quills_settings_form.cpt:24
 msgid "description_quills_settings"
-msgstr ""
+msgstr "Globale indstillinger til Quills"
 
 #. Default: "Edit ${portlet-name} Portlet"
 #: ./portlets/archive.py:80
 msgid "edit-portlet"
-msgstr ""
+msgstr "Rediger ${portlet-name} Portlet"
 
 #. Default: "Filed Under:"
 #: ./browser/quills_entry_macros.pt:195
 msgid "filed_under"
-msgstr "Gent under:"
+msgstr "Gemt under:"
 
 #. Default: "Posts"
 #: ./browser/archive_view.pt:33
 msgid "heading_archive_posts"
-msgstr ""
+msgstr "Indlæg"
 
 #. Default: "Quills Settings"
 #: ./skins/Quills/quills_settings_form.cpt:15
 msgid "heading_quills_settings"
-msgstr ""
+msgstr "Quills-indstillinger"
 
 #. Default: "Sub-archives"
 #: ./browser/archive_view.pt:23
 msgid "heading_sub-archives"
-msgstr ""
+msgstr "Underarkiver"
 
 #. Default: "Topics"
 #: ./browser/topic_listing.pt:20
@@ -294,67 +294,67 @@ msgstr "Emner"
 #. Default: "Weblog Authors"
 #: ./browser/author_listing.pt:17
 msgid "heading_weblog_authors"
-msgstr ""
+msgstr "Skribenter"
 
 #. Default: "Addresses that match the following regular expressions will be blocked from posting trackback comments to weblog entries."
 #: ./skins/Quills/quills_settings_form.cpt:46
 msgid "help_trackback_blacklist"
-msgstr ""
+msgstr "Adresser, der matcher dette regulære udtryk forhindres i at skrive trackback-kommentarer til idlæg i webloggen."
 
 #. Default: "by"
 #: ./browser/quills_entry_macros.pt:247
 msgid "label_by_author"
-msgstr ""
+msgstr "af"
 
 #. Default: "Last Post:"
 #: ./browser/topic_listing.pt:50
 msgid "label_last_post"
-msgstr ""
+msgstr "Sidste indlæg:"
 
 #. Default: "No Posts"
 #: ./browser/topic_listing.pt:46
 msgid "label_no_posts"
-msgstr ""
+msgstr "Ingen indlæg"
 
 #. Default: "Select all items"
 #: ./browser/manage_comments.pt:65
 msgid "label_select_all_items"
-msgstr ""
+msgstr "Vælg alle"
 
 #. Default: "Trackback Blacklist"
 #: ./skins/Quills/quills_settings_form.cpt:42
 msgid "label_trackback_blacklist"
-msgstr ""
+msgstr "Trackback blacklist"
 
 #. Default: "Up to Plone Setup"
 #: ./skins/Quills/quills_settings_form.cpt:17
 msgid "label_up_to_plone_setup"
-msgstr ""
+msgstr "Op til Plone's Kontrolpanel"
 
 #. Default: "Draft workflow states"
 #: ./interfaces.py:58
 msgid "label_workflow_states_draft"
-msgstr ""
+msgstr "Udkasttilstand"
 
 #. Default: "Published workflow states"
 #: ./interfaces.py:50
 msgid "label_workflow_states_published"
-msgstr ""
+msgstr "Publiseret tilstand"
 
 #. Default: "Spam Protection"
 #: ./skins/Quills/quills_settings_form.cpt:35
 msgid "legend_spam_protection"
-msgstr ""
+msgstr "Spambeskyttelse"
 
 #. Default: "Manage Comments"
 #: ./browser/manage_comments.pt:16
 msgid "manage_comments"
-msgstr ""
+msgstr "Administrer kommentarer"
 
 #. Default: "There are no comments for Weblog entries."
 #: ./browser/manage_comments.pt:20
 msgid "no_comments"
-msgstr ""
+msgstr "Ingen kommentarer"
 
 #. Default: "No weblog entries have been posted."
 #: ./skins/Quills/siteplanet_view.pt:46
@@ -369,17 +369,17 @@ msgstr "Kommentarer:"
 #. Default: "Configure Blog"
 #: ./portlets/weblogadmin.pt:28
 msgid "portlet_blogadmin_configure_blog"
-msgstr ""
+msgstr "Konfigurer weblog"
 
 #. Default: "Manage Comments"
 #: ./portlets/weblogadmin.pt:20
 msgid "portlet_blogadmin_manage_comments"
-msgstr ""
+msgstr "Administrer kommentarer"
 
 #. Default: "Add Entry"
 #: ./portlets/weblogadmin.pt:12
 msgid "portlet_blogadmin_new_entry"
-msgstr ""
+msgstr "Tilføj indlæg"
 
 #. Default: "read more..."
 #: ./browser/quills_entry_macros.pt:114
