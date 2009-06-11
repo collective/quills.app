@@ -221,7 +221,7 @@ We also check that we've got the order of the breadcrumbs correct. During
 development, there was a problem with the entry appearing between 'Home' and
 'Weblog'.
 
-    >>> s = '<a href="http://nohost/plone">Home</a>\s*<span class="breadcrumbSeparator">\s*&rarr;\s*</span>\s*<span dir="ltr">\s*<a href="http://nohost/plone/weblog">weblog</a>'
+    >>> s = '<a href="http://nohost/plone">Home</a>\s*<span class="breadcrumbSeparator">\s*&rarr;\s*</span>\s*<span dir="ltr">\s*<a href="http://nohost/plone/weblog">Test Weblog</a>'
     >>> re.search(s, browser.contents) is not None
     True
 
