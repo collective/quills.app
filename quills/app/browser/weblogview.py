@@ -5,6 +5,7 @@ from zope.interface import implements
 from Products.CMFPlone.PloneBatch import Batch as PloneBatch
 from Products.CMFCore.utils import getToolByName
 from plone.app.layout.globals.interfaces import IViewView
+from plone.app.layout.viewlets.common import TitleViewlet as BaseTitleViewlet
 
 # Quills imports
 from quills.core.interfaces import IWeblog
@@ -15,6 +16,7 @@ from quills.core.browser.interfaces import ITopicView
 from baseview import BaseView
 from quills.app.interfaces import IWeblogEnhancedConfiguration
 from quills.core.interfaces import IWeblogLocator
+from quills.app import QuillsAppMessageFactory as _
 
 class WeblogView(BaseView):
     """A class with helper methods for use in views/templates.
@@ -179,3 +181,40 @@ class WeblogArchiveView(TopicView):
 
     #implements(IWeblogArchiveView)
     pass
+
+
+class TopicTitleViewlet(BaseTitleViewlet):
+    """Render the title attribute of the HTML head in a meaningful and
+    bookmark-friendly way. This one is for ITopic (keyword) content.
+    """
+    
+    def update(self):
+        """Customize plone.app.layout.viewlets.common.TitleViewlet. Look there
+        for what goes on here."""
+        context = self.context
+        def blog_title():
+            return context.getWeblog().getTitle()
+        def post_title():
+            message = _(u'posts_by_keywords', default=u'Posts about $keywords',
+                        mapping={'keywords':context.getTitle()})
+            return context.translate(message)
+        self.portal_title = blog_title
+        self.page_title = post_title
+
+class AuthorTopicTitleViewlet(BaseTitleViewlet):
+    """Render the title attribute of the HTML head in a meaningful and
+    bookmark-friendly way. This one is for IAuthorTopic content.
+    """
+    
+    def update(self):
+        """Customize plone.app.layout.viewlets.common.TitleViewlet. Look there
+        for what goes on here."""
+        context = self.context
+        def blog_title():
+            return context.getWeblog().getTitle()
+        def post_title():
+            message = _(u'posts_by_authors', default=u'Posts by $authors',
+                        mapping={'authors':context.getTitle()})
+            return context.translate(message)
+        self.portal_title = blog_title
+        self.page_title = post_title

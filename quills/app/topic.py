@@ -1,3 +1,14 @@
+# -*- coding: utf-8 -*-
+""" 
+XXX TODO
+--------
+    
+- Topics containing multiple keywords do not work properly: 
+  - Neither author nor keyword topics can return multiple
+    images as would be required when filtering by multiple 
+    keywords/authors --- jhackel
+"""
+
 # Standard library imports
 from types import StringTypes
 
@@ -30,6 +41,7 @@ from utilities import QuillsMixin
 from interfaces import ITransientTopicContainer
 from interfaces import ITransientAuthorContainer
 from interfaces import IWeblogEnhancedConfiguration
+
 
 class Topic(QuillsMixin, AcquiringActionProvider, Traversable, Implicit):
     """Implementation of ITopic as a transient wrapper around a keywords.
@@ -67,10 +79,7 @@ class Topic(QuillsMixin, AcquiringActionProvider, Traversable, Implicit):
     def getTitle(self):
         """See ITopic.
         """
-        image = self.getImage()
-        if image is not None:
-            return image.Title()
-        return self.getId()
+        return ' & '.join(self.keywords)
 
     def getDescription(self):
         """See ITopic.
@@ -83,6 +92,9 @@ class Topic(QuillsMixin, AcquiringActionProvider, Traversable, Implicit):
     def getImage(self):
         """See ITopic.
         """
+        # XXX: Behaves awkwardly for multiple keyword topics. The
+        # keyword will determine the image.
+
         # N.B. 'topic_images' is acquired here, if necessary.  This means
         # that you can have a single 'topic_images' folder serving multiple
         # weblog instances.
@@ -142,7 +154,11 @@ class Topic(QuillsMixin, AcquiringActionProvider, Traversable, Implicit):
 
 
 class AuthorTopic(Topic):
-    """
+    """ Filter post by author. Joining semantic for filtering by multiple
+    authors is “or”.
+
+    XXX Deriving from Topic is awkward, as an AuthorTopic is logically
+    no keyword topic.
     """
 
     implements(IAuthorTopic)
@@ -151,11 +167,14 @@ class AuthorTopic(Topic):
         """See ITopic.
         """
         memb_tool = getToolByName(self, 'portal_membership')
-        user_id = self.keywords[0]
-        fullname = memb_tool.getMemberInfo(user_id)['fullname']
-        if fullname == '':
-            return user_id
-        return fullname
+        users = []
+        for user_id in self.keywords:
+            fullname = memb_tool.getMemberInfo(user_id)['fullname']
+            if fullname == '':
+                users.append(user_id)
+            else:
+                users.append(fullname)
+        return ", ".join(users)
 
     def getDescription(self):
         """See ITopic.
