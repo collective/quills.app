@@ -83,3 +83,18 @@ And finally the keyword container.
     ...               % (keyword, id))
     >>> browser.title
     '...Image for Issue 198...'
+
+
+Issue 202: Filtering by an non-existing author id causes a TypeError
+--------------------------------------------------------------------
+
+This was very much related to issue #198. Two scenarios cause this error
+actually, the one described in issue #198, and when a non existant auther is
+queried. We simulate the latter here.
+
+    >>> browser = self.getBrowser()
+    >>> browser.handleErrors = False
+    >>> browser.open('http://nohost/plone/weblog/authors/meNotThere202')
+    >>> browser.headers.readheaders()
+
+
