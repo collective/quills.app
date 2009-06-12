@@ -95,6 +95,8 @@ queried. We simulate the latter here.
     >>> browser = self.getBrowser()
     >>> browser.handleErrors = False
     >>> browser.open('http://nohost/plone/weblog/authors/meNotThere202')
-    >>> browser.headers.readheaders()
+    Traceback (most recent call last):
+    ...
+    NotFound: ...
 
 
