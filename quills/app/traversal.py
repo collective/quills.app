@@ -5,6 +5,7 @@ from zope.app.publisher.browser import getDefaultViewName
 from zope.interface import alsoProvides, Interface
 from zope.publisher.interfaces.http import IHTTPRequest
 from ZPublisher.BaseRequest import DefaultPublishTraverse
+from Products.CMFCore.utils import getToolByName
 
 # Quills imports
 from quills.core.interfaces import IWeblog
@@ -128,45 +129,19 @@ class WeblogArchiveTraverser(DefaultPublishTraverse):
 class BaseContainerTraverser(DefaultPublishTraverse):
     """Base traverser for Topics and Authors
     """
-    
-    def traverseSubpath(self, request, name, klass):
-        # Now the guts of it...
-        furtherPath = request['TraversalRequestNameStack']
-        # Empty furtherPath so no more traversal happens after us.
-        subpath = [name] + self.popFurtherPath(furtherPath)
-        view_name = name
-        if len(subpath) == 0:
-            # No subpath to eat, so just lookup the 'name' view for context
-            view = getMultiAdapter((self.context, self.request), name=view_name)
-            return view.__of__(self.context)
-        elif len(subpath) > 0 and subpath[-1].startswith('@@'):
-            # A view has explicitly been requested, so make that the
-            # view_name (stripping off the leading @@ which causes view
-            # lookups to fail otherwise).
-            view_name = subpath[-1][2:]
-            # Use the rest of the subpath as the keywords for the topic.
-            topic = klass(subpath[:-1]).__of__(self.context)
-            view = getMultiAdapter((topic, request), name=view_name)
-            return view.__of__(self.context)
-        else:
-            # No @@view given, so just return the topic.
-            # Use all of the subpath as the keywords for the topic.
-            topic = klass(subpath).__of__(self.context)
-            view_name = getDefaultViewName(topic, request)
-            view = getMultiAdapter((topic, request), name=view_name)
-            return view.__of__(self.context)
 
-    def popFurtherPath(self, furtherPath):
-        """Empty the furtherPath sequence into a new list.
+    def traverseSubpath(self, request, name, klass):
+        """ Answer an instance of ``klass`` as object at ``name``. Merge
+        keywords of the parent object (i.e. of the context) into
+        that object, if the parent happens to be of the same ``klass``.
         """
-        # XXX This should probably do something (hacky?) to inform the request
-        # of what the full URL is.  Otherwise, things like ACTUAL_URL will be
-        # wrong.
-        subpath = []
-        subpath.extend(furtherPath)
-        while furtherPath:
-            furtherPath.pop()
-        return subpath
+        # Is this a  multi-keyword query, i.e. have?
+        if isinstance(self.context, klass):
+            # Yes, augment the keywords of our parent
+            topics = self.context.getKeywords() + [name]
+        else:
+            topics = [name]
+        return klass(topics).__of__(self.context)
 
 class TopicContainerTraverser(BaseContainerTraverser):
     """Topic container traversal
@@ -174,22 +149,52 @@ class TopicContainerTraverser(BaseContainerTraverser):
     blog/topics/topic_name
     """
 
+    # It actually adapts ITopics too, now...
     adapts(ITopicContainer, IHTTPRequest)
 
     def publishTraverse(self, request, name):
+        """Accept any name unless an object by that name can be found by
+        the DefaultPublishTraverse. In that case return this object unless
+        there exists a blog post by that topic (keyword) in the blog.
+
+        This somewhat complicated rule shall minimize the cases where a 
+        required object from the context (e.g. an image) is hidden by a
+        keyword never actually used by the blog.
         """
-        """
-        return self.traverseSubpath(request, name, Topic)
+        try:
+            obj = super(TopicContainerTraverser,
+                        self).publishTraverse(request, name)
+        except AttributeError: 
+            return self.traverseSubpath(request, name, Topic)
+        # This next two statement might look quite heavy-weight, after all
+        # they cause a catalog query, amongst other. However, this
+        # code is only executed when object ids clash. That should
+        # happen fairly seldom.
+        # XXX Issue a warning to the user when names clash!
+        # --- jhackel
+        weblog = self.context.getWeblog()
+        if len(weblog.getTopicById(name).getEntries()) == 0:
+            return obj
+        else:
+            return self.traverseSubpath(request, name, Topic)
 
 class AuthorContainerTraverser(BaseContainerTraverser):
     """Author container traversal
     
     blog/authors/author_id
     """
-    
+
+    # It actually adapts IAuthorTopics too, now...  
     adapts(IAuthorContainer, IHTTPRequest)
     
     def publishTraverse(self, request, name):
+        """Create a Topic for any name that denotes a portal member.
+        Being an actual author of the blog is not required though.
         """
-        """
-        return self.traverseSubpath(request, name, AuthorTopic)
+        mtool = getToolByName(self.context, 'portal_membership')
+        if mtool.getMemberById(name) is None:
+            return super(AuthorContainerTraverser,
+                         self).publishTraverse(request, name)
+        else:
+            return self.traverseSubpath(request, name, AuthorTopic)
+            

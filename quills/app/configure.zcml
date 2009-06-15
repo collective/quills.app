@@ -23,9 +23,9 @@
       />
 
   <!-- Issue 189:  Replying to an comment raises a non-fatal TypeError during
-       portlet rendering. This is fixed by adding a locator for discussion items.
-       Since the upload folder and everything in it will cause the same error,
-       we install a catch all here. [jhackel]
+       portlet rendering. This is fixed by adding a locator for discussion
+       items. Since the upload folder and everything in it will cause the
+       same error, we install a catch all here. [jhackel] 
        -->
   <adapter
       for="*"
