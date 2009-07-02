@@ -929,3 +929,20 @@ Same for day.
     <type 'int'>
     >>> type(int(aDayArchive.getId()))
     <type 'int'>
+
+Issue #204: Not Found when going to posts by archive URL
+--------------------------------------------------------
+
+This much the same as issue #203, only located elsewhere: this time
+time the traversal code. We simulate it here by simply going to any
+post in the archive.
+
+Do not move this test-case away from the one for issue #203, as it
+continues it! It depend on the pages created there.
+
+    >>> browser.open('http://nohost/plone/weblog')
+    >>> link = browser.getLink('Issue #203')
+    >>> link.click()
+    >>> browser.title
+    'Issue #203...'
+

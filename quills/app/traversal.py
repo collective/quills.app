@@ -6,6 +6,7 @@ from zope.interface import alsoProvides, Interface
 from zope.publisher.interfaces.http import IHTTPRequest
 from ZPublisher.BaseRequest import DefaultPublishTraverse
 from Products.CMFCore.utils import getToolByName
+from Acquisition import aq_base
 
 # Quills imports
 from quills.core.interfaces import IWeblog
@@ -110,9 +111,9 @@ class WeblogArchiveTraverser(DefaultPublishTraverse):
                         self).publishTraverse(request, name)
             return obj
 
-        year = getattr(self.context, 'year', None)
-        month = getattr(self.context, 'month', None)
-        day = getattr(self.context, 'day', None)
+        year = getattr(aq_base(self.context), 'year', None)
+        month = getattr(aq_base(self.context), 'month', None)
+        day = getattr(aq_base(self.context), 'day', None)
         if day is not None:
             return super(WeblogArchiveTraverser,
                          self).publishTraverse(request, name)
