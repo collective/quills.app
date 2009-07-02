@@ -127,19 +127,6 @@ class BaseDateArchive(BaseArchive):
 
     implements(IWeblogArchive, ITransientArchive)
 
-    def getId(self):
-        """
-        """
-        year = self.year
-        month = getattr(self, 'month', None)
-        day = getattr(self, 'day', None)
-        if day is not None:
-            return str(day)
-        elif month is not None:
-            return str(month)
-        else:
-            return str(year)
-
     def Title(self):
         """
         """
@@ -185,6 +172,9 @@ class YearArchive(BaseDateArchive):
         self._months = None
         super(BaseDateArchive, self).__init__(self, id)
 
+    def getId(self):
+        return str(self.year)
+
     def getTimeUnit(self):
         return 'Year'
 
@@ -228,6 +218,9 @@ class MonthArchive(BaseDateArchive):
         self.month = month
         self._days = None
         super(BaseDateArchive, self).__init__(self, id)
+
+    def getId(self):
+        return str(self.month)
 
     def getTimeUnit(self):
         return 'Month'
@@ -286,6 +279,9 @@ class DayArchive(BaseDateArchive):
         self.day = day
         self._items = {}
         super(BaseDateArchive, self).__init__(self, id)
+
+    def getId(self):
+        return str(self.day)
 
     def getTimeUnit(self):
         return 'Day'
