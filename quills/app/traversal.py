@@ -129,6 +129,30 @@ class WeblogArchiveTraverser(DefaultPublishTraverse):
 
 class BaseContainerTraverser(DefaultPublishTraverse):
     """Base traverser for Topics and Authors
+
+     Why not cosume all keywords here?
+   
+        - the name might in fact designate a required content object,
+          e.g an image (issue #???)
+       
+        - the last component might be a view name. Not all view names can
+          easily be resolve by publishTraverse, some require bobo_traverse
+          or other dark magic. We leave that better to the Zope publisher.
+          (See test-cases for issue #???)
+
+    Why not let Topic act as content objects that have specialized views?
+       
+        - I tried that. I works until a keyword contains non-ascii characters.
+          Zope (or rather urllib) will choke on them. (Issue #???)
+
+    But formerly Topics worked that way!
+
+        - Yes but it required black magic, too. The topic view would have
+          the topic as context but would be acquisition chained to the 
+          topic container, thus avoiding unicode issues. This however
+          cannot easily be replicated when names are looked up one by one.
+          In fact what we do now -- temporarily storing the know keywords
+          in the request -- tries to do that trick.
     """
 
     def publishTraverse(self, request, name):
@@ -141,50 +165,31 @@ class BaseContainerTraverser(DefaultPublishTraverse):
         as acquistion parent! The ``klass`` instance will be initialized with
         the keywords taken from the traversal stack.
         """
-        furtherPath = request['TraversalRequestNameStack'] 
-        # Empty furtherPath so no more traversal happens after us. 
-        keywords = [name] + self.popFurtherPath(furtherPath) 
-        view_name = None
+        self.request = request
+        preferredObject = self.disambiguate(name)
+        if not preferredObject is None:
+           return preferredObject     
+        elif self.moreNames():
+            self.keywords().append(name)
+            return self.context           
+        else:
+            keywords = self.keywords()
+            keywords.append(name)
+            return self.wrapUp(keywords).__of__(self.context)
 
-        # Determine view name
-        if keywords[-1].startswith('@@'): 
-            # A view has explicitly been requested, so make that the 
-            # view_name (stripping off the leading @@ which causes view 
-            # lookups to fail otherwise). 
-            view_name = keywords[-1][2:] 
-            keywords = keywords[:-1]
-
-        # Don't let keywords unnecessarely hide content object, e.g. images
-        # in posts. This cannot completely defeat ambiguity problems.
-        for kw in keywords:
-            preferredObject = self.disambiguate(request, kw)
-            if not preferredObject is None:
-                return preferredObject
-
-        # Wrap the keywords up and create a view for it.
-        topic = self.keywordClass()(keywords).__of__(self.context) 
-        view_name = view_name or getDefaultViewName(topic, request) 
-        view = getMultiAdapter((topic, request), name=view_name) 
-        return view.__of__(self.context) 
-
-    def popFurtherPath(self, furtherPath): 
-        """Empty the furtherPath sequence into a new list. 
-        """ 
-        # XXX This should probably do something (hacky?) to inform the request 
-        # of what the full URL is.  Otherwise, things like ACTUAL_URL will be 
-        # wrong. 
-        subpath = [] 
-        subpath.extend(furtherPath)
-        subpath.reverse()
-        while furtherPath: 
-            furtherPath.pop() 
-        return subpath 
+    def defaultPublishTraverse(self, request, name):
+        """Convenient access to C{DefaultPublishTraverse.publishTraverse}.
+        """
+        return super(BaseContainerTraverser, 
+                     self).publishTraverse(request, name)
 
     def disambiguate(self, request, name):
         """Check whether the given name shall be treated as a keyword of the
         topic container (i.e. some sort of query string), or whether it
         designates a content object (e.g. an image) that should precedence
         before queries.
+
+        Implementations may consult the request via C{self.request}.
 
         This mechanism responds to issue #198, where images with posts would
         disappear when displayed by the topic or author view, because
@@ -197,11 +202,25 @@ class BaseContainerTraverser(DefaultPublishTraverse):
         """
         raise NotImplementedError("subclass responsibility")
 
-    def keywordClass(self):
-        """Return the class that shall hold the keywords read by
-         C[publishTraverse}.
+    def wrapUp(self, keywords):
+        """Create a content object for the given keywords.
          """
         raise NotImplementedError("subclass responsibility")
+
+    def keywords(self):
+        """Return the keywords see sofar during this publishing cycle, or
+        an empty list if none has been read yet. Modifications to this
+        list will survive until publication is finnished.
+        """
+        if not 'quills.traversal.topics' in self.request:
+            self.request['quills.traversal.topics'] = []
+        return self.request['quills.traversal.topics']
+
+    def moreNames(self):
+        """Are there more names to be processed by traversal, i.e. is
+        the traversal stack not empty?
+        """
+        return len(self.request['TraversalRequestNameStack']) > 0
 
 class TopicContainerTraverser(BaseContainerTraverser):
     """Topic container traversal
@@ -211,11 +230,11 @@ class TopicContainerTraverser(BaseContainerTraverser):
 
     adapts(ITopicContainer, IHTTPRequest)
 
-    def keywordClass(self):
+    def wrapUp(self, keywords):
         """See super-class."""
-        return Topic
+        return Topic(keywords)
 
-    def disambiguate(self, request, name):
+    def disambiguate(self, name):
         """Accept any name unless an object by that name can be found by
         the DefaultPublishTraverse. In that case return this object unless
         there exists a blog post by that topic (keyword) in the blog.
@@ -226,7 +245,7 @@ class TopicContainerTraverser(BaseContainerTraverser):
         """
         try:
             obj = super(BaseContainerTraverser,
-                        self).publishTraverse(request, name)
+                        self).publishTraverse(self.request, name)
         except AttributeError: 
             return None
         # This next two statement might look quite heavy-weight, after all
@@ -241,7 +260,7 @@ class TopicContainerTraverser(BaseContainerTraverser):
         else:
             return None
 
-    def oldPublishTraverse(self, request, name):
+    def OldpublishTraverse(self, request, name):
         """Accept any name unless an object by that name can be found by
         the DefaultPublishTraverse. In that case return this object unless
         there exists a blog post by that topic (keyword) in the blog.
@@ -276,11 +295,11 @@ class AuthorContainerTraverser(BaseContainerTraverser):
 
     adapts(IAuthorContainer, IHTTPRequest)
 
-    def keywordClass(self):
+    def wrapUp(self, keywords):
         """See super-class."""
-        return AuthorTopic
+        return AuthorTopic(keywords)
 
-    def disambiguate(self, request, name):
+    def disambiguate(self, name):
         """Accept any name that denotes a portal member. Being an actual
         author of the blog is not required though.
         """
@@ -288,7 +307,7 @@ class AuthorContainerTraverser(BaseContainerTraverser):
         if mtool.getMemberById(name) is None:
             # We refer to DefaultPublishTraverse.publishTraverse here!
             return super(BaseContainerTraverser,
-                         self).publishTraverse(request, name)
+                         self).publishTraverse(self.request, name)
         else:
             return None
     
