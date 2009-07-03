@@ -866,3 +866,146 @@ queried. We simulate the latter here.
     Traceback (most recent call last):
     ...
     NotFound: ...
+
+
+Issue #203 — archive portlet broken: ValueError: invalid literal for int()
+---------------------------------------------------------------------------
+
+This bug was cause by quills.app.archive.BaseDateArchive.getId accidentally
+acquiring values for the attributes 'year', 'month' or 'day'. The product
+CalendarX unveiled this because it defines a page named 'day'. But in fact
+any property named 'day', 'month' or 'year' that might be acquired by
+climbing up the acquisition chain from an archive will cause this fault.
+
+To test this we will simply add three pages of those names just above the
+weblog. Then we will see, what the various archive report as their id.
+
+    >>> self.login()
+    >>> self.setRoles(('Manager',))
+    >>> portal = self.getPortal()
+
+We post an entry to be sure, that there is an archive.
+
+    >>> entry = self.weblog.addEntry(title="Issue #203", id="issue203",
+    ...                             excerpt="None", text="None")
+    >>> entry.publish() 
+
+No get the archives from year to day.
+
+    >>> aYearArchive = self.weblog.getSubArchives()[0]
+    >>> aMonthArchive = aYearArchive.getSubArchives()[0]
+    >>> aDayArchive = aMonthArchive.getSubArchives()[0]
+
+Create an potential acquisition target for attribute 'year' above the 
+blog. Then check if ``getId`` still reports numbers...
+
+    >>> portal.invokeFactory('Document', id='year', title='Year')
+    'year'
+    >>> type(int(aYearArchive.getId()))
+    <type 'int'>
+    >>> type(int(aMonthArchive.getId()))
+    <type 'int'>
+    >>> type(int(aDayArchive.getId()))
+    <type 'int'>
+
+Same for month.
+
+    >>> portal.invokeFactory('Document', id='month', title='Month')
+    'month'
+    >>> type(int(aYearArchive.getId()))
+    <type 'int'>
+    >>> type(int(aMonthArchive.getId()))
+    <type 'int'>
+    >>> type(int(aDayArchive.getId()))
+    <type 'int'>
+
+Same for day.
+
+    >>> portal.invokeFactory('Document', id='day', title='Day')
+    'day'
+    >>> type(int(aYearArchive.getId()))
+    <type 'int'>
+    >>> type(int(aMonthArchive.getId()))
+    <type 'int'>
+    >>> type(int(aDayArchive.getId()))
+    <type 'int'>
+
+Issue #204: Not Found when going to posts by archive URL
+--------------------------------------------------------
+
+This much the same as issue #203, only located elsewhere: this time
+time the traversal code. We simulate it here by simply going to any
+post in the archive.
+
+Do not move this test-case away from the one for issue #203, as it
+continues it! It depend on the pages created there.
+
+    >>> browser.open('http://nohost/plone/weblog')
+    >>> link = browser.getLink('Issue #203')
+    >>> link.click()
+    >>> browser.title
+    'Issue #203...'
+
+
+Issue #209 — UnicodeDecodeError in topics view
+----------------------------------------------
+
+Quills must allow non-ascii characters in topic names. This used to
+work but broke with a fix for issue #195 at r87933.
+
+We start as usual by post an entry, this time under a non-ascii
+topic.
+
+    >>> self.login()
+    >>> self.setRoles(('Manager',))
+    >>> keyword = 'issue198kw' # id clashes would cause mayhem
+    >>> entry = self.weblog.addEntry(title="Issue #209", id="issue209",
+    ...                             topics=['München'],
+    ...                             excerpt="None", text="None")
+    >>> entry.publish() 
+
+Now we click that topic in the tag cloud. It should lead us to the
+topic view for topic 'München'.
+
+    >>> browser = self.getBrowser()
+    >>> browser.handleErrors = False
+    >>> browser.open('http://nohost/plone/weblog')
+    >>> link = browser.getLink('München')
+    >>> link.click()
+    >>> browser.title
+    '...M\xc3\xbcnchen...'
+
+Now multi topic filtering...
+
+    >>> browser.open('http://nohost/plone/weblog/topics/München/Hamburg/Berlin')
+    >>> browser.title
+    '...M\xc3\xbcnchen...'
+
+Explicit view selection...
+
+    >>> browser.open('http://nohost/plone/weblog/topics/München/@@topic_view')
+    >>> browser.title
+    '...M\xc3\xbcnchen...'
+
+Finally, selecting a non-existant view should raise an exception.
+
+    >>> browser.open('http://nohost/plone/weblog/topics/München/@@notaview')
+    Traceback (most recent call last):
+    ...
+    ComponentLookupError: ...
+    
+While we're at it, let's see if foreign characters in author names
+give us any trouble.
+
+    >>> from Products.CMFCore.utils import getToolByName
+    >>> pmtool = getToolByName(self.portal, 'portal_membership')
+    >>> iAm = pmtool.getAuthenticatedMember()
+    >>> myId  = iAm.getId()
+    >>> oldName = iAm.getProperty('fullname')
+    >>> newName = 'Üsör Ässué180'
+    >>> iAm.setProperties({'fullname': newName})
+    >>> browser.open('http://nohost/plone/weblog/authors/%s' % (myId,))
+    >>> print browser.title
+    Posts by Üsör Ässué180...
+    
+    >>> iAm.setProperties({'fullname': oldName})

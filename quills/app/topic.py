@@ -79,7 +79,7 @@ class Topic(QuillsMixin, AcquiringActionProvider, Traversable, Implicit):
     def getTitle(self):
         """See ITopic.
         """
-        return ' & '.join(self.keywords)
+        return ' & '.join(self.keywords).decode('utf-8')
 
     def getDescription(self):
         """See ITopic.
@@ -174,7 +174,7 @@ class AuthorTopic(Topic):
                 users.append(user_id)
             else:
                 users.append(fullname)
-        return ", ".join(users)
+        return ", ".join(users).decode('utf-8')
 
     def getDescription(self):
         """See ITopic.
