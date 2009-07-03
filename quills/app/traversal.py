@@ -129,30 +129,6 @@ class WeblogArchiveTraverser(DefaultPublishTraverse):
 
 class BaseContainerTraverser(DefaultPublishTraverse):
     """Base traverser for Topics and Authors
-
-     Why not cosume all keywords here?
-   
-        - the name might in fact designate a required content object,
-          e.g an image (issue #???)
-       
-        - the last component might be a view name. Not all view names can
-          easily be resolve by publishTraverse, some require bobo_traverse
-          or other dark magic. We leave that better to the Zope publisher.
-          (See test-cases for issue #???)
-
-    Why not let Topic act as content objects that have specialized views?
-       
-        - I tried that. I works until a keyword contains non-ascii characters.
-          Zope (or rather urllib) will choke on them. (Issue #???)
-
-    But formerly Topics worked that way!
-
-        - Yes but it required black magic, too. The topic view would have
-          the topic as context but would be acquisition chained to the 
-          topic container, thus avoiding unicode issues. This however
-          cannot easily be replicated when names are looked up one by one.
-          In fact what we do now -- temporarily storing the know keywords
-          in the request -- tries to do that trick.
     """
 
     def publishTraverse(self, request, name):
@@ -165,62 +141,61 @@ class BaseContainerTraverser(DefaultPublishTraverse):
         as acquistion parent! The ``klass`` instance will be initialized with
         the keywords taken from the traversal stack.
         """
+        
+        # The first name might denote a content object to be acquired,
+        # e.g. an image. In that case we're done.
+        try:
+            return super(BaseContainerTraverser,
+                         self).publishTraverse(request, name)
+        except AttributeError: 
+            pass
+
         self.request = request
-        preferredObject = self.disambiguate(name)
-        if not preferredObject is None:
-           return preferredObject     
-        elif self.moreNames():
-            self.keywords().append(name)
-            return self.context           
-        else:
-            keywords = self.keywords()
+
+        # collect keywords
+        keywords = []
+        while self.hasMoreNames():
             keywords.append(name)
-            return self.wrapUp(keywords).__of__(self.context)
+            name = self.nextName()
 
-    def defaultPublishTraverse(self, request, name):
-        """Convenient access to C{DefaultPublishTraverse.publishTraverse}.
+        # Determine view
+        view_name = None
+        context = None
+        if name.startswith('@@'): 
+            # A view has explicitly been requested, so make that the 
+            # view_name (stripping off the leading @@ which causes view 
+            # lookups to fail otherwise). 
+            view_name = name[2:]
+        else:
+            # last name is another keyword
+            keywords.append(name)
+
+        if len(keywords) == 0:
+            # No keywords given, just a view specified. Create a view for the
+            # topic container.
+            context = self.context
+        else:
+            context = self.wrapUp(keywords).__of__(self.context)
+
+        view_name = view_name or getDefaultViewName(context, request)
+        view = getMultiAdapter((context, request), name=view_name) 
+        return view.__of__(self.context) 
+
+    def nextName(self): 
+        """Pop the next name off of the traversal stack.
         """
-        return super(BaseContainerTraverser, 
-                     self).publishTraverse(request, name)
+        return self.request['TraversalRequestNameStack'].pop() 
 
-    def disambiguate(self, request, name):
-        """Check whether the given name shall be treated as a keyword of the
-        topic container (i.e. some sort of query string), or whether it
-        designates a content object (e.g. an image) that should precedence
-        before queries.
-
-        Implementations may consult the request via C{self.request}.
-
-        This mechanism responds to issue #198, where images with posts would
-        disappear when displayed by the topic or author view, because
-        Quills would serve another topic view (HTML) instead of the image.
-
-        @return C{None} if no content object shall override the give name.
-            Return the content object otherwise. It will be left untouched
-            by the caller (C{publishTraverse}), so make sure it is properly
-            acquisition chained!
-        """
-        raise NotImplementedError("subclass responsibility")
-
-    def wrapUp(self, keywords):
-        """Create a content object for the given keywords.
-         """
-        raise NotImplementedError("subclass responsibility")
-
-    def keywords(self):
-        """Return the keywords see sofar during this publishing cycle, or
-        an empty list if none has been read yet. Modifications to this
-        list will survive until publication is finnished.
-        """
-        if not 'quills.traversal.topics' in self.request:
-            self.request['quills.traversal.topics'] = []
-        return self.request['quills.traversal.topics']
-
-    def moreNames(self):
-        """Are there more names to be processed by traversal, i.e. is
-        the traversal stack not empty?
+    def hasMoreNames(self):
+        """Are there names left for traversal?
         """
         return len(self.request['TraversalRequestNameStack']) > 0
+
+    def wrapUp(self, keywords): 
+        """Create a content object for the given keywords. 
+         """ 
+        raise NotImplementedError("subclass responsibility") 
+
 
 class TopicContainerTraverser(BaseContainerTraverser):
     """Topic container traversal
@@ -230,62 +205,9 @@ class TopicContainerTraverser(BaseContainerTraverser):
 
     adapts(ITopicContainer, IHTTPRequest)
 
-    def wrapUp(self, keywords):
-        """See super-class."""
+    def wrapUp(self, keywords): 
+        """See super-class.""" 
         return Topic(keywords)
-
-    def disambiguate(self, name):
-        """Accept any name unless an object by that name can be found by
-        the DefaultPublishTraverse. In that case return this object unless
-        there exists a blog post by that topic (keyword) in the blog.
-
-        This somewhat complicated rule shall minimize the cases where a 
-        required object from the context (e.g. an image) is hidden by a
-        keyword never actually used by the blog.
-        """
-        try:
-            obj = super(BaseContainerTraverser,
-                        self).publishTraverse(self.request, name)
-        except AttributeError: 
-            return None
-        # This next two statement might look quite heavy-weight, after all
-        # they cause a catalog query, amongst other. However, this
-        # code is only executed when object ids clash. That should
-        # happen fairly seldom.
-        # XXX Issue a warning to the user when names clash!
-        # --- jhackel
-        weblog = self.context.getWeblog()
-        if len(weblog.getTopicById(name).getEntries()) == 0:
-            return obj
-        else:
-            return None
-
-    def OldpublishTraverse(self, request, name):
-        """Accept any name unless an object by that name can be found by
-        the DefaultPublishTraverse. In that case return this object unless
-        there exists a blog post by that topic (keyword) in the blog.
-
-        This somewhat complicated rule shall minimize the cases where a 
-        required object from the context (e.g. an image) is hidden by a
-        keyword never actually used by the blog.
-        """
-        try:
-            # We refer to DefaultPublishTraverse.publishTraverse here!
-            obj = super(TopicContainerTraverser,
-                        self).publishTraverse(request, name)
-        except AttributeError: 
-            return self.traverseSubpath(request, name, Topic)
-        # This next two statement might look quite heavy-weight, after all
-        # they cause a catalog query, amongst other. However, this
-        # code is only executed when object ids clash. That should
-        # happen fairly seldom.
-        # XXX Issue a warning to the user when names clash!
-        # --- jhackel
-        weblog = self.context.getWeblog()
-        if len(weblog.getTopicById(name).getEntries()) == 0:
-            return obj
-        else:
-            return self.traverseSubpath(request, name, Topic)
 
 class AuthorContainerTraverser(BaseContainerTraverser):
     """Author container traversal
@@ -295,30 +217,8 @@ class AuthorContainerTraverser(BaseContainerTraverser):
 
     adapts(IAuthorContainer, IHTTPRequest)
 
-    def wrapUp(self, keywords):
-        """See super-class."""
+    def wrapUp(self, keywords): 
+        """See super-class.""" 
         return AuthorTopic(keywords)
 
-    def disambiguate(self, name):
-        """Accept any name that denotes a portal member. Being an actual
-        author of the blog is not required though.
-        """
-        mtool = getToolByName(self.context, 'portal_membership')
-        if mtool.getMemberById(name) is None:
-            # We refer to DefaultPublishTraverse.publishTraverse here!
-            return super(BaseContainerTraverser,
-                         self).publishTraverse(self.request, name)
-        else:
-            return None
-    
-    def oldPublishTraverse(self, request, name):
-        """Create a Topic for any name that denotes a portal member.
-        Being an actual author of the blog is not required though.
-        """
-        mtool = getToolByName(self.context, 'portal_membership')
-        if mtool.getMemberById(name) is None:
-            return super(AuthorContainerTraverser,
-                         self).publishTraverse(request, name)
-        else:
-            return self.traverseSubpath(request, name, AuthorTopic)
             

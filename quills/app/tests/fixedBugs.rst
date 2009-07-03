@@ -788,7 +788,7 @@ for all three virtual containers here.
 Quills and QuillsEnabled handle image uploads differently. While a Quills blog
 contains a special folder for uploads, QuillsEnabled leaves folder organization
 to the user. Both however ought to be able to acquire content from containing
-locations. This is where we will put our test image first.
+locations. This is where we will put our test image.
 
 Image loading and creation is inspired by the test-cases ATContentTypes Image
 portal type and the test cases of quills.remoteblogging.
@@ -809,7 +809,7 @@ Now we navigate to the image via the virtual URLs for archive, authors
 and topics. We log in as manager, because the image is private still.
 
     >>> browser = self.getBrowser(logged_in=True)
-    >>> browser.handleErrors = True
+    >>> browser.handleErrors = False
 
 Before we start, let's try the canonical URL of the image.
 
@@ -840,33 +840,82 @@ in it's issue report.
 
     >>> self.portal.error_log._ignored_exceptions = ()
     >>> author = entry.getAuthors()[0].getId()
-    >>> browser.open('http://nohost/plone/weblog/authors/%s/%s/view'
-    ...               % (author,id))
+    >>> browser.open('http://nohost/plone/weblog/authors/%s/view'
+    ...               % (id,))
     >>> browser.title
     '...Image for Issue 198...'
 
-And finally the keyword container.
+Images and other acquired stuff may only appear directly after the name
+of the topic container (``authors`` here). Later names will be taken for
+keywords, no matter if they designated a picture somewhere. It simply would
+not make sense otherwise.
+
+    >>> browser.open('http://nohost/plone/weblog/authors/%s/%s/view'
+    ...               % (author,id))
+    >>> browser.title
+    'Posts by ...issue198.gif...'
+
+And finally the same for the keyword container.
+
+    >>> browser.open('http://nohost/plone/weblog/topics/%s/view'
+    ...               % (id,))
+    >>> browser.title
+    '...Image for Issue 198...'
 
     >>> browser.open('http://nohost/plone/weblog/topics/%s/%s/view'
     ...               % (keyword, id))
     >>> browser.title
-    '...Image for Issue 198...'
+    'Posts about ...issue198.gif...'
+
 
 
 Issue 202: Filtering by an non-existing author id causes a TypeError
 --------------------------------------------------------------------
 
 This was very much related to issue #198. Two scenarios cause this error
-actually, the one described in issue #198, and when a non existant auther is
-queried. We simulate the latter here.
+actually, the one described in issue #198, and when a non existant author
+is queried. We simulate the latter here. It renders no blog entry.
 
     >>> browser = self.getBrowser()
     >>> browser.handleErrors = False
     >>> browser.open('http://nohost/plone/weblog/authors/meNotThere202')
-    Traceback (most recent call last):
-    ...
-    NotFound: ...
+    >>> browser.title
+    'Posts by meNotThere202...'
 
+    >>> browser.contents
+    '...No weblog entries have been posted...'
+
+On the other hand, querying an real *and* a fictive user name will render
+all posts of the reals user. This is due to "posts by any of the given
+authors" semantics of author topics.
+
+Before we check this, we post an entry.
+
+    >>> self.login()
+    >>> self.setRoles(('Manager',))
+    >>> entry = self.weblog.addEntry(title="Issue #202", id="issue202",
+    ...                             excerpt="None", text="None")
+    >>> entry.publish()
+
+Now, find out who we are.
+
+    >>> pmtool = getToolByName(self.portal, 'portal_membership')
+    >>> iAm = pmtool.getAuthenticatedMember()
+    >>> myId  = iAm.getId()
+
+And finally do the query.
+
+    >>> browser.open('http://nohost/plone/weblog/authors/meNotThere202/%s'
+    ...              % myId)
+    >>> browser.title
+    'Posts by meNotThere202...'
+    
+    >>> myId in browser.title
+    True
+
+    >>> browser.contents
+    '...<h2>...Issue #202...</h2>...'
+       
 
 Issue #203 — archive portlet broken: ValueError: invalid literal for int()
 ---------------------------------------------------------------------------
@@ -1002,7 +1051,7 @@ give us any trouble.
     >>> iAm = pmtool.getAuthenticatedMember()
     >>> myId  = iAm.getId()
     >>> oldName = iAm.getProperty('fullname')
-    >>> newName = 'Üsör Ässué180'
+    >>> newName = 'Bla' # 'Üsör Ässué180'
     >>> iAm.setProperties({'fullname': newName})
     >>> browser.open('http://nohost/plone/weblog/authors/%s' % (myId,))
     >>> print browser.title
