@@ -1,0 +1,101 @@
+This test seem to disrupt zope's internal. I cannot tell what causes this.
+But it is after the second "request.close()" that thing start to get wrong.
+That's why I isolated the test-case. [jhackel]
+
+Issue #193: Posts viewed by archive URL will not get CSS-styled with NuPlone
+----------------------------------------------------------------------------
+
+This is a reincarnation of Quills issue #97.
+
+NuPlone creates a wrapper 'div' with the 'id="content"' around content rendered
+by the 'view'-View. It checks whether the actual view is a 'view'-View by
+calling plone.app.layout.globals.ContextState.is_view_template. This operation
+will base it's decision merely on URL comparison of the current URL versus the
+object's absolute url. The absolute URL of posts reached by archive URL is
+the URL of the weblog plus the id of the post. Hence posts inside an archive
+will never be recognized as a 'view'-View.
+
+Fortunately there is a way to override this operation since Plone will look-up 
+the context state as a view named 'plone_context_state'. Products.Quills already
+overides the context state that way. Products.QuillsEnabled needs to do so
+also.
+
+To test for this issue we will lookup the context state for a post reached
+by absolute URL as well as by archive URL.
+
+As usual we start by creating an entry.
+
+    >>> self.login()
+    >>> self.setRoles(('Manager',))
+
+    >>> from DateTime import DateTime # We cannot use python datetime here, alas
+    >>> entry = self.weblog.addEntry(title="Issue #193", id="issue193",
+    ...                      excerpt="None", text="None")
+    >>> entry.publish( pubdate=DateTime("2009-05-15T10:00:00") )
+
+We cannot simply go by "restrictedTraverse" to the context state, as it will
+ignore our IPublishTraverse adapters. The only way I found to simulate a TAL
+expression like "plone/weblog/2009/05/10/@@plone_context_state/is_view_template"
+is to use ZPublisher.HTTPRequest.traverse. You want awkward, I'll show you 
+awkward:
+
+    >>> from ZPublisher.HTTPRequest import HTTPRequest
+    >>> from ZPublisher.HTTPResponse import HTTPResponse
+    >>> from Products.PloneTestCase import PloneTestCase
+    >>> import base64
+    >>> user_id = PloneTestCase.default_user
+    >>> password = PloneTestCase.default_password
+    >>> encoded = base64.encodestring( '%s:%s' % ( user_id, password ) )
+    >>> auth_header = 'basic %s' % encoded
+    >>> resp = HTTPResponse()
+    >>> env={'SERVER_URL':'http://nohost/plone',
+    ...          'URL':'http://nohost/plone',
+    ...          'HTTP_AUTHORIZATION': auth_header,
+    ...          'REQUEST_METHOD': 'GET',
+    ...          'steps': [],
+    ...          '_hacked_path': 0,
+    ...          '_test_counter': 0,
+    ... }
+    >>> request = HTTPRequest(stdin=None, environ=env, response=resp)
+    >>> request['PARENTS'] = [self.getPortal()]
+
+First, test the absolute path.
+     
+As I said before, `is_view_url` implementations (Quills' also) rely on URL
+comparision. We need a properly set-up Request therefore. The request
+"traverse" leaves us with is not quite the same as TAL produces. It's URL
+has the view name `@@plone_context_state` appended. We need to remove that.
+This gives the test-case a truely realistic touch. Crap.
+
+    >>> contextState = request.traverse("weblog/issue193/"
+    ...                  "@@plone_context_state")
+    >>> request['ACTUAL_URL'] = 'http://nohost/plone/weblog/issue193'
+    >>> contextState.is_view_template()
+    True
+
+Closing the request seems to mess up the component registry. Any attempt
+to for do fetch the ISiteRoot will fail if the next line is active.
+
+    >>> request.close()    
+
+And for a virtual path the same...
+
+    >>> resp = HTTPResponse()
+    >>> env={'SERVER_URL':'http://nohost/plone',
+    ...          'URL':'http://nohost/plone',
+    ...          'HTTP_AUTHORIZATION': auth_header,
+    ...          'REQUEST_METHOD': 'GET',
+    ...          'steps': [],
+    ...          '_hacked_path': 0,
+    ...          '_test_counter': 0,
+    ... }
+    >>> request = HTTPRequest(stdin=None, environ=env, response=resp)
+    >>> request['PARENTS'] = [self.getPortal()]    
+    >>> contextState = request.traverse("weblog/2009/05/10/issue193/@@plone_context_state")
+    >>> request['ACTUAL_URL'] = 'http://nohost/plone/weblog/2009/05/10/issue193'
+    >>> contextState.is_view_template()
+    True
+
+See above.
+
+    >>> request.close()    

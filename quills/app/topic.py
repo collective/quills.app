@@ -79,7 +79,7 @@ class Topic(QuillsMixin, AcquiringActionProvider, Traversable, Implicit):
     def getTitle(self):
         """See ITopic.
         """
-        return ' & '.join(self.keywords)
+        return ' & '.join(self.keywords).decode('utf-8')
 
     def getDescription(self):
         """See ITopic.
@@ -169,12 +169,13 @@ class AuthorTopic(Topic):
         memb_tool = getToolByName(self, 'portal_membership')
         users = []
         for user_id in self.keywords:
-            fullname = memb_tool.getMemberInfo(user_id)['fullname']
-            if fullname == '':
+            info = memb_tool.getMemberInfo(user_id)
+            if info is None:
                 users.append(user_id)
             else:
-                users.append(fullname)
-        return ", ".join(users)
+                fullname = info['fullname'] or user_id
+                users.append(fullname)               
+        return ", ".join(users).decode('utf-8')
 
     def getDescription(self):
         """See ITopic.

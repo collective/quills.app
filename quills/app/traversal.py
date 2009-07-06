@@ -131,18 +131,71 @@ class BaseContainerTraverser(DefaultPublishTraverse):
     """Base traverser for Topics and Authors
     """
 
-    def traverseSubpath(self, request, name, klass):
-        """ Answer an instance of ``klass`` as object at ``name``. Merge
-        keywords of the parent object (i.e. of the context) into
-        that object, if the parent happens to be of the same ``klass``.
+    def publishTraverse(self, request, name):
+        """Interpret any remaining names on the traversal stack as keywords
+        of this topic container. Only exception is an appended view name at
+        the end of the traversal stack, or if a sub-class aborts the process
+
+        This operation will empty the traversal stack! While the view have
+        an instance of ``klass`` as context, it will have the topic container
+        as acquistion parent! The ``klass`` instance will be initialized with
+        the keywords taken from the traversal stack.
         """
-        # Is this a  multi-keyword query, i.e. have?
-        if isinstance(self.context, klass):
-            # Yes, augment the keywords of our parent
-            topics = self.context.getKeywords() + [name]
+        
+        # The first name might denote a content object to be acquired,
+        # e.g. an image. In that case we're done.
+        try:
+            return super(BaseContainerTraverser,
+                         self).publishTraverse(request, name)
+        except AttributeError: 
+            pass
+
+        self.request = request
+
+        # collect keywords
+        keywords = []
+        while self.hasMoreNames():
+            keywords.append(name)
+            name = self.nextName()
+
+        # Determine view
+        view_name = None
+        context = None
+        if name.startswith('@@'): 
+            # A view has explicitly been requested, so make that the 
+            # view_name (stripping off the leading @@ which causes view 
+            # lookups to fail otherwise). 
+            view_name = name[2:]
         else:
-            topics = [name]
-        return klass(topics).__of__(self.context)
+            # last name is another keyword
+            keywords.append(name)
+
+        if len(keywords) == 0:
+            # No keywords given, just a view specified. Create a view for the
+            # topic container.
+            context = self.context
+        else:
+            context = self.wrapUp(keywords).__of__(self.context)
+
+        view_name = view_name or getDefaultViewName(context, request)
+        view = getMultiAdapter((context, request), name=view_name) 
+        return view.__of__(self.context) 
+
+    def nextName(self): 
+        """Pop the next name off of the traversal stack.
+        """
+        return self.request['TraversalRequestNameStack'].pop() 
+
+    def hasMoreNames(self):
+        """Are there names left for traversal?
+        """
+        return len(self.request['TraversalRequestNameStack']) > 0
+
+    def wrapUp(self, keywords): 
+        """Create a content object for the given keywords. 
+         """ 
+        raise NotImplementedError("subclass responsibility") 
+
 
 class TopicContainerTraverser(BaseContainerTraverser):
     """Topic container traversal
@@ -150,34 +203,11 @@ class TopicContainerTraverser(BaseContainerTraverser):
     blog/topics/topic_name
     """
 
-    # It actually adapts ITopics too, now...
     adapts(ITopicContainer, IHTTPRequest)
 
-    def publishTraverse(self, request, name):
-        """Accept any name unless an object by that name can be found by
-        the DefaultPublishTraverse. In that case return this object unless
-        there exists a blog post by that topic (keyword) in the blog.
-
-        This somewhat complicated rule shall minimize the cases where a 
-        required object from the context (e.g. an image) is hidden by a
-        keyword never actually used by the blog.
-        """
-        try:
-            obj = super(TopicContainerTraverser,
-                        self).publishTraverse(request, name)
-        except AttributeError: 
-            return self.traverseSubpath(request, name, Topic)
-        # This next two statement might look quite heavy-weight, after all
-        # they cause a catalog query, amongst other. However, this
-        # code is only executed when object ids clash. That should
-        # happen fairly seldom.
-        # XXX Issue a warning to the user when names clash!
-        # --- jhackel
-        weblog = self.context.getWeblog()
-        if len(weblog.getTopicById(name).getEntries()) == 0:
-            return obj
-        else:
-            return self.traverseSubpath(request, name, Topic)
+    def wrapUp(self, keywords): 
+        """See super-class.""" 
+        return Topic(keywords)
 
 class AuthorContainerTraverser(BaseContainerTraverser):
     """Author container traversal
@@ -185,17 +215,10 @@ class AuthorContainerTraverser(BaseContainerTraverser):
     blog/authors/author_id
     """
 
-    # It actually adapts IAuthorTopics too, now...  
     adapts(IAuthorContainer, IHTTPRequest)
-    
-    def publishTraverse(self, request, name):
-        """Create a Topic for any name that denotes a portal member.
-        Being an actual author of the blog is not required though.
-        """
-        mtool = getToolByName(self.context, 'portal_membership')
-        if mtool.getMemberById(name) is None:
-            return super(AuthorContainerTraverser,
-                         self).publishTraverse(request, name)
-        else:
-            return self.traverseSubpath(request, name, AuthorTopic)
+
+    def wrapUp(self, keywords): 
+        """See super-class.""" 
+        return AuthorTopic(keywords)
+
             

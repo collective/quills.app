@@ -595,93 +595,6 @@ Add a reply to that comment.
     True
 
 
-Issue #193: Posts viewed by archive URL will not get CSS-styled with NuPlone
-----------------------------------------------------------------------------
-
-This is a reincarnation of Quills issue #97.
-
-NuPlone creates a wrapper 'div' with the 'id="content"' around content rendered
-by the 'view'-View. It checks whether the actual view is a 'view'-View by
-calling plone.app.layout.globals.ContextState.is_view_template. This operation
-will base it's decision merely on URL comparison of the current URL versus the
-object's absolute url. The absolute URL of posts reached by archive URL is
-the URL of the weblog plus the id of the post. Hence posts inside an archive
-will never be recognized as a 'view'-View.
-
-Fortunately there is a way to override this operation since Plone will look-up 
-the context state as a view named 'plone_context_state'. Products.Quills already
-overides the context state that way. Products.QuillsEnabled needs to do so
-also.
-
-To test for this issue we will lookup the context state for a post reached
-by absolute URL as well as by archive URL.
-
-As usual we start by creating an entry.
-
-    >>> self.login()
-    >>> self.setRoles(('Manager',))
-
-    >>> from DateTime import DateTime # We cannot use python datetime here, alas
-    >>> entry = self.weblog.addEntry(title="Issue #193", id="issue193",
-    ...                      excerpt="None", text="None")
-    >>> entry.publish( pubdate=DateTime("2009-05-15T10:00:00") )
-
-We cannot simply go by "restrictedTraverse" to the context state, as it will
-ignore our IPublishTraverse adapters. The only way I found to simulate a TAL
-expression like "plone/weblog/2009/05/10/@@plone_context_state/is_view_template"
-is to use ZPublisher.HTTPRequest.traverse. You want awkward, I'll show you 
-awkward:
-
-    >>> from ZPublisher.HTTPRequest import HTTPRequest
-    >>> from ZPublisher.HTTPResponse import HTTPResponse
-    >>> from Products.PloneTestCase import PloneTestCase
-    >>> import base64
-    >>> user_id = PloneTestCase.default_user
-    >>> password = PloneTestCase.default_password
-    >>> encoded = base64.encodestring( '%s:%s' % ( user_id, password ) )
-    >>> auth_header = 'basic %s' % encoded
-    >>> resp = HTTPResponse()
-    >>> env={'SERVER_URL':'http://nohost/plone',
-    ...          'URL':'http://nohost/plone',
-    ...          'HTTP_AUTHORIZATION': auth_header,
-    ...          'REQUEST_METHOD': 'GET',
-    ...          'steps': [],
-    ...          '_hacked_path': 0,
-    ...          '_test_counter': 0,
-    ... }
-    >>> env2 = env.copy()  
-    >>> request = HTTPRequest(stdin=None, environ=env, response=resp)
-    >>> request['PARENTS'] = [self.getPortal()]
-
-First, test the absolute path.
-     
-As I said before, `is_view_url` implementations (Quills' also) rely on URL
-comparision. We need a properly set-up Request therefore. The request
-"traverse" leaves us with is not quite the same as TAL produces. It's URL
-has the view name `@@plone_context_state` appended. We need to remove that.
-This gives the test-case a truely realistic touch. Crap.
-
-    >>> contextState = request.traverse("weblog/issue193/"
-    ...                  "@@plone_context_state")
-    >>> request['ACTUAL_URL'] = 'http://nohost/plone/weblog/issue193'
-    >>> contextState.is_view_template()
-    True
-    
-    >>> request.close()    
-
-And for a virtual path the same...
-
-    >>> resp = HTTPResponse()
-    >>> request = HTTPRequest(stdin=None, environ=env2, response=resp)
-    >>> request['PARENTS'] = [self.getPortal()]    
-    >>> contextState = request.traverse("weblog/2009/05/10/issue193/@@plone_context_state")
-    >>> request['ACTUAL_URL'] = 'http://nohost/plone/weblog/2009/05/10/issue193'
-    >>> contextState.is_view_template()
-    True
-
-    >>> request.close()    
-
-
 Issue #194: Quills breaks commenting for non-weblog content
 -----------------------------------------------------------
 
@@ -788,7 +701,7 @@ for all three virtual containers here.
 Quills and QuillsEnabled handle image uploads differently. While a Quills blog
 contains a special folder for uploads, QuillsEnabled leaves folder organization
 to the user. Both however ought to be able to acquire content from containing
-locations. This is where we will put our test image first.
+locations. This is where we will put our test image.
 
 Image loading and creation is inspired by the test-cases ATContentTypes Image
 portal type and the test cases of quills.remoteblogging.
@@ -809,7 +722,7 @@ Now we navigate to the image via the virtual URLs for archive, authors
 and topics. We log in as manager, because the image is private still.
 
     >>> browser = self.getBrowser(logged_in=True)
-    >>> browser.handleErrors = True
+    >>> browser.handleErrors = False
 
 Before we start, let's try the canonical URL of the image.
 
@@ -840,33 +753,82 @@ in it's issue report.
 
     >>> self.portal.error_log._ignored_exceptions = ()
     >>> author = entry.getAuthors()[0].getId()
-    >>> browser.open('http://nohost/plone/weblog/authors/%s/%s/view'
-    ...               % (author,id))
+    >>> browser.open('http://nohost/plone/weblog/authors/%s/view'
+    ...               % (id,))
     >>> browser.title
     '...Image for Issue 198...'
 
-And finally the keyword container.
+Images and other acquired stuff may only appear directly after the name
+of the topic container (``authors`` here). Later names will be taken for
+keywords, no matter if they designated a picture somewhere. It simply would
+not make sense otherwise.
+
+    >>> browser.open('http://nohost/plone/weblog/authors/%s/%s/view'
+    ...               % (author,id))
+    >>> browser.title
+    'Posts by ...issue198.gif...'
+
+And finally the same for the keyword container.
+
+    >>> browser.open('http://nohost/plone/weblog/topics/%s/view'
+    ...               % (id,))
+    >>> browser.title
+    '...Image for Issue 198...'
 
     >>> browser.open('http://nohost/plone/weblog/topics/%s/%s/view'
     ...               % (keyword, id))
     >>> browser.title
-    '...Image for Issue 198...'
+    'Posts about ...issue198.gif...'
+
 
 
 Issue 202: Filtering by an non-existing author id causes a TypeError
 --------------------------------------------------------------------
 
 This was very much related to issue #198. Two scenarios cause this error
-actually, the one described in issue #198, and when a non existant auther is
-queried. We simulate the latter here.
+actually, the one described in issue #198, and when a non existant author
+is queried. We simulate the latter here. It renders no blog entry.
 
     >>> browser = self.getBrowser()
     >>> browser.handleErrors = False
     >>> browser.open('http://nohost/plone/weblog/authors/meNotThere202')
-    Traceback (most recent call last):
-    ...
-    NotFound: ...
+    >>> browser.title
+    'Posts by meNotThere202...'
 
+    >>> browser.contents
+    '...No weblog entries have been posted...'
+
+On the other hand, querying an real *and* a fictive user name will render
+all posts of the reals user. This is due to "posts by any of the given
+authors" semantics of author topics.
+
+Before we check this, we post an entry.
+
+    >>> self.login()
+    >>> self.setRoles(('Manager',))
+    >>> entry = self.weblog.addEntry(title="Issue #202", id="issue202",
+    ...                             excerpt="None", text="None")
+    >>> entry.publish()
+
+Now, find out who we are.
+
+    >>> pmtool = getToolByName(self.portal, 'portal_membership')
+    >>> iAm = pmtool.getAuthenticatedMember()
+    >>> myId  = iAm.getId()
+
+And finally do the query.
+
+    >>> browser.open('http://nohost/plone/weblog/authors/meNotThere202/%s'
+    ...              % myId)
+    >>> browser.title
+    'Posts by meNotThere202...'
+    
+    >>> myId in browser.title
+    True
+
+    >>> browser.contents
+    '...<h2>...Issue #202...</h2>...'
+       
 
 Issue #203 — archive portlet broken: ValueError: invalid literal for int()
 ---------------------------------------------------------------------------
@@ -946,3 +908,66 @@ continues it! It depend on the pages created there.
     >>> browser.title
     'Issue #203...'
 
+
+Issue #209 — UnicodeDecodeError in topics view
+----------------------------------------------
+
+Quills must allow non-ascii characters in topic names. This used to
+work but broke with a fix for issue #195 at r87933.
+
+We start as usual by post an entry, this time under a non-ascii
+topic.
+
+    >>> self.login()
+    >>> self.setRoles(('Manager',))
+    >>> keyword = 'issue198kw' # id clashes would cause mayhem
+    >>> entry = self.weblog.addEntry(title="Issue #209", id="issue209",
+    ...                             topics=['München'],
+    ...                             excerpt="None", text="None")
+    >>> entry.publish() 
+
+Now we click that topic in the tag cloud. It should lead us to the
+topic view for topic 'München'.
+
+    >>> browser = self.getBrowser()
+    >>> browser.handleErrors = False
+    >>> browser.open('http://nohost/plone/weblog')
+    >>> link = browser.getLink('München')
+    >>> link.click()
+    >>> browser.title
+    '...M\xc3\xbcnchen...'
+
+Now multi topic filtering...
+
+    >>> browser.open('http://nohost/plone/weblog/topics/München/Hamburg/Berlin')
+    >>> browser.title
+    '...M\xc3\xbcnchen...'
+
+Explicit view selection...
+
+    >>> browser.open('http://nohost/plone/weblog/topics/München/@@topic_view')
+    >>> browser.title
+    '...M\xc3\xbcnchen...'
+
+Finally, selecting a non-existant view should raise an exception.
+
+    >>> browser.open('http://nohost/plone/weblog/topics/München/@@notaview')
+    Traceback (most recent call last):
+    ...
+    ComponentLookupError: ...
+    
+While we're at it, let's see if foreign characters in author names
+give us any trouble.
+
+    >>> from Products.CMFCore.utils import getToolByName
+    >>> pmtool = getToolByName(self.portal, 'portal_membership')
+    >>> iAm = pmtool.getAuthenticatedMember()
+    >>> myId  = iAm.getId()
+    >>> oldName = iAm.getProperty('fullname')
+    >>> newName = 'Üsör Ässué180'
+    >>> iAm.setProperties({'fullname': newName})
+    >>> browser.open('http://nohost/plone/weblog/authors/%s' % (myId,))
+    >>> print browser.title
+    Posts by Üsör Ässué180...
+    
+    >>> iAm.setProperties({'fullname': oldName})
