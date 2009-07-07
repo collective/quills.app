@@ -81,7 +81,7 @@ class TopicFeedSource(BaseFeedSource):
     implements(IFeedSource)
 
     def __init__(self, context):
-        self.context = context.getWeblog()
+        self.context = context
 
     def getFeedEntries(self):
         """See IFeedSoure
