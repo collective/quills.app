@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: 1.5rc2\n"
-"POT-Creation-Date: 2009-04-27 12:54+0000\n"
+"POT-Creation-Date: 2009-08-03 19:15+0000\n"
 "PO-Revision-Date: 2008-11-26 00:45+0100\n"
 "Last-Translator: Enzo Cesanelli <enzo@noiza.com>\n"
 "Language-Team: Enzo Cesanelli <enzo at noiza dot com>\n"
@@ -128,7 +128,7 @@ msgid "RSS 2.0"
 msgstr "RSS 2.0"
 
 #. Default: "RSS 2.0 feed"
-#: ./portlets/quillslinks.pt:43
+#: ./browser/quills_header_macros.pt:24
 msgid "RSS 2.0 feed"
 msgstr "Feed RSS 2.0"
 
@@ -270,18 +270,13 @@ msgstr "Modifica ${portlet-name}"
 msgid "filed_under"
 msgstr "Tag:"
 
-#. Default: "Posts"
-#: ./browser/archive_view.pt:33
-msgid "heading_archive_posts"
-msgstr "Post"
-
 #. Default: "Quills Settings"
 #: ./skins/Quills/quills_settings_form.cpt:15
 msgid "heading_quills_settings"
 msgstr "Impostazioni Quills"
 
 #. Default: "Sub-archives"
-#: ./browser/archive_view.pt:23
+#: ./browser/archive_view.pt:21
 msgid "heading_sub-archives"
 msgstr "Sotto-archivi"
 
@@ -306,12 +301,12 @@ msgid "label_by_author"
 msgstr "di ${author}"
 
 #. Default: "Last Post:"
-#: ./browser/topic_listing.pt:50
+#: ./browser/topic_listing.pt:51
 msgid "label_last_post"
 msgstr "Ultimo Post:"
 
 #. Default: "No Posts"
-#: ./browser/topic_listing.pt:46
+#: ./browser/topic_listing.pt:47
 msgid "label_no_posts"
 msgstr "Non sono presenti post"
 
@@ -356,7 +351,7 @@ msgid "no_comments"
 msgstr "Non sono presenti commenti."
 
 #. Default: "No weblog entries have been posted."
-#: ./skins/Quills/weblog_macros.pt:56
+#: ./skins/Quills/siteplanet_view.pt:46
 msgid "no_weblog_entries"
 msgstr "Non sono presenti post."
 
@@ -379,6 +374,16 @@ msgstr "Gestione Commenti"
 #: ./portlets/weblogadmin.pt:12
 msgid "portlet_blogadmin_new_entry"
 msgstr "Aggiungi Post"
+
+#. Default: "Posts by $authors"
+#: ./browser/weblogview.py:216
+msgid "posts_by_authors"
+msgstr ""
+
+#. Default: "Posts about $keywords"
+#: ./browser/weblogview.py:198
+msgid "posts_by_keywords"
+msgstr ""
 
 #. Default: "read more..."
 #: ./browser/quills_entry_macros.pt:114

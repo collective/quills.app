@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Quills 1.5\n"
-"POT-Creation-Date: 2009-04-27 12:54+0000\n"
+"POT-Creation-Date: 2009-08-03 19:15+0000\n"
 "PO-Revision-Date: 2006-08-18 12:40+0900\n"
 "Last-Translator: Reinout van Rees <reinout@vanrees.org>\n"
 "Language-Team: \n"
@@ -137,7 +137,7 @@ msgstr "RSS 2.0"
 # RSS 2.0 フィード
 #. <img alt="RSS 2.0" height="15" i18n:attributes="alt title" src="" tal:attributes="src string:$portal_url/rss_feed.gif" title="RSS 2.0 feed" width="80"/>
 #. Default: "RSS 2.0 feed"
-#: ./portlets/quillslinks.pt:43
+#: ./browser/quills_header_macros.pt:24
 msgid "RSS 2.0 feed"
 msgstr "RSS 2.0 feed"
 
@@ -284,18 +284,13 @@ msgstr ""
 msgid "filed_under"
 msgstr "Filed Under:"
 
-#. Default: "Posts"
-#: ./browser/archive_view.pt:33
-msgid "heading_archive_posts"
-msgstr ""
-
 #. Default: "Quills Settings"
 #: ./skins/Quills/quills_settings_form.cpt:15
 msgid "heading_quills_settings"
 msgstr ""
 
 #. Default: "Sub-archives"
-#: ./browser/archive_view.pt:23
+#: ./browser/archive_view.pt:21
 msgid "heading_sub-archives"
 msgstr ""
 
@@ -323,12 +318,12 @@ msgid "label_by_author"
 msgstr ""
 
 #. Default: "Last Post:"
-#: ./browser/topic_listing.pt:50
+#: ./browser/topic_listing.pt:51
 msgid "label_last_post"
 msgstr ""
 
 #. Default: "No Posts"
-#: ./browser/topic_listing.pt:46
+#: ./browser/topic_listing.pt:47
 msgid "label_no_posts"
 msgstr ""
 
@@ -399,6 +394,16 @@ msgstr ""
 #. Default: "Add Entry"
 #: ./portlets/weblogadmin.pt:12
 msgid "portlet_blogadmin_new_entry"
+msgstr ""
+
+#. Default: "Posts by $authors"
+#: ./browser/weblogview.py:216
+msgid "posts_by_authors"
+msgstr ""
+
+#. Default: "Posts about $keywords"
+#: ./browser/weblogview.py:198
+msgid "posts_by_keywords"
 msgstr ""
 
 #. Default: "read more..."

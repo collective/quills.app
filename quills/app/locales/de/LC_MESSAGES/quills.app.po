@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: quills.app\n"
-"POT-Creation-Date: 2009-04-27 12:54+0000\n"
+"POT-Creation-Date: 2009-08-03 19:15+0000\n"
 "PO-Revision-Date: 2009-04-27 14:55+0100\n"
 "Last-Translator: Jan Hackel <plonecode@hackel.name>\n"
 "Language-Team: Deutsch <en@li.org>\n"
@@ -140,7 +140,7 @@ msgstr "RSS 2.0"
 
 #. <img alt="RSS 2.0" height="15" i18n:attributes="alt title" src="" tal:attributes="src string:$portal_url/rss_feed.gif" title="RSS 2.0 feed" width="80"/>
 #. Default: "RSS 2.0 feed"
-#: ./portlets/quillslinks.pt:43
+#: ./browser/quills_header_macros.pt:24
 msgid "RSS 2.0 feed"
 msgstr "RSS 2.0 Feed"
 
@@ -287,18 +287,13 @@ msgstr "${portlet-name}konfigurieren"
 msgid "filed_under"
 msgstr "Einsortiert unter:"
 
-#. Default: "Posts"
-#: ./browser/archive_view.pt:33
-msgid "heading_archive_posts"
-msgstr "Blog-Einträge"
-
 #. Default: "Quills Settings"
 #: ./skins/Quills/quills_settings_form.cpt:15
 msgid "heading_quills_settings"
 msgstr "Quills Einstellungen"
 
 #. Default: "Sub-archives"
-#: ./browser/archive_view.pt:23
+#: ./browser/archive_view.pt:21
 msgid "heading_sub-archives"
 msgstr "Sub-Archive"
 
@@ -326,12 +321,12 @@ msgid "label_by_author"
 msgstr "von"
 
 #. Default: "Last Post:"
-#: ./browser/topic_listing.pt:50
+#: ./browser/topic_listing.pt:51
 msgid "label_last_post"
 msgstr "Neuester Eintrag"
 
 #. Default: "No Posts"
-#: ./browser/topic_listing.pt:46
+#: ./browser/topic_listing.pt:47
 msgid "label_no_posts"
 msgstr "Keine Einträge"
 
@@ -403,6 +398,16 @@ msgstr "Kommentare verwalten"
 #: ./portlets/weblogadmin.pt:12
 msgid "portlet_blogadmin_new_entry"
 msgstr "Neuer Eintrag"
+
+#. Default: "Posts by $authors"
+#: ./browser/weblogview.py:216
+msgid "posts_by_authors"
+msgstr "Einträge von $authors"
+
+#. Default: "Posts about $keywords"
+#: ./browser/weblogview.py:198
+msgid "posts_by_keywords"
+msgstr "Einträge über $keywords"
 
 #. Default: "read more..."
 #: ./browser/quills_entry_macros.pt:114

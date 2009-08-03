@@ -19,7 +19,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: Quills 1.5\n"
-"POT-Creation-Date: 2009-04-27 12:54+0000\n"
+"POT-Creation-Date: 2009-08-03 19:15+0000\n"
 "PO-Revision-Date: 2006-08-19 16:31+0200\n"
 "Last-Translator: Filip Miletic <f dot miletic at ewi dot tudelft dot nl>\n"
 "Language-Team: Serbian <gnu@prevod.org>\n"
@@ -144,7 +144,7 @@ msgid "RSS 2.0"
 msgstr "RSS 2.0"
 
 #. Default: "RSS 2.0 feed"
-#: ./portlets/quillslinks.pt:43
+#: ./browser/quills_header_macros.pt:24
 msgid "RSS 2.0 feed"
 msgstr "Довод за RSS 2.0"
 
@@ -287,18 +287,13 @@ msgstr ""
 msgid "filed_under"
 msgstr "Разврстано као:"
 
-#. Default: "Posts"
-#: ./browser/archive_view.pt:33
-msgid "heading_archive_posts"
-msgstr ""
-
 #. Default: "Quills Settings"
 #: ./skins/Quills/quills_settings_form.cpt:15
 msgid "heading_quills_settings"
 msgstr ""
 
 #. Default: "Sub-archives"
-#: ./browser/archive_view.pt:23
+#: ./browser/archive_view.pt:21
 msgid "heading_sub-archives"
 msgstr ""
 
@@ -323,12 +318,12 @@ msgid "label_by_author"
 msgstr ""
 
 #. Default: "Last Post:"
-#: ./browser/topic_listing.pt:50
+#: ./browser/topic_listing.pt:51
 msgid "label_last_post"
 msgstr ""
 
 #. Default: "No Posts"
-#: ./browser/topic_listing.pt:46
+#: ./browser/topic_listing.pt:47
 msgid "label_no_posts"
 msgstr ""
 
@@ -397,6 +392,16 @@ msgstr ""
 #. Default: "Add Entry"
 #: ./portlets/weblogadmin.pt:12
 msgid "portlet_blogadmin_new_entry"
+msgstr ""
+
+#. Default: "Posts by $authors"
+#: ./browser/weblogview.py:216
+msgid "posts_by_authors"
+msgstr ""
+
+#. Default: "Posts about $keywords"
+#: ./browser/weblogview.py:198
+msgid "posts_by_keywords"
 msgstr ""
 
 #. Default: "read more..."
