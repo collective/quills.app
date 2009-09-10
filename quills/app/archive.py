@@ -227,7 +227,7 @@ class MonthArchive(BaseDateArchive):
 
     def Title(self):
         # Get utranslate script from context...
-        return getToolByName(self, 'utranslate')(msgid=monthname_msgid(self.month), default=monthname_english(self.month), domain='plonelocales')
+        return getToolByName(self, 'utranslate')(msgid=monthname_msgid(self.month), default=monthname_english(self.month), domain='plonelocales').capitalize()
 
     def _getEntryDays(self):
         """
