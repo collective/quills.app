@@ -213,7 +213,7 @@ Now let's check the breadcrumb is there for the year:
 
     >>> browser.open('http://nohost/plone/weblog/2008/12/16/entry')
     >>> import re
-    >>> s = '<a href="http://nohost/plone/weblog/2008">2008</a>\s*<span class="breadcrumbSeparator">\s*&rarr;'
+    >>> s = '<a href="http://nohost/plone/weblog/2008">2008</a>\s*<span class="breadcrumbSeparator">\s*&[a-z]{4,6};'
     >>> re.search(s, browser.contents) is not None
     True
 
@@ -221,8 +221,9 @@ We also check that we've got the order of the breadcrumbs correct. During
 development, there was a problem with the entry appearing between 'Home' and
 'Weblog'.
 
-    >>> s = '<a href="http://nohost/plone">Home</a>\s*<span class="breadcrumbSeparator">\s*&rarr;\s*</span>\s*<span dir="ltr">\s*<a href="http://nohost/plone/weblog">Test Weblog</a>'
-    >>> re.search(s, browser.contents) is not None
+    >>> s_plone3 = '<a href="http://nohost/plone">Home</a>\s*<span class="breadcrumbSeparator">\s*&rarr;\s*</span>\s*<span dir="ltr">\s*<a href="http://nohost/plone/weblog">Test Weblog</a>'
+    >>> s_plone4 = '<a href="http://nohost/plone">Home</a>\s*<span class="breadcrumbSeparator">\s*&rsaquo;\s*</span>\s*</span>\s*<span id="breadcrumbs-1" dir="ltr">\s*<a href="http://nohost/plone/weblog">Test Weblog</a>'
+    >>> (re.search(s_plone3, browser.contents) is not None) or (re.search(s_plone4, browser.contents) is not None)
     True
 
 

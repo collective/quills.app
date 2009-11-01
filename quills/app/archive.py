@@ -35,7 +35,7 @@ from Products.CMFCore.utils import getToolByName
 
 # Plone imports
 from Products.CMFPlone import PloneLocalesMessageFactory as _PLMF
-from Products.CMFPlone.i18nl10n import utranslate, monthname_msgid, monthname_english
+from Products.CMFPlone.i18nl10n import monthname_msgid, monthname_english
 
 # Quills imports
 from quills.core.interfaces import IWeblogEntry
@@ -49,12 +49,22 @@ from utilities import QuillsMixin
 from interfaces import ITransientArchive
 from interfaces import IWeblogEnhancedConfiguration
 
-
+# Check for Plone 4.0 or above
+try:
+    from Products.CMFPlone.factory import _IMREALLYPLONE4
+except ImportError:
+    PLONE40 = 0
+else:
+    PLONE40 = 1
+    
 class BaseArchive(QuillsMixin, AcquiringActionProvider, Traversable, Implicit):
     """Implementation of IWeblogArchive.
     """
 
-    __allow_access_to_unprotected_subobjects__ = EvilAATUSHack()
+    if PLONE40:
+        __allow_access_to_unprotected_subobjects__ = True
+    else:
+        __allow_access_to_unprotected_subobjects__ = EvilAATUSHack()
 
     def __init__(self, *args, **kwargs):
         self._results = None

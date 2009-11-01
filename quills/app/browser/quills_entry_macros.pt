@@ -250,6 +250,7 @@
 			<tal:block repeat="author authors">
             <a href="#"
 			   tal:define="author_id python:str(author);
+			               mtool context/portal_membership;
                            ploneauthor python:mtool.getMemberInfo(author_id)"
                tal:attributes="href string:${weblog_content/absolute_url}/authors/${author_id}"
                tal:content="python:ploneauthor and ploneauthor['fullname'] or author_id">
@@ -261,7 +262,8 @@
           <tal:mod i18n:translate="box_last_modified">
             last modified
           </tal:mod>
-          <span tal:define="item_modified item_modified | entry/getPublicationDate;"
+          <span tal:define="item_modified item_modified | entry/getPublicationDate;
+                            toLocalizedTime nocall:context/@@plone/toLocalizedTime;"
 		        tal:replace="python:toLocalizedTime(item_modified,long_format=1)">
             August 16, 2001 at 23:35:59
           </span>

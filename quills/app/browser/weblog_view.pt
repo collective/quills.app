@@ -26,7 +26,8 @@
 
       <p id="blog-uid"
          class="discreet"
-         tal:define="show_border python:context.showEditableBorder(template_id=template_id, actions=actions );"
+         tal:define="ploneview context/@@plone;
+                     show_border ploneview/showEditableBorder;"
          tal:condition="show_border">
         <span i18n:translate="weblog_edit_app_note">
           Note: for some weblog editors you will need to provide the

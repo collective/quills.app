@@ -18,6 +18,12 @@ from quills.app.interfaces import IWeblogEnhancedConfiguration
 from quills.core.interfaces import IWeblogLocator
 from quills.app import QuillsAppMessageFactory as _
 
+try:
+    from Products.CMFPlone.utils import translate
+except ImportError:
+    translate = None
+
+
 class WeblogView(BaseView):
     """A class with helper methods for use in views/templates.
 
@@ -197,7 +203,13 @@ class TopicTitleViewlet(BaseTitleViewlet):
         def post_title():
             message = _(u'posts_by_keywords', default=u'Posts about $keywords',
                         mapping={'keywords':context.getTitle()})
+            if translate:
+                ## Plone 4
+                return translate(message)
+            
+            ## for Plone 3
             return context.translate(message)
+            
         self.portal_title = blog_title
         self.page_title = post_title
 
@@ -215,6 +227,12 @@ class AuthorTopicTitleViewlet(BaseTitleViewlet):
         def post_title():
             message = _(u'posts_by_authors', default=u'Posts by $authors',
                         mapping={'authors':context.getTitle()})
+            if translate:
+                ## Plone 4
+                return translate(message)
+            
+            ## for Plone 3
             return context.translate(message)
+            
         self.portal_title = blog_title
         self.page_title = post_title

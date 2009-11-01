@@ -19,7 +19,7 @@ class RecursingUpLocator(object):
         """see Interface"""
         # The request tells us if were inside a weblog; if we are
         # not, we leave immediately. --- jhackel
-        request = self.context.request
+        request = getattr(self.context, 'request', None)
         if not ( request is None or IInsideWeblog.providedBy(request) ):
             return []
 

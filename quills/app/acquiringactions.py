@@ -1,10 +1,19 @@
+# Zope imports
+from zope.interface import implements
+
 # CMF imports
 from Products.CMFCore.utils import getToolByName
-from Products.CMFCore.interfaces.portal_actions import ActionProvider as IActionProvider
+
+try:
+    ## for Plone 4
+    from Products.CMFCore.interfaces import IActionProvider
+except ImportError:
+    ## for Plone 3
+    from Products.CMFCore.interfaces.portal_actions import ActionProvider as IActionProvider
 
 class AcquiringActionProvider:
 
-    __implements__ = (IActionProvider,)
+    implements(IActionProvider)
 
     def listActions(self, info=None, object=None):
         """ List all the actions defined by a provider.
