@@ -209,9 +209,12 @@ class TopicTitleViewlet(BaseTitleViewlet):
             
             ## for Plone 3
             return context.translate(message)
-            
+         
+        #BBB
         self.portal_title = blog_title
-        self.page_title = post_title
+        self.page_title = post_title        
+        ## Plone 4
+        self.site_title = blog_title
 
 class AuthorTopicTitleViewlet(BaseTitleViewlet):
     """Render the title attribute of the HTML head in a meaningful and
@@ -233,6 +236,9 @@ class AuthorTopicTitleViewlet(BaseTitleViewlet):
             
             ## for Plone 3
             return context.translate(message)
-            
+        
+        ##BBB
         self.portal_title = blog_title
         self.page_title = post_title
+        ## Plone 4
+        self.site_title = blog_title
