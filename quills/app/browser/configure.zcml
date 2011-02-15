@@ -107,7 +107,7 @@
     <!-- Renders the title of the HTML header. -->
     <viewlet
         name="plone.htmlhead.title"
-	for="quills.core.interfaces.ITopic"
+	    for="quills.core.interfaces.ITopic"
         manager="plone.app.layout.viewlets.interfaces.IHtmlHead"
         class=".weblogview.TopicTitleViewlet"
         permission="zope2.View" 
@@ -115,7 +115,7 @@
 
     <viewlet
         name="plone.htmlhead.title"
-	for="quills.core.interfaces.IAuthorTopic"
+	    for="quills.core.interfaces.IAuthorTopic"
         manager="plone.app.layout.viewlets.interfaces.IHtmlHead"
         class=".weblogview.AuthorTopicTitleViewlet"
         permission="zope2.View" 
