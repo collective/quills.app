@@ -141,15 +141,6 @@ class BaseContainerTraverser(DefaultPublishTraverse):
         as acquistion parent! The ``klass`` instance will be initialized with
         the keywords taken from the traversal stack.
         """
-        
-        # The first name might denote a content object to be acquired,
-        # e.g. an image. In that case we're done.
-        try:
-            return super(BaseContainerTraverser,
-                         self).publishTraverse(request, name)
-        except AttributeError: 
-            pass
-
         self.request = request
 
         # collect keywords
