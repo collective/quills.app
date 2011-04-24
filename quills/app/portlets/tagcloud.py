@@ -3,19 +3,12 @@ from zope.interface import implements
 
 from plone.app.portlets.portlets import base
 from plone.app.portlets.browser.formhelper import NullAddForm
-from plone.memoize.compress import xhtml_compress
 from plone.portlets.interfaces import IPortletDataProvider
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from plone.memoize.instance import memoize
 
-# Quills imports
-from quills.core.interfaces import IWeblogLocator
 from quills.app import QuillsAppMessageFactory as _
-
-# Local imports
 from base import BasePortletRenderer
-
 
 PORTLET_TITLE = _(u"Tag Cloud")
 PORTLET_DESC = _(u"This portlet displays a tag cloud.")
@@ -25,9 +18,7 @@ class ITagCloudPortlet(IPortletDataProvider):
     """A tag cloud portlet.
     """
 
-
 class Assignment(base.Assignment):
-
     implements(ITagCloudPortlet)
 
     @property
@@ -36,7 +27,6 @@ class Assignment(base.Assignment):
 
 
 class Renderer(BasePortletRenderer, base.Renderer):
-
     _template = ViewPageTemplateFile('tagcloud.pt')
 
     @property
@@ -95,7 +85,9 @@ class Renderer(BasePortletRenderer, base.Renderer):
 
 class AddForm(NullAddForm):
     form_fields = form.Fields(ITagCloudPortlet)
-    label = _(u'add-portlet', default=u"Add ${portlet-name} Portlet", mapping={u'portlet-name': PORTLET_TITLE})
+    label = _(u'add-portlet', 
+            default=u"Add ${portlet-name} Portlet", 
+            mapping={u'portlet-name': PORTLET_TITLE})
     description = PORTLET_DESC
 
     def create(self):
@@ -104,5 +96,8 @@ class AddForm(NullAddForm):
 
 class EditForm(base.EditForm):
     form_fields = form.Fields(ITagCloudPortlet)
-    label = _(u'edit-portlet', default=u"Edit ${portlet-name} Portlet", mapping={u'portlet-name': PORTLET_TITLE})
+    label = _(u'edit-portlet', 
+            default=u"Edit ${portlet-name} Portlet", 
+            mapping={u'portlet-name': PORTLET_TITLE})
     description = PORTLET_DESC
+
