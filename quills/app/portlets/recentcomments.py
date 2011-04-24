@@ -4,31 +4,21 @@ from zope.interface import implements
 from zope.component import getMultiAdapter
 
 from plone.app.portlets.portlets import base
-from plone.memoize.compress import xhtml_compress
 from plone.portlets.interfaces import IPortletDataProvider
 
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 
-# Quills imports
-from quills.core.interfaces import IBaseContent
-from quills.core.interfaces import IWeblogEnhanced
-from quills.core.interfaces import IWeblog
-from quills.app.utilities import recurseToInterface
-from quills.app.utilities import talkbackURL
 from quills.app.utilities import getArchiveURLFor
 from quills.app.browser.baseview import BaseView
 from quills.app import QuillsAppMessageFactory as _
 
-# Local imports
 from base import BasePortletRenderer
-
 
 PORTLET_TITLE = _(u"Recent Comments")
 PORTLET_DESC = _(u"This portlet lists recent weblog comments.")
 
 
 class IRecentWeblogCommentsPortlet(IPortletDataProvider):
-
     max_comments = schema.Int(
         title=_(u'Maximum comments'),
         description=_(u"What's the maximum number of comments to list?"),
@@ -37,7 +27,6 @@ class IRecentWeblogCommentsPortlet(IPortletDataProvider):
 
 
 class Assignment(base.Assignment):
-
     implements(IRecentWeblogCommentsPortlet)
 
     def __init__(self, max_comments=5):
@@ -49,7 +38,6 @@ class Assignment(base.Assignment):
 
 
 class Renderer(BasePortletRenderer, base.Renderer, BaseView):
-
     _template = ViewPageTemplateFile('recentcomments.pt')
 
     @property
@@ -80,7 +68,9 @@ class Renderer(BasePortletRenderer, base.Renderer, BaseView):
 
 class AddForm(base.AddForm):
     form_fields = form.Fields(IRecentWeblogCommentsPortlet)
-    label = _(u'add-portlet', default=u"Add ${portlet-name} Portlet", mapping={u'portlet-name': PORTLET_TITLE})
+    label = _(u'add-portlet', 
+            default=u"Add ${portlet-name} Portlet", 
+            mapping={u'portlet-name': PORTLET_TITLE})
     description = PORTLET_DESC
 
     def create(self, data):
@@ -89,5 +79,9 @@ class AddForm(base.AddForm):
 
 class EditForm(base.EditForm):
     form_fields = form.Fields(IRecentWeblogCommentsPortlet)
-    label = _(u'edit-portlet', default=u"Edit ${portlet-name} Portlet", mapping={u'portlet-name': PORTLET_TITLE})
+    label = _(u'edit-portlet', 
+            default=u"Edit ${portlet-name} Portlet", 
+            mapping={u'portlet-name': PORTLET_TITLE})
     description = PORTLET_DESC
+
+
