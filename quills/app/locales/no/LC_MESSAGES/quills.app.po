@@ -1,0 +1,395 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: PACKAGE VERSION\n"
+"POT-Creation-Date: 2009-08-03 19:15+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: Nidelven IT <info@nidelven-it.no>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: no\n"
+"Language-Name: Norwegian\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: quills.app\n"
+
+#. Default: "Add new blog entry"
+#: ./portlets/weblogadmin.pt:12
+msgid "Add new blog entry"
+msgstr "Nytt blogginnlegg"
+
+#. Default: "Atom"
+#: ./portlets/quillslinks.pt:17
+msgid "Atom"
+msgstr "Atom"
+
+#. Default: "Atom Enabled"
+#: ./portlets/quillslinks.pt:17
+msgid "Atom Enabled"
+msgstr "Atom aktivert"
+
+#. Default: "Atom feed"
+#: ./browser/quills_header_macros.pt:17
+msgid "Atom feed"
+msgstr "Atom feed"
+
+#. Default: "Author"
+#: ./browser/manage_comments.pt:31
+msgid "Author"
+msgstr "Forfatter"
+
+#. Default: "Cancel"
+#: ./skins/Quills/quills_settings_form.cpt:71
+msgid "Cancel"
+msgstr "Avbryt"
+
+#: ./browser/discussionreply.py:78
+msgid "Comment added."
+msgstr "Kommentar lagt til."
+
+#: ./browser/weblogconfig.py:70
+msgid "Configuration saved."
+msgstr "Konfigurasjon lagret."
+
+#. Default: "Configure Blog"
+#: ./portlets/weblogadmin.pt:28
+msgid "Configure Blog"
+msgstr "Konfigurer Blogg"
+
+#: ./interfaces.py:38
+msgid "Default type."
+msgstr "Standard type."
+
+#. Default: "Delete"
+#: ./browser/manage_comments.pt:49
+msgid "Delete"
+msgstr "Slett"
+
+#: ./portlets/authors.py:44
+msgid "If available, should the author's description be shown?"
+msgstr "Hvis tilgjengelig, skal forfatterens beskrivelse vises?"
+
+#: ./portlets/authors.py:32
+msgid "If available, should the author's location be shown?"
+msgstr "Hvis tilgjengelig, skal forfatterens sted vises?"
+
+#: ./portlets/authors.py:38
+msgid "If available, should the author's portrait be shown?"
+msgstr "Hvis tilgjengelig, skal forfatterens bilde vises?"
+
+#. Default: "Manage Comments"
+#: ./portlets/weblogadmin.pt:20
+msgid "Manage Comments"
+msgstr "Administrer kommentarer"
+
+#: ./portlets/recentcomments.py:33
+msgid "Maximum comments"
+msgstr "Maks kommentarer"
+
+#: ./portlets/recententries.py:27
+msgid "Maximum entries"
+msgstr "Maks innlegg"
+
+#. Default: "Powered by Quills"
+#: ./portlets/quillslinks.pt:55
+msgid "Powered by Quills"
+msgstr ""
+
+#: ./portlets/quillslinks.py:22
+msgid "Quills"
+msgstr ""
+
+#. Default: "Quills weblog system for Plone"
+#: ./portlets/quillslinks.pt:55
+msgid "Quills weblog system for Plone"
+msgstr ""
+
+#. Default: "RDF"
+#: ./portlets/quillslinks.pt:30
+msgid "RDF"
+msgstr ""
+
+#. Default: "RDF 1.0 feed"
+#: ./browser/quills_header_macros.pt:31
+msgid "RDF 1.0 feed"
+msgstr ""
+
+#. Default: "RDF 1.1 feed"
+#: ./browser/quills_header_macros.pt:38
+msgid "RDF 1.1 feed"
+msgstr ""
+
+#. Default: "RSS 2.0"
+#: ./portlets/quillslinks.pt:43
+msgid "RSS 2.0"
+msgstr ""
+
+#. Default: "RSS 2.0 feed"
+#: ./browser/quills_header_macros.pt:24
+msgid "RSS 2.0 feed"
+msgstr ""
+
+#: ./portlets/recentcomments.py:26
+msgid "Recent Comments"
+msgstr "Siste kommentarer"
+
+#: ./portlets/recententries.py:20
+msgid "Recent Entries"
+msgstr "Siste innlegg"
+
+#. Default: "Reset"
+#: ./browser/manage_comments.pt:41
+msgid "Reset"
+msgstr "Nullstill"
+
+#. Default: "Save"
+#: ./skins/Quills/quills_settings_form.cpt:63
+msgid "Save"
+msgstr "Lagre"
+
+#. Default: "Semantic feed"
+#: ./portlets/quillslinks.pt:30
+msgid "Semantic feed"
+msgstr "Semantisk feed"
+
+#: ./portlets/authors.py:43
+msgid "Show author description?"
+msgstr "Vise forfatterens beskrivelse?"
+
+#: ./portlets/authors.py:31
+msgid "Show author location?"
+msgstr "Vise forfatterens sted?"
+
+#: ./portlets/authors.py:37
+msgid "Show author portrait?"
+msgstr "Vise forfatterens bilde?"
+
+#. Default: "Subject"
+#: ./browser/manage_comments.pt:32
+msgid "Subject"
+msgstr "Emne"
+
+#: ./portlets/tagcloud.py:20
+msgid "Tag Cloud"
+msgstr "Kategorier"
+
+#: ./interfaces.py:39
+msgid "The default portal_type to add for this weblog."
+msgstr "Standard portal_type for denne weblog."
+
+#: ./portlets/tagcloud.py:21
+msgid "This portlet displays a tag cloud."
+msgstr "Denne portlet vise kategorier."
+
+#: ./portlets/recentcomments.py:27
+msgid "This portlet lists recent weblog comments."
+msgstr "Denne portlet lister opp de siste kommentarer."
+
+#: ./portlets/recententries.py:21
+msgid "This portlet lists recent weblog entries."
+msgstr "Denne portlet lister opp de sists blogginnlegg."
+
+#: ./portlets/archive.py:25
+msgid "This portlet lists the archive of this weblog."
+msgstr "Denne portlet viser webloggens arkiv."
+
+#: ./portlets/authors.py:25
+msgid "This portlet lists weblog authors."
+msgstr "Denne portlet viser webloggens forfattere."
+
+#: ./portlets/quillslinks.py:23
+msgid "This portlet provides links to the various feeds of this instance."
+msgstr "Denne portlet gir deg linker til forskjellige feeds."
+
+#: ./portlets/weblogadmin.py:27
+msgid "This portlet provides useful admin functions for a weblog."
+msgstr "Denne portlet gir deg nyttige admin funksjoner for webloggen."
+
+#. Default: "Update"
+#: ./browser/manage_comments.pt:34
+msgid "Update"
+msgstr "Oppdater"
+
+#: ./portlets/weblogadmin.py:26
+msgid "Weblog Admin"
+msgstr ""
+
+#: ./portlets/archive.py:24
+msgid "Weblog Archive"
+msgstr "Weblog arkiv"
+
+#: ./portlets/authors.py:24
+msgid "Weblog Authors"
+msgstr "Weblog forfattere"
+
+#: ./browser/weblogconfig.py:48
+msgid "Weblog View Configuration"
+msgstr "Weblog Vis Konfigurasjon"
+
+#: ./portlets/recentcomments.py:34
+msgid "What's the maximum number of comments to list?"
+msgstr "Hva er maks antall kommentarer som kan listes opp?"
+
+#: ./portlets/recententries.py:28
+msgid "What's the maximum number of entries to list?"
+msgstr "Hva er maks antall innlegg som kan listes opp?"
+
+#: ./interfaces.py:59
+msgid "Workflow states to treat as draft."
+msgstr ""
+
+#: ./interfaces.py:51
+msgid "Workflow states to treat as published."
+msgstr ""
+
+#. Default: "Add ${portlet-name} Portlet"
+#: ./portlets/archive.py:71
+msgid "add-portlet"
+msgstr ""
+
+#. Default: "last modified"
+#: ./browser/quills_entry_macros.pt:261
+msgid "box_last_modified"
+msgstr "sist endret"
+
+#. Default: "Portal-wide Quills settings."
+#: ./skins/Quills/quills_settings_form.cpt:24
+msgid "description_quills_settings"
+msgstr ""
+
+#. Default: "Edit ${portlet-name} Portlet"
+#: ./portlets/archive.py:80
+msgid "edit-portlet"
+msgstr ""
+
+#. Default: "Filed Under:"
+#: ./browser/quills_entry_macros.pt:195
+msgid "filed_under"
+msgstr "Arkivert under:"
+
+#. Default: "Quills Settings"
+#: ./skins/Quills/quills_settings_form.cpt:15
+msgid "heading_quills_settings"
+msgstr "Quills innstillinger"
+
+#. Default: "Sub-archives"
+#: ./browser/archive_view.pt:21
+msgid "heading_sub-archives"
+msgstr "Sub-arkiv"
+
+#. Default: "Topics"
+#: ./browser/topic_listing.pt:20
+msgid "heading_topics"
+msgstr "Emner"
+
+#. Default: "Weblog Authors"
+#: ./browser/author_listing.pt:17
+msgid "heading_weblog_authors"
+msgstr "Weblog forfattere"
+
+#. Default: "Addresses that match the following regular expressions will be blocked from posting trackback comments to weblog entries."
+#: ./skins/Quills/quills_settings_form.cpt:46
+msgid "help_trackback_blacklist"
+msgstr ""
+
+#. Default: "by"
+#: ./browser/quills_entry_macros.pt:247
+msgid "label_by_author"
+msgstr "av"
+
+#. Default: "Last Post:"
+#: ./browser/topic_listing.pt:51
+msgid "label_last_post"
+msgstr "Siste innlegg:"
+
+#. Default: "No Posts"
+#: ./browser/topic_listing.pt:47
+msgid "label_no_posts"
+msgstr "Ingen innlegg"
+
+#. Default: "Select all items"
+#: ./browser/manage_comments.pt:65
+msgid "label_select_all_items"
+msgstr "Velg alle"
+
+#. Default: "Trackback Blacklist"
+#: ./skins/Quills/quills_settings_form.cpt:42
+msgid "label_trackback_blacklist"
+msgstr ""
+
+#. Default: "Up to Plone Setup"
+#: ./skins/Quills/quills_settings_form.cpt:17
+msgid "label_up_to_plone_setup"
+msgstr "Til Plone Setup"
+
+#. Default: "Draft workflow states"
+#: ./interfaces.py:58
+msgid "label_workflow_states_draft"
+msgstr ""
+
+#. Default: "Published workflow states"
+#: ./interfaces.py:50
+msgid "label_workflow_states_published"
+msgstr ""
+
+#. Default: "Spam Protection"
+#: ./skins/Quills/quills_settings_form.cpt:35
+msgid "legend_spam_protection"
+msgstr ""
+
+#. Default: "Manage Comments"
+#: ./browser/manage_comments.pt:16
+msgid "manage_comments"
+msgstr "Administrer kommentarer"
+
+#. Default: "There are no comments for Weblog entries."
+#: ./browser/manage_comments.pt:20
+msgid "no_comments"
+msgstr "Det finnes ingen kommentarer for noen innlegg."
+
+#. Default: "No weblog entries have been posted."
+#: ./skins/Quills/siteplanet_view.pt:46
+msgid "no_weblog_entries"
+msgstr "Ingen innlegg har blir postet."
+
+#. Default: "Comments:"
+#: ./browser/quills_entry_macros.pt:218
+msgid "number_of_comments"
+msgstr "Kommentarer:"
+
+#. Default: "Configure Blog"
+#: ./portlets/weblogadmin.pt:28
+msgid "portlet_blogadmin_configure_blog"
+msgstr "Konfigurer Blog"
+
+#. Default: "Manage Comments"
+#: ./portlets/weblogadmin.pt:20
+msgid "portlet_blogadmin_manage_comments"
+msgstr "Administrer kommentarer"
+
+#. Default: "Add Entry"
+#: ./portlets/weblogadmin.pt:12
+msgid "portlet_blogadmin_new_entry"
+msgstr "Legg til innlegg"
+
+#. Default: "Posts by $authors"
+#: ./browser/weblogview.py:216
+msgid "posts_by_authors"
+msgstr ""
+
+#. Default: "Posts about $keywords"
+#: ./browser/weblogview.py:198
+msgid "posts_by_keywords"
+msgstr ""
+
+#. Default: "read more..."
+#: ./browser/quills_entry_macros.pt:114
+msgid "read_more"
+msgstr "les mer..."
+
+#. Default: "Note: for some weblog editors you will need to provide the following string as id to edit this blog:"
+#: ./browser/weblog_view.pt:31
+msgid "weblog_edit_app_note"
+msgstr ""
+
