@@ -1,5 +1,6 @@
-from Acquisition import aq_base
+from Acquisition import aq_base, aq_inner, aq_parent
 from Products.CMFPlone.browser.interfaces import INavigationBreadcrumbs
+from Products.CMFPlone.interfaces.siteroot import IPloneSiteRoot
 from quills.core.interfaces import IBaseContent, IWeblogEntry, IWeblogEnhanced
 from zope.component import getMultiAdapter
 from zope.interface import implements
@@ -40,10 +41,11 @@ class ArchiveAwareBreadcrumbs(object):
         something we know. This is still a bad hack, but more reliable and
         a bit easier to grasp than the former (so I hope).
         """
-        for parent in self.request['PARENTS']:
+        parent = aq_parent(aq_inner(self.context))
+        while not IPloneSiteRoot.providedBy(parent):
             if ((IBaseContent.providedBy(parent) or
                   IWeblogEnhanced.providedBy(parent))
                 and aq_base(parent) != aq_base(self.context)):
                 return parent
-        # Just in case. We would probably better raise an exception here.
-        return None
+            parent = aq_parent(aq_inner(parent))
+        return parent
