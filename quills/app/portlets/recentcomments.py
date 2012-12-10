@@ -59,6 +59,8 @@ class Renderer(BasePortletRenderer, base.Renderer, BaseView):
     def talkbackURL(self, item):
         # XXX This is (sadly) CMF-DiscussionItem-specific :(.
         comment = item.getObject()
+        if not hasattr(comment, 'parentsInThread'):
+            return comment.absolute_url()
         parent_comments = comment.parentsInThread()
         commented_object = parent_comments[0]
         weblog_content = self.getWeblogContentObject()
