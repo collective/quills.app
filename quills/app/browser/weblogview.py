@@ -57,7 +57,7 @@ class WeblogView(BaseView):
         """See IWeblogView.
         """
         if resolution == 'day':
-            format = '%Y-%m-%d 00:00:00'
+            format = '%Y/%m/%d 00:00:00'
         elif resolution == 'month':
             format = '%Y-%m'
         elif resolution == 'year':
