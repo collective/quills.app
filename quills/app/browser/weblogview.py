@@ -212,7 +212,7 @@ class TopicTitleViewlet(BaseTitleViewlet):
          
         #BBB
         self.portal_title = blog_title
-        self.page_title = post_title        
+        #self.page_title = post_title        # does not work in Plone 4.3
         ## Plone 4
         self.site_title = blog_title
 
@@ -239,6 +239,6 @@ class AuthorTopicTitleViewlet(BaseTitleViewlet):
         
         ##BBB
         self.portal_title = blog_title
-        self.page_title = post_title
+        #self.page_title = post_title   # does not work in Plone 4.3
         ## Plone 4
         self.site_title = blog_title
