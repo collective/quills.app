@@ -1,19 +1,15 @@
 # Zope imports
 from zope.component import adapts, getMultiAdapter
-from zope.component import queryMultiAdapter
 from zope.app.publisher.browser import getDefaultViewName
-from zope.interface import alsoProvides, Interface
+from zope.interface import alsoProvides
 from zope.publisher.interfaces.http import IHTTPRequest
 from ZPublisher.BaseRequest import DefaultPublishTraverse
-from Products.CMFCore.utils import getToolByName
 from Acquisition import aq_base
 
 # Quills imports
 from quills.core.interfaces import IWeblog
-from quills.core.interfaces import IWeblogEntry
 from quills.core.interfaces import IWeblogArchive
 from quills.core.interfaces import IWeblogConfiguration
-from quills.core.interfaces import IPossibleWeblogEntry
 from quills.core.interfaces import ITopicContainer
 from quills.core.interfaces import IAuthorContainer
 
