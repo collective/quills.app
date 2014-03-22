@@ -1,5 +1,8 @@
 # Zope imports
-from zope.app.publisher.browser import getDefaultViewName
+try:
+    from zope.app.publisher.browser import getDefaultViewName
+except ImportError:
+    from zope.publisher.defaultview import getDefaultViewName
 
 # Plone imports
 from plone.app.layout.globals.context import ContextState

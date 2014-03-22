@@ -1,6 +1,9 @@
 # Zope imports
 from zope.component import adapts, getMultiAdapter
-from zope.app.publisher.browser import getDefaultViewName
+try:
+    from zope.app.publisher.browser import getDefaultViewName
+except ImportError:
+    from zope.publisher.defaultview import getDefaultViewName
 from zope.interface import alsoProvides
 from zope.publisher.interfaces.http import IHTTPRequest
 from ZPublisher.BaseRequest import DefaultPublishTraverse
