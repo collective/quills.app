@@ -1,32 +1,29 @@
-# Zope imports
+from Acquisition import aq_base
+from ZPublisher.BaseRequest import DefaultPublishTraverse
+from archive import ArchiveContainer
+from archive import DayArchive
+from archive import MonthArchive
+from archive import YearArchive
+from quills.core.interfaces import IAuthorContainer
+from quills.core.interfaces import ITopicContainer
+from quills.core.interfaces import IWeblog
+from quills.core.interfaces import IWeblogArchive
+from quills.core.interfaces import IWeblogConfiguration
+from topic import AuthorContainer
+from topic import AuthorTopic
+from topic import Topic
+from topic import TopicContainer
 from zope.component import adapts, getMultiAdapter
+from zope.interface import alsoProvides
+from zope.publisher.interfaces.browser import IDefaultBrowserLayer
+from zope.publisher.interfaces.http import IHTTPRequest
+
 try:
     from zope.app.publisher.browser import getDefaultViewName
 except ImportError:
     from zope.publisher.defaultview import getDefaultViewName
-from zope.interface import alsoProvides
-from zope.publisher.interfaces.http import IHTTPRequest
-from ZPublisher.BaseRequest import DefaultPublishTraverse
-from Acquisition import aq_base
 
-# Quills imports
-from quills.core.interfaces import IWeblog
-from quills.core.interfaces import IWeblogArchive
-from quills.core.interfaces import IWeblogConfiguration
-from quills.core.interfaces import ITopicContainer
-from quills.core.interfaces import IAuthorContainer
 
-# Local imports
-from topic import Topic
-from topic import AuthorTopic
-from topic import TopicContainer
-from topic import AuthorContainer
-from archive import ArchiveContainer
-from archive import YearArchive
-from archive import MonthArchive
-from archive import DayArchive
-
-from zope.publisher.interfaces.browser import IDefaultBrowserLayer
 class IInsideWeblog(IDefaultBrowserLayer):
     """Marker interface for Requests to signal that traversal moves
     inside a QuillsEnabled weblog. To trigger a view or a browser page
@@ -36,7 +33,7 @@ class IInsideWeblog(IDefaultBrowserLayer):
 
 
 class WeblogTraverser(DefaultPublishTraverse):
-
+    """ """
     adapts(IWeblog, IHTTPRequest)
     
     def publishTraverse(self, request, name):
@@ -85,9 +82,7 @@ class WeblogTraverser(DefaultPublishTraverse):
 
 
 class WeblogArchiveTraverser(DefaultPublishTraverse):
-    """
-    """
-
+    """ """
     adapts(IWeblogArchive, IHTTPRequest)
 
     def publishTraverse(self, request, name):
@@ -192,19 +187,18 @@ class TopicContainerTraverser(BaseContainerTraverser):
     
     blog/topics/topic_name
     """
-
     adapts(ITopicContainer, IHTTPRequest)
 
     def wrapUp(self, keywords): 
         """See super-class.""" 
         return Topic(keywords)
 
+
 class AuthorContainerTraverser(BaseContainerTraverser):
     """Author container traversal
     
     blog/authors/author_id
     """
-
     adapts(IAuthorContainer, IHTTPRequest)
 
     def wrapUp(self, keywords): 

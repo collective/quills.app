@@ -1,14 +1,8 @@
-# Zope imports
+from plone.app.layout.globals.context import ContextState
 try:
     from zope.app.publisher.browser import getDefaultViewName
 except ImportError:
     from zope.publisher.defaultview import getDefaultViewName
-
-# Plone imports
-from plone.app.layout.globals.context import ContextState
-
-# Quills imports
-from quills.core.interfaces import IWeblogEntry
 
 
 class QuillsContextState(ContextState):
