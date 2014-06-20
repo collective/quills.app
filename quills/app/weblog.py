@@ -1,6 +1,10 @@
-from zope.component import getUtility
-from zope.app.container.interfaces import INameChooser
+# -*- coding: utf-8 -*-
 from plone.i18n.normalizer.interfaces import IIDNormalizer
+from zope.component import getUtility
+try:
+    from zope.container.interfaces import INameChooser  # Plone >= 4.1
+except ImportError:
+    from zope.app.container.interfaces import INameChooser
 
 
 class WeblogMixin:
@@ -27,7 +31,7 @@ class WeblogMixin:
             if maximum is None:
                 return results[offset:]
             else:
-                return results[offset:offset+maximum]
+                return results[offset:offset + maximum]
         return results
 
     def _genUniqueId(self, folder, id, title):
@@ -48,5 +52,3 @@ class WeblogMixin:
         if 'image' in mimetype:
             return 'Image'
         return 'File'
-
-

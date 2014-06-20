@@ -4,6 +4,8 @@ Changelog
 1.8a2 (unreleased)
 ------------------
 
+- Plone 4.3 compatibility
+  [ale-rt]
 - Handle case when attribute parentsInThread does not exist on comment
   [tkimnguyen]
 
