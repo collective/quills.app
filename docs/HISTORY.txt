@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.8 (2016-12-27)
+1.8.1 (2016-12-27)
 ----------------
 
 - add Plone version classifiers
@@ -10,6 +10,9 @@ Changelog
 - include all needed files
   [skurfer]
   
+1.8 (2012-12-17)
+----------------
+
 - Plone 4.3 compatibility
   [ale-rt]
   
