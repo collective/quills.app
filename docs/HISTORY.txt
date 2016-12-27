@@ -4,6 +4,9 @@ Changelog
 1.8 (2016-12-27)
 ----------------
 
+- add Plone version classifiers
+  [tkimnguyen]
+  
 - include all needed files
   [skurfer]
   
