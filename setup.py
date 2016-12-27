@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.8a2dev'
+version = '1.8'
 
 setup(name='quills.app',
       version=version,
